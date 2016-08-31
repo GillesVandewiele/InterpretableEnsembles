@@ -15,10 +15,12 @@
 import numpy as np
 import pandas as pd
 from collections import Counter
-from sklearn.cross_validation import KFold
+from sklearn.cross_validation import KFold, StratifiedKFold
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import confusion_matrix
 from sklearn.tree import DecisionTreeClassifier
+import matplotlib.pyplot as plt
 
 # Internal imports
 from decisiontree import DecisionTree
@@ -189,7 +191,6 @@ def ism(decision_trees, data, class_label, min_nr_samples=1):
     """
     X = data.drop(class_label, axis=1).reset_index(drop=True)
     y = data[class_label].reset_index(drop=True)
-    classes = np.unique(y).astype(str)
 
     prior_entropy = 0
     tests = set()
@@ -199,7 +200,7 @@ def ism(decision_trees, data, class_label, min_nr_samples=1):
                                                      sum(dt.class_probabilities.values())))
     prior_entropy /= len(decision_trees)
 
-    combined_dt = build_dt_from_ensemble(decision_trees, classes, data, class_label, tests, prior_entropy, {}, min_nr_samples)
+    combined_dt = build_dt_from_ensemble(decision_trees, data, class_label, tests, prior_entropy, {}, min_nr_samples)
     combined_dt.populate_samples(X, y)
 
     return combined_dt
@@ -216,13 +217,27 @@ def add_reduce_by_key(A, B):
     return {x: A.get(x, 0) + B.get(x, 0) for x in set(A).union(B)}
 
 
-def build_dt_from_ensemble(decision_trees, classes, data, class_label, tests, prior_entropy, prior_tests={}, min_nr_samples=1):
+def build_dt_from_ensemble(decision_trees, data, class_label, tests, prior_entropy, prior_tests={}, min_nr_samples=1,
+                           calc_fracs_from_ensemble=False):
+    """
+    Given an ensemble of decision trees, build a single decision tree using estimates from the ensemble
+
+    :param decision_trees: the ensembles of decision trees
+    :param data: the training data frame
+    :param class_label: the column with
+    :param tests: all possible tests (calculated from the ensemble)
+    :param prior_entropy: recursive parameter to calculate information gain
+    :param prior_tests: the tests that are already picked for our final decision tree
+    :param min_nr_samples: pre-prune condition, the data must be larger than this parameter
+    :return: a single decision tree, calculated using information from the ensemble
+    """
     # Pre-pruning conditions:
     #   - if the length of data is <= min_nr_samples
     #   - when we have no tests left
     #   - when there is only 1 unique class in the data left
     if len(data) > min_nr_samples and len(tests) > 0 and len(np.unique(data[class_label].values)) > 1:
-        max_ig, best_pos_data, best_neg_data, best_pos_entropy, best_neg_entropy = [None]*5
+        max_ig = 0
+        best_pos_data, best_neg_data, best_pos_entropy, best_neg_entropy = [None]*4
         best_dt = DecisionTree()
         # Find the test that results in the maximum information gain
         for test in tests:
@@ -230,16 +245,22 @@ def build_dt_from_ensemble(decision_trees, classes, data, class_label, tests, pr
             for dt in decision_trees:
                 pos_avg_probs = add_reduce_by_key(pos_avg_probs, calculate_prob_dict(dt, test[0], test[1], prior_tests, False))
                 neg_avg_probs = add_reduce_by_key(neg_avg_probs, calculate_prob_dict(dt, test[0], test[1], prior_tests, True))
-                if len(data) > 0:
+                if calc_fracs_from_ensemble and len(data) > 0:
                     pos_fraction += float(len(dt.data[dt.data[test[0]] <= test[1]]))/len(dt.data)
                     neg_fraction += float(len(dt.data[dt.data[test[0]] > test[1]]))/len(dt.data)
 
-            pos_fraction /= float(len(decision_trees))
-            neg_fraction /= float(len(decision_trees))
+            if calc_fracs_from_ensemble:
+                pos_fraction /= float(len(decision_trees))
+                neg_fraction /= float(len(decision_trees))
+
             pos_entropy = calculate_entropy(np.divide(pos_avg_probs.values(), len(decision_trees)))
             neg_entropy = calculate_entropy(np.divide(neg_avg_probs.values(), len(decision_trees)))
             pos_data = data[data[test[0]] <= test[1]].copy()
             neg_data = data[data[test[0]] > test[1]].copy()
+
+            if not calc_fracs_from_ensemble:
+                pos_fraction = float(len(pos_data)) / float(len(data))
+                neg_fraction = float(len(neg_data)) / float(len(data))
 
             weighted_entropy = pos_fraction * pos_entropy + neg_fraction * neg_entropy
             information_gain = prior_entropy - weighted_entropy
@@ -256,12 +277,12 @@ def build_dt_from_ensemble(decision_trees, classes, data, class_label, tests, pr
         left_prior_tests.update({(best_dt.label, best_dt.value): True})
         new_tests = tests.copy()
         new_tests.remove((best_dt.label, best_dt.value))
-        best_dt.left = build_dt_from_ensemble(decision_trees, classes, best_pos_data, class_label, new_tests,
+        best_dt.left = build_dt_from_ensemble(decision_trees, best_pos_data, class_label, new_tests,
                                               best_pos_entropy, left_prior_tests, min_nr_samples)
 
         right_prior_tests = prior_tests.copy()
         right_prior_tests.update({(best_dt.label, best_dt.value): False})
-        best_dt.right = build_dt_from_ensemble(decision_trees, classes, best_neg_data, class_label, new_tests,
+        best_dt.right = build_dt_from_ensemble(decision_trees, best_neg_data, class_label, new_tests,
                                                best_neg_entropy, right_prior_tests, min_nr_samples)
 
         return best_dt
@@ -269,13 +290,13 @@ def build_dt_from_ensemble(decision_trees, classes, data, class_label, tests, pr
         return DecisionTree(value=None, label=get_most_occurring_class(data, class_label))
 
 
-# columns = ['Class', 'Alcohol', 'Acid', 'Ash', 'Alcalinity', 'Magnesium', 'Phenols', 'Flavanoids', 'Nonflavanoids',
-#           'Proanthocyanins', 'Color', 'Hue', 'Diluted', 'Proline']
-# features = ['Alcohol', 'Acid', 'Ash', 'Alcalinity', 'Magnesium', 'Phenols', 'Flavanoids', 'Nonflavanoids',
-#           'Proanthocyanins', 'Color', 'Hue', 'Diluted', 'Proline']
-# df = pd.read_csv('data/wine.data')
-# df.columns = columns
-# df['Class'] = np.subtract(df['Class'], 1)
+columns = ['Class', 'Alcohol', 'Acid', 'Ash', 'Alcalinity', 'Magnesium', 'Phenols', 'Flavanoids', 'Nonflavanoids',
+          'Proanthocyanins', 'Color', 'Hue', 'Diluted', 'Proline']
+features = ['Alcohol', 'Acid', 'Ash', 'Alcalinity', 'Magnesium', 'Phenols', 'Flavanoids', 'Nonflavanoids',
+          'Proanthocyanins', 'Color', 'Hue', 'Diluted', 'Proline']
+df = pd.read_csv('data/wine.data')
+df.columns = columns
+df['Class'] = np.subtract(df['Class'], 1)
 
 # columns = ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety', 'Class']
 # features = ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety']
@@ -298,30 +319,72 @@ def build_dt_from_ensemble(decision_trees, classes, data, class_label, tests, pr
 # df['safety'] = df['safety'].map(mapping_safety)
 # df['Class'] = df['Class'].map(mapping_class).astype(int)
 #
-# kf = KFold(len(df), n_folds=5)
-#
-# clf = DecisionTreeClassifier(criterion='gini', max_depth=None, min_samples_leaf=1)
-# rf = RandomForestClassifier(n_estimators=100)
-#
-# for fold, (train, test) in enumerate(kf):
-#     print 'Fold', fold
-#     train = df.iloc[train, :].reset_index(drop=True)
-#     X_train = train.drop('Class', axis=1).reset_index(drop=True)
-#     y_train = train['Class'].reset_index(drop=True)
-#     X_test = df.iloc[test, :].drop('Class', axis=1).reset_index(drop=True)
-#     y_test = df.iloc[test, :]['Class'].reset_index(drop=True)
-#
-#     clf.fit(X_train, y_train)
-#     y_pred = clf.predict(X_test)
-#     cart = convert_to_tree(clf, features)
-#     cart.populate_samples(X_train, y_train)
-#     y_pred = cart.evaluate_multiple(X_test)
-#     print 'Accuracy CART:', accuracy_score(y_test, y_pred, normalize=1)
-#
-#     rf.fit(X_train, y_train)
-#     y_pred = rf.predict(X_test)
-#     print 'Accuracy RF:', accuracy_score(y_test, y_pred, normalize=1)
-#
-#     for nr, dt in enumerate(bootstrap(train, 'Class', clf, nr_classifiers=3)):
-#         y_pred = dt.evaluate_multiple(X_test)
-#         print 'Accuracy DT estimator', nr, ':', accuracy_score(y_test, y_pred, normalize=1)
+
+N_FOLDS = 5
+
+kf = StratifiedKFold(df['Class'], n_folds=N_FOLDS)
+
+clf = DecisionTreeClassifier(criterion='gini', max_depth=None, min_samples_leaf=1)
+rf = RandomForestClassifier(n_estimators=100)
+
+cart_confusion_matrices = []
+rf_confusion_matrices = []
+ism_confusion_matrices = []
+
+for fold, (train, test) in enumerate(kf):
+    print 'Fold', fold
+    train = df.iloc[train, :].reset_index(drop=True)
+    X_train = train.drop('Class', axis=1).reset_index(drop=True)
+    y_train = train['Class'].reset_index(drop=True)
+    X_test = df.iloc[test, :].drop('Class', axis=1).reset_index(drop=True)
+    y_test = df.iloc[test, :]['Class'].reset_index(drop=True)
+
+    clf.fit(X_train, y_train)
+    y_pred = clf.predict(X_test)
+    cart = convert_to_tree(clf, features)
+    cart.populate_samples(X_train, y_train)
+    y_pred = cart.evaluate_multiple(X_test)
+    cart_confusion_matrix = confusion_matrix(y_test.values, y_pred)
+    cart_confusion_matrices.append(np.around(np.divide(cart_confusion_matrix, float(np.sum(cart_confusion_matrix))), 4))
+    # cart_confusion_matrices.append(np.around(cart_confusion_matrix.astype('float') / cart_confusion_matrix.sum(axis=1)[:, np.newaxis], 4))
+    print 'Accuracy CART:', accuracy_score(y_test, y_pred, normalize=1)
+
+    rf.fit(X_train, y_train)
+    y_pred = rf.predict(X_test)
+    rf_confusion_matrix = confusion_matrix(y_test, y_pred)
+    rf_confusion_matrices.append(np.around(np.divide(rf_confusion_matrix, float(np.sum(rf_confusion_matrix))), 4))
+    # rf_confusion_matrices.append(np.around(rf_confusion_matrix.astype('float') / rf_confusion_matrix.sum(axis=1)[:, np.newaxis], 4))
+    print 'Accuracy RF:', accuracy_score(y_test, y_pred, normalize=1)
+
+    bootstrap_dts = bootstrap(train, 'Class', clf, nr_classifiers=7)
+    ism_dt = ism(bootstrap_dts, train, 'Class', min_nr_samples=1)
+    y_pred = ism_dt.evaluate_multiple(X_test)
+    ism_confusion_matrix = confusion_matrix(y_test, y_pred)
+    ism_confusion_matrices.append(np.around(np.divide(ism_confusion_matrix, float(np.sum(ism_confusion_matrix))), 4))
+    # ism_confusion_matrices.append(np.around(ism_confusion_matrix.astype('float') / ism_confusion_matrix.sum(axis=1)[:, np.newaxis], 4))
+    print 'Accuracy ISM:', accuracy_score(y_test, y_pred, normalize=1)
+
+print cart_confusion_matrices
+cart_confusion_matrix = np.mean(cart_confusion_matrices, axis=0)
+rf_confusion_matrix = np.mean(rf_confusion_matrices, axis=0)
+ism_confusion_matrix = np.mean(ism_confusion_matrices, axis=0)
+
+confusion_matrices = {'CART': cart_confusion_matrix, 'Random Forest': rf_confusion_matrix, 'ISM': ism_confusion_matrix}
+fig = plt.figure()
+fig.suptitle('Accuracy on WINE dataset using ' + str(N_FOLDS) + ' folds', fontsize=20)
+counter = 0
+for key in confusion_matrices:
+
+    ax = fig.add_subplot(1, len(confusion_matrices), counter+1)
+    cax = ax.matshow(confusion_matrices[key], cmap=plt.cm.Blues, vmin=0.0, vmax=1.0)
+    ax.set_title(key, y=1.08)
+    for (j,i),label in np.ndenumerate(confusion_matrices[key]):
+        ax.text(i,j,label,ha='center',va='center')
+    if counter == len(confusion_matrices)-1:
+        fig.colorbar(cax,fraction=0.046, pad=0.04)
+    counter += 1
+
+F = plt.gcf()
+Size = F.get_size_inches()
+F.set_size_inches(Size[0]*2, Size[1], forward=True)
+plt.show()
