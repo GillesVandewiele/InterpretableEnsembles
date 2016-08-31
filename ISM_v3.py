@@ -177,7 +177,7 @@ def bootstrap(data, class_label, clf, nr_classifiers=3):
     return decision_trees
 
 
-def ism(decision_trees, data, class_label, min_nr_samples=1):
+def ism(decision_trees, data, class_label, min_nr_samples=1, calc_fracs_from_ensemble=False):
     """
     Return a single decision tree from an ensemble of decision tree, using the normalized information gain as
         split criterion, estimated from the ensemble
@@ -290,46 +290,56 @@ def build_dt_from_ensemble(decision_trees, data, class_label, tests, prior_entro
         return DecisionTree(value=None, label=get_most_occurring_class(data, class_label))
 
 
-columns = ['Class', 'Alcohol', 'Acid', 'Ash', 'Alcalinity', 'Magnesium', 'Phenols', 'Flavanoids', 'Nonflavanoids',
-          'Proanthocyanins', 'Color', 'Hue', 'Diluted', 'Proline']
-features = ['Alcohol', 'Acid', 'Ash', 'Alcalinity', 'Magnesium', 'Phenols', 'Flavanoids', 'Nonflavanoids',
-          'Proanthocyanins', 'Color', 'Hue', 'Diluted', 'Proline']
-df = pd.read_csv('data/wine.data')
-df.columns = columns
-df['Class'] = np.subtract(df['Class'], 1)
-
-# columns = ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety', 'Class']
-# features = ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety']
-# df = pd.read_csv('data/car.data')
+# columns = ['Class', 'Alcohol', 'Acid', 'Ash', 'Alcalinity', 'Magnesium', 'Phenols', 'Flavanoids', 'Nonflavanoids',
+#           'Proanthocyanins', 'Color', 'Hue', 'Diluted', 'Proline']
+# features = ['Alcohol', 'Acid', 'Ash', 'Alcalinity', 'Magnesium', 'Phenols', 'Flavanoids', 'Nonflavanoids',
+#           'Proanthocyanins', 'Color', 'Hue', 'Diluted', 'Proline']
+# df = pd.read_csv('data/wine.data')
 # df.columns = columns
-# df = df.reindex(np.random.permutation(df.index)).reset_index(drop=1)
-#
-# mapping_buy_maint = {'low': 0, 'med': 1, 'high': 2, 'vhigh': 3}
-# mapping_doors = {'2': 0, '3': 1, '4': 2, '5more': 3}
-# mapping_persons = {'2': 0, '4': 1, 'more': 2}
-# mapping_lug = {'small': 0, 'med': 1, 'big': 2}
-# mapping_safety = {'low': 0, 'med': 1, 'high': 2}
-# mapping_class = {'unacc': 0, 'acc': 1, 'good': 2, 'vgood': 3}
-#
-# df['maint'] = df['maint'].map(mapping_buy_maint)
-# df['buying'] = df['buying'].map(mapping_buy_maint)
-# df['doors'] = df['doors'].map(mapping_doors)
-# df['persons'] = df['persons'].map(mapping_persons)
-# df['lug_boot'] = df['lug_boot'].map(mapping_lug)
-# df['safety'] = df['safety'].map(mapping_safety)
-# df['Class'] = df['Class'].map(mapping_class).astype(int)
-#
+# df['Class'] = np.subtract(df['Class'], 1)
+
+columns = ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety', 'Class']
+features = ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety']
+df = pd.read_csv('data/car.data')
+df.columns = columns
+df = df.reindex(np.random.permutation(df.index)).reset_index(drop=1)
+
+mapping_buy_maint = {'low': 0, 'med': 1, 'high': 2, 'vhigh': 3}
+mapping_doors = {'2': 0, '3': 1, '4': 2, '5more': 3}
+mapping_persons = {'2': 0, '4': 1, 'more': 2}
+mapping_lug = {'small': 0, 'med': 1, 'big': 2}
+mapping_safety = {'low': 0, 'med': 1, 'high': 2}
+mapping_class = {'unacc': 0, 'acc': 1, 'good': 2, 'vgood': 3}
+
+df['maint'] = df['maint'].map(mapping_buy_maint)
+df['buying'] = df['buying'].map(mapping_buy_maint)
+df['doors'] = df['doors'].map(mapping_doors)
+df['persons'] = df['persons'].map(mapping_persons)
+df['lug_boot'] = df['lug_boot'].map(mapping_lug)
+df['safety'] = df['safety'].map(mapping_safety)
+df['Class'] = df['Class'].map(mapping_class).astype(int)
+
+
+def count_nodes(tree):
+    if tree.value is None:
+        return 1
+    else:
+        return count_nodes(tree.left) + count_nodes(tree.right) + 1
 
 N_FOLDS = 5
 
-kf = StratifiedKFold(df['Class'], n_folds=N_FOLDS)
+kf = StratifiedKFold(df['Class'], n_folds=N_FOLDS, shuffle=True, random_state=1337)
 
-clf = DecisionTreeClassifier(criterion='gini', max_depth=None, min_samples_leaf=1)
-rf = RandomForestClassifier(n_estimators=100)
+clf = DecisionTreeClassifier(criterion='entropy', max_depth=None, min_samples_leaf=1, random_state=1337)
+rf = RandomForestClassifier(n_estimators=100, random_state=1337)
+
+np.random.seed(1337)
 
 cart_confusion_matrices = []
+cart_nodes = []
 rf_confusion_matrices = []
 ism_confusion_matrices = []
+ism_nodes = []
 
 for fold, (train, test) in enumerate(kf):
     print 'Fold', fold
@@ -343,6 +353,7 @@ for fold, (train, test) in enumerate(kf):
     y_pred = clf.predict(X_test)
     cart = convert_to_tree(clf, features)
     cart.populate_samples(X_train, y_train)
+    cart_nodes.append(count_nodes(cart))
     y_pred = cart.evaluate_multiple(X_test)
     cart_confusion_matrix = confusion_matrix(y_test.values, y_pred)
     cart_confusion_matrices.append(np.around(np.divide(cart_confusion_matrix, float(np.sum(cart_confusion_matrix))), 4))
@@ -356,28 +367,30 @@ for fold, (train, test) in enumerate(kf):
     # rf_confusion_matrices.append(np.around(rf_confusion_matrix.astype('float') / rf_confusion_matrix.sum(axis=1)[:, np.newaxis], 4))
     print 'Accuracy RF:', accuracy_score(y_test, y_pred, normalize=1)
 
-    bootstrap_dts = bootstrap(train, 'Class', clf, nr_classifiers=7)
-    ism_dt = ism(bootstrap_dts, train, 'Class', min_nr_samples=1)
+    bootstrap_dts = bootstrap(train, 'Class', clf, nr_classifiers=10)
+    ism_dt = ism(bootstrap_dts, train, 'Class', min_nr_samples=1, calc_fracs_from_ensemble=True)
+    ism_nodes.append(count_nodes(ism_dt))
     y_pred = ism_dt.evaluate_multiple(X_test)
     ism_confusion_matrix = confusion_matrix(y_test, y_pred)
     ism_confusion_matrices.append(np.around(np.divide(ism_confusion_matrix, float(np.sum(ism_confusion_matrix))), 4))
     # ism_confusion_matrices.append(np.around(ism_confusion_matrix.astype('float') / ism_confusion_matrix.sum(axis=1)[:, np.newaxis], 4))
     print 'Accuracy ISM:', accuracy_score(y_test, y_pred, normalize=1)
 
-print cart_confusion_matrices
 cart_confusion_matrix = np.mean(cart_confusion_matrices, axis=0)
 rf_confusion_matrix = np.mean(rf_confusion_matrices, axis=0)
 ism_confusion_matrix = np.mean(ism_confusion_matrices, axis=0)
 
-confusion_matrices = {'CART': cart_confusion_matrix, 'Random Forest': rf_confusion_matrix, 'ISM': ism_confusion_matrix}
+confusion_matrices = {'CART (' + str(np.mean(cart_nodes)) + ')': cart_confusion_matrix,
+                      'Random Forest': rf_confusion_matrix,
+                      'ISM (' + str(np.mean(ism_nodes)) + ')': ism_confusion_matrix}
 fig = plt.figure()
-fig.suptitle('Accuracy on WINE dataset using ' + str(N_FOLDS) + ' folds', fontsize=20)
+fig.suptitle('Accuracy on CARS dataset using ' + str(N_FOLDS) + ' folds', fontsize=20)
 counter = 0
 for key in confusion_matrices:
-
     ax = fig.add_subplot(1, len(confusion_matrices), counter+1)
     cax = ax.matshow(confusion_matrices[key], cmap=plt.cm.Blues, vmin=0.0, vmax=1.0)
-    ax.set_title(key, y=1.08)
+    diagonal_sum = sum([confusion_matrices[key][i][i] for i in range(len(confusion_matrices[key]))])
+    ax.set_title(key + ' (' + str(diagonal_sum) + ')', y=1.08)
     for (j,i),label in np.ndenumerate(confusion_matrices[key]):
         ax.text(i,j,label,ha='center',va='center')
     if counter == len(confusion_matrices)-1:
