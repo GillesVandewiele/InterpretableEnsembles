@@ -1,0 +1,329 @@
+digraph DT{
+node[fontname="Arial"];
+Node1 [label="Flavanoids <= 1.58000004292
+{'1': 57.0, '0': 47.0, '2': 39.0}"];
+Node2 [label="Flavanoids <= 1.3
+{'1': 13.0, '0': 0.0, '2': 39.0}"];
+Node3 [label="Proline <= 724.5
+{'1': 7.0, '0': 0.0, '2': 35.0}"];
+Node4 [label="Proline <= 714.0
+{'1': 5.0, '0': 0.0, '2': 26.0}"];
+Node5 [label="Proline <= 676.0
+{'1': 4.0, '0': 0.0, '2': 26.0}"];
+Node6 [label="Alcohol <= 12.9899997711
+{'1': 3.0, '0': 0.0, '2': 23.0}"];
+Node7 [label="Alcohol <= 12.9050006866
+{'1': 3.0, '0': 0.0, '2': 13.0}"];
+Node8 [label="Alcohol <= 12.7800006866
+{'1': 3.0, '0': 0.0, '2': 11.0}"];
+Node9 [label="Proline <= 545.0
+{'1': 3.0, '0': 0.0, '2': 6.0}"];
+Node10 [label="Alcohol <= 12.6306014174
+{'1': 2.0, '0': 0.0, '2': 4.0}"];
+Node11 [label="Alcalinity <= 25.0
+{'1': 1.0, '0': 0.0, '2': 3.0}"];
+Node12 [label="Phenols <= 1.47148545928
+{'1': 1.0, '0': 0.0, '2': 2.0}"];
+Node13 [label="Color <= 3.94500017166
+{'1': 1.0, '0': 0.0, '2': 1.0}"];
+Node14 [label="1
+{'1': 1.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node13 -> Node14 [label="true"];
+Node15 [label="2
+{'1': 0.0, '0': 0.0, '2': 1.0}" shape="box"];
+Node13->Node15 [label="false"];
+Node12 -> Node13 [label="true"];
+Node16 [label="2
+{'1': 0.0, '0': 0.0, '2': 1.0}" shape="box"];
+Node12->Node16 [label="false"];
+Node11 -> Node12 [label="true"];
+Node18 [label="2
+{'1': 0.0, '0': 0.0, '2': 1.0}" shape="box"];
+Node11->Node18 [label="false"];
+Node10 -> Node11 [label="true"];
+Node21 [label="Alcalinity <= 17.5
+{'1': 1.0, '0': 0.0, '2': 1.0}"];
+Node22 [label="1
+{'1': 1.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node21 -> Node22 [label="true"];
+Node23 [label="2
+{'1': 0.0, '0': 0.0, '2': 1.0}" shape="box"];
+Node21->Node23 [label="false"];
+Node10->Node21 [label="false"];
+Node9 -> Node10 [label="true"];
+Node28 [label="Alcohol <= 12.6306014174
+{'1': 1.0, '0': 0.0, '2': 2.0}"];
+Node29 [label="Hue <= 0.920000016689
+{'1': 1.0, '0': 0.0, '2': 1.0}"];
+Node30 [label="2
+{'1': 0.0, '0': 0.0, '2': 1.0}" shape="box"];
+Node29 -> Node30 [label="true"];
+Node31 [label="1
+{'1': 1.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node29->Node31 [label="false"];
+Node28 -> Node29 [label="true"];
+Node32 [label="2
+{'1': 0.0, '0': 0.0, '2': 1.0}" shape="box"];
+Node28->Node32 [label="false"];
+Node9->Node28 [label="false"];
+Node8 -> Node9 [label="true"];
+Node41 [label="2
+{'1': 0.0, '0': 0.0, '2': 5.0}" shape="box"];
+Node8->Node41 [label="false"];
+Node7 -> Node8 [label="true"];
+Node50 [label="2
+{'1': 0.0, '0': 0.0, '2': 2.0}" shape="box"];
+Node7->Node50 [label="false"];
+Node6 -> Node7 [label="true"];
+Node60 [label="2
+{'1': 0.0, '0': 0.0, '2': 10.0}" shape="box"];
+Node6->Node60 [label="false"];
+Node5 -> Node6 [label="true"];
+Node71 [label="Alcohol <= 12.9050006866
+{'1': 1.0, '0': 0.0, '2': 3.0}"];
+Node72 [label="Alcohol <= 12.7800006866
+{'1': 1.0, '0': 0.0, '2': 2.0}"];
+Node73 [label="Color <= 3.43499994278
+{'1': 1.0, '0': 0.0, '2': 1.0}"];
+Node74 [label="1
+{'1': 1.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node73 -> Node74 [label="true"];
+Node75 [label="2
+{'1': 0.0, '0': 0.0, '2': 1.0}" shape="box"];
+Node73->Node75 [label="false"];
+Node72 -> Node73 [label="true"];
+Node76 [label="2
+{'1': 0.0, '0': 0.0, '2': 1.0}" shape="box"];
+Node72->Node76 [label="false"];
+Node71 -> Node72 [label="true"];
+Node78 [label="2
+{'1': 0.0, '0': 0.0, '2': 1.0}" shape="box"];
+Node71->Node78 [label="false"];
+Node5->Node71 [label="false"];
+Node4 -> Node5 [label="true"];
+Node95 [label="1
+{'1': 1.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node4->Node95 [label="false"];
+Node3 -> Node4 [label="true"];
+Node111 [label="Proline <= 760.0
+{'1': 2.0, '0': 0.0, '2': 9.0}"];
+Node112 [label="Alcalinity <= 17.5
+{'1': 1.0, '0': 0.0, '2': 3.0}"];
+Node113 [label="1
+{'1': 1.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node112 -> Node113 [label="true"];
+Node114 [label="2
+{'1': 0.0, '0': 0.0, '2': 3.0}" shape="box"];
+Node112->Node114 [label="false"];
+Node111 -> Node112 [label="true"];
+Node115 [label="Alcohol <= 12.7800006866
+{'1': 1.0, '0': 0.0, '2': 6.0}"];
+Node116 [label="Hue <= 0.892077189842
+{'1': 1.0, '0': 0.0, '2': 2.0}"];
+Node117 [label="2
+{'1': 0.0, '0': 0.0, '2': 2.0}" shape="box"];
+Node116 -> Node117 [label="true"];
+Node118 [label="1
+{'1': 1.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node116->Node118 [label="false"];
+Node115 -> Node116 [label="true"];
+Node119 [label="2
+{'1': 0.0, '0': 0.0, '2': 4.0}" shape="box"];
+Node115->Node119 [label="false"];
+Node111->Node115 [label="false"];
+Node3->Node111 [label="false"];
+Node2 -> Node3 [label="true"];
+Node144 [label="Hue <= 0.920000016689
+{'1': 6.0, '0': 0.0, '2': 4.0}"];
+Node145 [label="2
+{'1': 0.0, '0': 0.0, '2': 4.0}" shape="box"];
+Node144 -> Node145 [label="true"];
+Node146 [label="1
+{'1': 6.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node144->Node146 [label="false"];
+Node2->Node144 [label="false"];
+Node1 -> Node2 [label="true"];
+Node169 [label="Hue <= 0.920000016689
+{'1': 44.0, '0': 47.0, '2': 0.0}"];
+Node170 [label="Diluted <= 2.15000009537
+{'1': 13.0, '0': 9.0, '2': 0.0}"];
+Node171 [label="1
+{'1': 1.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node170 -> Node171 [label="true"];
+Node172 [label="Color <= 3.84999990463
+{'1': 12.0, '0': 9.0, '2': 0.0}"];
+Node173 [label="1
+{'1': 11.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node172 -> Node173 [label="true"];
+Node174 [label="Hue <= 0.892077189842
+{'1': 1.0, '0': 9.0, '2': 0.0}"];
+Node175 [label="Proline <= 760.0
+{'1': 1.0, '0': 5.0, '2': 0.0}"];
+Node176 [label="Proline <= 724.5
+{'1': 1.0, '0': 2.0, '2': 0.0}"];
+Node177 [label="Color <= 3.94500017166
+{'1': 1.0, '0': 1.0, '2': 0.0}"];
+Node178 [label="1
+{'1': 1.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node177 -> Node178 [label="true"];
+Node179 [label="0
+{'1': 0.0, '0': 1.0, '2': 0.0}" shape="box"];
+Node177->Node179 [label="false"];
+Node176 -> Node177 [label="true"];
+Node180 [label="0
+{'1': 0.0, '0': 1.0, '2': 0.0}" shape="box"];
+Node176->Node180 [label="false"];
+Node175 -> Node176 [label="true"];
+Node182 [label="0
+{'1': 0.0, '0': 3.0, '2': 0.0}" shape="box"];
+Node175->Node182 [label="false"];
+Node174 -> Node175 [label="true"];
+Node185 [label="0
+{'1': 0.0, '0': 4.0, '2': 0.0}" shape="box"];
+Node174->Node185 [label="false"];
+Node172->Node174 [label="false"];
+Node170->Node172 [label="false"];
+Node169 -> Node170 [label="true"];
+Node198 [label="Hue <= 0.930000007153
+{'1': 31.0, '0': 38.0, '2': 0.0}"];
+Node199 [label="1
+{'1': 2.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node198 -> Node199 [label="true"];
+Node200 [label="Hue <= 1.05
+{'1': 29.0, '0': 38.0, '2': 0.0}"];
+Node201 [label="Hue <= 0.963504670331
+{'1': 9.0, '0': 11.0, '2': 0.0}"];
+Node202 [label="Alcalinity <= 17.5
+{'1': 2.0, '0': 3.0, '2': 0.0}"];
+Node203 [label="0
+{'1': 0.0, '0': 3.0, '2': 0.0}" shape="box"];
+Node202 -> Node203 [label="true"];
+Node204 [label="1
+{'1': 2.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node202->Node204 [label="false"];
+Node201 -> Node202 [label="true"];
+Node205 [label="Hue <= 0.979999999999
+{'1': 7.0, '0': 8.0, '2': 0.0}"];
+Node206 [label="1
+{'1': 1.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node205 -> Node206 [label="true"];
+Node207 [label="Color <= 3.84999990463
+{'1': 6.0, '0': 8.0, '2': 0.0}"];
+Node208 [label="1
+{'1': 5.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node207 -> Node208 [label="true"];
+Node209 [label="Alcalinity <= 17.5
+{'1': 1.0, '0': 8.0, '2': 0.0}"];
+Node210 [label="0
+{'1': 0.0, '0': 4.0, '2': 0.0}" shape="box"];
+Node209 -> Node210 [label="true"];
+Node211 [label="Acid <= 1.77999997139
+{'1': 1.0, '0': 4.0, '2': 0.0}"];
+Node212 [label="Alcohol <= 12.7000007629
+{'1': 1.0, '0': 1.0, '2': 0.0}"];
+Node213 [label="1
+{'1': 1.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node212 -> Node213 [label="true"];
+Node214 [label="0
+{'1': 0.0, '0': 1.0, '2': 0.0}" shape="box"];
+Node212->Node214 [label="false"];
+Node211 -> Node212 [label="true"];
+Node215 [label="0
+{'1': 0.0, '0': 3.0, '2': 0.0}" shape="box"];
+Node211->Node215 [label="false"];
+Node209->Node211 [label="false"];
+Node207->Node209 [label="false"];
+Node205->Node207 [label="false"];
+Node201->Node205 [label="false"];
+Node200 -> Node201 [label="true"];
+Node232 [label="Alcalinity <= 17.5
+{'1': 20.0, '0': 27.0, '2': 0.0}"];
+Node233 [label="Acid <= 1.77999997139
+{'1': 4.0, '0': 19.0, '2': 0.0}"];
+Node234 [label="Flavanoids <= 2.26999998093
+{'1': 3.0, '0': 12.0, '2': 0.0}"];
+Node235 [label="1
+{'1': 2.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node234 -> Node235 [label="true"];
+Node236 [label="Proline <= 760.0
+{'1': 1.0, '0': 12.0, '2': 0.0}"];
+Node237 [label="1
+{'1': 1.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node236 -> Node237 [label="true"];
+Node238 [label="0
+{'1': 0.0, '0': 12.0, '2': 0.0}" shape="box"];
+Node236->Node238 [label="false"];
+Node234->Node236 [label="false"];
+Node233 -> Node234 [label="true"];
+Node240 [label="Color <= 3.84999990463
+{'1': 1.0, '0': 7.0, '2': 0.0}"];
+Node241 [label="Hue <= 1.25
+{'1': 1.0, '0': 2.0, '2': 0.0}"];
+Node242 [label="0
+{'1': 0.0, '0': 2.0, '2': 0.0}" shape="box"];
+Node241 -> Node242 [label="true"];
+Node243 [label="1
+{'1': 1.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node241->Node243 [label="false"];
+Node240 -> Node241 [label="true"];
+Node244 [label="0
+{'1': 0.0, '0': 5.0, '2': 0.0}" shape="box"];
+Node240->Node244 [label="false"];
+Node233->Node240 [label="false"];
+Node232 -> Node233 [label="true"];
+Node250 [label="Color <= 3.84999990463
+{'1': 16.0, '0': 8.0, '2': 0.0}"];
+Node251 [label="Alcohol <= 12.7800006866
+{'1': 12.0, '0': 1.0, '2': 0.0}"];
+Node252 [label="1
+{'1': 9.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node251 -> Node252 [label="true"];
+Node253 [label="Acid <= 1.77999997139
+{'1': 3.0, '0': 1.0, '2': 0.0}"];
+Node254 [label="1
+{'1': 3.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node253 -> Node254 [label="true"];
+Node255 [label="0
+{'1': 0.0, '0': 1.0, '2': 0.0}" shape="box"];
+Node253->Node255 [label="false"];
+Node251->Node253 [label="false"];
+Node250 -> Node251 [label="true"];
+Node257 [label="Diluted <= 2.30999994278
+{'1': 4.0, '0': 7.0, '2': 0.0}"];
+Node258 [label="1
+{'1': 1.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node257 -> Node258 [label="true"];
+Node259 [label="Flavanoids <= 2.26999998093
+{'1': 3.0, '0': 7.0, '2': 0.0}"];
+Node260 [label="1
+{'1': 1.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node259 -> Node260 [label="true"];
+Node261 [label="Acid <= 1.77999997139
+{'1': 2.0, '0': 7.0, '2': 0.0}"];
+Node262 [label="Proline <= 760.0
+{'1': 1.0, '0': 4.0, '2': 0.0}"];
+Node263 [label="1
+{'1': 1.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node262 -> Node263 [label="true"];
+Node264 [label="0
+{'1': 0.0, '0': 4.0, '2': 0.0}" shape="box"];
+Node262->Node264 [label="false"];
+Node261 -> Node262 [label="true"];
+Node265 [label="Proline <= 760.0
+{'1': 1.0, '0': 3.0, '2': 0.0}"];
+Node266 [label="1
+{'1': 1.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node265 -> Node266 [label="true"];
+Node267 [label="0
+{'1': 0.0, '0': 3.0, '2': 0.0}" shape="box"];
+Node265->Node267 [label="false"];
+Node261->Node265 [label="false"];
+Node259->Node261 [label="false"];
+Node257->Node259 [label="false"];
+Node250->Node257 [label="false"];
+Node232->Node250 [label="false"];
+Node200->Node232 [label="false"];
+Node198->Node200 [label="false"];
+Node169->Node198 [label="false"];
+Node1->Node169 [label="false"];
+}

@@ -1,0 +1,53 @@
+digraph DT{
+node[fontname="Arial"];
+Node1 [label="Flavanoids <= 1.15792565657
+{'1': 52.0, '0': 45.0, '2': 43.0}"];
+Node2 [label="Hue <= 1.25
+{'1': 1.0, '0': 0.0, '2': 36.0}"];
+Node3 [label="2
+{'1': 0.0, '0': 0.0, '2': 36.0}" shape="box"];
+Node2 -> Node3 [label="true"];
+Node4 [label="1
+{'1': 1.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node2->Node4 [label="false"];
+Node1 -> Node2 [label="true"];
+Node5 [label="Proline <= 833.839437334
+{'1': 51.0, '0': 45.0, '2': 7.0}"];
+Node6 [label="Diluted <= 1.40679874342
+{'1': 49.0, '0': 2.0, '2': 7.0}"];
+Node7 [label="2
+{'1': 0.0, '0': 0.0, '2': 6.0}" shape="box"];
+Node6 -> Node7 [label="true"];
+Node8 [label="Color <= 10.8
+{'1': 49.0, '0': 2.0, '2': 1.0}"];
+Node9 [label="Proline <= 771.79672261
+{'1': 49.0, '0': 2.0, '2': 0.0}"];
+Node10 [label="Acid <= 3.8
+{'1': 49.0, '0': 1.0, '2': 0.0}"];
+Node11 [label="1
+{'1': 49.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node10 -> Node11 [label="true"];
+Node12 [label="0
+{'1': 0.0, '0': 1.0, '2': 0.0}" shape="box"];
+Node10->Node12 [label="false"];
+Node9 -> Node10 [label="true"];
+Node13 [label="0
+{'1': 0.0, '0': 1.0, '2': 0.0}" shape="box"];
+Node9->Node13 [label="false"];
+Node8 -> Node9 [label="true"];
+Node15 [label="2
+{'1': 0.0, '0': 0.0, '2': 1.0}" shape="box"];
+Node8->Node15 [label="false"];
+Node6->Node8 [label="false"];
+Node5 -> Node6 [label="true"];
+Node21 [label="Magnesium <= 162.0
+{'1': 2.0, '0': 43.0, '2': 0.0}"];
+Node22 [label="0
+{'1': 0.0, '0': 43.0, '2': 0.0}" shape="box"];
+Node21 -> Node22 [label="true"];
+Node23 [label="1
+{'1': 2.0, '0': 0.0, '2': 0.0}" shape="box"];
+Node21->Node23 [label="false"];
+Node5->Node21 [label="false"];
+Node1->Node5 [label="false"];
+}
