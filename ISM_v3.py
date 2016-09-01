@@ -23,6 +23,7 @@ from sklearn.tree import DecisionTreeClassifier
 import matplotlib.pyplot as plt
 
 # Internal imports
+from c45orangeconstructor import C45Constructor
 from decisiontree import DecisionTree
 
 
@@ -74,7 +75,7 @@ def calculate_prob(tree, label, value, prior_tests, negate=False):
     :return: a vector of probabilities for each class
     """
     if tree.value is None:  # If the value is None, we're at a leaf, return a vector of probabilities
-        return np.divide(list(map(float, tree.class_probabilities.values())), float(sum(tree.class_probabilities.values())))
+        return np.divide(list(map(float, list(tree.class_probabilities.values()))), float(sum(list(tree.class_probabilities.values()))))
     else:
         if (tree.label, tree.value) in prior_tests:
             # The test in the current node is already in the conjunction, take the correct path
@@ -85,9 +86,9 @@ def calculate_prob(tree, label, value, prior_tests, negate=False):
         elif not (tree.label == label and tree.value == value):
             # The test of current node is not yet in conjunction and is not the test we're looking for
             # Keep propagating (but add weights (estimate how many times the test succeeds/fails))!
-            samples_sum = sum(tree.class_probabilities.values())
-            left_fraction = sum(tree.left.class_probabilities.values()) / samples_sum
-            right_fraction = sum(tree.right.class_probabilities.values()) / samples_sum
+            samples_sum = sum(list(tree.class_probabilities.values()))
+            left_fraction = sum(list(tree.left.class_probabilities.values())) / samples_sum
+            right_fraction = sum(list(tree.right.class_probabilities.values())) / samples_sum
             return np.add(left_fraction * calculate_prob(tree.left, label, value, prior_tests, negate),
                           right_fraction * calculate_prob(tree.right, label, value, prior_tests, negate))
         elif not negate:
@@ -155,7 +156,8 @@ def convert_to_tree(classifier, features):
     return decision_trees[0]
 
 
-def bootstrap(data, class_label, clf, nr_classifiers=3):
+def bootstrap(data, class_label, clf, bootstrap_features=False, nr_classifiers=3):
+    # TODO: rewrite so you can give along multiple classifiers
     """
     Bootstrapping ensemble technique
 
@@ -167,13 +169,29 @@ def bootstrap(data, class_label, clf, nr_classifiers=3):
     """
     idx = np.random.randint(0, len(data), (nr_classifiers, len(data)))
     decision_trees = []
+    c45Constructor = C45Constructor()
     for indices in idx:
-        X_bootstrap = data.iloc[indices, :].drop(class_label, axis=1).reset_index(drop=True)
-        y_bootstrap = data.iloc[indices][class_label].reset_index(drop=True)
-        dt = convert_to_tree(clf.fit(X_bootstrap, y_bootstrap), X_bootstrap.columns)
-        dt.data = data.iloc[indices, :].reset_index(drop=True)
-        dt.populate_samples(X_bootstrap, y_bootstrap)
-        decision_trees.append(dt)
+        if bootstrap_features:
+            features = list(set(np.random.randint(0, len(data.columns), (1, len(data.columns))).tolist()[0]))
+            X_bootstrap = data.iloc[indices, features].reset_index(drop=True)
+            if class_label in X_bootstrap.columns:
+                X_bootstrap = X_bootstrap.drop(class_label, axis=1)
+            y_bootstrap = data.iloc[indices][class_label].reset_index(drop=True)
+        else:
+            X_bootstrap = data.iloc[indices, :].drop(class_label, axis=1).reset_index(drop=True)
+            y_bootstrap = data.iloc[indices][class_label].reset_index(drop=True)
+
+        cart = convert_to_tree(clf.fit(X_bootstrap, y_bootstrap), X_bootstrap.columns)
+        cart.data = data.iloc[indices, :].reset_index(drop=True)
+        cart.populate_samples(X_bootstrap, y_bootstrap)
+
+        c45 = c45Constructor.construct_tree(X_bootstrap, y_bootstrap)
+        c45.data = data.iloc[indices, :].reset_index(drop=True)
+        c45.populate_samples(X_bootstrap, y_bootstrap)
+
+        decision_trees.append(cart)
+        decision_trees.append(c45)
+
     return decision_trees
 
 
@@ -196,7 +214,7 @@ def ism(decision_trees, data, class_label, min_nr_samples=1, calc_fracs_from_ens
     tests = set()
     for dt in decision_trees:
         tests = tests.union(extract_tests(dt))
-        prior_entropy += calculate_entropy(np.divide(dt.class_probabilities.values(),
+        prior_entropy += calculate_entropy(np.divide(list(dt.class_probabilities.values()),
                                                      sum(dt.class_probabilities.values())))
     prior_entropy /= len(decision_trees)
 
@@ -253,8 +271,8 @@ def build_dt_from_ensemble(decision_trees, data, class_label, tests, prior_entro
                 pos_fraction /= float(len(decision_trees))
                 neg_fraction /= float(len(decision_trees))
 
-            pos_entropy = calculate_entropy(np.divide(pos_avg_probs.values(), len(decision_trees)))
-            neg_entropy = calculate_entropy(np.divide(neg_avg_probs.values(), len(decision_trees)))
+            pos_entropy = calculate_entropy(np.divide(list(pos_avg_probs.values()), len(decision_trees)))
+            neg_entropy = calculate_entropy(np.divide(list(neg_avg_probs.values()), len(decision_trees)))
             pos_data = data[data[test[0]] <= test[1]].copy()
             neg_data = data[data[test[0]] > test[1]].copy()
 
@@ -290,34 +308,34 @@ def build_dt_from_ensemble(decision_trees, data, class_label, tests, prior_entro
         return DecisionTree(value=None, label=get_most_occurring_class(data, class_label))
 
 
-# columns = ['Class', 'Alcohol', 'Acid', 'Ash', 'Alcalinity', 'Magnesium', 'Phenols', 'Flavanoids', 'Nonflavanoids',
-#           'Proanthocyanins', 'Color', 'Hue', 'Diluted', 'Proline']
-# features = ['Alcohol', 'Acid', 'Ash', 'Alcalinity', 'Magnesium', 'Phenols', 'Flavanoids', 'Nonflavanoids',
-#           'Proanthocyanins', 'Color', 'Hue', 'Diluted', 'Proline']
-# df = pd.read_csv('data/wine.data')
-# df.columns = columns
-# df['Class'] = np.subtract(df['Class'], 1)
-
-columns = ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety', 'Class']
-features = ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety']
-df = pd.read_csv('data/car.data')
+columns = ['Class', 'Alcohol', 'Acid', 'Ash', 'Alcalinity', 'Magnesium', 'Phenols', 'Flavanoids', 'Nonflavanoids',
+          'Proanthocyanins', 'Color', 'Hue', 'Diluted', 'Proline']
+features = ['Alcohol', 'Acid', 'Ash', 'Alcalinity', 'Magnesium', 'Phenols', 'Flavanoids', 'Nonflavanoids',
+          'Proanthocyanins', 'Color', 'Hue', 'Diluted', 'Proline']
+df = pd.read_csv('data/wine.data')
 df.columns = columns
-df = df.reindex(np.random.permutation(df.index)).reset_index(drop=1)
+df['Class'] = np.subtract(df['Class'], 1)
 
-mapping_buy_maint = {'low': 0, 'med': 1, 'high': 2, 'vhigh': 3}
-mapping_doors = {'2': 0, '3': 1, '4': 2, '5more': 3}
-mapping_persons = {'2': 0, '4': 1, 'more': 2}
-mapping_lug = {'small': 0, 'med': 1, 'big': 2}
-mapping_safety = {'low': 0, 'med': 1, 'high': 2}
-mapping_class = {'unacc': 0, 'acc': 1, 'good': 2, 'vgood': 3}
-
-df['maint'] = df['maint'].map(mapping_buy_maint)
-df['buying'] = df['buying'].map(mapping_buy_maint)
-df['doors'] = df['doors'].map(mapping_doors)
-df['persons'] = df['persons'].map(mapping_persons)
-df['lug_boot'] = df['lug_boot'].map(mapping_lug)
-df['safety'] = df['safety'].map(mapping_safety)
-df['Class'] = df['Class'].map(mapping_class).astype(int)
+# columns = ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety', 'Class']
+# features = ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety']
+# df = pd.read_csv('data/car.data')
+# df.columns = columns
+# df = df.reindex(np.random.permutation(df.index)).reset_index(drop=1)
+#
+# mapping_buy_maint = {'low': 0, 'med': 1, 'high': 2, 'vhigh': 3}
+# mapping_doors = {'2': 0, '3': 1, '4': 2, '5more': 3}
+# mapping_persons = {'2': 0, '4': 1, 'more': 2}
+# mapping_lug = {'small': 0, 'med': 1, 'big': 2}
+# mapping_safety = {'low': 0, 'med': 1, 'high': 2}
+# mapping_class = {'unacc': 0, 'acc': 1, 'good': 2, 'vgood': 3}
+#
+# df['maint'] = df['maint'].map(mapping_buy_maint)
+# df['buying'] = df['buying'].map(mapping_buy_maint)
+# df['doors'] = df['doors'].map(mapping_doors)
+# df['persons'] = df['persons'].map(mapping_persons)
+# df['lug_boot'] = df['lug_boot'].map(mapping_lug)
+# df['safety'] = df['safety'].map(mapping_safety)
+# df['Class'] = df['Class'].map(mapping_class).astype(int)
 
 
 def count_nodes(tree):
@@ -330,13 +348,16 @@ N_FOLDS = 5
 
 kf = StratifiedKFold(df['Class'], n_folds=N_FOLDS, shuffle=True, random_state=1337)
 
-clf = DecisionTreeClassifier(criterion='entropy', max_depth=None, min_samples_leaf=1, random_state=1337)
+clf = DecisionTreeClassifier(criterion='gini', max_depth=None, min_samples_leaf=1, random_state=1337)
 rf = RandomForestClassifier(n_estimators=100, random_state=1337)
+c45 = C45Constructor(cf=0.15)
 
 np.random.seed(1337)
 
 cart_confusion_matrices = []
 cart_nodes = []
+c45_confusion_matrices = []
+c45_nodes = []
 rf_confusion_matrices = []
 ism_confusion_matrices = []
 ism_nodes = []
@@ -360,6 +381,13 @@ for fold, (train, test) in enumerate(kf):
     # cart_confusion_matrices.append(np.around(cart_confusion_matrix.astype('float') / cart_confusion_matrix.sum(axis=1)[:, np.newaxis], 4))
     print 'Accuracy CART:', accuracy_score(y_test, y_pred, normalize=1)
 
+    tree = c45.construct_tree(X_train, y_train)
+    y_pred = tree.evaluate_multiple(X_test).astype(int)
+    c45_confusion_matrix = confusion_matrix(y_test.values, y_pred)
+    c45_confusion_matrices.append(np.around(np.divide(c45_confusion_matrix, float(np.sum(c45_confusion_matrix))), 4))
+    c45_nodes.append(count_nodes(tree))
+    print 'Accuracy C4.5:', accuracy_score(y_test, y_pred, normalize=1)
+
     rf.fit(X_train, y_train)
     y_pred = rf.predict(X_test)
     rf_confusion_matrix = confusion_matrix(y_test, y_pred)
@@ -367,8 +395,8 @@ for fold, (train, test) in enumerate(kf):
     # rf_confusion_matrices.append(np.around(rf_confusion_matrix.astype('float') / rf_confusion_matrix.sum(axis=1)[:, np.newaxis], 4))
     print 'Accuracy RF:', accuracy_score(y_test, y_pred, normalize=1)
 
-    bootstrap_dts = bootstrap(train, 'Class', clf, nr_classifiers=10)
-    ism_dt = ism(bootstrap_dts, train, 'Class', min_nr_samples=1, calc_fracs_from_ensemble=True)
+    bootstrap_dts = bootstrap(train, 'Class', clf, bootstrap_features=False, nr_classifiers=5)
+    ism_dt = ism(bootstrap_dts, train, 'Class', min_nr_samples=1, calc_fracs_from_ensemble=False)
     ism_nodes.append(count_nodes(ism_dt))
     y_pred = ism_dt.evaluate_multiple(X_test)
     ism_confusion_matrix = confusion_matrix(y_test, y_pred)
@@ -379,10 +407,12 @@ for fold, (train, test) in enumerate(kf):
 cart_confusion_matrix = np.mean(cart_confusion_matrices, axis=0)
 rf_confusion_matrix = np.mean(rf_confusion_matrices, axis=0)
 ism_confusion_matrix = np.mean(ism_confusion_matrices, axis=0)
+c45_confusion_matrix = np.mean(c45_confusion_matrices, axis=0)
 
 confusion_matrices = {'CART (' + str(np.mean(cart_nodes)) + ')': cart_confusion_matrix,
                       'Random Forest': rf_confusion_matrix,
-                      'ISM (' + str(np.mean(ism_nodes)) + ')': ism_confusion_matrix}
+                      'ISM (' + str(np.mean(ism_nodes)) + ')': ism_confusion_matrix,
+                      'C4.5 (' + str(np.mean(c45_nodes)) + ')': c45_confusion_matrix}
 fig = plt.figure()
 fig.suptitle('Accuracy on CARS dataset using ' + str(N_FOLDS) + ' folds', fontsize=20)
 counter = 0
