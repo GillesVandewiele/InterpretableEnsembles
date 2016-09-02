@@ -2,6 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6ec3f469-cb8c-49af-8470-4419fe881c56" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/constructors/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/c45orangeconstructor.py" afterPath="$PROJECT_DIR$/constructors/c45orangeconstructor.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/cartconstructor.py" afterPath="$PROJECT_DIR$/constructors/cartconstructor.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/questconstructor.py" afterPath="$PROJECT_DIR$/constructors/questconstructor.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/treeconstructor.py" afterPath="$PROJECT_DIR$/constructors/treeconstructor.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ISM_v3.py" afterPath="$PROJECT_DIR$/ISM_v3.py" />
     </list>
     <ignored path="InterpretableEnsembles.iws" />
@@ -15,7 +20,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/InterpretableEnsembles$ISM_v3.coverage" NAME="ISM_v3 Coverage Results" MODIFIED="1472741659096" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/InterpretableEnsembles$ISM_v3.coverage" NAME="ISM_v3 Coverage Results" MODIFIED="1472796874756" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -29,20 +34,40 @@
       <file leaf-file-name="ISM_v3.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ISM_v3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="334" column="0" selection-start-line="334" selection-start-column="0" selection-end-line="334" selection-end-column="0" />
+            <state relative-caret-position="-3795">
+              <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="c45orangeconstructor.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/constructors/c45orangeconstructor.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="37" />
               <folding>
-                <element signature="e#447#465#0" expanded="true" />
+                <element signature="e#171#184#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="questconstructor.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/questconstructor.py">
+      <file leaf-file-name="cartconstructor.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/constructors/cartconstructor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="91" column="80" selection-start-line="91" selection-start-column="80" selection-end-line="91" selection-end-column="80" />
+            <state relative-caret-position="337">
+              <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="questconstructor.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/constructors/questconstructor.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
               <folding>
                 <element signature="e#171#199#0" expanded="true" />
               </folding>
@@ -51,6 +76,13 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -63,6 +95,9 @@
         <option value="$PROJECT_DIR$/c45orangeconstructor.py" />
         <option value="$PROJECT_DIR$/pandas_to_orange.py" />
         <option value="$PROJECT_DIR$/questconstructor.py" />
+        <option value="$PROJECT_DIR$/constructors/c45orangeconstructor.py" />
+        <option value="$PROJECT_DIR$/constructors/questconstructor.py" />
+        <option value="$PROJECT_DIR$/constructors/cartconstructor.py" />
         <option value="$PROJECT_DIR$/ISM_v3.py" />
       </list>
     </option>
@@ -134,7 +169,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
+              <option name="myItemId" value="constructors" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -147,6 +182,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/constructors" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.ISM_v3">
     <configuration default="false" name="ISM_v3" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -441,13 +481,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5565">
           <caret line="382" column="87" selection-start-line="382" selection-start-column="87" selection-end-line="382" selection-end-column="87" />
-          <folding>
-            <element signature="e#447#465#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/c45orangeconstructor.py">
+    <entry file="file://$PROJECT_DIR$/constructors/c45orangeconstructor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -489,16 +527,6 @@
           <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/c45orangeconstructor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="43" column="89" selection-start-line="43" selection-start-column="89" selection-end-line="43" selection-end-column="89" />
-          <folding>
-            <element signature="e#171#184#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -545,23 +573,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/questconstructor.py">
+    <entry file="file://$PROJECT_DIR$/constructors/c45orangeconstructor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="91" column="80" selection-start-line="91" selection-start-column="80" selection-end-line="91" selection-end-column="80" />
+        <state relative-caret-position="210">
+          <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="37" />
+          <folding>
+            <element signature="e#171#184#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/constructors/questconstructor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
           <folding>
             <element signature="e#171#199#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/constructors/cartconstructor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ISM_v3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="334" column="0" selection-start-line="334" selection-start-column="0" selection-end-line="334" selection-end-column="0" />
-          <folding>
-            <element signature="e#447#465#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-3795">
+          <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -12,21 +12,22 @@
 """
 
 # External imports
+from collections import Counter
+
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from collections import Counter
-from sklearn.cross_validation import KFold, StratifiedKFold
+from sklearn.cross_validation import StratifiedKFold
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix
 from sklearn.tree import DecisionTreeClassifier
-import matplotlib.pyplot as plt
 
 # Internal imports
-from c45orangeconstructor import C45Constructor
+from constructors.c45orangeconstructor import C45Constructor
 from decisiontree import DecisionTree
-from questconstructor import QuestConstructor
+from constructors.questconstructor import QuestConstructor
 
 
 def extract_tests(tree, tests=set()):
@@ -302,7 +303,7 @@ def bootstrap(data, class_label, clf, bootstrap_features=False, nr_classifiers=3
             dt.populate_samples(X_train, y_train)
             decision_trees.append(dt)
 
-    c45Constructor = C45Constructor(cf=0.15)
+    c45Constructor = C45Constructor(cf=0.05)
     questConstructor = QuestConstructor(alpha=0.5)
     for indices in idx:
         if bootstrap_features:
@@ -323,13 +324,13 @@ def bootstrap(data, class_label, clf, bootstrap_features=False, nr_classifiers=3
         c45.data = data.iloc[indices, :].reset_index(drop=True)
         c45.populate_samples(X_bootstrap, y_bootstrap)
 
-        quest = questConstructor.construct_tree(X_bootstrap, y_bootstrap)
-        quest.data = data.iloc[indices, :].reset_index(drop=True)
-        quest.populate_samples(X_bootstrap, y_bootstrap)
+        # quest = questConstructor.construct_tree(X_bootstrap, y_bootstrap)
+        # quest.data = data.iloc[indices, :].reset_index(drop=True)
+        # quest.populate_samples(X_bootstrap, y_bootstrap)
 
         decision_trees.append(cart)
         decision_trees.append(c45)
-        decision_trees.append(quest)
+        # decision_trees.append(quest)
 
     return decision_trees
 
@@ -387,9 +388,10 @@ N_FOLDS = 5
 kf = StratifiedKFold(df['Class'], n_folds=N_FOLDS, shuffle=True, random_state=1337)
 
 clf = DecisionTreeClassifier(criterion='gini', max_depth=None, min_samples_leaf=1, random_state=1337)
+clf_stub = DecisionTreeClassifier(criterion='gini', max_depth=3, min_samples_leaf=1, random_state=1337)
 rf = RandomForestClassifier(n_estimators=100, random_state=1337)
 c45 = C45Constructor(cf=0.99)
-quest = QuestConstructor(alpha=0.50)
+quest = QuestConstructor(alpha=0.5)
 ada = AdaBoostClassifier(base_estimator=clf, n_estimators=5, learning_rate=0.25, random_state=1337)
 
 np.random.seed(1337)
@@ -452,7 +454,7 @@ for fold, (train, test) in enumerate(kf):
     # rf_confusion_matrices.append(np.around(rf_confusion_matrix.astype('float') / rf_confusion_matrix.sum(axis=1)[:, np.newaxis], 4))
     print 'Accuracy AdaBoost:', accuracy_score(y_test, y_pred, normalize=1)
 
-    bootstrap_dts = bootstrap(train, 'Class', clf, bootstrap_features=False, nr_classifiers=5, boosting=True)
+    bootstrap_dts = bootstrap(train, 'Class', clf_stub, bootstrap_features=False, nr_classifiers=50, boosting=False)
     print('Number of decision trees =', len(bootstrap_dts))
     ism_dt = ism(bootstrap_dts, train, 'Class', min_nr_samples=1, calc_fracs_from_ensemble=False)
     # ism_dt.visualise('combined')

@@ -46,7 +46,7 @@ class CARTConstructor(TreeConstructor):
         self.features = list(training_feature_vectors.columns)
         # print"* features:", self.features
 
-        self.y = labels['cat']
+        self.y = labels.values
         self.X = training_feature_vectors[self.features]
 
 

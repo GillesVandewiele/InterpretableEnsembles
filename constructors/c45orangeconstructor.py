@@ -8,11 +8,12 @@
 import Orange
 from pandas import DataFrame
 
+from constructors.treeconstructor import TreeConstructor
 from decisiontree import DecisionTree
 from pandas_to_orange import df2table
 
 
-class C45Constructor:
+class C45Constructor(TreeConstructor):
     """
     This class contains an implementation of C4.5, written by Quinlan. It uses an extern library
     for this called Orange.

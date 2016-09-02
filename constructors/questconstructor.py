@@ -13,12 +13,14 @@ from sklearn.cluster import k_means
 from sklearn.feature_selection import chi2, f_classif
 
 import numpy as np
+
+from constructors.treeconstructor import TreeConstructor
 from decisiontree import DecisionTree
 
 CONTINUOUS = "continuous"
 DISCRETE = "discrete"
 
-class QuestConstructor:
+class QuestConstructor(TreeConstructor):
     """
     Contains our own implementation of the QUEST algorithm. The algorithm can be found on:
     ftp://public.dhe.ibm.com/software/analytics/spss/support/Stats/Docs/Statistics/Algorithms/13.0/TREE-QUEST.pdf
