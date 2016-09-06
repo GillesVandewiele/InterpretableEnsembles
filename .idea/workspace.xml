@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6ec3f469-cb8c-49af-8470-4419fe881c56" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/constructors/__init__.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/c45orangeconstructor.py" afterPath="$PROJECT_DIR$/constructors/c45orangeconstructor.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/cartconstructor.py" afterPath="$PROJECT_DIR$/constructors/cartconstructor.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/questconstructor.py" afterPath="$PROJECT_DIR$/constructors/questconstructor.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/treeconstructor.py" afterPath="$PROJECT_DIR$/constructors/treeconstructor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/combined.pdf" afterPath="$PROJECT_DIR$/combined.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ISM_v3.py" afterPath="$PROJECT_DIR$/ISM_v3.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/combined" afterPath="$PROJECT_DIR$/combined" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/constructors/cartconstructor.py" afterPath="$PROJECT_DIR$/constructors/cartconstructor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/decisiontree.py" afterPath="$PROJECT_DIR$/decisiontree.py" />
     </list>
     <ignored path="InterpretableEnsembles.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -20,7 +19,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/InterpretableEnsembles$ISM_v3.coverage" NAME="ISM_v3 Coverage Results" MODIFIED="1472796874756" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/InterpretableEnsembles$decisiontree.coverage" NAME="decisiontree Coverage Results" MODIFIED="1472815909002" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/InterpretableEnsembles$prune_test.coverage" NAME="prune_test Coverage Results" MODIFIED="1472823909442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/InterpretableEnsembles$ISM_v3.coverage" NAME="ISM_v3 Coverage Results" MODIFIED="1472808329283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -31,23 +32,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ISM_v3.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ISM_v3.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ISM_v3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3795">
-              <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
-              <folding />
+            <state relative-caret-position="-254">
+              <caret line="187" column="24" selection-start-line="187" selection-start-column="16" selection-end-line="187" selection-end-column="24" />
+              <folding>
+                <element signature="e#447#478#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="c45orangeconstructor.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/constructors/c45orangeconstructor.py">
+      <file leaf-file-name="prune_test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/prune_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="37" />
+            <state relative-caret-position="435">
+              <caret line="35" column="47" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
               <folding>
-                <element signature="e#171#184#0" expanded="true" />
+                <element signature="e#0#19#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -56,20 +59,22 @@
       <file leaf-file-name="cartconstructor.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/constructors/cartconstructor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
-              <folding />
+            <state relative-caret-position="-848">
+              <caret line="24" column="61" selection-start-line="24" selection-start-column="61" selection-end-line="24" selection-end-column="61" />
+              <folding>
+                <element signature="e#171#188#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="questconstructor.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/constructors/questconstructor.py">
+      <file leaf-file-name="decisiontree.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/decisiontree.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+            <state relative-caret-position="799">
+              <caret line="343" column="17" selection-start-line="343" selection-start-column="17" selection-end-line="343" selection-end-column="17" />
               <folding>
-                <element signature="e#171#199#0" expanded="true" />
+                <element signature="e#170#184#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -90,15 +95,16 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/decisiontree.py" />
         <option value="$USER_HOME$/R8/Src/buildC45.py" />
         <option value="$PROJECT_DIR$/c45orangeconstructor.py" />
         <option value="$PROJECT_DIR$/pandas_to_orange.py" />
         <option value="$PROJECT_DIR$/questconstructor.py" />
         <option value="$PROJECT_DIR$/constructors/c45orangeconstructor.py" />
         <option value="$PROJECT_DIR$/constructors/questconstructor.py" />
-        <option value="$PROJECT_DIR$/constructors/cartconstructor.py" />
         <option value="$PROJECT_DIR$/ISM_v3.py" />
+        <option value="$PROJECT_DIR$/constructors/cartconstructor.py" />
+        <option value="$PROJECT_DIR$/prune_test.py" />
+        <option value="$PROJECT_DIR$/decisiontree.py" />
       </list>
     </option>
   </component>
@@ -188,7 +194,7 @@
       <recent name="$PROJECT_DIR$/constructors" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.ISM_v3">
+  <component name="RunManager" selected="Python.prune_test">
     <configuration default="false" name="ISM_v3" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -203,6 +209,42 @@
       <module name="InterpretableEnsembles" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ISM_v3.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="decisiontree" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="InterpretableEnsembles" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/decisiontree.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="prune_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="InterpretableEnsembles" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/prune_test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -415,12 +457,16 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="1">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Python.ISM_v3" />
+      <item index="1" class="java.lang.String" itemvalue="Python.decisiontree" />
+      <item index="2" class="java.lang.String" itemvalue="Python.prune_test" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Python.ISM_v3" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="Python.prune_test" />
+        <item index="1" class="java.lang.String" itemvalue="Python.decisiontree" />
+        <item index="2" class="java.lang.String" itemvalue="Python.ISM_v3" />
       </list>
     </recent_temporary>
   </component>
@@ -443,11 +489,11 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1180593" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32923076" sideWeight="0.5018868" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32923076" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32923076" sideWeight="0.49811321" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -481,7 +527,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5565">
           <caret line="382" column="87" selection-start-line="382" selection-start-column="87" selection-end-line="382" selection-end-column="87" />
-          <folding />
+          <folding>
+            <element signature="e#447#478#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -491,16 +539,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#171#184#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/decisiontree.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-          <folding>
-            <marker date="1472715411235" expanded="true" signature="305:11694" ph="..." />
           </folding>
         </state>
       </provider>
@@ -526,7 +564,7 @@
         <state relative-caret-position="270">
           <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -536,7 +574,7 @@
         <state relative-caret-position="304">
           <caret line="107" column="69" selection-start-line="107" selection-start-column="69" selection-end-line="107" selection-end-column="69" />
           <folding>
-            <element signature="e#3354#3373#0" expanded="true" />
+            <element signature="e#3354#3373#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -573,6 +611,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/constructors/questconstructor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="113" />
+          <folding>
+            <element signature="e#171#199#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/constructors/c45orangeconstructor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -583,29 +631,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/constructors/questconstructor.py">
+    <entry file="file://$PROJECT_DIR$/prune_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+        <state relative-caret-position="435">
+          <caret line="35" column="47" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
           <folding>
-            <element signature="e#171#199#0" expanded="true" />
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ISM_v3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-254">
+          <caret line="187" column="24" selection-start-line="187" selection-start-column="16" selection-end-line="187" selection-end-column="24" />
+          <folding>
+            <element signature="e#447#478#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/constructors/cartconstructor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
-          <folding />
+        <state relative-caret-position="-848">
+          <caret line="24" column="61" selection-start-line="24" selection-start-column="61" selection-end-line="24" selection-end-column="61" />
+          <folding>
+            <element signature="e#171#188#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ISM_v3.py">
+    <entry file="file://$PROJECT_DIR$/decisiontree.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3795">
-          <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
-          <folding />
+        <state relative-caret-position="799">
+          <caret line="343" column="17" selection-start-line="343" selection-start-column="17" selection-end-line="343" selection-end-column="17" />
+          <folding>
+            <element signature="e#170#184#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

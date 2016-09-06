@@ -26,6 +26,7 @@ from sklearn.tree import DecisionTreeClassifier
 
 # Internal imports
 from constructors.c45orangeconstructor import C45Constructor
+from constructors.cartconstructor import CARTConstructor
 from decisiontree import DecisionTree
 from constructors.questconstructor import QuestConstructor
 
@@ -278,8 +279,7 @@ def build_dt_from_ensemble(decision_trees, data, class_label, tests, prior_entro
         return DecisionTree(value=None, label=get_most_occurring_class(data, class_label))
 
 
-def bootstrap(data, class_label, clf, bootstrap_features=False, nr_classifiers=3, boosting=True):
-    # TODO: rewrite so you can give along multiple classifiers (use tree_constructor interface)
+def bootstrap(data, class_label, tree_constructors, bootstrap_features=False, nr_classifiers=3, boosting=True):
     """
     Bootstrapping ensemble technique
 
@@ -303,8 +303,6 @@ def bootstrap(data, class_label, clf, bootstrap_features=False, nr_classifiers=3
             dt.populate_samples(X_train, y_train)
             decision_trees.append(dt)
 
-    c45Constructor = C45Constructor(cf=0.05)
-    questConstructor = QuestConstructor(alpha=0.5)
     for indices in idx:
         if bootstrap_features:
             features = list(set(np.random.randint(0, len(data.columns), (1, len(data.columns))).tolist()[0]))
@@ -316,21 +314,12 @@ def bootstrap(data, class_label, clf, bootstrap_features=False, nr_classifiers=3
             X_bootstrap = data.iloc[indices, :].drop(class_label, axis=1).reset_index(drop=True)
             y_bootstrap = data.iloc[indices][class_label].reset_index(drop=True)
 
-        cart = convert_to_tree(clf.fit(X_bootstrap, y_bootstrap), X_bootstrap.columns)
-        cart.data = data.iloc[indices, :].reset_index(drop=True)
-        cart.populate_samples(X_bootstrap, y_bootstrap)
-
-        c45 = c45Constructor.construct_tree(X_bootstrap, y_bootstrap)
-        c45.data = data.iloc[indices, :].reset_index(drop=True)
-        c45.populate_samples(X_bootstrap, y_bootstrap)
-
-        # quest = questConstructor.construct_tree(X_bootstrap, y_bootstrap)
-        # quest.data = data.iloc[indices, :].reset_index(drop=True)
-        # quest.populate_samples(X_bootstrap, y_bootstrap)
-
-        decision_trees.append(cart)
-        decision_trees.append(c45)
-        # decision_trees.append(quest)
+        for tree_constructor in tree_constructors:
+            tree = tree_constructor.construct_tree(X_bootstrap, y_bootstrap)
+            # print 'Number of nodes in stub:', tree_constructor.get_name(), count_nodes(tree)
+            tree.data = data.iloc[indices, :].reset_index(drop=True)
+            tree.populate_samples(X_bootstrap, y_bootstrap)
+            decision_trees.append(tree)
 
     return decision_trees
 
@@ -376,23 +365,25 @@ df['Class'] = np.subtract(df['Class'], 1)
 # df['safety'] = df['safety'].map(mapping_safety)
 # df['Class'] = df['Class'].map(mapping_class).astype(int)
 
-
-def count_nodes(tree):
-    if tree.value is None:
-        return 1
-    else:
-        return count_nodes(tree.left) + count_nodes(tree.right) + 1
-
 N_FOLDS = 5
-
 kf = StratifiedKFold(df['Class'], n_folds=N_FOLDS, shuffle=True, random_state=1337)
 
+# Decision tree induction
 clf = DecisionTreeClassifier(criterion='gini', max_depth=None, min_samples_leaf=1, random_state=1337)
-clf_stub = DecisionTreeClassifier(criterion='gini', max_depth=3, min_samples_leaf=1, random_state=1337)
-rf = RandomForestClassifier(n_estimators=100, random_state=1337)
 c45 = C45Constructor(cf=0.99)
 quest = QuestConstructor(alpha=0.5)
+
+# Ensemble models (sklearn)
 ada = AdaBoostClassifier(base_estimator=clf, n_estimators=5, learning_rate=0.25, random_state=1337)
+rf = RandomForestClassifier(n_estimators=100, random_state=1337)
+
+# Decision tree stubs for ISM ensemble
+cart_stub = CARTConstructor(criterion='gini', max_depth=None, min_samples_leaf=1)
+c45_stub = C45Constructor(cf=0.99)
+quest_stub = QuestConstructor(alpha=0.5)
+# cart_stub = CARTConstructor(max_depth=3, min_samples_leaf=1)
+# c45_stub = C45Constructor(cf=0.05)
+# quest_stub = QuestConstructor(alpha=0.10)
 
 np.random.seed(1337)
 
@@ -419,7 +410,7 @@ for fold, (train, test) in enumerate(kf):
     y_pred = clf.predict(X_test)
     cart = convert_to_tree(clf, features)
     cart.populate_samples(X_train, y_train)
-    cart_nodes.append(count_nodes(cart))
+    cart_nodes.append(cart.count_nodes())
     y_pred = cart.evaluate_multiple(X_test)
     cart_confusion_matrix = confusion_matrix(y_test.values, y_pred)
     cart_confusion_matrices.append(np.around(np.divide(cart_confusion_matrix, float(np.sum(cart_confusion_matrix))), 4))
@@ -430,14 +421,14 @@ for fold, (train, test) in enumerate(kf):
     y_pred = tree.evaluate_multiple(X_test).astype(int)
     c45_confusion_matrix = confusion_matrix(y_test.values, y_pred)
     c45_confusion_matrices.append(np.around(np.divide(c45_confusion_matrix, float(np.sum(c45_confusion_matrix))), 4))
-    c45_nodes.append(count_nodes(tree))
+    c45_nodes.append(tree.count_nodes())
     print 'Accuracy C4.5:', accuracy_score(y_test, y_pred, normalize=1)
 
     tree = quest.construct_tree(X_train, y_train)
     y_pred = tree.evaluate_multiple(X_test).astype(int)
     quest_confusion_matrix = confusion_matrix(y_test.values, y_pred)
     quest_confusion_matrices.append(np.around(np.divide(quest_confusion_matrix, float(np.sum(quest_confusion_matrix))), 4))
-    quest_nodes.append(count_nodes(tree))
+    quest_nodes.append(tree.count_nodes())
     print 'Accuracy QUEST:', accuracy_score(y_test, y_pred, normalize=1)
 
     rf.fit(X_train, y_train)
@@ -454,11 +445,12 @@ for fold, (train, test) in enumerate(kf):
     # rf_confusion_matrices.append(np.around(rf_confusion_matrix.astype('float') / rf_confusion_matrix.sum(axis=1)[:, np.newaxis], 4))
     print 'Accuracy AdaBoost:', accuracy_score(y_test, y_pred, normalize=1)
 
-    bootstrap_dts = bootstrap(train, 'Class', clf_stub, bootstrap_features=False, nr_classifiers=50, boosting=False)
+    bootstrap_dts = bootstrap(train, 'Class', [cart_stub, c45_stub, quest_stub], bootstrap_features=False,
+                              nr_classifiers=3, boosting=True)
     print('Number of decision trees =', len(bootstrap_dts))
     ism_dt = ism(bootstrap_dts, train, 'Class', min_nr_samples=1, calc_fracs_from_ensemble=False)
     # ism_dt.visualise('combined')
-    ism_nodes.append(count_nodes(ism_dt))
+    ism_nodes.append(ism_dt.count_nodes())
     y_pred = ism_dt.evaluate_multiple(X_test)
     ism_confusion_matrix = confusion_matrix(y_test, y_pred)
     ism_confusion_matrices.append(np.around(np.divide(ism_confusion_matrix, float(np.sum(ism_confusion_matrix))), 4))
@@ -472,13 +464,15 @@ ism_confusion_matrix = np.mean(ism_confusion_matrices, axis=0)
 c45_confusion_matrix = np.mean(c45_confusion_matrices, axis=0)
 quest_confusion_matrix = np.mean(quest_confusion_matrices, axis=0)
 ada_confusion_matrix = np.mean(ada_confusion_matrices, axis=0)
+
 confusion_matrices = {'CART (' + str(np.mean(cart_nodes)) + ')': cart_confusion_matrix,
                       'Random Forest': rf_confusion_matrix, 'Adaboost': ada_confusion_matrix,
                       'ISM (' + str(np.mean(ism_nodes)) + ')': ism_confusion_matrix,
                       'C4.5 (' + str(np.mean(c45_nodes)) + ')': c45_confusion_matrix,
                       'QUEST (' + str(np.mean(quest_nodes)) + ')': quest_confusion_matrix}
+
 fig = plt.figure()
-fig.suptitle('Accuracy on CARS(2) dataset using ' + str(N_FOLDS) + ' folds', fontsize=20)
+fig.suptitle('Accuracy on WINE(NOSTUBS_4) dataset using ' + str(N_FOLDS) + ' folds', fontsize=20)
 counter = 0
 for key in confusion_matrices:
     ax = fig.add_subplot(1, len(confusion_matrices), counter+1)
@@ -496,3 +490,6 @@ F = plt.gcf()
 Size = F.get_size_inches()
 F.set_size_inches(Size[0]*2, Size[1], forward=True)
 plt.show()
+
+#TODO: Pruning
+#TODO: Grid search for parameter tuning (using validation set)

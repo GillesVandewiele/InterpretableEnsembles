@@ -13,8 +13,7 @@ from sklearn.cross_validation import KFold
 from sklearn.tree import DecisionTreeClassifier, export_graphviz
 
 from constructors.treeconstructor import TreeConstructor
-from objects.decisiontree import DecisionTree
-from util.colors import bcolors
+from decisiontree import DecisionTree
 
 
 class CARTConstructor(TreeConstructor):
@@ -23,10 +22,11 @@ class CARTConstructor(TreeConstructor):
     for this called sklearn.
     """
 
-    def __init__(self, min_samples_leaf=1,min_samples_split=2, max_depth=10):
+    def __init__(self, criterion='gini', min_samples_leaf=1, min_samples_split=2, max_depth=10):
         self.min_samples_leaf = min_samples_leaf
         self.min_samples_split = min_samples_split
         self.max_depth = max_depth
+        self.criterion = criterion
 
     def get_name(self):
         return "CART"
@@ -50,7 +50,8 @@ class CARTConstructor(TreeConstructor):
         self.X = training_feature_vectors[self.features]
 
 
-        self.dt = DecisionTreeClassifier(min_samples_leaf=self.min_samples_leaf,min_samples_split=self.min_samples_leaf, max_depth=self.max_depth)
+        self.dt = DecisionTreeClassifier(criterion=self.criterion, min_samples_leaf=self.min_samples_leaf,
+                                         min_samples_split=self.min_samples_leaf, max_depth=self.max_depth)
         self.dt.fit(self.X, self.y)
 
         return self.convertToTree()
@@ -134,22 +135,22 @@ class CARTConstructor(TreeConstructor):
                 # decision_trees[i].label = self.dt.classes_[self.dt.tree_.value[i][0][1]]
                 decision_trees[i].label = self.dt.classes_[np.argmax(self.dt.tree_.value[i][0])]
                 decision_trees[i].value = None
-                if verbose:
-                    print(bcolors.OKBLUE + "%snode=%s leaf node." % (node_depth[i] * "\t", i)) + bcolors.ENDC
+                # if verbose:
+                #     print(bcolors.OKBLUE + "%snode=%s leaf node." % (node_depth[i] * "\t", i)) + bcolors.ENDC
             else:
                 decision_trees[i].label = self.features[feature[i]]
                 decision_trees[i].value = threshold[i]
 
-                if verbose:
-                    print("%snode=%s test node: go to node %s if %s %s <= %s %s else to "
-                      "node %s."
-                      % (node_depth[i] * "\t",
-                         i,
-                         children_left[i],
-                         bcolors.BOLD,
-                         self.features[feature[i]],
-                         threshold[i],
-                         bcolors.ENDC,
-                         children_right[i],
-                         ))
+                # if verbose:
+                #     print("%snode=%s test node: go to node %s if %s %s <= %s %s else to "
+                #       "node %s."
+                #       % (node_depth[i] * "\t",
+                #          i,
+                #          children_left[i],
+                #          bcolors.BOLD,
+                #          self.features[feature[i]],
+                #          threshold[i],
+                #          bcolors.ENDC,
+                #          children_right[i],
+                #          ))
         return decision_trees[0]

@@ -4,19 +4,20 @@
 
     Design of a diagnose- and follow-up platform for patients with chronic headaches
 """
-
 import sklearn
 from graphviz import Source
 import matplotlib.pyplot as plt
 import numpy as np
 import json
+import operator
+
 
 class DecisionTree(object):
     """
     This class contains the main object used throughout our project: a decision tree. It contains methods
     to visualise and evaluate the trees.
     """
-    def __init__(self, right=None, left=None, label='', value=None, data=None, pruning_ratio=0):
+    def __init__(self, right=None, left=None, label='', value=None, data=None, parent=None):
         """
         Create a node of the decision tree
         :param right: right child, followed when a feature_value > value
@@ -31,7 +32,7 @@ class DecisionTree(object):
         self.label = label
         self.value = value
         self.data = data
-        self.pruning_ratio = pruning_ratio
+        self.parent = parent
         self.class_probabilities = {}
 
     def visualise(self, output_path, _view=True, with_pruning_ratio=False, show_probabilities=True):
@@ -237,7 +238,6 @@ class DecisionTree(object):
                 self.class_probabilities[i] = round(self.class_probabilities[i]*factor, 2)
             return
 
-
     @staticmethod
     def init_tree(tree, labels):
         for label in np.unique(labels):
@@ -246,7 +246,6 @@ class DecisionTree(object):
         if tree.value is not None:
             DecisionTree.init_tree(tree.left, labels)
             DecisionTree.init_tree(tree.right, labels)
-
 
     def populate_samples(self, feature_vectors, labels):
         index = 0
@@ -261,3 +260,99 @@ class DecisionTree(object):
                     current_node = current_node.right
             current_node.class_probabilities[str(labels[index])] += 1
             index += 1
+
+    def set_parents(self):
+        if self.value is not None:
+            self.left.parent = self
+            self.left.set_parents()
+            self.right.parent = self
+            self.right.set_parents()
+
+    def count_nodes(self):
+        if self.value is None:
+            return 1
+        else:
+            return self.left.count_nodes() + self.right.count_nodes() + 1
+
+    def count_leaves(self):
+        if self.value is None:
+            return 1
+        else:
+            return self.left.count_leaves() + self.right.count_leaves()
+
+    def get_leaves(self):
+        if self.value is None:
+            return [self]
+        else:
+            leaves=[]
+            leaves.extend(self.left.get_leaves())
+            leaves.extend(self.right.get_leaves())
+            return leaves
+
+    def calc_leaf_error(self, total_train_samples):
+        # for leaf in self.get_leaves():
+        #     print leaf.class_probabilities
+        #     print (sum(leaf.class_probabilities.values())/total_samples_at_root) *  \
+        #             (1 - leaf.class_probabilities[str(leaf.label)]/sum(leaf.class_probabilities.values()))
+        return sum([(sum(leaf.class_probabilities.values()) / total_train_samples) *
+                    (1 - leaf.class_probabilities[str(leaf.label)]/sum(leaf.class_probabilities.values()))
+                    for leaf in self.get_leaves()])
+
+    def calc_node_error(self, total_train_samples):
+        return (1 - max(self.class_probabilities.iteritems(), key=operator.itemgetter(1))[1]/sum(self.class_probabilities.values())) \
+               * (sum(self.class_probabilities.values()) / total_train_samples)
+
+    def cost_complexity_pruning(self, feature_vectors, labels):
+        # TODO: implement pruning (ftp://public.dhe.ibm.com/software/analytics/spss/support/Stats/Docs/Statistics/Algorithms/14.0/TREE-pruning.pdf) or (http://mlwiki.org/index.php/Cost-Complexity_Pruning)
+        self.set_parents()
+        self.populate_samples(feature_vectors, labels)
+        #TODO: calculate (g(t), nodes) for each subtree rooted at each node in the total tree
+        #TODO: take minimum g(t) and prune, store (g(t), prune)
+        root_samples = sum(self.class_probabilities.values())
+
+
+        print 'Iteration 1'
+        print (self.count_leaves() - 1)
+        print self.calc_node_error(root_samples)
+        print self.calc_leaf_error(root_samples)
+        g_t = (self.calc_node_error(root_samples) - self.calc_leaf_error(root_samples)) / (self.count_leaves() - 1)
+        print g_t
+        print '============='
+        print (self.right.count_leaves() - 1)
+        print self.right.calc_node_error(root_samples)
+        print self.right.calc_leaf_error(root_samples)
+        g_t = (self.right.calc_node_error(root_samples)- self.right.calc_leaf_error(root_samples)) / (self.right.count_leaves() - 1)
+        print g_t
+        print '============='
+        print (self.right.right.count_leaves() - 1)
+        print self.right.right.calc_node_error(root_samples)
+        print self.right.right.calc_leaf_error(root_samples)
+        g_t = (self.right.right.calc_node_error(root_samples)- self.right.right.calc_leaf_error(root_samples)) / (self.right.right.count_leaves() - 1)
+        print g_t
+
+
+        print 'Iteration 2'
+        self.right.right.label = 0
+        self.right.right.value = None
+        self.right.right.left = None
+        self.right.right.right = None
+        self.visualise('prune_1')
+        print (self.count_leaves() - 1)
+        print self.calc_node_error(root_samples)
+        print self.calc_leaf_error(root_samples)
+        g_t = (self.calc_node_error(root_samples) - self.calc_leaf_error(root_samples)) / (self.count_leaves() - 1)
+        print g_t
+        print '============='
+        print (self.right.count_leaves() - 1)
+        print self.right.calc_node_error(root_samples)
+        print self.right.calc_leaf_error(root_samples)
+        g_t = (self.right.calc_node_error(root_samples)- self.right.calc_leaf_error(root_samples)) / (self.right.count_leaves() - 1)
+        print g_t
+
+
+
+
+        # g_t = (max(self.right.class_probabilities.iteritems(), key=operator.itemgetter(1))[1]/sum(self.right.class_probabilities.values())
+        #        - self.calc_leaf_error(root_samples)) / (self.count_leaves() - 1)
+        # print self.calc_leaf_error()
+        pass
