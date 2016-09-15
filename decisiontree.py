@@ -4,12 +4,16 @@
 
     Design of a diagnose- and follow-up platform for patients with chronic headaches
 """
+from copy import deepcopy
+
 import sklearn
 from graphviz import Source
 import matplotlib.pyplot as plt
 import numpy as np
 import json
 import operator
+
+from sklearn.cross_validation import StratifiedKFold
 
 
 class DecisionTree(object):
@@ -261,6 +265,8 @@ class DecisionTree(object):
             current_node.class_probabilities[str(labels[index])] += 1
             index += 1
 
+    ############################### PRUNING FROM HERE ON #####################################
+
     def set_parents(self):
         if self.value is not None:
             self.left.parent = self
@@ -289,10 +295,23 @@ class DecisionTree(object):
             leaves.extend(self.right.get_leaves())
             return leaves
 
+    def get_nodes(self):
+        if self.value is not None:
+            nodes = [self]
+        else:
+            nodes = []
+        if self.left is not None:
+            nodes.extend(self.left.get_nodes())
+        if self.right is not None:
+            nodes.extend(self.right.get_nodes())
+        return nodes
+
+
     def calc_leaf_error(self, total_train_samples):
         # for leaf in self.get_leaves():
         #     print leaf.class_probabilities
-        #     print (sum(leaf.class_probabilities.values())/total_samples_at_root) *  \
+        #     print sum(leaf.class_probabilities.values())/total_train_samples, 1 - leaf.class_probabilities[str(leaf.label)]/sum(leaf.class_probabilities.values())
+        #     print (sum(leaf.class_probabilities.values())/total_train_samples) *  \
         #             (1 - leaf.class_probabilities[str(leaf.label)]/sum(leaf.class_probabilities.values()))
         return sum([(sum(leaf.class_probabilities.values()) / total_train_samples) *
                     (1 - leaf.class_probabilities[str(leaf.label)]/sum(leaf.class_probabilities.values()))
@@ -302,52 +321,142 @@ class DecisionTree(object):
         return (1 - max(self.class_probabilities.iteritems(), key=operator.itemgetter(1))[1]/sum(self.class_probabilities.values())) \
                * (sum(self.class_probabilities.values()) / total_train_samples)
 
-    def cost_complexity_pruning(self, feature_vectors, labels):
+    def calculate_alpha(self, total_train_samples):
+        return (self.calc_node_error(total_train_samples) - self.calc_leaf_error(total_train_samples)) / (self.count_leaves() - 1)
+
+    def calculate_cost_complexity(self, total_train_samples, alpha):
+        return self.calc_leaf_error(total_train_samples) + alpha * self.count_leaves()
+
+    def prune_node(self, node):
+        if self == node:
+            self.label = max(self.class_probabilities.items(), key=operator.itemgetter(1))[0]
+            self.value = None
+            self.right = None
+            self.left = None
+        else:
+            if self.left is not None and self.left.value is not None:
+                self.left.prune_node(node)
+            if self.right is not None and self.right.value is not None:
+                self.right.prune_node(node)
+
+    def generate_subtree(self, total_train_samples, alphas={}):
+        # print self.label, self.value
+        if self.value is not None:
+            calc_alpha = self.calculate_alpha(total_train_samples)
+            alphas[self] = (calc_alpha, self.count_nodes())
+            if self.left.value is not None:
+                self.left.generate_subtree(total_train_samples, alphas)
+            if self.right.value is not None:
+                self.right.generate_subtree(total_train_samples, alphas)
+        return alphas
+
+    def generate_subtree_sequence(self, total_train_samples):
+        subtrees = {}
+        current_tree = deepcopy(self)
+        while current_tree.left is not None or current_tree.right is not None:
+            generated_trees = current_tree.generate_subtree(total_train_samples, {})
+            print generated_trees.values()
+            best = min(generated_trees.items(), key=operator.itemgetter(1))
+            tree, alpha = best[0], best[1][0]
+            current_tree.prune_node(tree)
+            subtrees[deepcopy(current_tree)] = alpha
+        return subtrees
+
+    def minimize_cost_complexity(self, total_train_samples, alpha):
+        while 1:
+            min_complexity, min_nodes = self.calculate_cost_complexity(total_train_samples, alpha), self.count_nodes()
+            best_node_to_prune = None
+            print [(node.label, node.value) for node in self.get_nodes()]
+            tree = deepcopy(self)
+            for node in tree.get_nodes():
+                print node.label, node.value
+                print 'nodes before pruning:', tree.count_nodes()
+                tree.prune_node(node)
+                print 'nodes after pruning:', tree.count_nodes()
+                complexity, nodes = tree.calculate_cost_complexity(total_train_samples, alpha), tree.count_nodes()
+                print '----->', complexity, nodes
+                if (complexity, nodes) <= (min_complexity, min_nodes):
+                    best_node_to_prune = node
+                    min_complexity = complexity
+                    min_nodes = nodes
+
+            if best_node_to_prune is not None:
+                print 'best_node:', best_node_to_prune.label, best_node_to_prune.value
+                self.prune_node(best_node_to_prune)
+            else:
+                break
+
+    def cost_complexity_pruning(self, feature_vectors, labels, tree_constructor, n_folds=3):
         # TODO: implement pruning (ftp://public.dhe.ibm.com/software/analytics/spss/support/Stats/Docs/Statistics/Algorithms/14.0/TREE-pruning.pdf) or (http://mlwiki.org/index.php/Cost-Complexity_Pruning)
         self.set_parents()
-        self.populate_samples(feature_vectors, labels)
-        #TODO: calculate (g(t), nodes) for each subtree rooted at each node in the total tree
-        #TODO: take minimum g(t) and prune, store (g(t), prune)
+        self.populate_samples(feature_vectors, labels.values)
         root_samples = sum(self.class_probabilities.values())
 
+        subtrees = self.generate_subtree_sequence(root_samples)
+        print subtrees
 
-        print 'Iteration 1'
-        print (self.count_leaves() - 1)
-        print self.calc_node_error(root_samples)
-        print self.calc_leaf_error(root_samples)
-        g_t = (self.calc_node_error(root_samples) - self.calc_leaf_error(root_samples)) / (self.count_leaves() - 1)
-        print g_t
-        print '============='
-        print (self.right.count_leaves() - 1)
-        print self.right.calc_node_error(root_samples)
-        print self.right.calc_leaf_error(root_samples)
-        g_t = (self.right.calc_node_error(root_samples)- self.right.calc_leaf_error(root_samples)) / (self.right.count_leaves() - 1)
-        print g_t
-        print '============='
-        print (self.right.right.count_leaves() - 1)
-        print self.right.right.calc_node_error(root_samples)
-        print self.right.right.calc_leaf_error(root_samples)
-        g_t = (self.right.right.calc_node_error(root_samples)- self.right.right.calc_leaf_error(root_samples)) / (self.right.right.count_leaves() - 1)
-        print g_t
+        skf = StratifiedKFold(labels, n_folds=n_folds, shuffle=True)
+        for train_index, test_index in skf:
+            X_train = feature_vectors.iloc[train_index, :]
+            y_train = labels.iloc[train_index]
+            X_test = feature_vectors.iloc[test_index, :]
+            y_test = labels.iloc[test_index]
+            constructed_tree = tree_constructor.construct_tree(X_train, y_train)
+            constructed_tree.populate_samples(X_train, y_train.values)
+            # constructed_tree.visualise('test')
+            constructed_tree.minimize_cost_complexity(root_samples, 0.05)
+            print constructed_tree.calculate_cost_complexity(root_samples, 0.075)
+            constructed_tree.prune_node(constructed_tree.right)
+            print constructed_tree.calculate_cost_complexity(root_samples, 0.075)
+            raw_input('....')
+
+        pass
 
 
-        print 'Iteration 2'
-        self.right.right.label = 0
-        self.right.right.value = None
-        self.right.right.left = None
-        self.right.right.right = None
-        self.visualise('prune_1')
-        print (self.count_leaves() - 1)
-        print self.calc_node_error(root_samples)
-        print self.calc_leaf_error(root_samples)
-        g_t = (self.calc_node_error(root_samples) - self.calc_leaf_error(root_samples)) / (self.count_leaves() - 1)
-        print g_t
-        print '============='
-        print (self.right.count_leaves() - 1)
-        print self.right.calc_node_error(root_samples)
-        print self.right.calc_leaf_error(root_samples)
-        g_t = (self.right.calc_node_error(root_samples)- self.right.calc_leaf_error(root_samples)) / (self.right.count_leaves() - 1)
-        print g_t
+
+
+
+        # best = min(self.generate_subtree(root_samples).items(), key=self.generate_subtree(root_samples).get)
+        # prune_tree, alpha = best[0], best[1][0]
+        # self.prune_node(prune_tree)
+        # self.visualise('pruned')
+        # print 'Iteration 1'
+        # print (self.count_leaves() - 1)
+        # print self.calc_node_error(root_samples)
+        # print self.calc_leaf_error(root_samples)
+        # g_t = (self.calc_node_error(root_samples) - self.calc_leaf_error(root_samples)) / (self.count_leaves() - 1)
+        # print g_t
+        # print '============='
+        # print (self.right.count_leaves() - 1)
+        # print self.right.calc_node_error(root_samples)
+        # print self.right.calc_leaf_error(root_samples)
+        # g_t = (self.right.calc_node_error(root_samples)- self.right.calc_leaf_error(root_samples)) / (self.right.count_leaves() - 1)
+        # print g_t
+        # print '============='
+        # print (self.right.right.count_leaves() - 1)
+        # print self.right.right.calc_node_error(root_samples)
+        # print self.right.right.calc_leaf_error(root_samples)
+        # g_t = (self.right.right.calc_node_error(root_samples)- self.right.right.calc_leaf_error(root_samples)) / (self.right.right.count_leaves() - 1)
+        # print g_t
+        #
+        #
+        # print 'Iteration 2'
+        # self.right.right.label = 0
+        # self.right.right.value = None
+        # self.right.right.left = None
+        # self.right.right.right = None
+        # self.visualise('prune_1')
+        # print (self.count_leaves() - 1)
+        # print self.calc_node_error(root_samples)
+        # print self.calc_leaf_error(root_samples)
+        # g_t = (self.calc_node_error(root_samples) - self.calc_leaf_error(root_samples)) / (self.count_leaves() - 1)
+        # print g_t
+        # print '============='
+        # print (self.right.count_leaves() - 1)
+        # print self.right.calc_node_error(root_samples)
+        # print self.right.calc_leaf_error(root_samples)
+        # g_t = (self.right.calc_node_error(root_samples)- self.right.calc_leaf_error(root_samples)) / (self.right.count_leaves() - 1)
+        # print g_t
 
 
 
@@ -355,4 +464,3 @@ class DecisionTree(object):
         # g_t = (max(self.right.class_probabilities.iteritems(), key=operator.itemgetter(1))[1]/sum(self.right.class_probabilities.values())
         #        - self.calc_leaf_error(root_samples)) / (self.count_leaves() - 1)
         # print self.calc_leaf_error()
-        pass
