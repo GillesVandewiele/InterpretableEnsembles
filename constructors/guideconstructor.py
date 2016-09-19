@@ -33,7 +33,7 @@ class GUIDEConstructor(TreeConstructor):
         self.create_desc_and_data_file(training_feature_vectors, labels)
         input = open("in.txt", "w")
         output = file('out.txt', 'w')
-        p = subprocess.Popen('./guide', stdin=subprocess.PIPE, shell=True)
+        p = subprocess.Popen('./guide > log.txt', stdin=subprocess.PIPE, shell=True)
         p.stdin.write("1\n")
         p.stdin.write("in.txt\n")
         p.stdin.write("1\n")
@@ -42,11 +42,23 @@ class GUIDEConstructor(TreeConstructor):
         p.stdin.write("1\n")
         p.stdin.write("1\n")
         p.stdin.write("1\n")
+        p.stdin.write("2\n")
+        p.stdin.write("1\n")
+        p.stdin.write("3\n")
         p.stdin.write("1\n")
         p.stdin.write('dsc.txt\n')
+        p.stdin.write("\n")
+        p.stdin.write("\n")
+        p.stdin.write("\n")
         p.stdin.write("1\n")
         p.stdin.write("1\n")
+        p.stdin.write("\n")
+        p.stdin.write("\n")
+        p.stdin.write("\n")
         p.stdin.write("2\n")
+        p.stdin.write("1\n")
+        p.stdin.write("1\n")
+        p.stdin.write("1\n")
         p.stdin.write("1\n")
         p.stdin.write("\n")
         p.wait()
@@ -55,7 +67,7 @@ class GUIDEConstructor(TreeConstructor):
 
         while not os.path.exists('in.txt'):
             time.sleep(1)
-        p = subprocess.Popen('./guide < in.txt', shell=True)
+        p = subprocess.Popen('./guide < in.txt > log.txt', shell=True)
         p.wait()
 
         output = file('out.txt', 'r')
@@ -73,6 +85,7 @@ class GUIDEConstructor(TreeConstructor):
 
         self.remove_files()
 
+        # tree.visualise('GUIDE')
         return tree
 
     def decision_tree_from_text(self, lines):
@@ -83,17 +96,17 @@ class GUIDEConstructor(TreeConstructor):
             # Intermediate node
             node_name = lines[0].split(':')[0].lstrip()
             label, value = lines[0].split(':')[1].split('<=')
-            label = label.lstrip().rstrip()
+            label = ' '.join(label.lstrip().rstrip().split('.'))
             value = value.lstrip().split()[0]
             dt.label = label
-            dt.value = value
+            dt.value = float(value)
             dt.left = self.decision_tree_from_text(lines[1:])
             counter = 1
             while lines[counter].split(':')[0].lstrip() != node_name: counter+=1
             dt.right = self.decision_tree_from_text(lines[counter+1:])
         else:
             # Terminal node
-            dt.label = lines[0].split(':')[1].lstrip()
+            dt.label = int(lines[0].split(':')[1].lstrip())
 
         return dt
 
@@ -106,7 +119,7 @@ class GUIDEConstructor(TreeConstructor):
         dsc.write("1\n")
         count = 1
         for col in training_feature_vectors.columns:
-            dsc.write(str(count) + ' ' + str(col) + ' n\n')
+            dsc.write(str(count) + ' \"' + str(col) + '\" n\n')
             count += 1
         dsc.write(str(count) + ' ' + str(labels.name) + ' d')
 
@@ -126,15 +139,5 @@ class GUIDEConstructor(TreeConstructor):
         os.remove('data.txt')
         os.remove('in.txt')
         os.remove('dsc.txt')
-        # os.remove('out.txt')
-
-
-datasets = load_all_datasets()
-guide = GUIDEConstructor()
-for dataset in datasets:
-    df = dataset['dataframe']
-    label_col = dataset['label_col']
-    feature_cols = dataset['feature_cols']
-    X = df[feature_cols]
-    y = df[label_col]
-    guide.construct_tree(X, y)
+        os.remove('out.txt')
+        os.remove('log.txt')
