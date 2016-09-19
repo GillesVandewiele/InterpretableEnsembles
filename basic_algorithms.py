@@ -144,7 +144,8 @@ def get_best_quest_classifier(train, label_col, skf_tune):
 def get_best_cn2_classifier(train, label_col, skf_tune):
     cn2 = CN2UnorderedConstructor()
     beam_widths = np.arange(1,20,3)
-    alphas = np.arange(0.1, 1, 0.2)
+    # alphas = np.arange(0.1, 1, 0.2)
+    alphas = [0.5]
 
     errors = {}
     for beam_width in beam_widths:
