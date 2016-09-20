@@ -13,7 +13,7 @@ from sklearn.cross_validation import KFold
 from sklearn.tree import DecisionTreeClassifier, export_graphviz
 
 from constructors.treeconstructor import TreeConstructor
-from decisiontree import DecisionTree
+import decisiontree
 
 
 class CARTConstructor(TreeConstructor):
@@ -105,7 +105,7 @@ class CARTConstructor(TreeConstructor):
         node_depth = np.zeros(shape=n_nodes)
         decision_trees = [None] * n_nodes
         for i in range(n_nodes):
-            decision_trees[i] = DecisionTree()
+            decision_trees[i] = decisiontree.DecisionTree()
         is_leaves = np.zeros(shape=n_nodes, dtype=bool)
         stack = [(0, -1)]  # seed is the root node id and its parent depth
         while len(stack) > 0:

@@ -9,7 +9,7 @@ import Orange
 from pandas import DataFrame
 
 from constructors.treeconstructor import TreeConstructor
-from decisiontree import DecisionTree
+import decisiontree
 from pandas_to_orange import df2table
 
 
@@ -42,9 +42,9 @@ class C45Constructor(TreeConstructor):
     def orange_dt_to_my_dt(self, orange_dt_root):
         # Check if leaf
         if orange_dt_root.node_type == Orange.classification.tree.C45Node.Leaf:
-            return DecisionTree(left=None, right=None, label=str(int(orange_dt_root.leaf)), data=None, value=None)
+            return decisiontree.DecisionTree(left=None, right=None, label=str(int(orange_dt_root.leaf)), data=None, value=None)
         else:
-            dt = DecisionTree(label=orange_dt_root.tested.name, data=None, value=orange_dt_root.cut)
+            dt = decisiontree.DecisionTree(label=orange_dt_root.tested.name, data=None, value=orange_dt_root.cut)
             dt.left = self.orange_dt_to_my_dt(orange_dt_root.branch[0])
             dt.right = self.orange_dt_to_my_dt(orange_dt_root.branch[1])
             return dt

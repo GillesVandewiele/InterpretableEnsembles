@@ -83,7 +83,7 @@ class GUIDEConstructor(TreeConstructor):
             counter += 1
         tree = self.decision_tree_from_text(lines[start_index:end_index])
 
-        self.remove_files()
+        # self.remove_files()
 
         # tree.visualise('GUIDE')
         return tree
@@ -113,7 +113,6 @@ class GUIDEConstructor(TreeConstructor):
     def create_desc_and_data_file(self, training_feature_vectors, labels):
         dsc = open("dsc.txt", "w")
         data = open("data.txt", "w")
-
         dsc.write("data.txt\n")
         dsc.write("\"?\"\n")
         dsc.write("1\n")

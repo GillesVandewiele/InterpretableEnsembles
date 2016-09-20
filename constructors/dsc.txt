@@ -1,0 +1,17 @@
+data.txt
+"?"
+1
+1 "age" n
+2 "sex" n
+3 "chest pain type" n
+4 "resting blood pressure" n
+5 "serum cholestoral" n
+6 "fasting blood sugar" n
+7 "resting electrocardio" n
+8 "max heartrate" n
+9 "exercise induced" n
+10 "oldpeak" n
+11 "slope peak" n
+12 "number of vessels" n
+13 "thal" n
+14 Class d

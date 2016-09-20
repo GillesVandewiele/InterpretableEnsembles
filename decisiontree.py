@@ -4,7 +4,7 @@
 
     Design of a diagnose- and follow-up platform for patients with chronic headaches
 """
-from copy import deepcopy
+from copy import deepcopy, copy
 
 import sklearn
 from graphviz import Source
@@ -13,7 +13,11 @@ import numpy as np
 import json
 import operator
 
+from pandas import Series
 from sklearn.cross_validation import StratifiedKFold
+from sklearn.metrics import accuracy_score
+
+import ISM_v3
 
 
 class DecisionTree(object):
@@ -306,13 +310,7 @@ class DecisionTree(object):
             nodes.extend(self.right.get_nodes())
         return nodes
 
-
     def calc_leaf_error(self, total_train_samples):
-        # for leaf in self.get_leaves():
-        #     print leaf.class_probabilities
-        #     print sum(leaf.class_probabilities.values())/total_train_samples, 1 - leaf.class_probabilities[str(leaf.label)]/sum(leaf.class_probabilities.values())
-        #     print (sum(leaf.class_probabilities.values())/total_train_samples) *  \
-        #             (1 - leaf.class_probabilities[str(leaf.label)]/sum(leaf.class_probabilities.values()))
         return sum([(sum(leaf.class_probabilities.values()) / total_train_samples) *
                     (1 - leaf.class_probabilities[str(leaf.label)]/sum(leaf.class_probabilities.values()))
                     for leaf in self.get_leaves()])
@@ -327,17 +325,23 @@ class DecisionTree(object):
     def calculate_cost_complexity(self, total_train_samples, alpha):
         return self.calc_leaf_error(total_train_samples) + alpha * self.count_leaves()
 
-    def prune_node(self, node):
+    def prune_node(self, node, parents=[], directions=[], nodes=[], direction='left'):
         if self == node:
+            # print'match'
+            self_copy = copy(self)
             self.label = max(self.class_probabilities.items(), key=operator.itemgetter(1))[0]
             self.value = None
             self.right = None
             self.left = None
+            # return self_copy, parent, direction
+            parents.append(self.parent)
+            directions.append(direction)
+            nodes.append(self_copy)
         else:
             if self.left is not None and self.left.value is not None:
-                self.left.prune_node(node)
+                self.left.prune_node(node, parents, directions, nodes, 'left')
             if self.right is not None and self.right.value is not None:
-                self.right.prune_node(node)
+                self.right.prune_node(node, parents, directions, nodes, 'right')
 
     def generate_subtree(self, total_train_samples, alphas={}):
         # print self.label, self.value
@@ -365,52 +369,99 @@ class DecisionTree(object):
     def minimize_cost_complexity(self, total_train_samples, alpha):
         while 1:
             min_complexity, min_nodes = self.calculate_cost_complexity(total_train_samples, alpha), self.count_nodes()
+            print 'Can we improve?', (min_complexity, min_nodes)
             best_node_to_prune = None
-            print [(node.label, node.value) for node in self.get_nodes()]
-            tree = deepcopy(self)
-            for node in tree.get_nodes():
-                print node.label, node.value
-                print 'nodes before pruning:', tree.count_nodes()
-                tree.prune_node(node)
-                print 'nodes after pruning:', tree.count_nodes()
-                complexity, nodes = tree.calculate_cost_complexity(total_train_samples, alpha), tree.count_nodes()
-                print '----->', complexity, nodes
+            for node in self.get_nodes():
+                # Make a copy of the node
+                label_copy = node.label
+                value_copy = node.value
+                right_copy = node.right
+                left_copy = node.left
+
+                # Prune the node
+                node.label = max(node.class_probabilities.items(), key=operator.itemgetter(1))[0]
+                node.value = None
+                node.right = None
+                node.left = None
+
+                # Calculate hypothetical cost complexity
+                complexity, nodes = self.calculate_cost_complexity(total_train_samples, alpha), self.count_nodes()
+
+                # Restore the node
+                node.label = label_copy
+                node.value = value_copy
+                node.left = left_copy
+                node.right = right_copy
+
+                # We found a new best node?
                 if (complexity, nodes) <= (min_complexity, min_nodes):
                     best_node_to_prune = node
                     min_complexity = complexity
                     min_nodes = nodes
 
+            # Did we find a better node?
             if best_node_to_prune is not None:
-                print 'best_node:', best_node_to_prune.label, best_node_to_prune.value
-                self.prune_node(best_node_to_prune)
+                print 'best_node:', best_node_to_prune.label, best_node_to_prune.value, min_complexity
+                best_node_to_prune.label = max(best_node_to_prune.class_probabilities.items(), key=operator.itemgetter(1))[0]
+                best_node_to_prune.value = None
+                best_node_to_prune.right = None
+                best_node_to_prune.left = None
             else:
+                print 'No new best node found'
+                return self
                 break
 
-    def cost_complexity_pruning(self, feature_vectors, labels, tree_constructor, n_folds=3):
-        # TODO: implement pruning (ftp://public.dhe.ibm.com/software/analytics/spss/support/Stats/Docs/Statistics/Algorithms/14.0/TREE-pruning.pdf) or (http://mlwiki.org/index.php/Cost-Complexity_Pruning)
+    def cost_complexity_pruning(self, feature_vectors, labels, tree_constructor, ism_constructors=[],
+                                ism_calc_fracs=False, n_folds=3):
+        # (http://mlwiki.org/index.php/Cost-Complexity_Pruning)
         self.set_parents()
         self.populate_samples(feature_vectors, labels.values)
         root_samples = sum(self.class_probabilities.values())
 
+        betas = []
         subtrees = self.generate_subtree_sequence(root_samples)
+        subtrees_by_alpha = {y:x for x,y in subtrees.iteritems()}
+        subtrees_by_beta = {}
+        alphas = sorted(subtrees.values())
+        for i in range(len(alphas)-1):
+            beta = np.sqrt(alphas[i]*alphas[i+1])
+            betas.append(beta)
+            subtrees_by_beta[beta] = subtrees_by_alpha[alphas[i]]
         print subtrees
+        print alphas
+        print betas
+        beta_errors = {}
+        for beta in betas:
+            beta_errors[beta] = []
 
         skf = StratifiedKFold(labels, n_folds=n_folds, shuffle=True)
         for train_index, test_index in skf:
-            X_train = feature_vectors.iloc[train_index, :]
-            y_train = labels.iloc[train_index]
-            X_test = feature_vectors.iloc[test_index, :]
-            y_test = labels.iloc[test_index]
-            constructed_tree = tree_constructor.construct_tree(X_train, y_train)
-            constructed_tree.populate_samples(X_train, y_train.values)
-            # constructed_tree.visualise('test')
-            constructed_tree.minimize_cost_complexity(root_samples, 0.05)
-            print constructed_tree.calculate_cost_complexity(root_samples, 0.075)
-            constructed_tree.prune_node(constructed_tree.right)
-            print constructed_tree.calculate_cost_complexity(root_samples, 0.075)
-            raw_input('....')
+            X_train = feature_vectors.iloc[train_index, :].reset_index(drop=True)
+            y_train = labels.iloc[train_index].reset_index(drop=True)
+            train = X_train.copy()
+            train[y_train.name] = Series(y_train, index=train.index)
+            X_test = feature_vectors.iloc[test_index, :].reset_index(drop=True)
+            y_test = labels.iloc[test_index].reset_index(drop=True)
+            for beta in betas:
+                # ism(decision_trees, data, class_label, min_nr_samples=1, calc_fracs_from_ensemble=False)
+                if tree_constructor == 'ism':
+                    trees = []
+                    for constructor in ism_constructors:
+                        tree = constructor.construct_tree(X_train, y_train)
+                        tree.data = train
+                        tree.populate_samples(X_train, y_train.values)
+                        trees.append(tree)
+                    constructed_tree = ISM_v3.ism(trees, train, y_train.name, calc_fracs_from_ensemble=ism_calc_fracs)
+                else:
+                    constructed_tree = tree_constructor.construct_tree(X_train, y_train)
+                constructed_tree.populate_samples(X_train, y_train.values)
+                pruned_tree = constructed_tree.minimize_cost_complexity(root_samples, beta)
+                predictions = pruned_tree.evaluate_multiple(X_test).astype(int)
+                beta_errors[beta].append(1 - accuracy_score(predictions, y_test))
 
-        pass
+        for beta in beta_errors: beta_errors[beta] = np.mean(beta_errors[beta])
+        print beta_errors
+        return subtrees_by_beta[min(beta_errors.iteritems(), key=operator.itemgetter(1))[0]]
 
 
 
