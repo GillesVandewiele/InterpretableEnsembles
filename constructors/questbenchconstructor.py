@@ -259,17 +259,20 @@ for dataset in datasets:
         #     tree.populate_samples(X_train, y_train.values)
 
         constructors = [c45_clf, cart_clf, quest, guide]
-        ism_tree = ism(bootstrap(train, label_col, constructors, boosting=False), train, label_col, min_nr_samples=1,
-                       calc_fracs_from_ensemble=True)
+        ism_tree = ism(bootstrap(train, label_col, constructors, boosting=True, nr_classifiers=5), train, label_col,
+                       min_nr_samples=1, calc_fracs_from_ensemble=True)
         predictions = ism_tree.evaluate_multiple(X_test).astype(int)
         conf_matrices['ISM'].append(confusion_matrix(predictions, y_test))
         avg_nodes['ISM'].append(ism_tree.count_nodes())
 
         print 'Lets prune the tree'
         ism_pruned = ism_tree.cost_complexity_pruning(X_train, y_train, 'ism', ism_constructors=constructors,
-                                                      ism_calc_fracs=True)
+                                                      ism_calc_fracs=True, nr_folds=3, ism_nr_classifiers=5,
+                                                      ism_boosting=True)
         predictions = ism_pruned.evaluate_multiple(X_test).astype(int)
         conf_matrices['ISM_pruned'].append(confusion_matrix(predictions, y_test))
+        print conf_matrices['ISM'][len(conf_matrices['ISM'])-1]
+        print conf_matrices['ISM_pruned'][len(conf_matrices['ISM_pruned'])-1]
         avg_nodes['ISM_pruned'].append(ism_pruned.count_nodes())
 
     fig = plt.figure()

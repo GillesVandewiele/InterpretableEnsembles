@@ -17,29 +17,29 @@ def load_wine():
     return df, features, 'Class', 'wine'
 
 
-# def load_cars():
-#     columns = ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety', 'Class']
-#     features = ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety']
-#     df = pd.read_csv(os.path.join(os.sep.join(os.path.realpath(__file__).split(os.sep)[:-1]), 'car.data'))
-#     df.columns = columns
-#     df = df.reindex(np.random.permutation(df.index)).reset_index(drop=1)
-#
-#     mapping_buy_maint = {'low': 0, 'med': 1, 'high': 2, 'vhigh': 3}
-#     mapping_doors = {'2': 0, '3': 1, '4': 2, '5more': 3}
-#     mapping_persons = {'2': 0, '4': 1, 'more': 2}
-#     mapping_lug = {'small': 0, 'med': 1, 'big': 2}
-#     mapping_safety = {'low': 0, 'med': 1, 'high': 2}
-#     mapping_class = {'unacc': 0, 'acc': 1, 'good': 2, 'vgood': 3}
-#
-#     df['maint'] = df['maint'].map(mapping_buy_maint)
-#     df['buying'] = df['buying'].map(mapping_buy_maint)
-#     df['doors'] = df['doors'].map(mapping_doors)
-#     df['persons'] = df['persons'].map(mapping_persons)
-#     df['lug_boot'] = df['lug_boot'].map(mapping_lug)
-#     df['safety'] = df['safety'].map(mapping_safety)
-#     df['Class'] = df['Class'].map(mapping_class).astype(int)
-#
-#     return df, features, 'Class', 'cars'
+def load_cars():
+    columns = ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety', 'Class']
+    features = ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety']
+    df = pd.read_csv(os.path.join(os.sep.join(os.path.realpath(__file__).split(os.sep)[:-1]), 'car.data'))
+    df.columns = columns
+    df = df.reindex(np.random.permutation(df.index)).reset_index(drop=1)
+
+    mapping_buy_maint = {'low': 0, 'med': 1, 'high': 2, 'vhigh': 3}
+    mapping_doors = {'2': 0, '3': 1, '4': 2, '5more': 3}
+    mapping_persons = {'2': 0, '4': 1, 'more': 2}
+    mapping_lug = {'small': 0, 'med': 1, 'big': 2}
+    mapping_safety = {'low': 0, 'med': 1, 'high': 2}
+    mapping_class = {'unacc': 0, 'acc': 1, 'good': 2, 'vgood': 3}
+
+    df['maint'] = df['maint'].map(mapping_buy_maint)
+    df['buying'] = df['buying'].map(mapping_buy_maint)
+    df['doors'] = df['doors'].map(mapping_doors)
+    df['persons'] = df['persons'].map(mapping_persons)
+    df['lug_boot'] = df['lug_boot'].map(mapping_lug)
+    df['safety'] = df['safety'].map(mapping_safety)
+    df['Class'] = df['Class'].map(mapping_class).astype(int)
+
+    return df, features, 'Class', 'cars'
     # return df.iloc[:150, :], features, 'Class', 'cars'
 
 

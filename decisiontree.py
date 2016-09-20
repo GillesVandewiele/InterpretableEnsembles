@@ -369,7 +369,7 @@ class DecisionTree(object):
     def minimize_cost_complexity(self, total_train_samples, alpha):
         while 1:
             min_complexity, min_nodes = self.calculate_cost_complexity(total_train_samples, alpha), self.count_nodes()
-            print 'Can we improve?', (min_complexity, min_nodes)
+            # print 'Can we improve?', (min_complexity, min_nodes)
             best_node_to_prune = None
             for node in self.get_nodes():
                 # Make a copy of the node
@@ -401,18 +401,17 @@ class DecisionTree(object):
 
             # Did we find a better node?
             if best_node_to_prune is not None:
-                print 'best_node:', best_node_to_prune.label, best_node_to_prune.value, min_complexity
+                # print 'best_node:', best_node_to_prune.label, best_node_to_prune.value, min_complexity
                 best_node_to_prune.label = max(best_node_to_prune.class_probabilities.items(), key=operator.itemgetter(1))[0]
                 best_node_to_prune.value = None
                 best_node_to_prune.right = None
                 best_node_to_prune.left = None
             else:
-                print 'No new best node found'
+                # print 'No new best node found'
                 return self
-                break
 
     def cost_complexity_pruning(self, feature_vectors, labels, tree_constructor, ism_constructors=[],
-                                ism_calc_fracs=False, n_folds=3):
+                                ism_calc_fracs=False, ism_nr_classifiers=3, ism_boosting=False, n_folds=3):
         # (http://mlwiki.org/index.php/Cost-Complexity_Pruning)
         self.set_parents()
         self.populate_samples(feature_vectors, labels.values)
@@ -420,6 +419,8 @@ class DecisionTree(object):
 
         betas = []
         subtrees = self.generate_subtree_sequence(root_samples)
+        if len(subtrees) == 0: return self  # Something went wrong, pruning failed
+
         subtrees_by_alpha = {y:x for x,y in subtrees.iteritems()}
         subtrees_by_beta = {}
         alphas = sorted(subtrees.values())
@@ -442,20 +443,23 @@ class DecisionTree(object):
             train[y_train.name] = Series(y_train, index=train.index)
             X_test = feature_vectors.iloc[test_index, :].reset_index(drop=True)
             y_test = labels.iloc[test_index].reset_index(drop=True)
+            if tree_constructor == 'ism':
+                # trees = []
+                # for constructor in ism_constructors:
+                #     tree = constructor.construct_tree(X_train, y_train)
+                #     tree.data = train
+                #     tree.populate_samples(X_train, y_train.values)
+                #     trees.append(tree)
+                constructed_tree = ISM_v3.ism(ISM_v3.bootstrap(train, y_train, ism_constructors,
+                                                               nr_classifiers=ism_nr_classifiers, boosting=ism_boosting),
+                                              train, y_train.name, calc_fracs_from_ensemble=ism_calc_fracs)
+            else:
+                constructed_tree = tree_constructor.construct_tree(X_train, y_train)
             for beta in betas:
                 # ism(decision_trees, data, class_label, min_nr_samples=1, calc_fracs_from_ensemble=False)
-                if tree_constructor == 'ism':
-                    trees = []
-                    for constructor in ism_constructors:
-                        tree = constructor.construct_tree(X_train, y_train)
-                        tree.data = train
-                        tree.populate_samples(X_train, y_train.values)
-                        trees.append(tree)
-                    constructed_tree = ISM_v3.ism(trees, train, y_train.name, calc_fracs_from_ensemble=ism_calc_fracs)
-                else:
-                    constructed_tree = tree_constructor.construct_tree(X_train, y_train)
-                constructed_tree.populate_samples(X_train, y_train.values)
-                pruned_tree = constructed_tree.minimize_cost_complexity(root_samples, beta)
+                tree_copy = deepcopy(constructed_tree)
+                tree_copy.populate_samples(X_train, y_train.values)
+                pruned_tree = tree_copy.minimize_cost_complexity(root_samples, beta)
                 predictions = pruned_tree.evaluate_multiple(X_test).astype(int)
                 beta_errors[beta].append(1 - accuracy_score(predictions, y_test))
 
