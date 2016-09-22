@@ -68,6 +68,8 @@ for dataset in datasets:
                      'Random OS': [], 'SMOTE': [], 'SMOTE SVM': [], 'SMOTE Tomek': [], 'SMOTE ENN': []}
     avg_nodes = {'Imbalanced': [], 'Random US': [], 'Tomek': [], 'Cluster': [], 'Instance NN': [], 'Edited NN': [],
                  'Random OS': [], 'SMOTE': [], 'SMOTE SVM': [], 'SMOTE Tomek': [], 'SMOTE ENN': []}
+    avg_time = {'Imbalanced': [], 'Random US': [], 'Tomek': [], 'Cluster': [], 'Instance NN': [], 'Edited NN': [],
+                 'Random OS': [], 'SMOTE': [], 'SMOTE SVM': [], 'SMOTE Tomek': [], 'SMOTE ENN': []}
     df = dataset['dataframe']
     label_col = dataset['label_col']
     feature_cols = dataset['feature_cols']
@@ -82,19 +84,6 @@ for dataset in datasets:
         X_test = test.drop(label_col, axis=1)
         y_test = test[label_col]
 
-        # smote = SMOTE(ratio='auto', kind='regular')
-        # STK = SMOTETomek(ratio='auto')
-        # print len(X_train)
-        # X_train, y_train = STK.fit_sample(X_train, y_train)
-        # X_train = DataFrame(X_train, columns=feature_cols)
-        # y_train = DataFrame(y_train, columns=[label_col])[label_col]
-        # perm = np.random.permutation(len(X_train))
-        # X_train = X_train.iloc[perm].reset_index(drop=True)
-        # y_train = y_train.iloc[perm].reset_index(drop=True)
-        # train = X_train.copy()
-        # train[y_train.name] = Series(y_train, index=train.index)
-        # print len(X_train)
-
         skf_tune = StratifiedKFold(train[label_col], n_folds=3, shuffle=True, random_state=1337)
 
         c45_clf = get_best_c45_classifier(train, label_col, skf_tune)
@@ -104,9 +93,11 @@ for dataset in datasets:
         avg_nodes['Imbalanced'].append(c45_tree.count_nodes())
 
         print 'Random Undersampling'
+        start = time.time()
         US = RandomUnderSampler()
         prior_nodes = len(X_train)
         X_train_sampled, y_train_sampled = US.fit_sample(X_train, y_train)
+        end = time.time()
         X_train_sampled = DataFrame(X_train_sampled, columns=feature_cols)
         y_train_sampled = DataFrame(y_train_sampled, columns=[label_col])[label_col]
         perm = np.random.permutation(len(X_train_sampled))
@@ -114,7 +105,7 @@ for dataset in datasets:
         y_train_sampled = y_train_sampled.iloc[perm].reset_index(drop=True)
         train = X_train_sampled.copy()
         train[y_train_sampled.name] = Series(y_train_sampled, index=train.index)
-        print 'From', prior_nodes, 'to', len(X_train_sampled)
+        print 'From', prior_nodes, 'to', len(X_train_sampled), 'in', (start-end), 'seconds'
 
         skf_tune = StratifiedKFold(train[label_col], n_folds=3, shuffle=True, random_state=1337)
 
@@ -125,9 +116,11 @@ for dataset in datasets:
         avg_nodes['Random US'].append(c45_tree.count_nodes())
 
         print 'Tomek'
+        start = time.time()
         TK = TomekLinks()
         prior_nodes = len(X_train)
         X_train_sampled, y_train_sampled = TK.fit_sample(X_train, y_train)
+        end = time.time()
         X_train_sampled = DataFrame(X_train_sampled, columns=feature_cols)
         y_train_sampled = DataFrame(y_train_sampled, columns=[label_col])[label_col]
         perm = np.random.permutation(len(X_train_sampled))
@@ -135,7 +128,7 @@ for dataset in datasets:
         y_train_sampled = y_train_sampled.iloc[perm].reset_index(drop=True)
         train = X_train_sampled.copy()
         train[y_train_sampled.name] = Series(y_train_sampled, index=train.index)
-        print 'From', prior_nodes, 'to', len(X_train_sampled)
+        print 'From', prior_nodes, 'to', len(X_train_sampled), 'in', (start-end), 'seconds'
 
         skf_tune = StratifiedKFold(train[label_col], n_folds=3, shuffle=True, random_state=1337)
 
@@ -146,9 +139,11 @@ for dataset in datasets:
         avg_nodes['Tomek'].append(c45_tree.count_nodes())
 
         print 'Clustering'
+        start = time.time()
         CC = ClusterCentroids()
         prior_nodes = len(X_train)
         X_train_sampled, y_train_sampled = CC.fit_sample(X_train, y_train)
+        end = time.time()
         X_train_sampled = DataFrame(X_train_sampled, columns=feature_cols)
         y_train_sampled = DataFrame(y_train_sampled, columns=[label_col])[label_col]
         perm = np.random.permutation(len(X_train_sampled))
@@ -156,7 +151,7 @@ for dataset in datasets:
         y_train_sampled = y_train_sampled.iloc[perm].reset_index(drop=True)
         train = X_train_sampled.copy()
         train[y_train_sampled.name] = Series(y_train_sampled, index=train.index)
-        print 'From', prior_nodes, 'to', len(X_train_sampled)
+        print 'From', prior_nodes, 'to', len(X_train_sampled), 'in', (start-end), 'seconds'
 
         skf_tune = StratifiedKFold(train[label_col], n_folds=3, shuffle=True, random_state=1337)
 
@@ -167,9 +162,11 @@ for dataset in datasets:
         avg_nodes['Cluster'].append(c45_tree.count_nodes())
 
         print 'Instance NN'
+        start = time.time()
         IHT = InstanceHardnessThreshold()
         prior_nodes = len(X_train)
         X_train_sampled, y_train_sampled = IHT.fit_sample(X_train, y_train)
+        end = time.time()
         X_train_sampled = DataFrame(X_train_sampled, columns=feature_cols)
         y_train_sampled = DataFrame(y_train_sampled, columns=[label_col])[label_col]
         perm = np.random.permutation(len(X_train_sampled))
@@ -177,7 +174,7 @@ for dataset in datasets:
         y_train_sampled = y_train_sampled.iloc[perm].reset_index(drop=True)
         train = X_train_sampled.copy()
         train[y_train_sampled.name] = Series(y_train_sampled, index=train.index)
-        print 'From', prior_nodes, 'to', len(X_train_sampled)
+        print 'From', prior_nodes, 'to', len(X_train_sampled), 'in', (start-end), 'seconds'
 
         skf_tune = StratifiedKFold(train[label_col], n_folds=3, shuffle=True, random_state=1337)
 
@@ -188,9 +185,11 @@ for dataset in datasets:
         avg_nodes['Instance NN'].append(c45_tree.count_nodes())
 
         print 'Edited NN'
+        start = time.time()
         RENN = RepeatedEditedNearestNeighbours()
         prior_nodes = len(X_train)
         X_train_sampled, y_train_sampled = RENN.fit_sample(X_train, y_train)
+        end = time.time()
         X_train_sampled = DataFrame(X_train_sampled, columns=feature_cols)
         y_train_sampled = DataFrame(y_train_sampled, columns=[label_col])[label_col]
         perm = np.random.permutation(len(X_train_sampled))
@@ -198,7 +197,7 @@ for dataset in datasets:
         y_train_sampled = y_train_sampled.iloc[perm].reset_index(drop=True)
         train = X_train_sampled.copy()
         train[y_train_sampled.name] = Series(y_train_sampled, index=train.index)
-        print 'From', prior_nodes, 'to', len(X_train_sampled)
+        print 'From', prior_nodes, 'to', len(X_train_sampled), 'in', (start-end), 'seconds'
 
         skf_tune = StratifiedKFold(train[label_col], n_folds=3, shuffle=True, random_state=1337)
 
@@ -209,9 +208,11 @@ for dataset in datasets:
         avg_nodes['Edited NN'].append(c45_tree.count_nodes())
 
         print 'Random OS'
+        start = time.time()
         OS = RandomOverSampler(ratio='auto')
         prior_nodes = len(X_train)
         X_train_sampled, y_train_sampled = OS.fit_sample(X_train, y_train)
+        end = time.time()
         X_train_sampled = DataFrame(X_train_sampled, columns=feature_cols)
         y_train_sampled = DataFrame(y_train_sampled, columns=[label_col])[label_col]
         perm = np.random.permutation(len(X_train_sampled))
@@ -219,7 +220,7 @@ for dataset in datasets:
         y_train_sampled = y_train_sampled.iloc[perm].reset_index(drop=True)
         train = X_train_sampled.copy()
         train[y_train_sampled.name] = Series(y_train_sampled, index=train.index)
-        print 'From', prior_nodes, 'to', len(X_train_sampled)
+        print 'From', prior_nodes, 'to', len(X_train_sampled), 'in', (start-end), 'seconds'
 
         skf_tune = StratifiedKFold(train[label_col], n_folds=3, shuffle=True, random_state=1337)
 
@@ -230,9 +231,11 @@ for dataset in datasets:
         avg_nodes['Random OS'].append(c45_tree.count_nodes())
 
         print 'SMOTE'
+        start = time.time()
         smote = SMOTE(ratio='auto', kind='regular')
         prior_nodes = len(X_train)
         X_train_sampled, y_train_sampled = smote.fit_sample(X_train, y_train)
+        end = time.time()
         X_train_sampled = DataFrame(X_train_sampled, columns=feature_cols)
         y_train_sampled = DataFrame(y_train_sampled, columns=[label_col])[label_col]
         perm = np.random.permutation(len(X_train_sampled))
@@ -240,7 +243,7 @@ for dataset in datasets:
         y_train_sampled = y_train_sampled.iloc[perm].reset_index(drop=True)
         train = X_train_sampled.copy()
         train[y_train_sampled.name] = Series(y_train_sampled, index=train.index)
-        print 'From', prior_nodes, 'to', len(X_train_sampled)
+        print 'From', prior_nodes, 'to', len(X_train_sampled), 'in', (start-end), 'seconds'
 
         skf_tune = StratifiedKFold(train[label_col], n_folds=3, shuffle=True, random_state=1337)
 
@@ -251,10 +254,12 @@ for dataset in datasets:
         avg_nodes['SMOTE'].append(c45_tree.count_nodes())
 
         print 'SMOTE SVM'
-        svm_args={'class_weight': 'auto'}
+        start = time.time()
+        svm_args={'class_weight': 'balanced'}
         svmsmote = SMOTE(ratio='auto', kind='svm', **svm_args)
         prior_nodes = len(X_train)
         X_train_sampled, y_train_sampled = svmsmote.fit_sample(X_train, y_train)
+        end = time.time()
         X_train_sampled = DataFrame(X_train_sampled, columns=feature_cols)
         y_train_sampled = DataFrame(y_train_sampled, columns=[label_col])[label_col]
         perm = np.random.permutation(len(X_train_sampled))
@@ -262,7 +267,7 @@ for dataset in datasets:
         y_train_sampled = y_train_sampled.iloc[perm].reset_index(drop=True)
         train = X_train_sampled.copy()
         train[y_train_sampled.name] = Series(y_train_sampled, index=train.index)
-        print 'From', prior_nodes, 'to', len(X_train_sampled)
+        print 'From', prior_nodes, 'to', len(X_train_sampled), 'in', (start-end), 'seconds'
 
         skf_tune = StratifiedKFold(train[label_col], n_folds=3, shuffle=True, random_state=1337)
 
@@ -273,9 +278,11 @@ for dataset in datasets:
         avg_nodes['SMOTE SVM'].append(c45_tree.count_nodes())
 
         print 'SMOTE Tomek'
+        start = time.time()
         STK = SMOTETomek(ratio='auto')
         prior_nodes = len(X_train)
         X_train_sampled, y_train_sampled = STK.fit_sample(X_train, y_train)
+        end = time.time()
         X_train_sampled = DataFrame(X_train_sampled, columns=feature_cols)
         y_train_sampled = DataFrame(y_train_sampled, columns=[label_col])[label_col]
         perm = np.random.permutation(len(X_train_sampled))
@@ -283,7 +290,7 @@ for dataset in datasets:
         y_train_sampled = y_train_sampled.iloc[perm].reset_index(drop=True)
         train = X_train_sampled.copy()
         train[y_train_sampled.name] = Series(y_train_sampled, index=train.index)
-        print 'From', prior_nodes, 'to', len(X_train_sampled)
+        print 'From', prior_nodes, 'to', len(X_train_sampled), 'in', (start-end), 'seconds'
 
         skf_tune = StratifiedKFold(train[label_col], n_folds=3, shuffle=True, random_state=1337)
 
@@ -294,9 +301,11 @@ for dataset in datasets:
         avg_nodes['SMOTE Tomek'].append(c45_tree.count_nodes())
 
         print 'SMOTE ENN'
+        start = time.time()
         SENN = SMOTEENN(ratio='auto')
         prior_nodes = len(X_train)
         X_train_sampled, y_train_sampled = SENN.fit_sample(X_train, y_train)
+        end = time.time()
         X_train_sampled = DataFrame(X_train_sampled, columns=feature_cols)
         y_train_sampled = DataFrame(y_train_sampled, columns=[label_col])[label_col]
         perm = np.random.permutation(len(X_train_sampled))
@@ -304,7 +313,7 @@ for dataset in datasets:
         y_train_sampled = y_train_sampled.iloc[perm].reset_index(drop=True)
         train = X_train_sampled.copy()
         train[y_train_sampled.name] = Series(y_train_sampled, index=train.index)
-        print 'From', prior_nodes, 'to', len(X_train_sampled)
+        print 'From', prior_nodes, 'to', len(X_train_sampled), 'in', (start-end), 'seconds'
 
         skf_tune = StratifiedKFold(train[label_col], n_folds=3, shuffle=True, random_state=1337)
 

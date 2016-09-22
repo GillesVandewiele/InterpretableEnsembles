@@ -2,206 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6ec3f469-cb8c-49af-8470-4419fe881c56" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/HealthPlan/Beweging module 1.sav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/HealthPlan/Beweging module 2.sav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/HealthPlan/Beweging module 3.sav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/HealthPlan/Fruit module 1.sav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/HealthPlan/Fruit module 2.sav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/HealthPlan/Fruit module 3.sav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/HealthPlan/Groenten module 1.sav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/HealthPlan/Groenten module 2.sav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/HealthPlan/Groenten module 3.sav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/HandOutlines/HandOutlines_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/StarLightCurves/StarLightCurves_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/UWaveGestureLibraryAll/UWaveGestureLibraryAll_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/labor.arff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/defragTrees.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/example/example_R.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/example/example_data.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/example/example_sklearn.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/example/example_xgb.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/example/regforest.R" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/example/test.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/example/train.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/inTreesWrapper.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/50words/50words_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/50words/50words_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Adiac/Adiac_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Adiac/Adiac_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ArrowHead/ArrowHead_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ArrowHead/ArrowHead_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Beef/Beef_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Beef/Beef_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/BeetleFly/BeetleFly_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/BeetleFly/BeetleFly_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/BirdChicken/BirdChicken_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/BirdChicken/BirdChicken_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/CBF/CBF_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/CBF/CBF_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Car/Car_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Car/Car_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ChlorineConcentration/ChlorineConcentration_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ChlorineConcentration/ChlorineConcentration_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/CinC_ECG_torso/CinC_ECG_torso_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/CinC_ECG_torso/CinC_ECG_torso_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Coffee/Coffee_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Coffee/Coffee_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Computers/Computers_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Computers/Computers_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Cricket_X/Cricket_X_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Cricket_X/Cricket_X_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Cricket_Y/Cricket_Y_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Cricket_Y/Cricket_Y_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Cricket_Z/Cricket_Z_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Cricket_Z/Cricket_Z_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/DiatomSizeReduction/DiatomSizeReduction_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/DiatomSizeReduction/DiatomSizeReduction_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/DistalPhalanxOutlineAgeGroup/DistalPhalanxOutlineAgeGroup_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/DistalPhalanxOutlineAgeGroup/DistalPhalanxOutlineAgeGroup_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/DistalPhalanxOutlineCorrect/DistalPhalanxOutlineCorrect_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/DistalPhalanxOutlineCorrect/DistalPhalanxOutlineCorrect_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/DistalPhalanxTW/DistalPhalanxTW_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/DistalPhalanxTW/DistalPhalanxTW_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ECG200/ECG200_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ECG200/ECG200_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ECG5000/ECG5000_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ECG5000/ECG5000_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ECGFiveDays/ECGFiveDays_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ECGFiveDays/ECGFiveDays_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Earthquakes/Earthquakes_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Earthquakes/Earthquakes_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ElectricDevices/ElectricDevices_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ElectricDevices/ElectricDevices_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/FISH/FISH_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/FISH/FISH_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/FaceAll/FaceAll_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/FaceAll/FaceAll_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/FaceFour/FaceFour_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/FaceFour/FaceFour_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/FacesUCR/FacesUCR_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/FacesUCR/FacesUCR_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/FordA/FordA_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/FordA/FordA_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/FordB/FordB_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/FordB/FordB_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Gun_Point/Gun_Point_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Gun_Point/Gun_Point_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Ham/Ham_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Ham/Ham_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/HandOutlines/HandOutlines_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Haptics/Haptics_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Haptics/Haptics_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Herring/Herring_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Herring/Herring_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/InlineSkate/InlineSkate_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/InlineSkate/InlineSkate_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/InsectWingbeatSound/InsectWingbeatSound_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/InsectWingbeatSound/InsectWingbeatSound_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ItalyPowerDemand/ItalyPowerDemand_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ItalyPowerDemand/ItalyPowerDemand_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/LargeKitchenAppliances/LargeKitchenAppliances_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/LargeKitchenAppliances/LargeKitchenAppliances_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Lighting2/Lighting2_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Lighting2/Lighting2_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Lighting7/Lighting7_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Lighting7/Lighting7_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/MALLAT/MALLAT_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/MALLAT/MALLAT_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Meat/Meat_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Meat/Meat_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/MedicalImages/MedicalImages_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/MedicalImages/MedicalImages_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/MiddlePhalanxOutlineAgeGroup/MiddlePhalanxOutlineAgeGroup_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/MiddlePhalanxOutlineAgeGroup/MiddlePhalanxOutlineAgeGroup_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/MiddlePhalanxOutlineCorrect/MiddlePhalanxOutlineCorrect_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/MiddlePhalanxOutlineCorrect/MiddlePhalanxOutlineCorrect_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/MiddlePhalanxTW/MiddlePhalanxTW_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/MiddlePhalanxTW/MiddlePhalanxTW_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/MoteStrain/MoteStrain_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/MoteStrain/MoteStrain_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/NonInvasiveFatalECG_Thorax1/NonInvasiveFatalECG_Thorax1_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/NonInvasiveFatalECG_Thorax1/NonInvasiveFatalECG_Thorax1_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/NonInvasiveFatalECG_Thorax2/NonInvasiveFatalECG_Thorax2_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/NonInvasiveFatalECG_Thorax2/NonInvasiveFatalECG_Thorax2_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/OSULeaf/OSULeaf_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/OSULeaf/OSULeaf_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/OliveOil/OliveOil_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/OliveOil/OliveOil_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/PhalangesOutlinesCorrect/PhalangesOutlinesCorrect_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/PhalangesOutlinesCorrect/PhalangesOutlinesCorrect_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Phoneme/Phoneme_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Phoneme/Phoneme_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Plane/Plane_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Plane/Plane_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ProximalPhalanxOutlineAgeGroup/ProximalPhalanxOutlineAgeGroup_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ProximalPhalanxOutlineAgeGroup/ProximalPhalanxOutlineAgeGroup_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ProximalPhalanxOutlineCorrect/ProximalPhalanxOutlineCorrect_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ProximalPhalanxOutlineCorrect/ProximalPhalanxOutlineCorrect_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ProximalPhalanxTW/ProximalPhalanxTW_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ProximalPhalanxTW/ProximalPhalanxTW_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/RefrigerationDevices/RefrigerationDevices_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/RefrigerationDevices/RefrigerationDevices_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ScreenType/ScreenType_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ScreenType/ScreenType_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ShapeletSim/ShapeletSim_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ShapeletSim/ShapeletSim_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ShapesAll/ShapesAll_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ShapesAll/ShapesAll_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/SmallKitchenAppliances/SmallKitchenAppliances_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/SmallKitchenAppliances/SmallKitchenAppliances_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/SonyAIBORobotSurface/SonyAIBORobotSurface_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/SonyAIBORobotSurface/SonyAIBORobotSurface_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/SonyAIBORobotSurfaceII/SonyAIBORobotSurfaceII_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/SonyAIBORobotSurfaceII/SonyAIBORobotSurfaceII_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/StarLightCurves/StarLightCurves_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Strawberry/Strawberry_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Strawberry/Strawberry_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/SwedishLeaf/SwedishLeaf_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/SwedishLeaf/SwedishLeaf_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Symbols/Symbols_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Symbols/Symbols_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ToeSegmentation1/ToeSegmentation1_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ToeSegmentation1/ToeSegmentation1_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ToeSegmentation2/ToeSegmentation2_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/ToeSegmentation2/ToeSegmentation2_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Trace/Trace_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Trace/Trace_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/TwoLeadECG/TwoLeadECG_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/TwoLeadECG/TwoLeadECG_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Two_Patterns/Two_Patterns_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Two_Patterns/Two_Patterns_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/UWaveGestureLibraryAll/UWaveGestureLibraryAll_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Wine/Wine_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Wine/Wine_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/WordsSynonyms/WordsSynonyms_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/WordsSynonyms/WordsSynonyms_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Worms/Worms_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/Worms/Worms_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/WormsTwoClass/WormsTwoClass_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/WormsTwoClass/WormsTwoClass_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/synthetic_control/synthetic_control_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/synthetic_control/synthetic_control_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/uWaveGestureLibrary_X/uWaveGestureLibrary_X_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/uWaveGestureLibrary_X/uWaveGestureLibrary_X_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/uWaveGestureLibrary_Y/uWaveGestureLibrary_Y_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/uWaveGestureLibrary_Y/uWaveGestureLibrary_Y_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/uWaveGestureLibrary_Z/uWaveGestureLibrary_Z_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/uWaveGestureLibrary_Z/uWaveGestureLibrary_Z_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/wafer/wafer_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/wafer/wafer_TRAIN" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/yoga/yoga_TEST" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ts_data/yoga/yoga_TRAIN" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/constructors/tree" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/constructors/tree.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/MackeyGlass_t17.txt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/constructors/data.txt" afterPath="$PROJECT_DIR$/constructors/data.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/constructors/log.txt" afterPath="$PROJECT_DIR$/constructors/log.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/constructors/out.txt" afterPath="$PROJECT_DIR$/constructors/out.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/constructors/questbenchconstructor.py" afterPath="$PROJECT_DIR$/constructors/questbenchconstructor.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/constructors/treemerger.py" afterPath="$PROJECT_DIR$/constructors/treemerger.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/balanced_sets.py" afterPath="$PROJECT_DIR$/balanced_sets.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/load_datasets.py" afterPath="$PROJECT_DIR$/data/load_datasets.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/decisiontree.py" afterPath="$PROJECT_DIR$/decisiontree.py" />
     </list>
     <ignored path="InterpretableEnsembles.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -217,11 +20,12 @@
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$questbenchconstructor.coverage" NAME="questbenchconstructor Coverage Results" MODIFIED="1474554375100" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/constructors" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$MyHealthPlanDataInspector.coverage" NAME="MyHealthPlanDataInspector Coverage Results" MODIFIED="1474456849421" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$load_datasets.coverage" NAME="load_datasets Coverage Results" MODIFIED="1473944140508" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data" />
-    <SUITE FILE_PATH="coverage/InterpretableEnsembles$balanced_sets.coverage" NAME="balanced_sets Coverage Results" MODIFIED="1474555715849" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/InterpretableEnsembles$balanced_sets.coverage" NAME="balanced_sets Coverage Results" MODIFIED="1474556604659" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$basic_algorithms.coverage" NAME="basic_algorithms Coverage Results" MODIFIED="1474278005958" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$example_sklearn.coverage" NAME="example_sklearn Coverage Results" MODIFIED="1474464661505" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/defragTrees-master/example" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$paper_synthetic.coverage" NAME="paper_synthetic Coverage Results" MODIFIED="1474464825839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/defragTrees-master/paper" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$Unittests_in_setup.coverage" NAME="Unittests in setup Coverage Results" MODIFIED="1474538629220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/shapelets-master" />
+    <SUITE FILE_PATH="coverage/InterpretableEnsembles$test.coverage" NAME="test Coverage Results" MODIFIED="1474558556791" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/latex" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$ISM_v3.coverage" NAME="ISM_v3 Coverage Results" MODIFIED="1472808329283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$guideconstructor.coverage" NAME="guideconstructor Coverage Results" MODIFIED="1474289485650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/constructors" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$cn2rulelearner.coverage" NAME="cn2rulelearner Coverage Results" MODIFIED="1474032540795" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/constructors" />
@@ -260,8 +64,8 @@
       <file leaf-file-name="balanced_sets.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/balanced_sets.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="298" column="47" selection-start-line="298" selection-start-column="47" selection-end-line="298" selection-end-column="47" />
+            <state relative-caret-position="234">
+              <caret line="109" column="45" selection-start-line="109" selection-start-column="45" selection-end-line="109" selection-end-column="45" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -285,30 +89,6 @@
             <state relative-caret-position="608">
               <caret line="481" column="0" selection-start-line="481" selection-start-column="0" selection-end-line="481" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="treemerger.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/constructors/treemerger.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="833">
-              <caret line="638" column="0" selection-start-line="638" selection-start-column="0" selection-end-line="638" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="example.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/shaplets-python-master/example.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
-              <folding>
-                <element signature="e#0#67#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -338,8 +118,8 @@
       <file leaf-file-name="load_datasets.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/load_datasets.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="41" column="32" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
+            <state relative-caret-position="465">
+              <caret line="35" column="50" selection-start-line="35" selection-start-column="50" selection-end-line="35" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -390,8 +170,10 @@
         <option value="/usr/local/lib/python2.7/dist-packages/shapelets/fileio.py" />
         <option value="$PROJECT_DIR$/shaplets-python-master/example.py" />
         <option value="$PROJECT_DIR$/shaplets-python-master/shapelets/classification/shapelet_models.py" />
-        <option value="$PROJECT_DIR$/data/load_datasets.py" />
         <option value="$PROJECT_DIR$/constructors/questbenchconstructor.py" />
+        <option value="$PROJECT_DIR$/data/load_datasets.py" />
+        <option value="$PROJECT_DIR$/latex/test.py" />
+        <option value="$PROJECT_DIR$/latex/Table.py" />
         <option value="$PROJECT_DIR$/balanced_sets.py" />
       </list>
     </option>
@@ -451,20 +233,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="InterpretableEnsembles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="InterpretableEnsembles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -485,14 +253,14 @@
       <recent name="$PROJECT_DIR$/constructors" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/latex" />
       <recent name="$PROJECT_DIR$/shaplets-python-master/shapelets/data" />
       <recent name="$PROJECT_DIR$/data/HealthPlan" />
       <recent name="$PROJECT_DIR$/constructors" />
       <recent name="$PROJECT_DIR$/binaries" />
-      <recent name="$PROJECT_DIR$/data" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.balanced_sets">
+  <component name="RunManager" selected="Python.test">
     <configuration default="false" name="questbenchconstructor" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -529,29 +297,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittests in setup" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/shapelets-master" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="InterpretableEnsembles" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/shapelets-master/setup.py" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="plotShapelets" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -584,6 +329,24 @@
       <module name="InterpretableEnsembles" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/balanced_sets.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/latex" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="InterpretableEnsembles" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/latex/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -799,17 +562,17 @@
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.questbenchconstructor" />
       <item index="1" class="java.lang.String" itemvalue="Python.example" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in setup" />
-      <item index="3" class="java.lang.String" itemvalue="Python.plotShapelets" />
-      <item index="4" class="java.lang.String" itemvalue="Python.balanced_sets" />
+      <item index="2" class="java.lang.String" itemvalue="Python.plotShapelets" />
+      <item index="3" class="java.lang.String" itemvalue="Python.balanced_sets" />
+      <item index="4" class="java.lang.String" itemvalue="Python.test" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.balanced_sets" />
-        <item index="1" class="java.lang.String" itemvalue="Python.questbenchconstructor" />
-        <item index="2" class="java.lang.String" itemvalue="Python.example" />
-        <item index="3" class="java.lang.String" itemvalue="Python.plotShapelets" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in setup" />
+        <item index="0" class="java.lang.String" itemvalue="Python.test" />
+        <item index="1" class="java.lang.String" itemvalue="Python.balanced_sets" />
+        <item index="2" class="java.lang.String" itemvalue="Python.questbenchconstructor" />
+        <item index="3" class="java.lang.String" itemvalue="Python.example" />
+        <item index="4" class="java.lang.String" itemvalue="Python.plotShapelets" />
       </list>
     </recent_temporary>
   </component>
@@ -887,30 +650,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/constructors/cartconstructor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="110" column="28" selection-start-line="110" selection-start-column="28" selection-end-line="110" selection-end-column="28" />
-          <folding>
-            <element signature="e#171#188#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prune_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="36" column="19" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/lib/python2.7/dist-packages/javabridge/jutil.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="1709" column="0" selection-start-line="1709" selection-start-column="0" selection-end-line="1709" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MyHealthPlanDataInspector.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1191,14 +930,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file:///usr/local/lib/python2.7/dist-packages/sklearn/metrics/classification.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-776">
-          <caret line="1307" column="4" selection-start-line="1307" selection-start-column="4" selection-end-line="1307" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/shaplets-python-master/example.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -1216,14 +947,6 @@
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/load_datasets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="41" column="32" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1263,10 +986,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/sklearn/metrics/classification.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-776">
+          <caret line="1307" column="4" selection-start-line="1307" selection-start-column="4" selection-end-line="1307" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/load_datasets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="35" column="50" selection-start-line="35" selection-start-column="50" selection-end-line="35" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex/sigfig.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latex/Table.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="185" column="20" selection-start-line="185" selection-start-column="20" selection-end-line="185" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/balanced_sets.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="298" column="47" selection-start-line="298" selection-start-column="47" selection-end-line="298" selection-end-column="47" />
+        <state relative-caret-position="234">
+          <caret line="109" column="45" selection-start-line="109" selection-start-column="45" selection-end-line="109" selection-end-column="45" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
