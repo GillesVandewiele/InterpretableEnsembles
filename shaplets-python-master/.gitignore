@@ -1,0 +1,7 @@
+.idea/
+*.pyc
+.cache/
+workspace/
+data
+loss.jpg
+

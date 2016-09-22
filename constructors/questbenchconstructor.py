@@ -7,7 +7,12 @@
 
 import Orange
 import time
-from pandas import DataFrame
+
+from imblearn.combine import SMOTETomek
+from imblearn.over_sampling import SMOTE
+from imblearn.under_sampling import ClusterCentroids
+from imblearn.under_sampling import RandomUnderSampler
+from pandas import DataFrame, Series
 import os
 import subprocess
 
@@ -18,9 +23,11 @@ from sklearn.metrics import confusion_matrix
 from ISM_v3 import ism, bootstrap
 from constructors.c45orangeconstructor import C45Constructor
 from constructors.cartconstructor import CARTConstructor
+from constructors.cn2rulelearner import CN2UnorderedConstructor
 from constructors.guideconstructor import GUIDEConstructor
 from constructors.questconstructor import QuestConstructor
 from constructors.treeconstructor import TreeConstructor
+from constructors.treemerger import DecisionTreeMerger
 from data.load_all_datasets import load_all_datasets
 from decisiontree import DecisionTree
 from pandas_to_orange import df2table
@@ -200,15 +207,55 @@ def get_best_cart_classifier(train, label_col, skf_tune):
 
     return cart
 
+def get_best_cn2_classifier(train, label_col, skf_tune):
+    cn2 = CN2UnorderedConstructor()
+    beam_widths = np.arange(1,20,3)
+    # alphas = np.arange(0.1, 1, 0.2)
+    alphas = [0.25, 0.5, 0.75]
+
+    errors = {}
+    for beam_width in beam_widths:
+        for alpha in alphas:
+            errors[(beam_width, alpha)] = []
+
+    for train_tune_idx, val_tune_idx in skf_tune:
+        train_tune = train.iloc[train_tune_idx, :]
+        X_train_tune = train_tune.drop(label_col, axis=1)
+        y_train_tune = train_tune[label_col]
+        val_tune = train.iloc[val_tune_idx, :]
+        X_val_tune = val_tune.drop(label_col, axis=1)
+        y_val_tune = val_tune[label_col]
+        for beam_width in beam_widths:
+            for alpha in alphas:
+                cn2.beam_width = beam_width
+                cn2.alpha = alpha
+                cn2.extract_rules(X_train_tune, y_train_tune)
+                predictions = map(int, [prediction[0].value for prediction in cn2.classify(X_val_tune)])
+                errors[(beam_width, alpha)].append(1 - accuracy_score(predictions, y_val_tune, normalize=True))
+                # print 1 - accuracy_score(predictions, y_val_tune, normalize=True), (beam_width, alpha)
+
+    for beam_width in beam_widths:
+        for alpha in alphas:
+            errors[(beam_width, alpha)] = np.mean(errors[(beam_width, alpha)])
+
+    best_params = min(errors.items(), key=operator.itemgetter(1))[0]
+    cn2.beam_width = best_params[0]
+    cn2.alpha = best_params[1]
+
+    return cn2
+
 datasets = load_all_datasets()
 quest_bench = QUESTBenchConstructor()
 guide = GUIDEConstructor()
 quest = QuestConstructor()
+merger = DecisionTreeMerger()
 NR_FOLDS = 5
 for dataset in datasets:
     print dataset['name']
-    conf_matrices = {'QUESTGilles': [], 'QUESTLoh': [], 'GUIDE': [], 'C4.5': [], 'CART': [], 'ISM': [], 'ISM_pruned': []}
-    avg_nodes = {'QUESTGilles': [], 'QUESTLoh': [], 'GUIDE': [], 'C4.5': [], 'CART': [], 'ISM': [], 'ISM_pruned': []}
+    conf_matrices = {'QUESTGilles': [], 'GUIDE': [], 'C4.5': [], 'CART': [], 'QUESTLoh': [], 'ISM': [], 'ISM_pruned': [],
+                     'CN2': []}  #
+    avg_nodes = {'QUESTGilles': [], 'GUIDE': [], 'C4.5': [], 'CART': [], 'QUESTLoh': [], 'ISM': [], 'ISM_pruned': [],
+                 'CN2': []}  #
     df = dataset['dataframe']
     label_col = dataset['label_col']
     feature_cols = dataset['feature_cols']
@@ -223,19 +270,32 @@ for dataset in datasets:
         X_test = test.drop(label_col, axis=1)
         y_test = test[label_col]
 
+        # smote = SMOTE(ratio='auto', kind='regular')
+        # STK = SMOTETomek(ratio='auto')
+        # print len(X_train)
+        # X_train, y_train = STK.fit_sample(X_train, y_train)
+        # X_train = DataFrame(X_train, columns=feature_cols)
+        # y_train = DataFrame(y_train, columns=[label_col])[label_col]
+        # perm = np.random.permutation(len(X_train))
+        # X_train = X_train.iloc[perm].reset_index(drop=True)
+        # y_train = y_train.iloc[perm].reset_index(drop=True)
+        # train = X_train.copy()
+        # train[y_train.name] = Series(y_train, index=train.index)
+        # print len(X_train)
+
         quest_bench_tree = quest_bench.construct_tree(X_train, y_train)
         predictions = quest_bench_tree.evaluate_multiple(X_test).astype(int)
-        conf_matrices['QUESTLoh'].append(confusion_matrix(predictions, y_test))
+        conf_matrices['QUESTLoh'].append(confusion_matrix(y_test, predictions))
         avg_nodes['QUESTLoh'].append(quest_bench_tree.count_nodes())
 
         quest_tree = quest.construct_tree(X_train, y_train)
         predictions = quest_tree.evaluate_multiple(X_test).astype(int)
-        conf_matrices['QUESTGilles'].append(confusion_matrix(predictions, y_test))
+        conf_matrices['QUESTGilles'].append(confusion_matrix(y_test, predictions))
         avg_nodes['QUESTGilles'].append(quest_tree.count_nodes())
 
         guide_tree = guide.construct_tree(X_train, y_train)
         predictions = guide_tree.evaluate_multiple(X_test).astype(int)
-        conf_matrices['GUIDE'].append(confusion_matrix(predictions, y_test))
+        conf_matrices['GUIDE'].append(confusion_matrix(y_test, predictions))
         avg_nodes['GUIDE'].append(guide_tree.count_nodes())
 
         skf_tune = StratifiedKFold(train[label_col], n_folds=3, shuffle=True, random_state=1337)
@@ -243,34 +303,56 @@ for dataset in datasets:
         c45_clf = get_best_c45_classifier(train, label_col, skf_tune)
         c45_tree = c45_clf.construct_tree(X_train, y_train)
         predictions = c45_tree.evaluate_multiple(X_test).astype(int)
-        conf_matrices['C4.5'].append(confusion_matrix(predictions, y_test))
+        conf_matrices['C4.5'].append(confusion_matrix(y_test, predictions))
         avg_nodes['C4.5'].append(c45_tree.count_nodes())
 
         cart_clf = get_best_cart_classifier(train, label_col, skf_tune)
         cart_tree = cart_clf.construct_tree(X_train, y_train)
         predictions = cart_tree.evaluate_multiple(X_test).astype(int)
-        conf_matrices['CART'].append(confusion_matrix(predictions, y_test))
+        conf_matrices['CART'].append(confusion_matrix(y_test, predictions))
         avg_nodes['CART'].append(cart_tree.count_nodes())
 
+        cn2_clf = get_best_cn2_classifier(train, label_col, skf_tune)
+        cn2 = cn2_clf.extract_rules(X_train, y_train)
+        predictions = map(int, [prediction[0].value for prediction in cn2_clf.classify(X_test)])
+        conf_matrices['CN2'].append(confusion_matrix(y_test, predictions))
+        avg_nodes['CN2'].append(len(cn2_clf.model.rules))
+
         print 'Got all trees, lets merge them!'
-        # trees = [quest_bench_tree, quest_tree, guide_tree, c45_tree, cart_tree]
-        # for tree in trees:
-        #     tree.data = train
-        #     tree.populate_samples(X_train, y_train.values)
+        trees = [quest_bench_tree, quest_tree, guide_tree, c45_tree, cart_tree]
+        for tree in trees:
+            tree.data = train
+            tree.populate_samples(X_train, y_train.values)
 
         constructors = [c45_clf, cart_clf, quest, guide]
-        ism_tree = ism(bootstrap(train, label_col, constructors, boosting=True, nr_classifiers=5), train, label_col,
+        #
+        # train_gen = train.rename(columns={'Class':'cat'})
+        # genetic = merger.genetic_algorithm(train_gen, 'cat', constructors, seed=1337, num_iterations=10,
+        #                                    num_mutations=5, population_size=10, max_samples=1, val_fraction=0.10,
+        #                                    num_boosts=1)
+        # predictions = genetic.evaluate_multiple(X_test).astype(int)
+        # conf_matrices['Genetic'].append(confusion_matrix(y_test, predictions))
+        # avg_nodes['Genetic'].append(genetic.count_nodes())
+
+        # genetic_prune = merger.genetic_algorithm(train_gen, 'cat', constructors, seed=1337, num_iterations=10,
+        #                                    num_mutations=5, population_size=10, max_samples=1, val_fraction=0.10,
+        #                                    num_boosts=1, prune=True)
+        # predictions = genetic_prune.evaluate_multiple(X_test).astype(int)
+        # conf_matrices['Genetic_prune'].append(confusion_matrix(y_test, predictions))
+        # avg_nodes['Genetic_prune'].append(genetic_prune.count_nodes())
+
+        ism_tree = ism(bootstrap(train, label_col, constructors, boosting=True, nr_classifiers=3), train, label_col,
                        min_nr_samples=1, calc_fracs_from_ensemble=True)
         predictions = ism_tree.evaluate_multiple(X_test).astype(int)
-        conf_matrices['ISM'].append(confusion_matrix(predictions, y_test))
+        conf_matrices['ISM'].append(confusion_matrix(y_test, predictions))
         avg_nodes['ISM'].append(ism_tree.count_nodes())
 
         print 'Lets prune the tree'
         ism_pruned = ism_tree.cost_complexity_pruning(X_train, y_train, 'ism', ism_constructors=constructors,
-                                                      ism_calc_fracs=True, nr_folds=3, ism_nr_classifiers=5,
+                                                      ism_calc_fracs=True, n_folds=3, ism_nr_classifiers=3,
                                                       ism_boosting=True)
         predictions = ism_pruned.evaluate_multiple(X_test).astype(int)
-        conf_matrices['ISM_pruned'].append(confusion_matrix(predictions, y_test))
+        conf_matrices['ISM_pruned'].append(confusion_matrix(y_test, predictions))
         print conf_matrices['ISM'][len(conf_matrices['ISM'])-1]
         print conf_matrices['ISM_pruned'][len(conf_matrices['ISM_pruned'])-1]
         avg_nodes['ISM_pruned'].append(ism_pruned.count_nodes())
@@ -290,8 +372,11 @@ for dataset in datasets:
 
         diagonal_sum = sum(
             [conf_matrices_mean[key][i][i] for i in range(len(conf_matrices_mean[key]))])
+        norm_diagonal_sum = sum(
+            [conf_matrices_mean[key][i][i]/sum(conf_matrices_mean[key][i]) for i in range(len(conf_matrices_mean[key]))])
         total_count = np.sum(conf_matrices_mean[key])
         print conf_matrices_mean[key], float(diagonal_sum) / float(total_count)
+        print 'Balanced accuracy: ', float(norm_diagonal_sum) / conf_matrices_mean[key].shape[0]
 
         ax = fig.add_subplot(1, len(conf_matrices), counter + 1)
         cax = ax.matshow(cm_normalized, cmap=plt.cm.Blues, vmin=0.0, vmax=1.0)

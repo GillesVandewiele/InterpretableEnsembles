@@ -15,8 +15,8 @@ import sklearn
 from sklearn.cross_validation import StratifiedShuffleSplit
 from sklearn.utils import resample
 
-from objects.decisiontree import DecisionTree
-from objects.featuredescriptors import CONTINUOUS
+from decisiontree import DecisionTree
+from featuredescriptors import CONTINUOUS
 
 
 class LineSegment(object):
@@ -521,18 +521,14 @@ class DecisionTreeMerger(object):
 
 
     def regions_to_tree_improved(self, features_df, labels_df, regions, features, feature_mins, feature_maxs, max_samples=5):
-        start = time.clock()
         lines = self.find_lines(regions, features, feature_mins, feature_maxs)
-        end = time.clock()
         # print "Found ", len(lines), " lines for ", len(regions), " regions and ", len(features), " features in ", (end-start), " seconds"
         # print lines
 
         if lines is None or len(lines) <= 0:
             return DecisionTree(label=str(np.argmax(np.bincount(labels_df['cat'].values.astype(int)))), value=None, data=features_df)
 
-        start = time.clock()
         info_gains = self.calculate_info_gains(lines, features_df, labels_df)
-        end = time.clock()
         # print "Calculated info gains ", len(lines), " features and ", len(features_df), " samples in ", (end-start), " seconds"
         # print info_gains
 
@@ -575,7 +571,7 @@ class DecisionTreeMerger(object):
 
     def genetic_algorithm(self, data, cat_name, tree_constructors, population_size=15, num_mutations=3,
                           val_fraction=0.25, num_iterations=5, seed=1337, max_samples=5, num_boosts=3,
-                          max_regions=1000):
+                          max_regions=1000, prune=False):
 
         print "Initializing"
         #################################
@@ -618,7 +614,7 @@ class DecisionTreeMerger(object):
             boosting_train_features_df = train_features_df.copy()
             boosting_train_labels_df = train_labels_df.copy()
             regions_to_merge = []
-            tree = tree_constructor.construct_tree(train_features_df, train_labels_df)
+            tree = tree_constructor.construct_tree(train_features_df, train_labels_df['cat'])
             tree.populate_samples(train_features_df, train_labels_df['cat'])
             regions = self.decision_tree_to_decision_table(tree, train_features_df)
             regions_list.append(regions)
@@ -743,6 +739,11 @@ class DecisionTreeMerger(object):
                 print counter, len(region)
                 tree = self.regions_to_tree_improved(train_features_df, train_labels_df, region, feature_column_names,
                                                      feature_mins, feature_maxs, max_samples=max_samples)
+                if prune:
+                    print 'Pruning the tree...', tree.count_nodes()
+                    tree = tree.cost_complexity_pruning(train_features_df, train_labels_df['cat'], None, cv=False,
+                                                        val_features=test_features_df, val_labels=test_labels_df['cat'])
+                    print 'Done', tree.count_nodes()
                 predicted_labels = tree.evaluate_multiple(test_features_df)
                 confusion_matrix = tree.plot_confusion_matrix(test_labels_df[cat_name].values.astype(str), predicted_labels.astype(str))
                 confusion_matrix = confusion_matrix.astype('float') / confusion_matrix.sum()
@@ -753,6 +754,14 @@ class DecisionTreeMerger(object):
                 counter += 1
 
         for tree in start_trees:
+            # eature_vectors, labels, tree_constructor, ism_constructors = [],
+            # ism_calc_fracs = False, ism_nr_classifiers = 3, ism_boosting = False, n_folds = 3,
+            # cv = True, val_features = None, val_labels = None)
+            if prune:
+                print 'Pruning the tree...', tree.count_nodes()
+                tree = tree.cost_complexity_pruning(train_features_df, train_labels_df['cat'], None, cv=False,
+                                                    val_features=test_features_df, val_labels=test_labels_df['cat'])
+                print 'Done', tree.count_nodes()
             predicted_labels = tree.evaluate_multiple(test_features_df)
             confusion_matrix = tree.plot_confusion_matrix(test_labels_df[cat_name].values.astype(str), predicted_labels.astype(str))
             confusion_matrix = confusion_matrix.astype('float') / confusion_matrix.sum()

@@ -1,0 +1,4 @@
+
+
+CONTINUOUS = "continuous"
+DISCRETE = "discrete"

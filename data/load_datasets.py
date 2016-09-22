@@ -15,8 +15,8 @@ def load_wine():
     df['Class'] = np.subtract(df['Class'], 1)
 
     return df, features, 'Class', 'wine'
-
-
+#
+#
 def load_cars():
     columns = ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety', 'Class']
     features = ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety']
@@ -41,8 +41,8 @@ def load_cars():
 
     return df, features, 'Class', 'cars'
     # return df.iloc[:150, :], features, 'Class', 'cars'
-
-
+#
+#
 def load_wisconsin_breast_cancer():
     columns = ['ID', 'ClumpThickness', 'CellSizeUniform', 'CellShapeUniform', 'MargAdhesion', 'EpithCellSize', 'BareNuclei',
                'BlandChromatin', 'NormalNuclei', 'Mitoses', 'Class']

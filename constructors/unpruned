@@ -1,0 +1,53 @@
+digraph DT{
+node[fontname="Arial"];
+Node1 [label="chest pain type <= 3.0
+{'1': 85.0, '0': 108.0}"];
+Node2 [label="thal <= 3.0
+{'1': 18.0, '0': 83.0}"];
+Node3 [label="0
+{'1': 6.0, '0': 68.0}" shape="box"];
+Node2 -> Node3 [label="true"];
+Node4 [label="number of vessels <= 0.0
+{'1': 12.0, '0': 15.0}"];
+Node5 [label="0
+{'1': 4.0, '0': 13.0}" shape="box"];
+Node4 -> Node5 [label="true"];
+Node6 [label="slope peak <= 1.0
+{'1': 8.0, '0': 2.0}"];
+Node7 [label="0
+{'1': 1.0, '0': 2.0}" shape="box"];
+Node6 -> Node7 [label="true"];
+Node8 [label="1
+{'1': 7.0, '0': 0.0}" shape="box"];
+Node6->Node8 [label="false"];
+Node4->Node6 [label="false"];
+Node2->Node4 [label="false"];
+Node1 -> Node2 [label="true"];
+Node12 [label="number of vessels <= 0.0
+{'1': 67.0, '0': 25.0}"];
+Node13 [label="thal <= 3.0
+{'1': 19.0, '0': 20.0}"];
+Node14 [label="0
+{'1': 4.0, '0': 15.0}" shape="box"];
+Node13 -> Node14 [label="true"];
+Node15 [label="age <= 52.0
+{'1': 15.0, '0': 5.0}"];
+Node16 [label="1
+{'1': 10.0, '0': 0.0}" shape="box"];
+Node15 -> Node16 [label="true"];
+Node17 [label="slope peak <= 2.0
+{'1': 5.0, '0': 5.0}"];
+Node18 [label="0
+{'1': 1.0, '0': 5.0}" shape="box"];
+Node17 -> Node18 [label="true"];
+Node19 [label="1
+{'1': 4.0, '0': 0.0}" shape="box"];
+Node17->Node19 [label="false"];
+Node15->Node17 [label="false"];
+Node13->Node15 [label="false"];
+Node12 -> Node13 [label="true"];
+Node23 [label="1
+{'1': 48.0, '0': 5.0}" shape="box"];
+Node12->Node23 [label="false"];
+Node1->Node12 [label="false"];
+}

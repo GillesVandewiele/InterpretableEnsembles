@@ -411,7 +411,8 @@ class DecisionTree(object):
                 return self
 
     def cost_complexity_pruning(self, feature_vectors, labels, tree_constructor, ism_constructors=[],
-                                ism_calc_fracs=False, ism_nr_classifiers=3, ism_boosting=False, n_folds=3):
+                                ism_calc_fracs=False, ism_nr_classifiers=3, ism_boosting=False, n_folds=3,
+                                cv=True, val_features=None, val_labels=None):
         # (http://mlwiki.org/index.php/Cost-Complexity_Pruning)
         self.set_parents()
         self.populate_samples(feature_vectors, labels.values)
@@ -421,51 +422,62 @@ class DecisionTree(object):
         subtrees = self.generate_subtree_sequence(root_samples)
         if len(subtrees) == 0: return self  # Something went wrong, pruning failed
 
-        subtrees_by_alpha = {y:x for x,y in subtrees.iteritems()}
-        subtrees_by_beta = {}
-        alphas = sorted(subtrees.values())
-        for i in range(len(alphas)-1):
-            beta = np.sqrt(alphas[i]*alphas[i+1])
-            betas.append(beta)
-            subtrees_by_beta[beta] = subtrees_by_alpha[alphas[i]]
-        print subtrees
-        print alphas
-        print betas
-        beta_errors = {}
-        for beta in betas:
-            beta_errors[beta] = []
-
-        skf = StratifiedKFold(labels, n_folds=n_folds, shuffle=True)
-        for train_index, test_index in skf:
-            X_train = feature_vectors.iloc[train_index, :].reset_index(drop=True)
-            y_train = labels.iloc[train_index].reset_index(drop=True)
-            train = X_train.copy()
-            train[y_train.name] = Series(y_train, index=train.index)
-            X_test = feature_vectors.iloc[test_index, :].reset_index(drop=True)
-            y_test = labels.iloc[test_index].reset_index(drop=True)
-            if tree_constructor == 'ism':
-                # trees = []
-                # for constructor in ism_constructors:
-                #     tree = constructor.construct_tree(X_train, y_train)
-                #     tree.data = train
-                #     tree.populate_samples(X_train, y_train.values)
-                #     trees.append(tree)
-                constructed_tree = ISM_v3.ism(ISM_v3.bootstrap(train, y_train, ism_constructors,
-                                                               nr_classifiers=ism_nr_classifiers, boosting=ism_boosting),
-                                              train, y_train.name, calc_fracs_from_ensemble=ism_calc_fracs)
-            else:
-                constructed_tree = tree_constructor.construct_tree(X_train, y_train)
+        if not cv:
+            __min = (1, 99)
+            best_tree = None
+            for tree in subtrees:
+                predictions = tree.evaluate_multiple(val_features).astype(int)
+                err, nodes = 1 - accuracy_score(val_labels.values, predictions), tree.count_nodes()
+                if (err, nodes) < __min:
+                    __min = (err, nodes)
+                    best_tree = tree
+            return best_tree
+        else:
+            subtrees_by_alpha = {y:x for x,y in subtrees.iteritems()}
+            subtrees_by_beta = {}
+            alphas = sorted(subtrees.values())
+            for i in range(len(alphas)-1):
+                beta = np.sqrt(alphas[i]*alphas[i+1])
+                betas.append(beta)
+                subtrees_by_beta[beta] = subtrees_by_alpha[alphas[i]]
+            print subtrees
+            print alphas
+            print betas
+            beta_errors = {}
             for beta in betas:
-                # ism(decision_trees, data, class_label, min_nr_samples=1, calc_fracs_from_ensemble=False)
-                tree_copy = deepcopy(constructed_tree)
-                tree_copy.populate_samples(X_train, y_train.values)
-                pruned_tree = tree_copy.minimize_cost_complexity(root_samples, beta)
-                predictions = pruned_tree.evaluate_multiple(X_test).astype(int)
-                beta_errors[beta].append(1 - accuracy_score(predictions, y_test))
+                beta_errors[beta] = []
 
-        for beta in beta_errors: beta_errors[beta] = np.mean(beta_errors[beta])
-        print beta_errors
-        return subtrees_by_beta[min(beta_errors.iteritems(), key=operator.itemgetter(1))[0]]
+            skf = StratifiedKFold(labels, n_folds=n_folds, shuffle=True)
+            for train_index, test_index in skf:
+                X_train = feature_vectors.iloc[train_index, :].reset_index(drop=True)
+                y_train = labels.iloc[train_index].reset_index(drop=True)
+                train = X_train.copy()
+                train[y_train.name] = Series(y_train, index=train.index)
+                X_test = feature_vectors.iloc[test_index, :].reset_index(drop=True)
+                y_test = labels.iloc[test_index].reset_index(drop=True)
+                if tree_constructor == 'ism':
+                    # trees = []
+                    # for constructor in ism_constructors:
+                    #     tree = constructor.construct_tree(X_train, y_train)
+                    #     tree.data = train
+                    #     tree.populate_samples(X_train, y_train.values)
+                    #     trees.append(tree)
+                    constructed_tree = ISM_v3.ism(ISM_v3.bootstrap(train, y_train.name, ism_constructors,
+                                                                   nr_classifiers=ism_nr_classifiers, boosting=ism_boosting),
+                                                  train, y_train.name, calc_fracs_from_ensemble=ism_calc_fracs)
+                else:
+                    constructed_tree = tree_constructor.construct_tree(X_train, y_train)
+                for beta in betas:
+                    # ism(decision_trees, data, class_label, min_nr_samples=1, calc_fracs_from_ensemble=False)
+                    tree_copy = deepcopy(constructed_tree)
+                    tree_copy.populate_samples(X_train, y_train.values)
+                    pruned_tree = tree_copy.minimize_cost_complexity(root_samples, beta)
+                    predictions = pruned_tree.evaluate_multiple(X_test).astype(int)
+                    beta_errors[beta].append(1 - accuracy_score(predictions, y_test))
+
+            for beta in beta_errors: beta_errors[beta] = np.mean(beta_errors[beta])
+            print beta_errors
+            return subtrees_by_beta[min(beta_errors.iteritems(), key=operator.itemgetter(1))[0]]
 
 
 
