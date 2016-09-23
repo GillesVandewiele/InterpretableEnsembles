@@ -25,10 +25,7 @@ from sklearn.metrics import confusion_matrix
 from sklearn.tree import DecisionTreeClassifier
 
 # Internal imports
-from constructors.c45orangeconstructor import C45Constructor
-from constructors.cartconstructor import CARTConstructor
-from decisiontree import DecisionTree
-from constructors.questconstructor import QuestConstructor
+import decisiontree
 
 
 def extract_tests(tree, _tests=set()):
@@ -130,7 +127,7 @@ def convert_to_tree(classifier, features):
     node_depth = np.zeros(shape=n_nodes)
     decision_trees = [None] * n_nodes
     for i in range(n_nodes):
-        decision_trees[i] = DecisionTree()
+        decision_trees[i] = decisiontree.DecisionTree()
     is_leaves = np.zeros(shape=n_nodes, dtype=bool)
     stack = [(0, -1)]  # seed is the root node id and its parent depth
     while len(stack) > 0:
@@ -223,7 +220,7 @@ def build_dt_from_ensemble(decision_trees, data, class_label, tests, prior_entro
     if len(data) > min_nr_samples and len(tests) > 0 and len(np.unique(data[class_label].values)) > 1:
         max_ig = 0
         best_pos_data, best_neg_data, best_pos_entropy, best_neg_entropy = [None]*4
-        best_dt = DecisionTree()
+        best_dt = decisiontree.DecisionTree()
         # Find the test that results in the maximum information gain
         for test in tests:
             pos_avg_probs, neg_avg_probs, pos_fraction, neg_fraction = {}, {}, 0.0, 0.0
@@ -260,7 +257,7 @@ def build_dt_from_ensemble(decision_trees, data, class_label, tests, prior_entro
                 best_pos_data, best_neg_data, best_pos_entropy, best_neg_entropy = pos_data, neg_data, pos_entropy, neg_entropy
 
         if max_ig == 0:  # If we can't find a test that results in an information gain, we can pre-prune
-            return DecisionTree(value=None, label=get_most_occurring_class(data, class_label))
+            return decisiontree.DecisionTree(value=None, label=get_most_occurring_class(data, class_label))
 
         # Update some variables and do recursive calls
         left_prior_tests = prior_tests.copy()
@@ -277,7 +274,7 @@ def build_dt_from_ensemble(decision_trees, data, class_label, tests, prior_entro
 
         return best_dt
     else:
-        return DecisionTree(value=None, label=get_most_occurring_class(data, class_label))
+        return decisiontree.DecisionTree(value=None, label=get_most_occurring_class(data, class_label))
 
 
 def bootstrap(data, class_label, tree_constructors, bootstrap_features=False, nr_classifiers=3, boosting=True):

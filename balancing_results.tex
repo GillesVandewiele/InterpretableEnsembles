@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage[margin=0.1in]{geometry}
+\usepackage{graphicx}
+
+\begin{document}
+	
+	
+	\begin{table}
+		\centering
+		\resizebox{\textwidth}{!}{%
+			\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+				\hline & \multicolumn{4}{|c|}{\textbf{SMOTE Tomek}} & \multicolumn{4}{|c|}{\textbf{ROS}} & \multicolumn{4}{|c|}{\textbf{Tomek}} & \multicolumn{4}{|c|}{\textbf{SMOTE ENN}} & \multicolumn{4}{|c|}{\textbf{SMOTE}} \\ \hline 
+				& \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} \\ \hline 
+				\textbf{iris}  & 0.9467+0.05$\sigma$ & 0.9467+0.05$\sigma$ & 7.4+1.5$\sigma$ & 0.23+0.0$\sigma$ & 0.9467+0.05$\sigma$ & 0.9467+0.05$\sigma$ & 7.4+1.5$\sigma$ & 0.0+0.0$\sigma$ & 0.9467+0.05$\sigma$ & 0.9467+0.05$\sigma$ & 7.4+1.5$\sigma$ & 0.12+0.0$\sigma$ & 0.94+0.01$\sigma$ & 0.94+0.01$\sigma$ & 5.0+0.0$\sigma$ & 0.35+0.0$\sigma$ & 0.9467+0.05$\sigma$ & 0.9467+0.05$\sigma$ & 7.4+1.5$\sigma$ & 0.12+0.0$\sigma$ \\ \hline 
+				\textbf{heart}  & 0.7921+0.05$\sigma$ & 0.7838+0.06$\sigma$ & 33.0+3.58$\sigma$ & 0.24+0.0$\sigma$ & 0.7807+0.02$\sigma$ & 0.7751+0.02$\sigma$ & 22.6+7.63$\sigma$ & 0.0+0.0$\sigma$ & 0.7546+0.05$\sigma$ & 0.7484+0.04$\sigma$ & 26.6+10.07$\sigma$ & 0.12+0.0$\sigma$ & 0.7698+0.05$\sigma$ & 0.7471+0.05$\sigma$ & 12.6+6.37$\sigma$ & 0.24+0.0$\sigma$ & 0.8143+0.04$\sigma$ & 0.8086+0.05$\sigma$ & 26.2+6.65$\sigma$ & 0.12+0.0$\sigma$ \\ \hline 
+				\textbf{cars}  & 0.9739+0.0$\sigma$ & 0.9394+0.01$\sigma$ & 112.2+2.71$\sigma$ & 0.26+0.0$\sigma$ & 0.9786+0.0$\sigma$ & 0.9654+0.02$\sigma$ & 136.6+6.5$\sigma$ & 0.0+0.0$\sigma$ & 0.9728+0.01$\sigma$ & 0.9372+0.01$\sigma$ & 109.0+4.56$\sigma$ & 0.13+0.0$\sigma$ & 0.9166+0.01$\sigma$ & 0.9181+0.02$\sigma$ & 53.4+4.63$\sigma$ & 0.49+0.0$\sigma$ & 0.9745+0.0$\sigma$ & 0.9401+0.01$\sigma$ & 113.8+0.98$\sigma$ & 0.12+0.0$\sigma$ \\ \hline 
+				\textbf{ecoli}  & 0.8384+0.05$\sigma$ & 0.7891+0.05$\sigma$ & 25.0+3.58$\sigma$ & 0.24+0.0$\sigma$ & 0.7735+0.08$\sigma$ & 0.7422+0.05$\sigma$ & 61.0+4.2$\sigma$ & 0.0+0.0$\sigma$ & 0.8563+0.03$\sigma$ & 0.7885+0.06$\sigma$ & 27.4+4.08$\sigma$ & 0.12+0.0$\sigma$ & 0.8353+0.05$\sigma$ & 0.807+0.06$\sigma$ & 18.6+3.67$\sigma$ & 0.59+0.0$\sigma$ & 0.8356+0.06$\sigma$ & 0.7871+0.06$\sigma$ & 31.4+8.8$\sigma$ & 0.12+0.0$\sigma$ \\ \hline 
+				\textbf{wisconsinBreast}  & 0.9484+0.01$\sigma$ & 0.9489+0.01$\sigma$ & 19.0+8.39$\sigma$ & 0.24+0.0$\sigma$ & 0.9585+0.01$\sigma$ & 0.9585+0.01$\sigma$ & 27.4+10.07$\sigma$ & 0.0+0.0$\sigma$ & 0.9628+0.02$\sigma$ & 0.9638+0.02$\sigma$ & 21.8+7.0$\sigma$ & 0.12+0.0$\sigma$ & 0.9556+0.01$\sigma$ & 0.9524+0.01$\sigma$ & 17.0+4.0$\sigma$ & 0.24+0.0$\sigma$ & 0.9484+0.01$\sigma$ & 0.9488+0.02$\sigma$ & 17.8+3.49$\sigma$ & 0.12+0.0$\sigma$ \\ \hline 
+				\textbf{wine}  & 0.9214+0.04$\sigma$ & 0.9266+0.03$\sigma$ & 8.6+0.8$\sigma$ & 0.24+0.0$\sigma$ & 0.9155+0.03$\sigma$ & 0.9205+0.02$\sigma$ & 9.0+0.0$\sigma$ & 0.0+0.0$\sigma$ & 0.9047+0.03$\sigma$ & 0.9108+0.02$\sigma$ & 9.0+1.26$\sigma$ & 0.12+0.0$\sigma$ & 0.7693+0.09$\sigma$ & 0.7759+0.08$\sigma$ & 6.2+1.6$\sigma$ & 0.35+0.0$\sigma$ & 0.9155+0.03$\sigma$ & 0.9205+0.02$\sigma$ & 9.0+0.0$\sigma$ & 0.12+0.0$\sigma$ \\ \hline 
+			\end{tabular}}
+		\end{table}
+		
+		
+		\begin{table}
+			\centering
+			\resizebox{\textwidth}{!}{%
+				\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+					\hline & \multicolumn{4}{|c|}{\textbf{ENN}} & \multicolumn{4}{|c|}{\textbf{Cluster}} & \multicolumn{4}{|c|}{\textbf{INN}} & \multicolumn{4}{|c|}{\textbf{Imbalanced}} & \multicolumn{4}{|c|}{\textbf{RUS}} & \multicolumn{4}{|c|}{\textbf{SMOTE SVM}} \\ \hline 
+					& \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} \\ \hline 
+					\textbf{iris}  & 0.9467+0.05$\sigma$ & 0.9467+0.05$\sigma$ & 7.4+1.5$\sigma$ & 0.23+0.0$\sigma$ & 0.9467+0.05$\sigma$ & 0.9467+0.05$\sigma$ & 7.4+1.5$\sigma$ & 0.11+0.0$\sigma$ & 0.9467+0.05$\sigma$ & 0.9467+0.05$\sigma$ & 7.4+1.5$\sigma$ & 0.01+0.0$\sigma$ & 0.94+0.04$\sigma$ & 0.94+0.04$\sigma$ & 6.6+1.5$\sigma$ & 0.0+0.0$\sigma$ & 0.94+0.02$\sigma$ & 0.94+0.02$\sigma$ & 7.0+1.79$\sigma$ & 0.0+0.0$\sigma$ & 0.9467+0.05$\sigma$ & 0.9467+0.05$\sigma$ & 7.4+1.5$\sigma$ & 0.35+0.0$\sigma$ \\ \hline 
+					\textbf{heart}  & 0.7993+0.04$\sigma$ & 0.7934+0.04$\sigma$ & 29.8+10.17$\sigma$ & 0.12+0.0$\sigma$ & 0.7511+0.05$\sigma$ & 0.7488+0.05$\sigma$ & 21.8+8.91$\sigma$ & 0.14+0.0$\sigma$ & 0.7882+0.04$\sigma$ & 0.7804+0.04$\sigma$ & 29.0+8.39$\sigma$ & 0.06+0.0$\sigma$ & 0.8067+0.02$\sigma$ & 0.8009+0.03$\sigma$ & 21.4+9.75$\sigma$ & 0.0+0.0$\sigma$ & 0.7995+0.07$\sigma$ & 0.7988+0.07$\sigma$ & 30.6+12.09$\sigma$ & 0.0+0.0$\sigma$ & 0.7808+0.05$\sigma$ & 0.7743+0.05$\sigma$ & 21.4+9.16$\sigma$ & 0.47+0.0$\sigma$ \\ \hline 
+					\textbf{cars}  & 0.9716+0.01$\sigma$ & 0.9324+0.02$\sigma$ & 108.2+6.27$\sigma$ & 0.36+0.0$\sigma$ & 0.5691+0.03$\sigma$ & 0.7644+0.05$\sigma$ & 35.0+1.26$\sigma$ & 0.55+0.01$\sigma$ & 0.6091+0.05$\sigma$ & 0.3098+0.03$\sigma$ & 3.8+0.98$\sigma$ & 0.76+0.0$\sigma$ & 0.9716+0.01$\sigma$ & 0.9366+0.01$\sigma$ & 104.6+14.93$\sigma$ & 0.0+0.0$\sigma$ & 0.8345+0.02$\sigma$ & 0.9017+0.01$\sigma$ & 41.0+4.9$\sigma$ & 0.0+0.0$\sigma$ & 0.9745+0.0$\sigma$ & 0.9401+0.01$\sigma$ & 114.2+2.4$\sigma$ & 0.53+0.0$\sigma$ \\ \hline 
+					\textbf{ecoli}  & 0.8295+0.07$\sigma$ & 0.7756+0.07$\sigma$ & 23.4+5.28$\sigma$ & 0.47+0.0$\sigma$ & 0.7654+0.1$\sigma$ & 0.7429+0.07$\sigma$ & 15.8+2.99$\sigma$ & 0.11+0.0$\sigma$ & 0.445+0.06$\sigma$ & 0.3457+0.06$\sigma$ & 5.0+1.26$\sigma$ & 0.07+0.0$\sigma$ & 0.8356+0.07$\sigma$ & 0.7745+0.07$\sigma$ & 23.8+2.71$\sigma$ & 0.0+0.0$\sigma$ & 0.7521+0.08$\sigma$ & 0.7443+0.07$\sigma$ & 14.2+2.71$\sigma$ & 0.0+0.0$\sigma$ & 0.8444+0.04$\sigma$ & 0.7957+0.06$\sigma$ & 29.4+5.43$\sigma$ & 0.48+0.0$\sigma$ \\ \hline 
+					\textbf{wisconsinBreast}  & 0.9556+0.01$\sigma$ & 0.9592+0.01$\sigma$ & 13.4+1.5$\sigma$ & 0.37+0.08$\sigma$ & 0.9556+0.02$\sigma$ & 0.9534+0.02$\sigma$ & 23.0+7.16$\sigma$ & 0.65+0.27$\sigma$ & 0.9384+0.02$\sigma$ & 0.9481+0.01$\sigma$ & 10.6+2.94$\sigma$ & 0.14+0.0$\sigma$ & 0.947+0.02$\sigma$ & 0.9439+0.02$\sigma$ & 19.0+4.9$\sigma$ & 0.0+0.0$\sigma$ & 0.9398+0.01$\sigma$ & 0.9423+0.01$\sigma$ & 15.0+2.83$\sigma$ & 0.0+0.0$\sigma$ & 0.9484+0.01$\sigma$ & 0.9527+0.01$\sigma$ & 17.8+3.92$\sigma$ & 0.48+0.0$\sigma$ \\ \hline 
+					\textbf{wine}  & 0.9101+0.03$\sigma$ & 0.9161+0.02$\sigma$ & 9.4+0.8$\sigma$ & 0.24+0.0$\sigma$ & 0.8867+0.06$\sigma$ & 0.8935+0.06$\sigma$ & 9.8+2.4$\sigma$ & 0.11+0.0$\sigma$ & 0.8928+0.05$\sigma$ & 0.8975+0.04$\sigma$ & 8.6+1.5$\sigma$ & 0.03+0.0$\sigma$ & 0.9101+0.03$\sigma$ & 0.9161+0.02$\sigma$ & 9.4+0.8$\sigma$ & 0.0+0.0$\sigma$ & 0.8985+0.04$\sigma$ & 0.908+0.03$\sigma$ & 8.6+1.5$\sigma$ & 0.0+0.0$\sigma$ & 0.9155+0.03$\sigma$ & 0.9232+0.03$\sigma$ & 9.8+0.98$\sigma$ & 0.47+0.0$\sigma$ \\ \hline 
+				\end{tabular}}
+			\end{table}
+			
+			
+			\begin{figure}\centering\includegraphics[width=\textwidth]{output/iris_balancing.png}\caption{Confusion matrix for iris}\end{figure}
+			\begin{figure}\centering\includegraphics[width=\textwidth]{output/heart_balancing.png}\caption{Confusion matrix for heart}\end{figure}
+			\begin{figure}\centering\includegraphics[width=\textwidth]{output/cars_balancing.png}\caption{Confusion matrix for cars}\end{figure}
+			\begin{figure}\centering\includegraphics[width=\textwidth]{output/ecoli_balancing.png}\caption{Confusion matrix for ecoli}\end{figure}
+			\begin{figure}\centering\includegraphics[width=\textwidth]{output/wisconsinBreast_balancing.png}\caption{Confusion matrix for wisconsinBreast}\end{figure}
+			\begin{figure}\centering\includegraphics[width=\textwidth]{output/wine_balancing.png}\caption{Confusion matrix for wine}\end{figure}
+			
+		\end{document}
