@@ -2,10 +2,130 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6ec3f469-cb8c-49af-8470-4419fe881c56" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Untitled.ipynb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree001.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree002.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree003.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree004.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree005.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree006.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree007.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree008.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree009.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree010.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree011.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree012.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree013.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree014.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree015.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree016.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree017.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree018.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree019.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree020.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree021.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree022.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree023.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree024.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree025.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree026.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree027.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree028.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree029.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree030.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree031.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree032.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree033.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree034.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree035.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree036.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree037.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree038.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree039.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree040.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree041.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree042.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree043.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree044.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree045.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree046.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree047.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree048.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree049.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree050.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree051.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree052.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree053.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree054.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree055.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree056.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree057.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree058.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree059.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree060.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree061.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree062.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree063.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree064.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree065.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree066.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree067.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree068.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree069.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree070.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree071.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree072.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree073.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree074.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree075.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree076.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree077.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree078.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree079.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree080.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree081.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree082.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree083.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree084.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree085.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree086.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree087.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree088.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree089.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree090.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree091.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree092.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree093.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree094.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree095.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree096.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree097.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree098.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree099.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/forest/tree100.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/result_test/inTrees.txt" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/balancing_results.pdf" afterPath="$PROJECT_DIR$/balancing_results.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/balancing_results.synctex.gz" afterPath="$PROJECT_DIR$/balancing_results.synctex.gz" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/cars_balancing.png" afterPath="$PROJECT_DIR$/output/cars_balancing.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/ecoli_balancing.png" afterPath="$PROJECT_DIR$/output/ecoli_balancing.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/glass_balancing.png" afterPath="$PROJECT_DIR$/output/glass_balancing.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/heart_balancing.png" afterPath="$PROJECT_DIR$/output/heart_balancing.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/iris_balancing.png" afterPath="$PROJECT_DIR$/output/iris_balancing.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/wine_balancing.png" afterPath="$PROJECT_DIR$/output/wine_balancing.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/wisconsinBreast_balancing.png" afterPath="$PROJECT_DIR$/output/wisconsinBreast_balancing.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_inTrees.pdf" afterPath="$PROJECT_DIR$/test_inTrees.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ISM_v3.py" afterPath="$PROJECT_DIR$/ISM_v3.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/balanced_sets.py" afterPath="$PROJECT_DIR$/balanced_sets.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/balancing_results.aux" afterPath="$PROJECT_DIR$/balancing_results.aux" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/balancing_results.log" afterPath="$PROJECT_DIR$/balancing_results.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/balancing_results.tex" afterPath="$PROJECT_DIR$/balancing_results.tex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/buildClfForest.R" afterPath="$PROJECT_DIR$/buildClfForest.R" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/load_datasets.py" afterPath="$PROJECT_DIR$/data/load_datasets.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inTrees.py" afterPath="$PROJECT_DIR$/inTrees.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/result_test/pred_test.csv" afterPath="$PROJECT_DIR$/result_test/pred_test.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/result_test/pred_train.csv" afterPath="$PROJECT_DIR$/result_test/pred_train.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.csv" afterPath="$PROJECT_DIR$/test.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/train.csv" afterPath="$PROJECT_DIR$/train.csv" />
     </list>
     <ignored path="InterpretableEnsembles.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -22,7 +142,7 @@
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$MyHealthPlanDataInspector.coverage" NAME="MyHealthPlanDataInspector Coverage Results" MODIFIED="1474456849421" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$write_latex.coverage" NAME="write_latex Coverage Results" MODIFIED="1474612857908" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$load_datasets.coverage" NAME="load_datasets Coverage Results" MODIFIED="1473944140508" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data" />
-    <SUITE FILE_PATH="coverage/InterpretableEnsembles$balanced_sets.coverage" NAME="balanced_sets Coverage Results" MODIFIED="1474629844335" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/InterpretableEnsembles$balanced_sets.coverage" NAME="balanced_sets Coverage Results" MODIFIED="1474714326516" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$basic_algorithms.coverage" NAME="basic_algorithms Coverage Results" MODIFIED="1474278005958" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$example_sklearn.coverage" NAME="example_sklearn Coverage Results" MODIFIED="1474464661505" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/defragTrees-master/example" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$paper_synthetic.coverage" NAME="paper_synthetic Coverage Results" MODIFIED="1474464825839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/defragTrees-master/paper" />
@@ -39,8 +159,8 @@
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$prune_test.coverage" NAME="prune_test Coverage Results" MODIFIED="1474360904743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$ripperrulelearner.coverage" NAME="ripperrulelearner Coverage Results" MODIFIED="1474461108763" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/constructors" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$example_xgb.coverage" NAME="example_xgb Coverage Results" MODIFIED="1474464868345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/example" />
-    <SUITE FILE_PATH="coverage/InterpretableEnsembles$inTrees.coverage" NAME="inTrees Coverage Results" MODIFIED="1474468577358" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$example.coverage" NAME="example Coverage Results" MODIFIED="1474542422792" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/shaplets-python-master" />
+    <SUITE FILE_PATH="coverage/InterpretableEnsembles$inTrees.coverage" NAME="inTrees Coverage Results" MODIFIED="1474640693452" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -51,23 +171,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="questbenchconstructor.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/constructors/questbenchconstructor.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="519">
-              <caret line="378" column="18" selection-start-line="378" selection-start-column="15" selection-end-line="378" selection-end-column="18" />
-              <folding>
-                <element signature="e#171#184#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="balanced_sets.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/balanced_sets.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="39" column="69" selection-start-line="39" selection-start-column="69" selection-end-line="39" selection-end-column="69" />
+            <state relative-caret-position="203">
+              <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -75,45 +183,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="write_latex.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/write_latex.py">
+      <file leaf-file-name="load_all_datasets.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/load_all_datasets.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
-              <folding>
-                <element signature="e#0#54#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="c45orangeconstructor.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/constructors/c45orangeconstructor.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="33" column="55" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="64" />
-              <folding>
-                <element signature="e#171#184#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pandas_to_orange.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pandas_to_orange.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="classification.py" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/lib/python2.7/dist-packages/sklearn/metrics/classification.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-776">
-              <caret line="1307" column="4" selection-start-line="1307" selection-start-column="4" selection-end-line="1307" selection-end-column="4" />
+            <state relative-caret-position="105">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -122,15 +196,17 @@
       <file leaf-file-name="load_datasets.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data/load_datasets.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="106" column="64" selection-start-line="106" selection-start-column="64" selection-end-line="106" selection-end-column="64" />
-              <folding />
+            <state relative-caret-position="2142">
+              <caret line="231" column="48" selection-start-line="231" selection-start-column="48" selection-end-line="231" selection-end-column="48" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="magic04.data" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/magic04.data">
+      <file leaf-file-name="guideconstructor.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/constructors/guideconstructor.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -139,18 +215,55 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wine_balancing.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/output/wine_balancing.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
+      <file leaf-file-name="decisiontree.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/decisiontree.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5400">
+              <caret line="373" column="29" selection-start-line="373" selection-start-column="29" selection-end-line="373" selection-end-column="29" />
+              <folding>
+                <element signature="e#170#201#0" expanded="true" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ecoli.data" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/ecoli.data">
+      <file leaf-file-name="inTrees.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/inTrees.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="57" selection-start-line="5" selection-start-column="57" selection-end-line="5" selection-end-column="57" />
+            <state relative-caret-position="354">
+              <caret line="256" column="23" selection-start-line="256" selection-start-column="23" selection-end-line="256" selection-end-column="23" />
+              <folding>
+                <element signature="e#55#65#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tree005.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/result_test/forest/tree005.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="buildClfForest.R" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/buildClfForest.R">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="780">
+              <caret line="52" column="3" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="inTrees.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/result_test/inTrees.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -192,9 +305,7 @@
         <option value="$PROJECT_DIR$/defragTrees-master/defragTrees.py" />
         <option value="$PROJECT_DIR$/defragTrees-master/__init__.py" />
         <option value="$PROJECT_DIR$/defragTrees-master/example/example_xgb.py" />
-        <option value="$PROJECT_DIR$/inTrees.py" />
         <option value="$PROJECT_DIR$/constructors/treemerger.py" />
-        <option value="$PROJECT_DIR$/decisiontree.py" />
         <option value="$PROJECT_DIR$/shaplets-python-master/shapelets/util/ucr_dataset_loader.py" />
         <option value="/usr/local/lib/python2.7/dist-packages/shapelets/fileio.py" />
         <option value="$PROJECT_DIR$/shaplets-python-master/example.py" />
@@ -205,8 +316,13 @@
         <option value="$PROJECT_DIR$/ISM_v3.py" />
         <option value="$PROJECT_DIR$/write_latex.py" />
         <option value="$PROJECT_DIR$/data/ecoli.data" />
-        <option value="$PROJECT_DIR$/balanced_sets.py" />
         <option value="$PROJECT_DIR$/constructors/c45orangeconstructor.py" />
+        <option value="$PROJECT_DIR$/train.csv" />
+        <option value="$PROJECT_DIR$/test.csv" />
+        <option value="$PROJECT_DIR$/decisiontree.py" />
+        <option value="$PROJECT_DIR$/buildClfForest.R" />
+        <option value="$PROJECT_DIR$/inTrees.py" />
+        <option value="$PROJECT_DIR$/balanced_sets.py" />
         <option value="$PROJECT_DIR$/data/load_datasets.py" />
       </list>
     </option>
@@ -248,6 +364,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -276,7 +393,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="output" />
+              <option name="myItemId" value="result_test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="InterpretableEnsembles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="InterpretableEnsembles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="result_test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="forest" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -294,10 +429,23 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="InterpretableEnsembles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="InterpretableEnsembles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="constructors" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -336,24 +484,6 @@
       <module name="InterpretableEnsembles" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/constructors/questbenchconstructor.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="example" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/shaplets-python-master" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="InterpretableEnsembles" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/shaplets-python-master/example.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -408,6 +538,24 @@
       <module name="InterpretableEnsembles" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/write_latex.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="inTrees" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="InterpretableEnsembles" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/inTrees.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -510,130 +658,20 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="tests" factoryName="Attests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="InterpretableEnsembles" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Doctests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="InterpretableEnsembles" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Nosetests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="InterpretableEnsembles" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Unittests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="InterpretableEnsembles" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="py.test">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="InterpretableEnsembles" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="testToRun" value="" />
-      <option name="keywords" value="" />
-      <option name="params" value="" />
-      <option name="USE_PARAM" value="false" />
-      <option name="USE_KEYWORD" value="false" />
-      <method />
-    </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.questbenchconstructor" />
-      <item index="1" class="java.lang.String" itemvalue="Python.example" />
-      <item index="2" class="java.lang.String" itemvalue="Python.balanced_sets" />
-      <item index="3" class="java.lang.String" itemvalue="Python.test" />
-      <item index="4" class="java.lang.String" itemvalue="Python.write_latex" />
+      <item index="1" class="java.lang.String" itemvalue="Python.balanced_sets" />
+      <item index="2" class="java.lang.String" itemvalue="Python.test" />
+      <item index="3" class="java.lang.String" itemvalue="Python.write_latex" />
+      <item index="4" class="java.lang.String" itemvalue="Python.inTrees" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.balanced_sets" />
-        <item index="1" class="java.lang.String" itemvalue="Python.write_latex" />
-        <item index="2" class="java.lang.String" itemvalue="Python.test" />
-        <item index="3" class="java.lang.String" itemvalue="Python.questbenchconstructor" />
-        <item index="4" class="java.lang.String" itemvalue="Python.example" />
+        <item index="1" class="java.lang.String" itemvalue="Python.inTrees" />
+        <item index="2" class="java.lang.String" itemvalue="Python.write_latex" />
+        <item index="3" class="java.lang.String" itemvalue="Python.test" />
+        <item index="4" class="java.lang.String" itemvalue="Python.questbenchconstructor" />
       </list>
     </recent_temporary>
   </component>
@@ -666,10 +704,9 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30871794" sideWeight="0.5040431" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32923076" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30871794" sideWeight="0.49595687" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30871794" sideWeight="0.49595687" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -679,6 +716,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32923076" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -695,104 +733,16 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/constructors/guideconstructor.py</url>
-          <line>69</line>
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/constructors/guideconstructor.py</url>
-          <line>64</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/result_test/forest/tree009.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/result_test/forest/tree001.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/result_test/forest/tree010.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/result_test/forest/tree002.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2463">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/result_test/pred_test.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/result_test/forest/tree005.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/result_test/forest/tree022.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/result_test/forest/tree016.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/result_test/inTrees.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/result_test/forest/tree016.txt" />
     <entry file="file://$PROJECT_DIR$/defragTrees.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1155">
           <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -807,7 +757,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -815,7 +764,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2235">
           <caret line="166" column="104" selection-start-line="166" selection-start-column="30" selection-end-line="166" selection-end-column="104" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -823,17 +771,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="990">
           <caret line="72" column="16" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inTrees.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
-          <folding>
-            <element signature="e#55#65#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -841,9 +778,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="84" selection-start-line="6" selection-start-column="84" selection-end-line="6" selection-end-column="84" />
-          <folding>
-            <element signature="e#0#28#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -851,9 +785,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#43#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -861,7 +792,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -869,7 +799,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -877,9 +806,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
-          <folding>
-            <element signature="e#70#80#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -887,7 +813,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -895,7 +820,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-315">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -903,7 +827,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -911,7 +834,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1350">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -924,9 +846,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#67#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -934,9 +853,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="833">
           <caret line="638" column="0" selection-start-line="638" selection-start-column="0" selection-end-line="638" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#11#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -944,49 +860,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="474">
           <caret line="168" column="62" selection-start-line="168" selection-start-column="60" selection-end-line="168" selection-end-column="62" />
-          <folding>
-            <element signature="e#0#31#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/latex/sigfig.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latex/Table.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="185" column="20" selection-start-line="185" selection-start-column="20" selection-end-line="185" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/latex/sigfig.py" />
+    <entry file="file://$PROJECT_DIR$/latex/test.py" />
+    <entry file="file://$PROJECT_DIR$/latex/Table.py" />
     <entry file="file:///usr/local/lib/python2.7/dist-packages/matplotlib/axes/_subplots.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="439">
           <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/decisiontree.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6524">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -994,9 +877,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1372">
           <caret line="276" column="28" selection-start-line="276" selection-start-column="28" selection-end-line="276" selection-end-column="28" />
-          <folding>
-            <element signature="e#447#478#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1004,9 +884,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="519">
           <caret line="378" column="18" selection-start-line="378" selection-start-column="15" selection-end-line="378" selection-end-column="18" />
-          <folding>
-            <element signature="e#171#184#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1014,7 +891,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="57" selection-start-line="5" selection-start-column="57" selection-end-line="5" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1037,7 +913,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-776">
           <caret line="1307" column="4" selection-start-line="1307" selection-start-column="4" selection-end-line="1307" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1051,41 +926,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/write_latex.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#54#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pandas_to_orange.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/constructors/c45orangeconstructor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="379">
           <caret line="33" column="55" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="64" />
-          <folding>
-            <element signature="e#171#184#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/balanced_sets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="39" column="69" selection-start-line="39" selection-start-column="69" selection-end-line="39" selection-end-column="69" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1093,7 +937,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1101,15 +944,135 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pandas_to_orange.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/write_latex.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/result_test/pred_test.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/result_test/inTrees.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/result_test/forest/tree001.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/result_test/forest/tree003.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/decisiontree.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5400">
+          <caret line="373" column="29" selection-start-line="373" selection-start-column="29" selection-end-line="373" selection-end-column="29" />
+          <folding>
+            <element signature="e#170#201#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/constructors/guideconstructor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/result_test/forest/tree005.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buildClfForest.R">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="52" column="3" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inTrees.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="256" column="23" selection-start-line="256" selection-start-column="23" selection-end-line="256" selection-end-column="23" />
+          <folding>
+            <element signature="e#55#65#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/load_all_datasets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/balanced_sets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data/load_datasets.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="106" column="64" selection-start-line="106" selection-start-column="64" selection-end-line="106" selection-end-column="64" />
-          <folding />
+        <state relative-caret-position="2142">
+          <caret line="231" column="48" selection-start-line="231" selection-start-column="48" selection-end-line="231" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

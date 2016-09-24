@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.1)  23 SEP 2016 12:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.1)  24 SEP 2016 11:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -190,72 +190,34 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 20.
+(Font)              <7> on input line 15.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 20.
+(Font)              <5> on input line 15.
 
-<output/iris_balancing.png, id=1, 1143.3114pt x 396.7623pt>
+<output/iris_balancing.png, id=1, 1146.2022pt x 655.4889pt>
 File: output/iris_balancing.png Graphic file (type png)
 
 <use output/iris_balancing.png>
-Package pdftex.def Info: output/iris_balancing.png used on input line 40.
-(pdftex.def)             Requested size: 599.84013pt x 208.17014pt.
-
-<output/heart_balancing.png, id=3, 716.1957pt x 367.8543pt>
-File: output/heart_balancing.png Graphic file (type png)
-
-<use output/heart_balancing.png>
-Package pdftex.def Info: output/heart_balancing.png used on input line 41.
-(pdftex.def)             Requested size: 599.84013pt x 308.0918pt.
-
-<output/cars_balancing.png, id=4, 1146.9249pt x 699.5736pt>
-File: output/cars_balancing.png Graphic file (type png)
-
-<use output/cars_balancing.png>
-Package pdftex.def Info: output/cars_balancing.png used on input line 42.
-(pdftex.def)             Requested size: 599.84013pt x 365.88326pt.
-
-<output/ecoli_balancing.png, id=5, 1594.2762pt x 731.3724pt>
-File: output/ecoli_balancing.png Graphic file (type png)
-
-<use output/ecoli_balancing.png>
-Package pdftex.def Info: output/ecoli_balancing.png used on input line 43.
-(pdftex.def)             Requested size: 599.84013pt x 275.17908pt.
-
-<output/wisconsinBreast_balancing.png, id=6, 716.1957pt x 367.8543pt>
-File: output/wisconsinBreast_balancing.png Graphic file (type png)
-
-<use output/wisconsinBreast_balancing.png>
-Package pdftex.def Info: output/wisconsinBreast_balancing.png used on input lin
-e 44.
-(pdftex.def)             Requested size: 599.84013pt x 308.0918pt.
-
-<output/wine_balancing.png, id=7, 1143.3114pt x 396.7623pt>
-File: output/wine_balancing.png Graphic file (type png)
-
-<use output/wine_balancing.png>
-Package pdftex.def Info: output/wine_balancing.png used on input line 45.
-(pdftex.def)             Requested size: 599.84013pt x 208.17014pt.
+Package pdftex.def Info: output/iris_balancing.png used on input line 41.
+(pdftex.def)             Requested size: 599.84013pt x 343.03662pt.
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./output/iris_balancing
-.png> <./output/heart_balancing.png>] [2 <./output/cars_balancing.png> <./outpu
-t/ecoli_balancing.png>] [3 <./output/wisconsinBreast_balancing.png> <./output/w
-ine_balancing.png>] (./balancing_results.aux) ) 
+.png>] (./balancing_results.aux) ) 
 Here is how much of TeX's memory you used:
- 1970 strings out of 493029
- 28885 string characters out of 6136235
- 129423 words of memory out of 5000000
- 5509 multiletter control sequences out of 15000+600000
+ 1945 strings out of 493029
+ 28135 string characters out of 6136235
+ 101423 words of memory out of 5000000
+ 5489 multiletter control sequences out of 15000+600000
  3948 words of font info for 15 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,9n,32p,560b,272s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr10.pfb>
-Output written on balancing_results.pdf (3 pages, 701682 bytes).
+ 37i,9n,32p,285b,272s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr10.pfb>
+Output written on balancing_results.pdf (1 page, 106740 bytes).
 PDF statistics:
- 39 PDF objects out of 1000 (max. 8388607)
- 18 compressed objects within 1 object stream
+ 23 PDF objects out of 1000 (max. 8388607)
+ 14 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

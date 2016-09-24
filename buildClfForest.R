@@ -45,6 +45,7 @@ print(err)
 
 # inTrees
 treeList <- RF2List(rf)
+print(treeList)
 ruleExec <- unique(extractRules(treeList, X2))
 ruleMetric <- getRuleMetric(ruleExec, X2, y2)
 ruleMetric <- pruneRule(ruleMetric, X2, y2)

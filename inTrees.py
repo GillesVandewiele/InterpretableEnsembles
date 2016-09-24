@@ -7,7 +7,8 @@ import sys
 
 from sklearn.externals import joblib
 
-from data.load_datasets import load_iris
+from constructors.c45orangeconstructor import C45Constructor
+from data.load_datasets import load_iris, load_heart
 
 sys.path.append('../')
 from defragTrees import *
@@ -24,6 +25,10 @@ import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import matplotlib.colorbar as colorbar
 import os
+
+from rpy2.robjects.packages import importr
+import pandas.rpy.common as com
+import rpy2.robjects as ro
 
 #************************
 # inTree Class
@@ -195,37 +200,95 @@ def __r2boxWithX(r, X):
             box[0, rr[0]-1] = np.maximum(box[0, rr[0]-1], rr[2])
     return box, vmin, vmax
 
+'''
+  left daughter right daughter split var split point status prediction
+1             2              3        14         4.5      1          0
+2             0              0         0         0.0     -1          1
+3             0              0         0         0.0     -1          2
 
-heart, features, class_col, dataset_name = load_iris()
+ruleExec <- unique(extractRules(treeList, X2))
+ruleMetric <- getRuleMetric(ruleExec, X2, y2)
+ruleMetric <- pruneRule(ruleMetric, X2, y2)
+learner <- buildLearner(ruleMetric, X2, y2)
+out <- capture.output(learner)
+'''
+
+
+def tree_to_R_object(tree, features):
+    node_mapping = {}
+    feature_mapping = {}
+    nodes = tree.get_nodes()
+    nodes.extend(tree.get_leaves())
+    for i, node in enumerate(nodes):
+        node_mapping[node] = i+1
+    for i, feature in enumerate(features):
+        feature_mapping[feature] = i+1
+    vectors = []
+    for node in nodes:
+        if node.value is not None:
+            vectors.append([node_mapping[node], node_mapping[node.left], node_mapping[node.right],
+                            feature_mapping[node.label], node.value, 1, 0])
+        else:
+            vectors.append([node_mapping[node], 0, 0, 0, 0.0, 1, node.label])
+
+    df = pd.DataFrame(vectors)
+    df.columns = ['id', 'left daughter', 'right daughter', 'split var', 'split point', 'status', 'prediction']
+    df = df.set_index('id')
+    df.index.name = None
+    return com.convert_to_r_dataframe(df), feature_mapping
+
+
+heart, features, label_col, dataset_name = load_heart()
 heart = heart.iloc[np.random.permutation(len(heart))].reset_index(drop=True)
 heart_train = heart.head(int(0.75*len(heart)))
 heart_test = heart.tail(int(0.25*len(heart)))
-heart_train.to_csv('train.csv', header=False)
-heart_test.to_csv('test.csv', header=False)
-trfile = 'train.csv'
-tefile = 'test.csv'
-Ztr = np.loadtxt(trfile, delimiter=',')
-Xtr = Ztr[:, :-1]
-ytr = Ztr[:, -1]
-Zte = np.loadtxt(tefile, delimiter=',')
-Xte = Zte[:, :-1]
-yte = Zte[:, -1]
 
+X_train = heart_train.drop(label_col, axis=1)
+y_train = heart_train[label_col]
+X_test = heart_test.drop(label_col, axis=1)
+y_test = heart_test[label_col]
 
-os.system('Rscript buildClfForest.R %s %s ./result_%s %d 0' % (trfile, tefile, 'test', 100))
-#
-prefix = 'test'
-modeltype = 'classification'
+c45 = C45Constructor()
+c45_tree = c45.construct_tree(X_train, y_train)
+r_object, features_map = tree_to_R_object(c45_tree, features)
+rfImport = importr('randomForest')
+inTreesImport = importr('inTrees')
+ro.globalenv["treeList"] = r_object
+ro.r('print(treeList)')
+# ro.r(r_object)
+# ro.r('print(r_object)')
+# ro.r('ruleExec <- unique(extractRules(treeList, X2))')
 
-mdl2 = inTreeModel(modeltype=modeltype)
-mdl2.fit(ytr, Xtr, './result_%s/inTrees.txt' % (prefix,), featurename=features)
-# joblib.dump(mdl2, '%s/%s_inTrees.mdl' % (dirname, prefix), compress=9)
-score, cover = mdl2.evaluate(yte, Xte, rnum=10)
-print()
-print('<< inTrees >>')
-print('----- Evaluated Results -----')
-print('Test Error = %f' % (score,))
-print('Test Coverage = %f' % (cover,))
-print()
-# print(mdl2)
-plotRule(mdl2, Xtr, 0, 1, filename='%s_inTrees.pdf' % (prefix), rnum=10)
+# heart, features, class_col, dataset_name = load_heart()
+# heart = heart.iloc[np.random.permutation(len(heart))].reset_index(drop=True)
+# heart_train = heart.head(int(0.75*len(heart)))
+# heart_test = heart.tail(int(0.25*len(heart)))
+# heart_train.to_csv('train.csv', header=False)
+# heart_test.to_csv('test.csv', header=False)
+# trfile = 'train.csv'
+# tefile = 'test.csv'
+# Ztr = np.loadtxt(trfile, delimiter=',')
+# Xtr = Ztr[:, :-1]
+# ytr = Ztr[:, -1]
+# Zte = np.loadtxt(tefile, delimiter=',')
+# Xte = Zte[:, :-1]
+# yte = Zte[:, -1]
+# #
+# #
+# os.system('Rscript buildClfForest.R %s %s ./result_%s %d 0' % (trfile, tefile, 'test', 5))
+# #
+# prefix = 'test'
+# modeltype = 'classification'
+# print('test')
+# mdl2 = inTreeModel(modeltype=modeltype)
+# mdl2.fit(ytr, Xtr, './result_%s/inTrees.txt' % (prefix,), featurename=features)
+# # joblib.dump(mdl2, '%s/%s_inTrees.mdl' % (dirname, prefix), compress=9)
+# score, cover = mdl2.evaluate(yte, Xte, rnum=-1)
+# print()
+# print('<< inTrees >>')
+# print('----- Evaluated Results -----')
+# print('Test Error = %f' % (score,))
+# print('Test Coverage = %f' % (cover,))
+# print()
+# # print(mdl2)
+# plotRule(mdl2, Xtr, 0, 1, filename='%s_inTrees.pdf' % (prefix), rnum=-1)

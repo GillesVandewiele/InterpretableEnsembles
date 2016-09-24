@@ -1,0 +1,4 @@
+digraph DT{
+node[fontname="Arial"];
+Node1 [label="0" shape="box"];
+}

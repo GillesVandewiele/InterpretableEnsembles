@@ -1,0 +1,36 @@
+digraph DT{
+node[fontname="Arial"];
+Node1 [label="thal <= 3.0"];
+Node2 [label="chest pain type <= 3.0"];
+Node3 [label="0" shape="box"];
+Node2 -> Node3 [label="true"];
+Node4 [label="number of vessels <= 0.0"];
+Node5 [label="0" shape="box"];
+Node4 -> Node5 [label="true"];
+Node6 [label="sex <= 0.0"];
+Node7 [label="0" shape="box"];
+Node6 -> Node7 [label="true"];
+Node8 [label="1" shape="box"];
+Node6->Node8 [label="false"];
+Node4->Node6 [label="false"];
+Node2->Node4 [label="false"];
+Node1 -> Node2 [label="true"];
+Node12 [label="number of vessels <= 0.0"];
+Node13 [label="exercise induced <= 0.0"];
+Node14 [label="chest pain type <= 3.0"];
+Node15 [label="0" shape="box"];
+Node14 -> Node15 [label="true"];
+Node16 [label="1" shape="box"];
+Node14->Node16 [label="false"];
+Node13 -> Node14 [label="true"];
+Node17 [label="oldpeak <= 0.600000023842"];
+Node18 [label="0" shape="box"];
+Node17 -> Node18 [label="true"];
+Node19 [label="1" shape="box"];
+Node17->Node19 [label="false"];
+Node13->Node17 [label="false"];
+Node12 -> Node13 [label="true"];
+Node22 [label="1" shape="box"];
+Node12->Node22 [label="false"];
+Node1->Node12 [label="false"];
+}

@@ -96,14 +96,13 @@ figures = {}
 for dataset in datasets:
     measurements[dataset['name']] = {}
     print dataset['name']
-    conf_matrices = {'Imbalanced': [], 'RUS': [], 'Tomek': [], 'Cluster': [], 'INN': [], 'ENN': [],
+    conf_matrices = {'Imbalanced': [], 'RUS': [], 'Tomek': [], 'ENN': [],
                      'ROS': [], 'SMOTE': [], 'SMOTE SVM': [], 'SMOTE Tomek': [], 'SMOTE ENN': []}
-    avg_nodes = {'Imbalanced': [], 'RUS': [], 'Tomek': [], 'Cluster': [], 'INN': [], 'ENN': [],
+    avg_nodes = {'Imbalanced': [], 'RUS': [], 'Tomek': [], 'ENN': [],
                  'ROS': [], 'SMOTE': [], 'SMOTE SVM': [], 'SMOTE Tomek': [], 'SMOTE ENN': []}
-    avg_time = {'Imbalanced': [], 'RUS': [], 'Tomek': [], 'Cluster': [], 'INN': [], 'ENN': [],
+    avg_time = {'Imbalanced': [], 'RUS': [], 'Tomek': [], 'ENN': [],
                 'ROS': [], 'SMOTE': [], 'SMOTE SVM': [], 'SMOTE Tomek': [], 'SMOTE ENN': []}
-    methods = {'RUS': RandomUnderSampler(), 'Tomek': TomekLinks(), 'Cluster': ClusterCentroids(),
-               'INN': InstanceHardnessThreshold(), 'ENN': RepeatedEditedNearestNeighbours(),
+    methods = {'RUS': RandomUnderSampler(), 'Tomek': TomekLinks(), 'ENN': RepeatedEditedNearestNeighbours(),
                'ROS': RandomOverSampler(ratio='auto'), 'SMOTE': SMOTE(ratio='auto', kind='regular'),
                'SMOTE SVM': SMOTE(ratio='auto', kind='svm', **{'class_weight': 'balanced'}),
                'SMOTE Tomek': SMOTETomek(ratio='auto'), 'SMOTE ENN': SMOTEENN(ratio='auto')}
@@ -177,28 +176,37 @@ for dataset in datasets:
 
     F = plt.gcf()
     Size = F.get_size_inches()
-    F.set_size_inches(Size[0] * (np.ceil(conf_matrices_mean[conf_matrices.keys()[0]].shape[0] / 2.0)+0.5), Size[1] * 2, forward=True)
+    F.set_size_inches(Size[0] * (np.ceil(conf_matrices_mean[conf_matrices.keys()[0]].shape[0] / 2.0)+0.5), Size[1] * 1.8, forward=True)
     plt.savefig('output/'+dataset['name']+'_balancing.png', bbox_inches='tight')
     figures[dataset['name']] = 'output/'+dataset['name']+'_balancing.png'
 
-
-print figures
 algorithms = measurements[measurements.keys()[0]].keys()
-algorithms_half1 = algorithms[:len(algorithms)/2]
-algorithms_half2 = algorithms[len(algorithms)/2:]
-measurements1 = {}
-measurements2 = {}
-datasets = measurements.keys()
-for dataset in datasets:
-    measurements1[dataset] = {}
-    measurements2[dataset] = {}
-    for algorithm in algorithms_half1:
-        measurements1[dataset][algorithm] = measurements[dataset][algorithm]
-    for algorithm in algorithms_half2:
-        measurements2[dataset][algorithm] = measurements[dataset][algorithm]
+measurements_list = []
+ALGORITHMS_PER_TABLE = 3
+nr_of_tables = int(np.ceil(float(len(algorithms))/float(ALGORITHMS_PER_TABLE)))
+
+for i in range(nr_of_tables-1):
+    table_algorithms = algorithms[i*ALGORITHMS_PER_TABLE:(i+1)*ALGORITHMS_PER_TABLE]
+    print table_algorithms
+    measurements_temp = {}
+    for dataset in measurements.keys():
+        print dataset
+        measurements_temp[dataset] = {}
+        for algorithm in table_algorithms:
+            measurements_temp[dataset][algorithm] = measurements[dataset][algorithm]
+    measurements_list.append(measurements_temp)
+
+last_table_algorithms = algorithms[(nr_of_tables-1)*ALGORITHMS_PER_TABLE:]
+measurements_temp = {}
+for dataset in measurements.keys():
+    measurements_temp[dataset] = {}
+    for algorithm in last_table_algorithms:
+        measurements_temp[dataset][algorithm] = measurements[dataset][algorithm]
+measurements_list.append(measurements_temp)
+
 print write_preamble()
-print write_measurements(measurements1)
-print write_measurements(measurements2)
+for measurements_ in measurements_list:
+    print write_measurements(measurements_)
 print write_figures(figures)
 print write_footing()
 
