@@ -15,8 +15,4 @@ data.txt
 12 "X12" n
 13 "X13" n
 14 "X14" n
-15 "X15" n
-16 "X16" n
-17 "X17" n
-18 "X18" n
-19 cat d
+15 Class d

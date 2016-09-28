@@ -13,7 +13,9 @@ import time
 
 import sklearn
 from sklearn.cross_validation import StratifiedShuffleSplit
+from sklearn.metrics import accuracy_score
 from sklearn.utils import resample
+import ISM_v3
 
 from decisiontree import DecisionTree
 from featuredescriptors import CONTINUOUS
@@ -117,6 +119,7 @@ class DecisionTreeMerger(object):
             height = region[y_feature][1] - y
 
             if classes[0] in region['class'] and classes[1] in region['class']:
+                purple_tint = (region['class'][classes[0]], 0.0, region['class'][classes[1]])
                 purple_tint = (region['class'][classes[0]], 0.0, region['class'][classes[1]])
             elif classes[0] in region['class']:
                 purple_tint = (1.0, 0.0, 0.0)
@@ -569,6 +572,32 @@ class DecisionTreeMerger(object):
 
         return node
 
+    def tournament_selection_and_merging(self, regions, test_features_df, test_labels_df, cat_name,
+                                         feature_cols, feature_maxs, feature_mins, tournament_size=3):
+        _tournament_size = min(len(regions)/2, tournament_size)
+        regions = copy.deepcopy(regions)
+        best_acc_1 = 0
+        best_region_1 = None
+        for i in range(_tournament_size):
+            region = np.random.choice(regions)
+            regions.remove(region)
+            predicted_labels = self.evaluate_regions(region, test_features_df)
+            acc = accuracy_score(test_labels_df[cat_name].values.astype(str), predicted_labels.astype(str))
+            if acc > best_acc_1:
+                best_acc_1 = acc
+                best_region_1 = region
+        best_acc_2 = 0
+        best_region_2 = None
+        for i in range(_tournament_size):
+            region = np.random.choice(regions)
+            regions.remove(region)
+            predicted_labels = self.evaluate_regions(region, test_features_df)
+            acc = accuracy_score(test_labels_df[cat_name].values.astype(str), predicted_labels.astype(str))
+            if acc > best_acc_2:
+                best_acc_2 = acc
+                best_region_2 = region
+        return self.calculate_intersection(best_region_1, best_region_2, feature_cols, feature_maxs, feature_mins)
+
     def genetic_algorithm(self, data, cat_name, tree_constructors, population_size=15, num_mutations=3,
                           val_fraction=0.25, num_iterations=5, seed=1337, max_samples=5, num_boosts=3,
                           max_regions=1000, prune=False):
@@ -604,66 +633,76 @@ class DecisionTreeMerger(object):
             test_features_df = test_features_df.reset_index(drop=True)
             train_labels_df = train_labels_df.reset_index(drop=True)
             test_labels_df = test_labels_df.reset_index(drop=True)
+            train = data.iloc[train_index, :].copy()
+            test = data.iloc[test_index, :].copy()
 
         #TODO: populate start_trees by boosting
         start_trees = []
         start_regions = []
         regions_list = []
 
-        for tree_constructor in tree_constructors:
-            boosting_train_features_df = train_features_df.copy()
-            boosting_train_labels_df = train_labels_df.copy()
-            regions_to_merge = []
-            tree = tree_constructor.construct_tree(train_features_df, train_labels_df['cat'])
-            tree.populate_samples(train_features_df, train_labels_df['cat'])
+        for tree in ISM_v3.bootstrap(train, cat_name, tree_constructors, boosting=True, nr_classifiers=5):
             regions = self.decision_tree_to_decision_table(tree, train_features_df)
-            regions_list.append(regions)
-            start_trees.append(tree)
-            start_regions.append(regions)
-            regions_to_merge.append(regions)
-            for i in range(num_boosts-1):
-                missclassified_features = []
-                missclassified_labels = []
-                for i in range(len(train_features_df)):
-                    predicted_label = tree.evaluate(train_features_df.iloc[i, :])
-                    real_label = train_labels_df.iloc[i, :]['cat']
-                    if real_label != predicted_label:
-                        missclassified_features.append(train_features_df.iloc[i, :])
-                        missclassified_labels.append(train_labels_df.iloc[i, :])
-
-                boosting_train_features_df = concat([DataFrame(missclassified_features), boosting_train_features_df])
-                boosting_train_labels_df = concat([DataFrame(missclassified_labels), boosting_train_labels_df])
-                boosting_train_features_df = boosting_train_features_df.reset_index(drop=True)
-                boosting_train_labels_df = boosting_train_labels_df.reset_index(drop=True)
-
-                tree = tree_constructor.construct_tree(boosting_train_features_df, boosting_train_labels_df)
-                tree.populate_samples(boosting_train_features_df, boosting_train_labels_df['cat'])
-                regions = self.decision_tree_to_decision_table(tree, boosting_train_features_df)
+            if regions is not None:
                 regions_list.append(regions)
                 start_trees.append(tree)
-                regions_to_merge.append(regions)
+                start_regions.append(regions)
 
-            if num_boosts > 1:
-                merged_regions = self.calculate_intersection(regions_to_merge[0], regions_to_merge[1], feature_column_names,
-                                                             feature_maxs, feature_mins)
-                for k in range(2, len(regions_to_merge)):
-                    if len(merged_regions) < max_regions:
-                        merged_regions = self.calculate_intersection(merged_regions, regions_to_merge[k],
-                                                                     feature_column_names, feature_maxs, feature_mins)
-                    else:
-                        break
-                regions_list.append(merged_regions)
-
-        if num_boosts == 1:
-            merged_regions = self.calculate_intersection(regions_list[0], regions_list[1], feature_column_names,
-                                                             feature_maxs, feature_mins)
-            for k in range(2, len(regions_list)):
-                if len(merged_regions) < max_regions:
-                    merged_regions = self.calculate_intersection(merged_regions, regions_list[k],
-                                                                 feature_column_names, feature_maxs, feature_mins)
-                else:
-                    break
-            regions_list.append(merged_regions)
+        # for tree_constructor in tree_constructors:
+        #     boosting_train_features_df = train_features_df.copy()
+        #     boosting_train_labels_df = train_labels_df.copy()
+        #     regions_to_merge = []
+        #     tree = tree_constructor.construct_tree(train_features_df, train_labels_df['cat'])
+        #     tree.populate_samples(train_features_df, train_labels_df['cat'])
+        #     if tree.value is not None:
+        #         regions = self.decision_tree_to_decision_table(tree, train_features_df)
+        #         regions_list.append(regions)
+        #         start_trees.append(tree)
+        #         start_regions.append(regions)
+        #         regions_to_merge.append(regions)
+        #     for i in range(num_boosts-1):
+        #         missclassified_features = []
+        #         missclassified_labels = []
+        #         for i in range(len(train_features_df)):
+        #             predicted_label = tree.evaluate(train_features_df.iloc[i, :])
+        #             real_label = train_labels_df.iloc[i, :]['cat']
+        #             if real_label != predicted_label:
+        #                 missclassified_features.append(train_features_df.iloc[i, :])
+        #                 missclassified_labels.append(train_labels_df.iloc[i, :])
+        #
+        #         boosting_train_features_df = concat([DataFrame(missclassified_features), boosting_train_features_df])
+        #         boosting_train_labels_df = concat([DataFrame(missclassified_labels), boosting_train_labels_df])
+        #         boosting_train_features_df = boosting_train_features_df.reset_index(drop=True)
+        #         boosting_train_labels_df = boosting_train_labels_df.reset_index(drop=True)
+        #
+        #         tree = tree_constructor.construct_tree(boosting_train_features_df, boosting_train_labels_df)
+        #         tree.populate_samples(boosting_train_features_df, boosting_train_labels_df['cat'])
+        #         regions = self.decision_tree_to_decision_table(tree, boosting_train_features_df)
+        #         regions_list.append(regions)
+        #         start_trees.append(tree)
+        #         regions_to_merge.append(regions)
+        #
+        #     if num_boosts > 1:
+        #         merged_regions = self.calculate_intersection(regions_to_merge[0], regions_to_merge[1], feature_column_names,
+        #                                                      feature_maxs, feature_mins)
+        #         for k in range(2, len(regions_to_merge)):
+        #             if len(merged_regions) < max_regions:
+        #                 merged_regions = self.calculate_intersection(merged_regions, regions_to_merge[k],
+        #                                                              feature_column_names, feature_maxs, feature_mins)
+        #             else:
+        #                 break
+        #         regions_list.append(merged_regions)
+        #
+        # if num_boosts == 1:
+        #     merged_regions = self.calculate_intersection(regions_list[0], regions_list[1], feature_column_names,
+        #                                                      feature_maxs, feature_mins)
+        #     for k in range(2, len(regions_list)):
+        #         if len(merged_regions) < max_regions:
+        #             merged_regions = self.calculate_intersection(merged_regions, regions_list[k],
+        #                                                          feature_column_names, feature_maxs, feature_mins)
+        #         else:
+        #             break
+        #     regions_list.append(merged_regions)
 
         # for tree_constructor in tree_constructors:
         #     tree = tree_constructor.construct_tree(train_features_df, train_labels_df)
@@ -695,24 +734,31 @@ class DecisionTreeMerger(object):
             print("----> Best tree till now: ", [x[1] for x in sorted(tree_accuracy, key=operator.itemgetter(1), reverse=True)[:min(len(regions_list), population_size)]])
             # Breeding phase: we pick one tree from each of the top class predictor sets and merge them all together
             # We create the new constructed_trees array and regions list dict for the next iteration
-            trees_to_merge = range(min(len(regions_list), num_mutations*2))
-            while len(trees_to_merge) > 1:
-                print("breeding.... ", len(trees_to_merge))
-                indexA = np.random.choice(trees_to_merge)
-                trees_to_merge.remove(indexA)
-                indexB = np.random.choice(trees_to_merge)
-                trees_to_merge.remove(indexB)
-                print("merging...")
-                merged_regions = self.calculate_intersection(regions_list[indexA], regions_list[indexB],
-                                                             feature_column_names, feature_maxs, feature_mins)
-                print("going to tree")
-                predicted_labels = self.evaluate_regions(merged_regions, test_features_df)
-                confusion_matrix = DecisionTree.plot_confusion_matrix(test_labels_df[cat_name].values.astype(str), predicted_labels.astype(str))
-                confusion_matrix = np.around(confusion_matrix.astype('float') / confusion_matrix.sum(axis=1)[:, np.newaxis], 3)
-                print sum([confusion_matrix[i][i] for i in range(len(confusion_matrix))])
-
+            for i in range(num_mutations):
+                merged_regions = self.tournament_selection_and_merging(regions_list, test_features_df, test_labels_df,
+                                                                          cat_name, feature_column_names, feature_maxs, feature_mins)
                 if len(merged_regions) < max_regions:
                     regions_list.append(merged_regions)
+
+
+            # trees_to_merge = range(min(len(regions_list), num_mutations*2))
+            # while len(trees_to_merge) > 1:
+            #     print("breeding.... ", len(trees_to_merge))
+            #     indexA = np.random.choice(trees_to_merge)
+            #     trees_to_merge.remove(indexA)
+            #     indexB = np.random.choice(trees_to_merge)
+            #     trees_to_merge.remove(indexB)
+            #     print("merging...")
+            #     merged_regions = self.calculate_intersection(regions_list[indexA], regions_list[indexB],
+            #                                                  feature_column_names, feature_maxs, feature_mins)
+            #     print("going to tree")
+            #     predicted_labels = self.evaluate_regions(merged_regions, test_features_df)
+            #     confusion_matrix = DecisionTree.plot_confusion_matrix(test_labels_df[cat_name].values.astype(str), predicted_labels.astype(str))
+            #     confusion_matrix = np.around(confusion_matrix.astype('float') / confusion_matrix.sum(axis=1)[:, np.newaxis], 3)
+            #     print sum([confusion_matrix[i][i] for i in range(len(confusion_matrix))])
+            #
+            #     if len(merged_regions) < max_regions:
+            #         regions_list.append(merged_regions)
 
             end = time.clock()
             print "Took ", (end - start), " seconds"

@@ -249,7 +249,7 @@ class DecisionTree(object):
     @staticmethod
     def init_tree(tree, labels):
         for label in np.unique(labels):
-            tree.class_probabilities[str(label)] = 0.0
+            tree.class_probabilities[str(int(label))] = 0.0
 
         if tree.value is not None:
             DecisionTree.init_tree(tree.left, labels)
@@ -261,12 +261,12 @@ class DecisionTree(object):
         for _index, feature_vector in feature_vectors.iterrows():
             current_node = self
             while current_node.value is not None:
-                current_node.class_probabilities[str(labels[index])] += 1
+                current_node.class_probabilities[str(int(labels[index]))] += 1
                 if feature_vector[current_node.label] <= current_node.value:
                     current_node = current_node.left
                 else:
                     current_node = current_node.right
-            current_node.class_probabilities[str(labels[index])] += 1
+            current_node.class_probabilities[str(int(labels[index]))] += 1
             index += 1
 
     ############################### PRUNING FROM HERE ON #####################################
@@ -282,7 +282,12 @@ class DecisionTree(object):
         if self.value is None:
             return 1
         else:
-            return self.left.count_nodes() + self.right.count_nodes() + 1
+            left = 0
+            if self.left is not None: left = self.left.count_nodes()
+            right = 0
+            if self.right is not None: right = self.right.count_nodes()
+
+            return left + right + 1
 
     def count_leaves(self):
         if self.value is None:
@@ -313,6 +318,7 @@ class DecisionTree(object):
     def calc_leaf_error(self, total_train_samples):
         return sum([(sum(leaf.class_probabilities.values()) / total_train_samples) *
                     (1 - leaf.class_probabilities[str(leaf.label)]/sum(leaf.class_probabilities.values()))
+                    if sum(leaf.class_probabilities.values()) > 0 else 0
                     for leaf in self.get_leaves()])
 
     def calc_node_error(self, total_train_samples):
@@ -320,7 +326,10 @@ class DecisionTree(object):
                * (sum(self.class_probabilities.values()) / total_train_samples)
 
     def calculate_alpha(self, total_train_samples):
-        return (self.calc_node_error(total_train_samples) - self.calc_leaf_error(total_train_samples)) / (self.count_leaves() - 1)
+        if self.count_leaves() > 1:
+            return (self.calc_node_error(total_train_samples) - self.calc_leaf_error(total_train_samples)) / (self.count_leaves() - 1)
+        else:
+            return (self.calc_node_error(total_train_samples) - self.calc_leaf_error(total_train_samples))
 
     def calculate_cost_complexity(self, total_train_samples, alpha):
         return self.calc_leaf_error(total_train_samples) + alpha * self.count_leaves()
@@ -359,7 +368,7 @@ class DecisionTree(object):
         current_tree = deepcopy(self)
         while current_tree.left is not None or current_tree.right is not None:
             generated_trees = current_tree.generate_subtree(total_train_samples, {})
-            print generated_trees.values()
+            # print generated_trees.values()
             best = min(generated_trees.items(), key=operator.itemgetter(1))
             tree, alpha = best[0], best[1][0]
             current_tree.prune_node(tree)
@@ -440,9 +449,9 @@ class DecisionTree(object):
                 beta = np.sqrt(alphas[i]*alphas[i+1])
                 betas.append(beta)
                 subtrees_by_beta[beta] = subtrees_by_alpha[alphas[i]]
-            print subtrees
-            print alphas
-            print betas
+            # print subtrees
+            # print alphas
+            # print betas
             beta_errors = {}
             for beta in betas:
                 beta_errors[beta] = []
@@ -476,7 +485,7 @@ class DecisionTree(object):
                     beta_errors[beta].append(1 - accuracy_score(predictions, y_test))
 
             for beta in beta_errors: beta_errors[beta] = np.mean(beta_errors[beta])
-            print beta_errors
+            # print beta_errors
             return subtrees_by_beta[min(beta_errors.iteritems(), key=operator.itemgetter(1))[0]]
 
 

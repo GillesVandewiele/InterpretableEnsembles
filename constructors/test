@@ -1,0 +1,29 @@
+digraph DT{
+node[fontname="Arial"];
+Node1 [label="alm1 <= 0.6
+{'1': 46.0, '0': 84.0, '3': 21.0, '2': 31.0, '4': 12.0}"];
+Node2 [label="mcg <= 0.55
+{'1': 2.0, '0': 84.0, '3': 1.0, '2': 29.0, '4': 12.0}"];
+Node3 [label="0
+{'1': 2.0, '0': 81.0, '3': 0.0, '2': 1.0, '4': 1.0}" shape="box"];
+Node2 -> Node3 [label="true"];
+Node4 [label="aac <= 0.63
+{'1': 0.0, '0': 3.0, '3': 1.0, '2': 28.0, '4': 11.0}"];
+Node5 [label="2
+{'1': 0.0, '0': 3.0, '3': 1.0, '2': 28.0, '4': 0.0}" shape="box"];
+Node4 -> Node5 [label="true"];
+Node6 [label="4
+{'1': 0.0, '0': 0.0, '3': 0.0, '2': 0.0, '4': 11.0}" shape="box"];
+Node4->Node6 [label="false"];
+Node2->Node4 [label="false"];
+Node1 -> Node2 [label="true"];
+Node8 [label="mcg <= 0.62
+{'1': 44.0, '0': 0.0, '3': 20.0, '2': 2.0, '4': 0.0}"];
+Node9 [label="1
+{'1': 33.0, '0': 0.0, '3': 2.0, '2': 0.0, '4': 0.0}" shape="box"];
+Node8 -> Node9 [label="true"];
+Node10 [label="3
+{'1': 11.0, '0': 0.0, '3': 18.0, '2': 2.0, '4': 0.0}" shape="box"];
+Node8->Node10 [label="false"];
+Node1->Node8 [label="false"];
+}

@@ -13,7 +13,7 @@
  This software is based upon work supported by the U.S. Army Research Office,
  the National Science Foundation and the National Institutes of Health.
   
- This job was started on: 09/22/16 at 16:38
+ This job was started on: 09/26/16 at 13:43
   
  Classification tree
  Pruning by cross-validation
@@ -22,33 +22,45 @@
  Missing value code: ?
  Records in data file start on line 1
  Warning: N variables changed to S
- Dependent variable is Class
- Number of records in data file: 922
- Length of longest data entry: 1
+ Dependent variable is cat
+ Number of records in data file: 516
+ Length of longest data entry: 13
  Number of classes =  4
  Class      #Cases    Proportion
- 0             634    0.68763557
- 1             208    0.22559653
- 2              38    0.04121475
- 3              42    0.04555315
+ 0             107    0.20736434
+ 1             118    0.22868217
+ 2             140    0.27131783
+ 3             151    0.29263566
   
  Summary information (without x variables)
  d=dependent, b=split and fit cat variable using 0-1 dummies,
  c=split-only categorical, n=split and fit numerical, f=fit-only numerical,
  s=split-only numerical, w=weight
   Column  Name            Minimum      Maximum   #Categories       #Missing
-       1  buying     s   0.0000E+00   3.0000E+00
-       2  maint      s   0.0000E+00   3.0000E+00
-       3  doors      s   0.0000E+00   3.0000E+00
-       4  persons    s   0.0000E+00   2.0000E+00
-       5  lug_boot   s   0.0000E+00   2.0000E+00
-       6  safety     s   0.0000E+00   2.0000E+00
-       7  Class      d                                     4
+       1  X1         s   7.7000E+01   1.1500E+02
+       2  X2         s   3.3000E+01   5.9000E+01
+       3  X3         s   4.0000E+01   1.1000E+02
+       4  X4         s   1.0400E+02   2.5200E+02
+       5  X5         s   4.7000E+01   1.2600E+02
+       6  X6         s   3.0000E+00   5.5000E+01
+       7  X7         s   1.1200E+02   2.6200E+02
+       8  X8         s   2.6000E+01   6.1000E+01
+       9  X9         s   1.7000E+01   2.8000E+01
+      10  X10        s   1.1800E+02   1.8600E+02
+      11  X11        s   1.3000E+02   2.8800E+02
+      12  X12        s   1.8400E+02   9.9800E+02
+      13  X13        s   1.0900E+02   2.6800E+02
+      14  X14        s   6.0000E+01   1.1900E+02
+      15  X15        s   0.0000E+00   2.2000E+01
+      16  X16        s   0.0000E+00   3.8000E+01
+      17  X17        s   1.7600E+02   2.0400E+02
+      18  X18        s   1.8200E+02   2.1100E+02
+      19  cat        d                                     4
   
       Total  #cases w/   #missing
      #cases    miss. D  ord. vals   #X-var   #N-var   #F-var   #S-var   #B-var   #C-var
-        922          0          0        0        0        0        6        0        0
- No. cases used for training: 922
+        516          0          0        0        0        0       18        0        0
+ No. cases used for training: 516
   
  Univariate split highest priority
  No interaction and linear splits
@@ -59,61 +71,73 @@
  Unit misclassification costs
  Split values for N and S variables based on exhaustive search
  Max number of split levels =  10
- Minimum node size =  4
+ Minimum node size =  3
   
  Pruning sequence
    Subtree     Pruned  #Terminal        True           Geometric
     number       node      nodes        alpha             mean
          0          0         39       0.0000          0.0000    
-         1        224         38       0.0000          0.0000    
-         2        497         37       0.0000          0.0000    
-         3        902         36      0.43368E-18     0.21688E-10
-         4         61         33      0.10846E-02     0.13284E-02
-         5        233         31      0.16269E-02     0.17149E-02
-         6        112         28      0.18077E-02     0.24252E-02
-         7        458         27      0.32538E-02     0.32538E-02
-         8        113         25      0.32538E-02     0.34052E-02
-         9         29         18      0.35637E-02     0.36781E-02
-        10        124         16      0.37961E-02     0.39293E-02
-        11         57         12      0.40672E-02     0.42006E-02
-        12         31         10      0.43384E-02     0.57392E-02
-        13         56          9      0.75922E-02     0.83662E-02
-        14         30          7      0.92191E-02     0.11618E-01
-        15         14          5      0.14642E-01     0.22543E-01
-        16          7          3      0.34707E-01     0.38069E-01
-        17          1          1      0.41757E-01     0.17977+309
+         1         36         38       0.0000          0.0000    
+         2         40         37       0.0000          0.0000    
+         3        241         36       0.0000          0.0000    
+         4        120         35       0.0000          0.0000    
+         5         60         34      0.86736E-18     0.12266E-17
+         6          9         32      0.17347E-17     0.17347E-17
+         7        896         31      0.17347E-17     0.57982E-10
+         8         57         29      0.19380E-02     0.19380E-02
+         9         61         28      0.19380E-02     0.19380E-02
+        10         42         26      0.19380E-02     0.22378E-02
+        11        224         23      0.25840E-02     0.35383E-02
+        12         15         21      0.48450E-02     0.59338E-02
+        13          6         17      0.72674E-02     0.75058E-02
+        14         56         15      0.77519E-02     0.77519E-02
+        15         21         14      0.77519E-02     0.80685E-02
+        16          4         11      0.83979E-02     0.90208E-02
+        17         41         10      0.96899E-02     0.11048E-01
+        18         10          8      0.12597E-01     0.13531E-01
+        19         14          6      0.14535E-01     0.26001E-01
+        20          7          5      0.46512E-01     0.50685E-01
+        21          2          3      0.55233E-01     0.84686E-01
+        22          3          2      0.12984         0.14965    
+        23          1          1      0.17248         0.17977+309
   
  Number of SE's for pruned tree =   5.0000E-01
   
  Size and CV mean cost and SE of subtrees:
   Tree   #Tnodes  Mean Cost   SE(Mean)   BSE(Mean)  Median Cost  BSE(Median)
-    1       38   6.291E-02   7.996E-03   4.166E-03   6.522E-02   6.160E-03
-    2       37   6.291E-02   7.996E-03   4.166E-03   6.522E-02   6.160E-03
-    3--     36   6.291E-02   7.996E-03   4.166E-03   6.522E-02   6.160E-03
-    4**     33   6.508E-02   8.123E-03   3.754E-03   6.522E-02   4.320E-03
-    5       31   6.941E-02   8.370E-03   4.374E-03   7.568E-02   6.563E-03
-    6       28   7.267E-02   8.549E-03   4.907E-03   7.609E-02   7.891E-03
-    7       27   7.158E-02   8.490E-03   4.686E-03   7.609E-02   6.762E-03
-    8       25   7.050E-02   8.430E-03   5.182E-03   7.609E-02   7.541E-03
-    9       18   8.677E-02   9.271E-03   5.769E-03   8.696E-02   9.016E-03
-   10       16   9.111E-02   9.477E-03   7.318E-03   8.696E-02   1.134E-02
-   11       12   1.009E-01   9.918E-03   8.660E-03   1.033E-01   1.197E-02
-   12       10   1.280E-01   1.100E-02   7.768E-03   1.196E-01   1.081E-02
-   13        9   1.236E-01   1.084E-02   7.178E-03   1.304E-01   7.840E-03
-   14        7   1.388E-01   1.139E-02   9.093E-03   1.413E-01   1.299E-02
-   15        5   1.649E-01   1.222E-02   8.754E-03   1.739E-01   1.468E-02
-   16        3   2.289E-01   1.384E-02   4.344E-03   2.283E-01   4.115E-03
-   17        1   3.124E-01   1.526E-02   2.033E-03   3.135E-01   2.803E-03
+    1       38   1.570E-01   1.601E-02   1.738E-02   1.346E-01   1.813E-02
+    2       37   1.570E-01   1.601E-02   1.738E-02   1.346E-01   1.813E-02
+    3       36   1.570E-01   1.601E-02   1.738E-02   1.346E-01   1.813E-02
+    4       35   1.570E-01   1.601E-02   1.738E-02   1.346E-01   1.813E-02
+    5       34   1.570E-01   1.601E-02   1.738E-02   1.346E-01   1.813E-02
+    6       32   1.570E-01   1.601E-02   1.738E-02   1.346E-01   1.813E-02
+    7++     31   1.570E-01   1.601E-02   1.738E-02   1.346E-01   1.813E-02
+    8       29   1.609E-01   1.617E-02   1.730E-02   1.457E-01   2.442E-02
+    9       28   1.609E-01   1.617E-02   1.730E-02   1.457E-01   2.442E-02
+   10       26   1.589E-01   1.609E-02   1.767E-02   1.442E-01   2.644E-02
+   11**     23   1.609E-01   1.617E-02   1.886E-02   1.442E-01   2.644E-02
+   12       21   1.725E-01   1.663E-02   2.002E-02   1.923E-01   2.779E-02
+   13       17   1.802E-01   1.692E-02   2.206E-02   1.942E-01   2.654E-02
+   14       15   1.802E-01   1.692E-02   2.206E-02   1.942E-01   2.654E-02
+   15       14   1.802E-01   1.692E-02   2.206E-02   1.942E-01   2.654E-02
+   16       11   1.957E-01   1.747E-02   2.157E-02   2.019E-01   3.223E-02
+   17       10   2.132E-01   1.803E-02   2.064E-02   2.308E-01   2.619E-02
+   18        8   2.229E-01   1.832E-02   2.368E-02   2.330E-01   3.462E-02
+   19        6   2.829E-01   1.983E-02   1.801E-02   2.941E-01   2.207E-02
+   20        5   3.178E-01   2.050E-02   1.377E-02   3.269E-01   1.464E-02
+   21        3   4.050E-01   2.161E-02   1.566E-02   4.174E-01   2.102E-02
+   22        2   5.426E-01   2.193E-02   1.245E-02   5.243E-01   2.191E-02
+   23        1   7.074E-01   2.003E-02   7.785E-03   7.087E-01   1.166E-02
   
  0-SE tree based on mean is marked with *
  0-SE tree based on median is marked with +
  Selected-SE tree based on mean using naive SE is marked with **
  Selected-SE tree based on mean using bootstrap SE is marked with --
  Selected-SE tree based on median and bootstrap SE is marked with ++
- ** tree same as ++ tree
- ** tree same as + tree
+ * tree same as + tree
+ ** tree same as -- tree
  + tree same as ++ tree
- * tree same as -- tree
+ * tree same as ++ tree
   
  Following tree is based on mean CV with naive SE estimate (**).
   
@@ -122,373 +146,185 @@
  Node cost is node misclassification cost divided by number of training cases
         Node    Total    Train    Predicted        Node    Split          Interacting
        label    cases    cases    class            cost    variables      variable
-           1      922      922    0              3.124E-01 safety 
-           2T     304      304    0              0.000E+00 - 
-           3      618      618    0              4.660E-01 persons 
-           6T     199      199    0              0.000E+00 - 
-           7      419      419    1              5.036E-01 buying 
-          14      215      215    1              4.930E-01 maint 
-          28      110      110    2              6.545E-01 safety 
-          56       55       55    1              4.364E-01 lug_boot 
-         112       36       36    1              3.056E-01 lug_boot 
-         224T      12       12    1              1.667E-01 doors 
-         225       24       24    1              3.750E-01 doors 
-         450T       7        7    1              0.000E+00 - 
-         451       17       17    2              4.706E-01 maint 
-         902T      11       11    2              2.727E-01 persons 
-         903T       6        6    1              1.667E-01 - 
-         113       19       19    2              3.158E-01 buying 
-         226T       8        8    2              0.000E+00 - 
-         227       11       11    1              4.545E-01 maint 
-         454T       5        5    2              0.000E+00 - 
-         455T       6        6    1              0.000E+00 - 
-          57       55       55    3              4.364E-01 lug_boot 
-         114       37       37    2              5.676E-01 lug_boot 
-         228       12       12    0              6.667E-01 buying 
-         456T       7        7    0              4.286E-01 - 
-         457T       5        5    1              2.000E-01 - 
-         229       25       25    3              4.800E-01 doors 
-         458       17       17    2              2.941E-01 persons 
-         916T      10       10    2              0.000E+00 - 
-         917T       7        7    3              2.857E-01 - 
-         459T       8        8    3              0.000E+00 - 
-         115T      18       18    3              0.000E+00 - 
-          29      105      105    1              2.952E-01 safety 
-          58       53       53    1              3.396E-01 lug_boot 
-         116       37       37    1              4.865E-01 buying 
-         232       20       20    1              2.500E-01 maint 
-         464T      14       14    1              0.000E+00 - 
-         465T       6        6    0              1.667E-01 - 
-         233       17       17    0              2.353E-01 doors 
-         466T       8        8    0              0.000E+00 - 
-         467        9        9    0              4.444E-01 maint 
-         934T       4        4    0              0.000E+00 - 
-         935T       5        5    1              2.000E-01 - 
-         117T      16       16    1              0.000E+00 - 
-          59       52       52    1              2.500E-01 maint 
-         118       27       27    1              4.815E-01 buying 
-         236       17       17    3              3.529E-01 lug_boot 
-         472T       5        5    1              2.000E-01 - 
-         473T      12       12    3              8.333E-02 - 
-         237T      10       10    1              1.000E-01 - 
-         119T      25       25    1              0.000E+00 - 
-          15      204      204    0              4.853E-01 maint 
-          30      106      106    1              2.264E-01 lug_boot 
-          60       33       33    0              4.848E-01 safety 
-         120T      17       17    0              0.000E+00 - 
-         121T      16       16    1              0.000E+00 - 
-          61T      73       73    1              9.589E-02 doors 
-          31       98       98    0              1.735E-01 maint 
-          62       46       46    0              3.696E-01 buying 
-         124       26       26    1              3.462E-01 safety 
-         248       17       17    0              4.706E-01 lug_boot 
-         496T       7        7    0              0.000E+00 - 
-         497T      10       10    1              2.000E-01 doors 
-         249T       9        9    1              0.000E+00 - 
-         125T      20       20    0              0.000E+00 - 
-          63T      52       52    0              0.000E+00 - 
+           1      516      516    3              7.074E-01 X11 
+           2      263      263    3              4.449E-01 X7 
+           4      104      104    3              2.500E-01 X17 
+           8       23       23    3              6.087E-01 X4 
+          16       15       15    3              4.000E-01 X10 
+          32T       6        6    1              0.000E+00 - 
+          33T       9        9    3              0.000E+00 - 
+          17T       8        8    0              1.250E-01 - 
+           9T      81       81    3              1.481E-01 X17 
+           5      159      159    3              5.723E-01 X6 
+          10       92       92    2              3.478E-01 X10 
+          20       28       28    0              6.071E-01 X5 
+          40T      12       12    0              1.667E-01 X12 
+          41       16       16    1              4.375E-01 X5 
+          82T      11       11    1              1.818E-01 - 
+          83T       5        5    2              0.000E+00 - 
+          21       64       64    2              1.563E-01 X3 
+          42T      58       58    2              6.897E-02 X17 
+          43T       6        6    0              3.333E-01 - 
+          11T      67       67    3              2.985E-02 - 
+           3      253      253    1              6.285E-01 X6 
+           6       92       92    2              1.630E-01 X8 
+          12T      46       46    2              0.000E+00 - 
+          13       46       46    2              3.261E-01 X5 
+          26       19       19    1              4.737E-01 X14 
+          52T      10       10    1              0.000E+00 - 
+          53        9        9    0              4.444E-01 X3 
+         106T       4        4    2              0.000E+00 - 
+         107T       5        5    0              0.000E+00 - 
+          27T      27       27    2              0.000E+00 - 
+           7      161      161    1              4.783E-01 X1 
+          14      100      100    0              4.100E-01 X14 
+          28       94       94    0              3.723E-01 X8 
+          56       76       76    0              2.763E-01 X10 
+         112       58       58    0              3.621E-01 X6 
+         224T      48       48    0              2.500E-01 X13 
+         225T      10       10    1              1.000E-01 - 
+         113T      18       18    0              0.000E+00 - 
+          57T      18       18    1              2.222E-01 X8 
+          29T       6        6    3              1.667E-01 - 
+          15       61       61    1              1.967E-01 X2 
+          30       56       56    1              1.429E-01 X17 
+          60T      49       49    1              6.122E-02 X2 
+          61T       7        7    0              2.857E-01 X16 
+          31T       5        5    0              4.000E-01 - 
   
- Number of terminal nodes of final tree: 33
- Total number of nodes of final tree:    65
- Second best split variable (based on curvature test) at root node is persons
+ Number of terminal nodes of final tree: 23
+ Total number of nodes of final tree:    45
+ Second best split variable (based on curvature test) at root node is X12
   
  Classification tree:
   
-  Node 1: safety <=    0.50000 or ?
-    Node 2: 0
-  Node 1: safety >    0.50000 or ?
-    Node 3: persons <=    0.50000 or ?
-      Node 6: 0
-    Node 3: persons >    0.50000 or ?
-      Node 7: buying <=    1.50000 and not ?
-        Node 14: maint <=    1.50000 and not ?
-          Node 28: safety <=    1.50000 and not ?
-            Node 56: lug_boot <=    1.50000 or ?
-              Node 112: lug_boot <=    0.50000 and not ?
-                Node 224: 1
-              Node 112: lug_boot >    0.50000 or ?
-                Node 225: doors <=    0.50000 and not ?
-                  Node 450: 1
-                Node 225: doors >    0.50000 or ?
-                  Node 451: maint <=    0.50000 and not ?
-                    Node 902: 2
-                  Node 451: maint >    0.50000 and not ?
-                    Node 903: 1
-            Node 56: lug_boot >    1.50000 and not ?
-              Node 113: buying <=    0.50000 and not ?
-                Node 226: 2
-              Node 113: buying >    0.50000 or ?
-                Node 227: maint <=    0.50000 and not ?
-                  Node 454: 2
-                Node 227: maint >    0.50000 or ?
-                  Node 455: 1
-          Node 28: safety >    1.50000 or ?
-            Node 57: lug_boot <=    1.50000 or ?
-              Node 114: lug_boot <=    0.50000 and not ?
-                Node 228: buying <=    0.50000 and not ?
-                  Node 456: 0
-                Node 228: buying >    0.50000 and not ?
-                  Node 457: 1
-              Node 114: lug_boot >    0.50000 or ?
-                Node 229: doors <=    1.50000 or ?
-                  Node 458: persons <=    1.50000 and not ?
-                    Node 916: 2
-                  Node 458: persons >    1.50000 and not ?
-                    Node 917: 3
-                Node 229: doors >    1.50000 and not ?
-                  Node 459: 3
-            Node 57: lug_boot >    1.50000 and not ?
-              Node 115: 3
-        Node 14: maint >    1.50000 and not ?
-          Node 29: safety <=    1.50000 and not ?
-            Node 58: lug_boot <=    1.50000 or ?
-              Node 116: buying <=    0.50000 and not ?
-                Node 232: maint <=    2.50000 or ?
-                  Node 464: 1
-                Node 232: maint >    2.50000 and not ?
-                  Node 465: 0
-              Node 116: buying >    0.50000 and not ?
-                Node 233: doors <=    1.00000 and not ?
-                  Node 466: 0
-                Node 233: doors >    1.00000 or ?
-                  Node 467: maint <=    2.50000 and not ?
-                    Node 934: 0
-                  Node 467: maint >    2.50000 or ?
-                    Node 935: 1
-            Node 58: lug_boot >    1.50000 and not ?
-              Node 117: 1
-          Node 29: safety >    1.50000 and not ?
-            Node 59: maint <=    2.50000 and not ?
-              Node 118: buying <=    0.50000 and not ?
-                Node 236: lug_boot <=    0.50000 and not ?
-                  Node 472: 1
-                Node 236: lug_boot >    0.50000 or ?
-                  Node 473: 3
-              Node 118: buying >    0.50000 and not ?
-                Node 237: 1
-            Node 59: maint >    2.50000 and not ?
-              Node 119: 1
-      Node 7: buying >    1.50000 and not ?
-        Node 15: maint <=    1.50000 and not ?
-          Node 30: lug_boot <=    0.50000 and not ?
-            Node 60: safety <=    1.50000 and not ?
-              Node 120: 0
-            Node 60: safety >    1.50000 and not ?
-              Node 121: 1
-          Node 30: lug_boot >    0.50000 or ?
-            Node 61: 1
-        Node 15: maint >    1.50000 and not ?
-          Node 31: maint <=    2.50000 and not ?
-            Node 62: buying <=    2.50000 and not ?
-              Node 124: safety <=    1.50000 and not ?
-                Node 248: lug_boot <=    0.50000 or ?
-                  Node 496: 0
-                Node 248: lug_boot >    0.50000 or ?
-                  Node 497: 1
-              Node 124: safety >    1.50000 and not ?
-                Node 249: 1
-            Node 62: buying >    2.50000 and not ?
-              Node 125: 0
-          Node 31: maint >    2.50000 or ?
-            Node 63: 0
+  Node 1: X11 <=  1.77500E+02 or ?
+    Node 2: X7 <=  1.42550E+02 or ?
+      Node 4: X17 <=  1.83500E+02 or ?
+        Node 8: X4 <=  1.23000E+02 or ?
+          Node 16: X10 <=  1.26000E+02 and not ?
+            Node 32: 1
+          Node 16: X10 >  1.26000E+02 or ?
+            Node 33: 3
+        Node 8: X4 >  1.23000E+02 and not ?
+          Node 17: 0
+      Node 4: X17 >  1.83500E+02 or ?
+        Node 9: 3
+    Node 2: X7 >  1.42550E+02 or ?
+      Node 5: X6 <=    8.24330 or ?
+        Node 10: X10 <=  1.40000E+02 or ?
+          Node 20: X5 <=   56.50000 or ?
+            Node 40: 0
+          Node 20: X5 >   56.50000 or ?
+            Node 41: X5 <=   63.00000 and not ?
+              Node 82: 1
+            Node 41: X5 >   63.00000 and not ?
+              Node 83: 2
+        Node 10: X10 >  1.40000E+02 or ?
+          Node 21: X3 <=   76.50000 and not ?
+            Node 42: 2
+          Node 21: X3 >   76.50000 and not ?
+            Node 43: 0
+      Node 5: X6 >    8.24330 and not ?
+        Node 11: 3
+  Node 1: X11 >  1.77500E+02 and not ?
+    Node 3: X6 <=    7.50000 and not ?
+      Node 6: X8 <=   37.00000 or ?
+        Node 12: 2
+      Node 6: X8 >   37.00000 or ?
+        Node 13: X5 <=   67.00000 or ?
+          Node 26: X14 <=   70.00000 and not ?
+            Node 52: 1
+          Node 26: X14 >   70.00000 and not ?
+            Node 53: X3 <=   76.50000 and not ?
+              Node 106: 2
+            Node 53: X3 >   76.50000 or ?
+              Node 107: 0
+        Node 13: X5 >   67.00000 or ?
+          Node 27: 2
+    Node 3: X6 >    7.50000 or ?
+      Node 7: X1 <=  1.03500E+02 or ?
+        Node 14: X14 <=   74.50000 or ?
+          Node 28: X8 <=   37.50000 or ?
+            Node 56: X10 <=  1.68500E+02 or ?
+              Node 112: X6 <=   10.50000 and not ?
+                Node 224: 0
+              Node 112: X6 >   10.50000 and not ?
+                Node 225: 1
+            Node 56: X10 >  1.68500E+02 and not ?
+              Node 113: 0
+          Node 28: X8 >   37.50000 and not ?
+            Node 57: 1
+        Node 14: X14 >   74.50000 and not ?
+          Node 29: 3
+      Node 7: X1 >  1.03500E+02 and not ?
+        Node 15: X2 <=   54.50000 or ?
+          Node 30: X17 <=  1.90500E+02 or ?
+            Node 60: 1
+          Node 30: X17 >  1.90500E+02 and not ?
+            Node 61: 0
+        Node 15: X2 >   54.50000 and not ?
+          Node 31: 0
  
  ***************************************************************
  
   
  Node 1: Intermediate node
- A case goes into Node 2 if safety <=  5.0000000E-01 or ?
- safety mean =  9.9132E-01
+ A case goes into Node 2 if X11 <=  1.7750000E+02 or ?
+ X11 mean =  1.8783E+02
  Class      Number  ClassPrior
- 0             634     0.68764
- 1             208     0.22560
- 2              38     0.04121
- 3              42     0.04555
- Number of training cases misclassified =  288
- Predicted class is 0
+ 0             107     0.20736
+ 1             118     0.22868
+ 2             140     0.27132
+ 3             151     0.29264
+ Number of training cases misclassified =  365
+ Predicted class is 3
  ----------------------------
- Node 2: Terminal node
+ Node 2: Intermediate node
+ A case goes into Node 4 if X7 <=  1.4255041E+02 or ?
+ X7 mean =  1.4240E+02
  Class      Number  ClassPrior
- 0             304     1.00000
- 1               0     0.00000
+ 0              32     0.12167
+ 1              24     0.09125
+ 2              61     0.23194
+ 3             146     0.55513
+ Number of training cases misclassified =  117
+ Predicted class is 3
+ ----------------------------
+ Node 4: Intermediate node
+ A case goes into Node 8 if X17 <=  1.8350000E+02 or ?
+ X17 mean =  1.9038E+02
+ Class      Number  ClassPrior
+ 0              17     0.16346
+ 1               9     0.08654
  2               0     0.00000
- 3               0     0.00000
- Number of training cases misclassified =  0
- Predicted class is 0
+ 3              78     0.75000
+ Number of training cases misclassified =  26
+ Predicted class is 3
  ----------------------------
- Node 3: Intermediate node
- A case goes into Node 6 if persons <=  5.0000000E-01 or ?
- persons mean =  9.8058E-01
+ Node 8: Intermediate node
+ A case goes into Node 16 if X4 <=  1.2300000E+02 or ?
+ X4 mean =  1.1861E+02
  Class      Number  ClassPrior
- 0             330     0.53398
- 1             208     0.33657
- 2              38     0.06149
- 3              42     0.06796
- Number of training cases misclassified =  288
- Predicted class is 0
- ----------------------------
- Node 6: Terminal node
- Class      Number  ClassPrior
- 0             199     1.00000
- 1               0     0.00000
+ 0               7     0.30435
+ 1               7     0.30435
  2               0     0.00000
- 3               0     0.00000
- Number of training cases misclassified =  0
- Predicted class is 0
+ 3               9     0.39130
+ Number of training cases misclassified =  14
+ Predicted class is 3
  ----------------------------
- Node 7: Intermediate node
- A case goes into Node 14 if buying <=  1.5000000E+00
- buying mean =  1.4439E+00
+ Node 16: Intermediate node
+ A case goes into Node 32 if X10 <=  1.2600000E+02
+ X10 mean =  1.2633E+02
  Class      Number  ClassPrior
- 0             131     0.31265
- 1             208     0.49642
- 2              38     0.09069
- 3              42     0.10024
- Number of training cases misclassified =  211
- Predicted class is 1
- ----------------------------
- Node 14: Intermediate node
- A case goes into Node 28 if maint <=  1.5000000E+00
- maint mean =  1.4605E+00
- Class      Number  ClassPrior
- 0              26     0.12093
- 1             109     0.50698
- 2              38     0.17674
- 3              42     0.19535
- Number of training cases misclassified =  106
- Predicted class is 1
- ----------------------------
- Node 28: Intermediate node
- A case goes into Node 56 if safety <=  1.5000000E+00
- safety mean =  1.5000E+00
- Class      Number  ClassPrior
- 0               6     0.05455
- 1              35     0.31818
- 2              38     0.34545
- 3              31     0.28182
- Number of training cases misclassified =  72
- Predicted class is 2
- ----------------------------
- Node 56: Intermediate node
- A case goes into Node 112 if lug_boot <=  1.5000000E+00 or ?
- lug_boot mean =  1.1273E+00
- Class      Number  ClassPrior
- 0               2     0.03636
- 1              31     0.56364
- 2              22     0.40000
- 3               0     0.00000
- Number of training cases misclassified =  24
- Predicted class is 1
- ----------------------------
- Node 112: Intermediate node
- A case goes into Node 224 if lug_boot <=  5.0000000E-01
- lug_boot mean =  6.6667E-01
- Class      Number  ClassPrior
- 0               2     0.05556
- 1              25     0.69444
- 2               9     0.25000
- 3               0     0.00000
- Number of training cases misclassified =  11
- Predicted class is 1
- ----------------------------
- Node 224: Terminal node
- Class      Number  ClassPrior
- 0               2     0.16667
- 1              10     0.83333
+ 0               0     0.00000
+ 1               6     0.40000
  2               0     0.00000
- 3               0     0.00000
- Number of training cases misclassified =  2
- Predicted class is 1
- ----------------------------
- Node 225: Intermediate node
- A case goes into Node 450 if doors <=  5.0000000E-01
- doors mean =  1.3750E+00
- Class      Number  ClassPrior
- 0               0     0.00000
- 1              15     0.62500
- 2               9     0.37500
- 3               0     0.00000
- Number of training cases misclassified =  9
- Predicted class is 1
- ----------------------------
- Node 450: Terminal node
- Class      Number  ClassPrior
- 0               0     0.00000
- 1               7     1.00000
- 2               0     0.00000
- 3               0     0.00000
- Number of training cases misclassified =  0
- Predicted class is 1
- ----------------------------
- Node 451: Intermediate node
- A case goes into Node 902 if maint <=  5.0000000E-01
- maint mean =  3.5294E-01
- Class      Number  ClassPrior
- 0               0     0.00000
- 1               8     0.47059
- 2               9     0.52941
- 3               0     0.00000
- Number of training cases misclassified =  8
- Predicted class is 2
- ----------------------------
- Node 902: Terminal node
- Class      Number  ClassPrior
- 0               0     0.00000
- 1               3     0.27273
- 2               8     0.72727
- 3               0     0.00000
- Number of training cases misclassified =  3
- Predicted class is 2
- ----------------------------
- Node 903: Terminal node
- Class      Number  ClassPrior
- 0               0     0.00000
- 1               5     0.83333
- 2               1     0.16667
- 3               0     0.00000
- Number of training cases misclassified =  1
- Predicted class is 1
- ----------------------------
- Node 113: Intermediate node
- A case goes into Node 226 if buying <=  5.0000000E-01
- buying mean =  5.7895E-01
- Class      Number  ClassPrior
- 0               0     0.00000
- 1               6     0.31579
- 2              13     0.68421
- 3               0     0.00000
+ 3               9     0.60000
  Number of training cases misclassified =  6
- Predicted class is 2
+ Predicted class is 3
  ----------------------------
- Node 226: Terminal node
- Class      Number  ClassPrior
- 0               0     0.00000
- 1               0     0.00000
- 2               8     1.00000
- 3               0     0.00000
- Number of training cases misclassified =  0
- Predicted class is 2
- ----------------------------
- Node 227: Intermediate node
- A case goes into Node 454 if maint <=  5.0000000E-01
- maint mean =  5.4545E-01
- Class      Number  ClassPrior
- 0               0     0.00000
- 1               6     0.54545
- 2               5     0.45455
- 3               0     0.00000
- Number of training cases misclassified =  5
- Predicted class is 1
- ----------------------------
- Node 454: Terminal node
- Class      Number  ClassPrior
- 0               0     0.00000
- 1               0     0.00000
- 2               5     1.00000
- 3               0     0.00000
- Number of training cases misclassified =  0
- Predicted class is 2
- ----------------------------
- Node 455: Terminal node
+ Node 32: Terminal node
  Class      Number  ClassPrior
  0               0     0.00000
  1               6     1.00000
@@ -497,287 +333,307 @@
  Number of training cases misclassified =  0
  Predicted class is 1
  ----------------------------
- Node 57: Intermediate node
- A case goes into Node 114 if lug_boot <=  1.5000000E+00 or ?
- lug_boot mean =  1.1091E+00
+ Node 33: Terminal node
  Class      Number  ClassPrior
- 0               4     0.07273
- 1               4     0.07273
- 2              16     0.29091
- 3              31     0.56364
- Number of training cases misclassified =  24
+ 0               0     0.00000
+ 1               0     0.00000
+ 2               0     0.00000
+ 3               9     1.00000
+ Number of training cases misclassified =  0
  Predicted class is 3
  ----------------------------
- Node 114: Intermediate node
- A case goes into Node 228 if lug_boot <=  5.0000000E-01
- lug_boot mean =  6.7568E-01
+ Node 17: Terminal node
  Class      Number  ClassPrior
- 0               4     0.10811
- 1               4     0.10811
- 2              16     0.43243
- 3              13     0.35135
- Number of training cases misclassified =  21
- Predicted class is 2
- ----------------------------
- Node 228: Intermediate node
- A case goes into Node 456 if buying <=  5.0000000E-01
- buying mean =  4.1667E-01
- Class      Number  ClassPrior
- 0               4     0.33333
- 1               4     0.33333
- 2               4     0.33333
- 3               0     0.00000
- Number of training cases misclassified =  8
- Predicted class is 0
- ----------------------------
- Node 456: Terminal node
- Class      Number  ClassPrior
- 0               4     0.57143
- 1               0     0.00000
- 2               3     0.42857
- 3               0     0.00000
- Number of training cases misclassified =  3
- Predicted class is 0
- ----------------------------
- Node 457: Terminal node
- Class      Number  ClassPrior
- 0               0     0.00000
- 1               4     0.80000
- 2               1     0.20000
+ 0               7     0.87500
+ 1               1     0.12500
+ 2               0     0.00000
  3               0     0.00000
  Number of training cases misclassified =  1
- Predicted class is 1
+ Predicted class is 0
  ----------------------------
- Node 229: Intermediate node
- A case goes into Node 458 if doors <=  1.5000000E+00 or ?
- doors mean =  1.3200E+00
+ Node 9: Terminal node
  Class      Number  ClassPrior
- 0               0     0.00000
- 1               0     0.00000
- 2              12     0.48000
- 3              13     0.52000
+ 0              10     0.12346
+ 1               2     0.02469
+ 2               0     0.00000
+ 3              69     0.85185
  Number of training cases misclassified =  12
  Predicted class is 3
  ----------------------------
- Node 458: Intermediate node
- A case goes into Node 916 if persons <=  1.5000000E+00
- persons mean =  1.4118E+00
+ Node 5: Intermediate node
+ A case goes into Node 10 if X6 <=  8.2433028E+00 or ?
+ X6 mean =  8.2806E+00
  Class      Number  ClassPrior
- 0               0     0.00000
- 1               0     0.00000
- 2              12     0.70588
- 3               5     0.29412
- Number of training cases misclassified =  5
+ 0              15     0.09434
+ 1              15     0.09434
+ 2              61     0.38365
+ 3              68     0.42767
+ Number of training cases misclassified =  91
+ Predicted class is 3
+ ----------------------------
+ Node 10: Intermediate node
+ A case goes into Node 20 if X10 <=  1.4000000E+02 or ?
+ X10 mean =  1.4101E+02
+ Class      Number  ClassPrior
+ 0              15     0.16304
+ 1              14     0.15217
+ 2              60     0.65217
+ 3               3     0.03261
+ Number of training cases misclassified =  32
  Predicted class is 2
  ----------------------------
- Node 916: Terminal node
+ Node 20: Intermediate node
+ A case goes into Node 40 if X5 <=  5.6500000E+01 or ?
+ X5 mean =  5.8893E+01
+ Class      Number  ClassPrior
+ 0              11     0.39286
+ 1              11     0.39286
+ 2               6     0.21429
+ 3               0     0.00000
+ Number of training cases misclassified =  17
+ Predicted class is 0
+ ----------------------------
+ Node 40: Terminal node
+ Class      Number  ClassPrior
+ 0              10     0.83333
+ 1               2     0.16667
+ 2               0     0.00000
+ 3               0     0.00000
+ Number of training cases misclassified =  2
+ Predicted class is 0
+ ----------------------------
+ Node 41: Intermediate node
+ A case goes into Node 82 if X5 <=  6.3000000E+01
+ X5 mean =  6.2125E+01
+ Class      Number  ClassPrior
+ 0               1     0.06250
+ 1               9     0.56250
+ 2               6     0.37500
+ 3               0     0.00000
+ Number of training cases misclassified =  7
+ Predicted class is 1
+ ----------------------------
+ Node 82: Terminal node
+ Class      Number  ClassPrior
+ 0               1     0.09091
+ 1               9     0.81818
+ 2               1     0.09091
+ 3               0     0.00000
+ Number of training cases misclassified =  2
+ Predicted class is 1
+ ----------------------------
+ Node 83: Terminal node
  Class      Number  ClassPrior
  0               0     0.00000
  1               0     0.00000
- 2              10     1.00000
+ 2               5     1.00000
  3               0     0.00000
  Number of training cases misclassified =  0
  Predicted class is 2
  ----------------------------
- Node 917: Terminal node
+ Node 21: Intermediate node
+ A case goes into Node 42 if X3 <=  7.6500000E+01
+ X3 mean =  6.9828E+01
+ Class      Number  ClassPrior
+ 0               4     0.06250
+ 1               3     0.04688
+ 2              54     0.84375
+ 3               3     0.04688
+ Number of training cases misclassified =  10
+ Predicted class is 2
+ ----------------------------
+ Node 42: Terminal node
  Class      Number  ClassPrior
  0               0     0.00000
+ 1               3     0.05172
+ 2              54     0.93103
+ 3               1     0.01724
+ Number of training cases misclassified =  4
+ Predicted class is 2
+ ----------------------------
+ Node 43: Terminal node
+ Class      Number  ClassPrior
+ 0               4     0.66667
  1               0     0.00000
- 2               2     0.28571
- 3               5     0.71429
+ 2               0     0.00000
+ 3               2     0.33333
+ Number of training cases misclassified =  2
+ Predicted class is 0
+ ----------------------------
+ Node 11: Terminal node
+ Class      Number  ClassPrior
+ 0               0     0.00000
+ 1               1     0.01493
+ 2               1     0.01493
+ 3              65     0.97015
  Number of training cases misclassified =  2
  Predicted class is 3
  ----------------------------
- Node 459: Terminal node
+ Node 3: Intermediate node
+ A case goes into Node 6 if X6 <=  7.5000000E+00
+ X6 mean =  8.9763E+00
+ Class      Number  ClassPrior
+ 0              75     0.29644
+ 1              94     0.37154
+ 2              79     0.31225
+ 3               5     0.01976
+ Number of training cases misclassified =  159
+ Predicted class is 1
+ ----------------------------
+ Node 6: Intermediate node
+ A case goes into Node 12 if X8 <=  3.7000000E+01 or ?
+ X8 mean =  3.6043E+01
+ Class      Number  ClassPrior
+ 0               5     0.05435
+ 1              10     0.10870
+ 2              77     0.83696
+ 3               0     0.00000
+ Number of training cases misclassified =  15
+ Predicted class is 2
+ ----------------------------
+ Node 12: Terminal node
  Class      Number  ClassPrior
  0               0     0.00000
  1               0     0.00000
- 2               0     0.00000
- 3               8     1.00000
+ 2              46     1.00000
+ 3               0     0.00000
  Number of training cases misclassified =  0
- Predicted class is 3
+ Predicted class is 2
  ----------------------------
- Node 115: Terminal node
+ Node 13: Intermediate node
+ A case goes into Node 26 if X5 <=  6.7000000E+01 or ?
+ X5 mean =  6.7152E+01
+ Class      Number  ClassPrior
+ 0               5     0.10870
+ 1              10     0.21739
+ 2              31     0.67391
+ 3               0     0.00000
+ Number of training cases misclassified =  15
+ Predicted class is 2
+ ----------------------------
+ Node 26: Intermediate node
+ A case goes into Node 52 if X14 <=  7.0000000E+01
+ X14 mean =  7.1053E+01
+ Class      Number  ClassPrior
+ 0               5     0.26316
+ 1              10     0.52632
+ 2               4     0.21053
+ 3               0     0.00000
+ Number of training cases misclassified =  9
+ Predicted class is 1
+ ----------------------------
+ Node 52: Terminal node
  Class      Number  ClassPrior
  0               0     0.00000
- 1               0     0.00000
- 2               0     0.00000
- 3              18     1.00000
- Number of training cases misclassified =  0
- Predicted class is 3
- ----------------------------
- Node 29: Intermediate node
- A case goes into Node 58 if safety <=  1.5000000E+00
- safety mean =  1.4952E+00
- Class      Number  ClassPrior
- 0              20     0.19048
- 1              74     0.70476
- 2               0     0.00000
- 3              11     0.10476
- Number of training cases misclassified =  31
- Predicted class is 1
- ----------------------------
- Node 58: Intermediate node
- A case goes into Node 116 if lug_boot <=  1.5000000E+00 or ?
- lug_boot mean =  9.0566E-01
- Class      Number  ClassPrior
- 0              18     0.33962
- 1              35     0.66038
- 2               0     0.00000
- 3               0     0.00000
- Number of training cases misclassified =  18
- Predicted class is 1
- ----------------------------
- Node 116: Intermediate node
- A case goes into Node 232 if buying <=  5.0000000E-01
- buying mean =  4.5946E-01
- Class      Number  ClassPrior
- 0              18     0.48649
- 1              19     0.51351
- 2               0     0.00000
- 3               0     0.00000
- Number of training cases misclassified =  18
- Predicted class is 1
- ----------------------------
- Node 232: Intermediate node
- A case goes into Node 464 if maint <=  2.5000000E+00 or ?
- maint mean =  2.3000E+00
- Class      Number  ClassPrior
- 0               5     0.25000
- 1              15     0.75000
- 2               0     0.00000
- 3               0     0.00000
- Number of training cases misclassified =  5
- Predicted class is 1
- ----------------------------
- Node 464: Terminal node
- Class      Number  ClassPrior
- 0               0     0.00000
- 1              14     1.00000
+ 1              10     1.00000
  2               0     0.00000
  3               0     0.00000
  Number of training cases misclassified =  0
  Predicted class is 1
  ----------------------------
- Node 465: Terminal node
- Class      Number  ClassPrior
- 0               5     0.83333
- 1               1     0.16667
- 2               0     0.00000
- 3               0     0.00000
- Number of training cases misclassified =  1
- Predicted class is 0
- ----------------------------
- Node 233: Intermediate node
- A case goes into Node 466 if doors <=  1.0000000E+00
- doors mean =  1.4706E+00
- Class      Number  ClassPrior
- 0              13     0.76471
- 1               4     0.23529
- 2               0     0.00000
- 3               0     0.00000
- Number of training cases misclassified =  4
- Predicted class is 0
- ----------------------------
- Node 466: Terminal node
- Class      Number  ClassPrior
- 0               8     1.00000
- 1               0     0.00000
- 2               0     0.00000
- 3               0     0.00000
- Number of training cases misclassified =  0
- Predicted class is 0
- ----------------------------
- Node 467: Intermediate node
- A case goes into Node 934 if maint <=  2.5000000E+00
- maint mean =  2.5556E+00
+ Node 53: Intermediate node
+ A case goes into Node 106 if X3 <=  7.6500000E+01
+ X3 mean =  7.7000E+01
  Class      Number  ClassPrior
  0               5     0.55556
- 1               4     0.44444
- 2               0     0.00000
+ 1               0     0.00000
+ 2               4     0.44444
  3               0     0.00000
  Number of training cases misclassified =  4
  Predicted class is 0
  ----------------------------
- Node 934: Terminal node
+ Node 106: Terminal node
  Class      Number  ClassPrior
- 0               4     1.00000
+ 0               0     0.00000
+ 1               0     0.00000
+ 2               4     1.00000
+ 3               0     0.00000
+ Number of training cases misclassified =  0
+ Predicted class is 2
+ ----------------------------
+ Node 107: Terminal node
+ Class      Number  ClassPrior
+ 0               5     1.00000
  1               0     0.00000
  2               0     0.00000
  3               0     0.00000
  Number of training cases misclassified =  0
  Predicted class is 0
  ----------------------------
- Node 935: Terminal node
- Class      Number  ClassPrior
- 0               1     0.20000
- 1               4     0.80000
- 2               0     0.00000
- 3               0     0.00000
- Number of training cases misclassified =  1
- Predicted class is 1
- ----------------------------
- Node 117: Terminal node
+ Node 27: Terminal node
  Class      Number  ClassPrior
  0               0     0.00000
- 1              16     1.00000
- 2               0     0.00000
+ 1               0     0.00000
+ 2              27     1.00000
  3               0     0.00000
  Number of training cases misclassified =  0
+ Predicted class is 2
+ ----------------------------
+ Node 7: Intermediate node
+ A case goes into Node 14 if X1 <=  1.0350000E+02 or ?
+ X1 mean =  1.0081E+02
+ Class      Number  ClassPrior
+ 0              70     0.43478
+ 1              84     0.52174
+ 2               2     0.01242
+ 3               5     0.03106
+ Number of training cases misclassified =  77
  Predicted class is 1
  ----------------------------
- Node 59: Intermediate node
- A case goes into Node 118 if maint <=  2.5000000E+00
- maint mean =  2.4808E+00
+ Node 14: Intermediate node
+ A case goes into Node 28 if X14 <=  7.4500000E+01 or ?
+ X14 mean =  7.0120E+01
  Class      Number  ClassPrior
- 0               2     0.03846
- 1              39     0.75000
- 2               0     0.00000
- 3              11     0.21154
- Number of training cases misclassified =  13
- Predicted class is 1
+ 0              59     0.59000
+ 1              35     0.35000
+ 2               1     0.01000
+ 3               5     0.05000
+ Number of training cases misclassified =  41
+ Predicted class is 0
  ----------------------------
- Node 118: Intermediate node
- A case goes into Node 236 if buying <=  5.0000000E-01
- buying mean =  3.7037E-01
+ Node 28: Intermediate node
+ A case goes into Node 56 if X8 <=  3.7500000E+01 or ?
+ X8 mean =  3.4181E+01
  Class      Number  ClassPrior
- 0               2     0.07407
- 1              14     0.51852
- 2               0     0.00000
- 3              11     0.40741
- Number of training cases misclassified =  13
- Predicted class is 1
- ----------------------------
- Node 236: Intermediate node
- A case goes into Node 472 if lug_boot <=  5.0000000E-01
- lug_boot mean =  1.0000E+00
- Class      Number  ClassPrior
- 0               1     0.05882
- 1               5     0.29412
- 2               0     0.00000
- 3              11     0.64706
- Number of training cases misclassified =  6
- Predicted class is 3
- ----------------------------
- Node 472: Terminal node
- Class      Number  ClassPrior
- 0               1     0.20000
- 1               4     0.80000
+ 0              59     0.62766
+ 1              35     0.37234
  2               0     0.00000
  3               0     0.00000
- Number of training cases misclassified =  1
- Predicted class is 1
+ Number of training cases misclassified =  35
+ Predicted class is 0
  ----------------------------
- Node 473: Terminal node
+ Node 56: Intermediate node
+ A case goes into Node 112 if X10 <=  1.6850000E+02 or ?
+ X10 mean =  1.6088E+02
  Class      Number  ClassPrior
- 0               0     0.00000
- 1               1     0.08333
+ 0              55     0.72368
+ 1              21     0.27632
  2               0     0.00000
- 3              11     0.91667
- Number of training cases misclassified =  1
- Predicted class is 3
+ 3               0     0.00000
+ Number of training cases misclassified =  21
+ Predicted class is 0
  ----------------------------
- Node 237: Terminal node
+ Node 112: Intermediate node
+ A case goes into Node 224 if X6 <=  1.0500000E+01
+ X6 mean =  9.6552E+00
+ Class      Number  ClassPrior
+ 0              37     0.63793
+ 1              21     0.36207
+ 2               0     0.00000
+ 3               0     0.00000
+ Number of training cases misclassified =  21
+ Predicted class is 0
+ ----------------------------
+ Node 224: Terminal node
+ Class      Number  ClassPrior
+ 0              36     0.75000
+ 1              12     0.25000
+ 2               0     0.00000
+ 3               0     0.00000
+ Number of training cases misclassified =  12
+ Predicted class is 0
+ ----------------------------
+ Node 225: Terminal node
  Class      Number  ClassPrior
  0               1     0.10000
  1               9     0.90000
@@ -786,162 +642,80 @@
  Number of training cases misclassified =  1
  Predicted class is 1
  ----------------------------
- Node 119: Terminal node
+ Node 113: Terminal node
  Class      Number  ClassPrior
- 0               0     0.00000
- 1              25     1.00000
- 2               0     0.00000
- 3               0     0.00000
- Number of training cases misclassified =  0
- Predicted class is 1
- ----------------------------
- Node 15: Intermediate node
- A case goes into Node 30 if maint <=  1.5000000E+00
- maint mean =  1.5049E+00
- Class      Number  ClassPrior
- 0             105     0.51471
- 1              99     0.48529
- 2               0     0.00000
- 3               0     0.00000
- Number of training cases misclassified =  99
- Predicted class is 0
- ----------------------------
- Node 30: Intermediate node
- A case goes into Node 60 if lug_boot <=  5.0000000E-01
- lug_boot mean =  1.0566E+00
- Class      Number  ClassPrior
- 0              24     0.22642
- 1              82     0.77358
- 2               0     0.00000
- 3               0     0.00000
- Number of training cases misclassified =  24
- Predicted class is 1
- ----------------------------
- Node 60: Intermediate node
- A case goes into Node 120 if safety <=  1.5000000E+00
- safety mean =  1.4848E+00
- Class      Number  ClassPrior
- 0              17     0.51515
- 1              16     0.48485
- 2               0     0.00000
- 3               0     0.00000
- Number of training cases misclassified =  16
- Predicted class is 0
- ----------------------------
- Node 120: Terminal node
- Class      Number  ClassPrior
- 0              17     1.00000
+ 0              18     1.00000
  1               0     0.00000
  2               0     0.00000
  3               0     0.00000
  Number of training cases misclassified =  0
  Predicted class is 0
  ----------------------------
- Node 121: Terminal node
+ Node 57: Terminal node
  Class      Number  ClassPrior
- 0               0     0.00000
- 1              16     1.00000
+ 0               4     0.22222
+ 1              14     0.77778
  2               0     0.00000
  3               0     0.00000
- Number of training cases misclassified =  0
+ Number of training cases misclassified =  4
+ Predicted class is 1
+ ----------------------------
+ Node 29: Terminal node
+ Class      Number  ClassPrior
+ 0               0     0.00000
+ 1               0     0.00000
+ 2               1     0.16667
+ 3               5     0.83333
+ Number of training cases misclassified =  1
+ Predicted class is 3
+ ----------------------------
+ Node 15: Intermediate node
+ A case goes into Node 30 if X2 <=  5.4500000E+01 or ?
+ X2 mean =  5.2328E+01
+ Class      Number  ClassPrior
+ 0              11     0.18033
+ 1              49     0.80328
+ 2               1     0.01639
+ 3               0     0.00000
+ Number of training cases misclassified =  12
+ Predicted class is 1
+ ----------------------------
+ Node 30: Intermediate node
+ A case goes into Node 60 if X17 <=  1.9050000E+02 or ?
+ X17 mean =  1.8936E+02
+ Class      Number  ClassPrior
+ 0               8     0.14286
+ 1              48     0.85714
+ 2               0     0.00000
+ 3               0     0.00000
+ Number of training cases misclassified =  8
+ Predicted class is 1
+ ----------------------------
+ Node 60: Terminal node
+ Class      Number  ClassPrior
+ 0               3     0.06122
+ 1              46     0.93878
+ 2               0     0.00000
+ 3               0     0.00000
+ Number of training cases misclassified =  3
  Predicted class is 1
  ----------------------------
  Node 61: Terminal node
  Class      Number  ClassPrior
- 0               7     0.09589
- 1              66     0.90411
- 2               0     0.00000
- 3               0     0.00000
- Number of training cases misclassified =  7
- Predicted class is 1
- ----------------------------
- Node 31: Intermediate node
- A case goes into Node 62 if maint <=  2.5000000E+00
- maint mean =  2.5306E+00
- Class      Number  ClassPrior
- 0              81     0.82653
- 1              17     0.17347
- 2               0     0.00000
- 3               0     0.00000
- Number of training cases misclassified =  17
- Predicted class is 0
- ----------------------------
- Node 62: Intermediate node
- A case goes into Node 124 if buying <=  2.5000000E+00
- buying mean =  2.4348E+00
- Class      Number  ClassPrior
- 0              29     0.63043
- 1              17     0.36957
- 2               0     0.00000
- 3               0     0.00000
- Number of training cases misclassified =  17
- Predicted class is 0
- ----------------------------
- Node 124: Intermediate node
- A case goes into Node 248 if safety <=  1.5000000E+00
- safety mean =  1.3462E+00
- Class      Number  ClassPrior
- 0               9     0.34615
- 1              17     0.65385
- 2               0     0.00000
- 3               0     0.00000
- Number of training cases misclassified =  9
- Predicted class is 1
- ----------------------------
- Node 248: Intermediate node
- A case goes into Node 496 if lug_boot <=  5.0000000E-01 or ?
- lug_boot mean =  7.6471E-01
- Class      Number  ClassPrior
- 0               9     0.52941
- 1               8     0.47059
- 2               0     0.00000
- 3               0     0.00000
- Number of training cases misclassified =  8
- Predicted class is 0
- ----------------------------
- Node 496: Terminal node
- Class      Number  ClassPrior
- 0               7     1.00000
- 1               0     0.00000
- 2               0     0.00000
- 3               0     0.00000
- Number of training cases misclassified =  0
- Predicted class is 0
- ----------------------------
- Node 497: Terminal node
- Class      Number  ClassPrior
- 0               2     0.20000
- 1               8     0.80000
+ 0               5     0.71429
+ 1               2     0.28571
  2               0     0.00000
  3               0     0.00000
  Number of training cases misclassified =  2
- Predicted class is 1
- ----------------------------
- Node 249: Terminal node
- Class      Number  ClassPrior
- 0               0     0.00000
- 1               9     1.00000
- 2               0     0.00000
- 3               0     0.00000
- Number of training cases misclassified =  0
- Predicted class is 1
- ----------------------------
- Node 125: Terminal node
- Class      Number  ClassPrior
- 0              20     1.00000
- 1               0     0.00000
- 2               0     0.00000
- 3               0     0.00000
- Number of training cases misclassified =  0
  Predicted class is 0
  ----------------------------
- Node 63: Terminal node
+ Node 31: Terminal node
  Class      Number  ClassPrior
- 0              52     1.00000
- 1               0     0.00000
- 2               0     0.00000
+ 0               3     0.60000
+ 1               1     0.20000
+ 2               1     0.20000
  3               0     0.00000
- Number of training cases misclassified =  0
+ Number of training cases misclassified =  2
  Predicted class is 0
  ----------------------------
   
@@ -949,14 +723,14 @@
  Classification matrix for training sample:
  Predicted      True class
  class              0         1         2         3
- 0                620         1         3         0
- 1                 14       203         2         0
- 2                  0         3        31         0
- 3                  0         1         2        42
- Total            634       208        38        42
+ 0                 88        18         1         2
+ 1                  9        94         1         0
+ 2                  0         3       136         1
+ 3                 10         3         2       148
+ Total            107       118       140       151
  
- Number of cases used for tree construction =  922
- Number misclassified =  26
- Resubstitution est. of mean misclassification cost =    2.8199566160520606E-002
+ Number of cases used for tree construction =  516
+ Number misclassified =  50
+ Resubstitution est. of mean misclassification cost =    9.6899224806201556E-002
  
- Elapsed time in seconds:   0.208000004    
+ Elapsed time in seconds:   0.239999995    

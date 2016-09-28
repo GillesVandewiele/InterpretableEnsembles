@@ -88,8 +88,14 @@ def calculate_prob(tree, label, value, prior_tests, negate=False):
             # The test of current node is not yet in conjunction and is not the test we're looking for
             # Keep propagating (but add weights (estimate how many times the test succeeds/fails))!
             samples_sum = sum(list(tree.class_probabilities.values()))
-            left_fraction = sum(list(tree.left.class_probabilities.values())) / samples_sum
-            right_fraction = sum(list(tree.right.class_probabilities.values())) / samples_sum
+
+            if samples_sum == 0:
+                left_fraction = 0
+                right_fraction = 0
+            else:
+                left_fraction = sum(list(tree.left.class_probabilities.values())) / samples_sum
+                right_fraction = sum(list(tree.right.class_probabilities.values())) / samples_sum
+
             return np.add(left_fraction * calculate_prob(tree.left, label, value, prior_tests, negate),
                           right_fraction * calculate_prob(tree.right, label, value, prior_tests, negate))
         elif not negate:
@@ -312,11 +318,15 @@ def bootstrap(data, class_label, tree_constructors, bootstrap_features=False, nr
             X_bootstrap = data.iloc[indices, :].drop(class_label, axis=1).reset_index(drop=True)
             y_bootstrap = data.iloc[indices][class_label].reset_index(drop=True)
 
+        X = data.drop(class_label, axis=1).reset_index(drop=True)
+        y = data[class_label].reset_index(drop=True)
+
         for tree_constructor in tree_constructors:
             tree = tree_constructor.construct_tree(X_bootstrap, y_bootstrap)
             # print 'Number of nodes in stub:', tree_constructor.get_name(), count_nodes(tree)
+            # print tree_constructor.get_name(), tree.count_nodes()
             tree.data = data.iloc[indices, :].reset_index(drop=True)
-            tree.populate_samples(X_bootstrap, y_bootstrap)
+            tree.populate_samples(X, y)
             decision_trees.append(tree)
 
     return decision_trees

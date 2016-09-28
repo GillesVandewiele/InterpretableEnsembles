@@ -33,7 +33,7 @@ class GUIDEConstructor(TreeConstructor):
         self.create_desc_and_data_file(training_feature_vectors, labels)
         input = open("in.txt", "w")
         output = file('out.txt', 'w')
-        p = subprocess.Popen('./guide > log.txt', stdin=subprocess.PIPE, shell=True)
+        p = subprocess.Popen(os.sep.join(os.path.realpath(__file__).split(os.sep)[:-1])+'/guide > log.txt', stdin=subprocess.PIPE, shell=True)
         p.stdin.write("1\n")
         p.stdin.write("in.txt\n")
         p.stdin.write("1\n")
@@ -67,7 +67,7 @@ class GUIDEConstructor(TreeConstructor):
 
         while not os.path.exists('in.txt'):
             time.sleep(1)
-        p = subprocess.Popen('./guide < in.txt > log.txt', shell=True)
+        p = subprocess.Popen(os.sep.join(os.path.realpath(__file__).split(os.sep)[:-1])+'/guide < in.txt > log.txt', shell=True)
         p.wait()
 
         output = file('out.txt', 'r')
@@ -92,7 +92,7 @@ class GUIDEConstructor(TreeConstructor):
 
         dt = DecisionTree()
 
-        if '<=' in lines[0] or '>' in lines[0]:
+        if '<=' in lines[0] or '>' in lines[0] or '=' in lines[0]:
             # Intermediate node
             node_name = lines[0].split(':')[0].lstrip()
             label, value = lines[0].split(':')[1].split('<=')
@@ -106,7 +106,8 @@ class GUIDEConstructor(TreeConstructor):
             dt.right = self.decision_tree_from_text(lines[counter+1:])
         else:
             # Terminal node
-            dt.label = int(lines[0].split(':')[1].lstrip())
+            # print lines[0]
+            dt.label = int(lines[0].split(':')[1].lstrip().split('.')[0])
 
         return dt
 
