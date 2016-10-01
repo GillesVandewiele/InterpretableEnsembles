@@ -8,7 +8,7 @@ def write_preamble():
             '\\begin{document}\n\n'
 
 def write_measurements(measurements):
-    # measurements = {'dataset': {'C4.5': {'acc': 0.56, 'bal_acc': 0.47, 'stddev': 0.15} } }
+    # measurements = {'dataset': {'C4.5': {'acc': (0.56, 0.15), 'bal_acc': (0.47, 0.12)} } }
     # figures = {'dataset': path }
     datasets = measurements.keys()
     algorithms = measurements[datasets[0]].keys()
@@ -48,6 +48,7 @@ def write_measurements(measurements):
 def write_figures(figures):
     latex = ''
     for key in figures:
+        print key
         latex += '\\begin{figure}\\centering\\includegraphics[width=\\textwidth]{'+figures[key]+'}\caption{Confusion matrix for '+key+'}\end{figure}\n'
     return latex
 

@@ -53,7 +53,7 @@ class QUESTBenchConstructor(TreeConstructor):
         self.create_desc_and_data_file(training_feature_vectors, labels)
         input = open("in.txt", "w")
         output = file('out.txt', 'w')
-        p = subprocess.Popen('./quest > log.txt', stdin=subprocess.PIPE, shell=True)
+        p = subprocess.Popen(os.sep.join(os.path.realpath(__file__).split(os.sep)[:-1])+'/quest > log.txt', stdin=subprocess.PIPE, shell=True)
         p.stdin.write("2\n")
         p.stdin.write("in.txt\n")
         p.stdin.write("1\n")
@@ -68,7 +68,7 @@ class QUESTBenchConstructor(TreeConstructor):
 
         while not os.path.exists('in.txt'):
             time.sleep(1)
-        p = subprocess.Popen('./quest < in.txt > log.txt', stdin=subprocess.PIPE, shell=True)
+        p = subprocess.Popen(os.sep.join(os.path.realpath(__file__).split(os.sep)[:-1])+'/quest < in.txt > log.txt', stdin=subprocess.PIPE, shell=True)
         p.wait()
 
         output = file('out.txt', 'r')

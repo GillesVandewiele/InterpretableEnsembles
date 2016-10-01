@@ -1,4 +1,5 @@
 import copy
+import multiprocessing
 import random
 
 from imblearn.over_sampling import SMOTE
@@ -22,6 +23,8 @@ import ISM_v3
 
 from decisiontree import DecisionTree
 from featuredescriptors import CONTINUOUS
+
+from multiprocessing import Pool
 
 
 class LineSegment(object):
@@ -80,7 +83,7 @@ class DecisionTreeMergerClean(object):
 
         return regions
 
-    def find_lines(self, regions, features, feature_mins, feature_maxs):
+    def find_lines(self, regions, features, feature_mins, feature_maxs):    #TODO: try to optimize this
         if len(regions) <= 0: return {}
 
         for region in regions:
@@ -163,6 +166,12 @@ class DecisionTreeMergerClean(object):
 
         return node
 
+    def intersect(self, line1_lb, line1_ub, line2_lb, line2_ub):
+        if line1_ub <= line2_lb: return False
+        if line1_lb >= line2_ub: return False
+        return True
+
+
     def calculate_intersection(self, regions1, regions2, features, feature_maxs, feature_mins):
         """
             Fancy method to calculate intersections. O(d*n*log(n)) instead of O(d*n^2)
@@ -241,10 +250,17 @@ class DecisionTreeMergerClean(object):
 
             S_intersections[i] = intersections
 
+
+        # for k in range(len(S_intersections)):
+        #     print 'Old', features[k], len(S_intersections[k])
+
         # The intersection of all these S_i's are the intersecting regions
         intersection_regions_indices = S_intersections[0]
         for k in range(1, len(S_intersections)):
             intersection_regions_indices = self.tuple_list_intersections(intersection_regions_indices, S_intersections[k])
+
+
+        # print 'Old:', len(intersection_regions_indices)
 
         # Create a new set of regions
         intersected_regions = []
@@ -279,6 +295,78 @@ class DecisionTreeMergerClean(object):
 
         return intersected_regions
 
+    # def calculate_intersection(self, regions1, regions2, features, feature_maxs, feature_mins):
+    #     """
+    #         Fancy method to calculate intersections. O(d*n*log(n)) instead of O(d*n^2)
+    #
+    #         Instead of brute force, we iterate over each possible dimension,
+    #         we project each region to that one dimension, creating a line segment. We then construct a set S_i for each
+    #         dimension containing pairs of line segments that intersect in dimension i. In the end, the intersection
+    #         of all these sets results in the intersecting regions. For all these intersection regions, their intersecting
+    #         region is calculated and added to a new set, which is returned in the end
+    #     :param regions1: first set of regions
+    #     :param regions2: second set of regions
+    #     :param features: list of dimension names
+    #     :return: new set of regions, which are the intersections of the regions in 1 and 2
+    #     """
+    #
+    #     S_intersections = [None] * len(features)
+    #
+    #     for i, feature in enumerate(features):    # O(d), d = dimension(data)
+    #         # print feature
+    #         S_intersections[i] = []
+    #         regions1 = sorted(regions1, key=lambda x: x[feature])   # O(d * n * log(n)), n=nr_of_regions
+    #         regions2 = sorted(regions2, key=lambda x: x[feature])   # O(d * n * log(n)), n=nr_of_regions
+    #
+    #         idx1 = 0
+    #         for region1 in regions1:
+    #             for idx2 in range(idx1, len(regions2)):
+    #                 region2 = regions2[idx2]
+    #                 if region2[feature][1] < region1[feature][0]:
+    #                     idx1 += 1
+    #                 if region2[feature][0] >= region1[feature][1]:
+    #                     break
+    #                 else:
+    #                     if self.intersect(region1[feature][0], region1[feature][1], region2[feature][0], region2[feature][1]):
+    #                         S_intersections[i].append((region1, region2))
+    #
+    #     intersecting_regions = S_intersections[0]
+    #     for k in range(1, len(S_intersections)):
+    #         intersecting_regions = [i for i in intersecting_regions for j in S_intersections[k] if i==j]
+    #
+    #     # Create a new set of regions
+    #     intersected_regions = []
+    #     for intersection_region_pair in intersecting_regions:
+    #         region = {}
+    #         for feature in features:
+    #             region[feature] = [max(intersection_region_pair[0][feature][0],
+    #                                    intersection_region_pair[1][feature][0]),
+    #                                min(intersection_region_pair[0][feature][1],
+    #                                    intersection_region_pair[1][feature][1])]
+    #             # Convert all -inf and inf to the mins and max from those features
+    #             if region[feature][0] == float("-inf"):
+    #                 region[feature][0] = feature_mins[feature]
+    #             if region[feature][1] == float("inf"):
+    #                 region[feature][1] = feature_maxs[feature]
+    #         region['class'] = {}
+    #         for key in set(set(intersection_region_pair[0]['class'].iterkeys()) |
+    #                                set(intersection_region_pair[1]['class'].iterkeys())):
+    #             prob_1 = (intersection_region_pair[0]['class'][key]
+    #                       if key in intersection_region_pair[0]['class'] else 0)
+    #             prob_2 = (intersection_region_pair[1]['class'][key]
+    #                       if key in intersection_region_pair[1]['class'] else 0)
+    #             if prob_1 and prob_2:
+    #                 region['class'][key] = (intersection_region_pair[0]['class'][key] +
+    #                                         intersection_region_pair[1]['class'][key]) / 2
+    #             else:
+    #                 if prob_1:
+    #                     region['class'][key] = prob_1
+    #                 else:
+    #                     region['class'][key] = prob_2
+    #         intersected_regions.append(region)
+    #
+    #     return intersected_regions
+
     def tuple_list_intersections(self, list1, list2):
         # Make sure the length of list1 is larger than the length of list2
         if len(list2) > len(list1):
@@ -300,6 +388,7 @@ class DecisionTreeMergerClean(object):
     def mutate_shiftRandom(self, tree, feature_vectors, labels):
         # tree.visualise('beforeMutationShift')
         internal_nodes = list(set(tree.get_nodes()) - set(tree.get_leaves()))
+        tree = copy.deepcopy(tree)
         # print 'nr internal nodes =', len(internal_nodes)
         if len(internal_nodes) > 1:
             random_node = np.random.choice(internal_nodes)
@@ -337,8 +426,10 @@ class DecisionTreeMergerClean(object):
         # raw_input()
         return tree
 
-    def tournament_selection_and_merging(self, trees, train_features_df, train_labels_df, test_features_df, test_labels_df,
-                                         cat_name, feature_cols, feature_maxs, feature_mins, max_samples, tournament_size=3):
+    def tournament_selection_and_merging(self, trees, train_features_df, train_labels_df, test_features_df,
+                                         test_labels_df, cat_name, feature_cols, feature_maxs, feature_mins,
+                                         max_samples, return_dict, seed, tournament_size=3):
+        np.random.seed(seed)
         _tournament_size = min(len(trees) / 2, tournament_size)
         trees = copy.deepcopy(trees)
         best_fitness_1 = sys.float_info.max
@@ -364,14 +455,16 @@ class DecisionTreeMergerClean(object):
             region1 = self.decision_tree_to_decision_table(best_tree_1, train_features_df)
             region2 = self.decision_tree_to_decision_table(best_tree_2, train_features_df)
             merged_regions = self.calculate_intersection(region1, region2, feature_cols, feature_maxs, feature_mins)
-            return self.regions_to_tree_improved(train_features_df, train_labels_df, merged_regions, feature_cols,
+            return_dict[seed] = self.regions_to_tree_improved(train_features_df, train_labels_df, merged_regions, feature_cols,
                                                  feature_mins, feature_maxs, max_samples=max_samples)
+            # return 0
         else:
-            return None
+            return_dict[seed] = None
+            # return 0
 
     def genetic_algorithm(self, data, label_col, tree_constructors, population_size=15, num_crossovers=3, val_fraction=0.25,
                           num_iterations=5, seed=1337, tournament_size=3, max_regions=1000, prune=False, max_samples=3,
-                          nr_bootstraps=5, mutation_prob=0.1):
+                          nr_bootstraps=5, mutation_prob=0.25):
 
         # TODO: use fitness() instead of plain accuracies
 
@@ -430,6 +523,7 @@ class DecisionTreeMergerClean(object):
         tree_list = [tree for tree in tree_list if tree is not None ]
 
         start = time.clock()
+
         for k in range(num_iterations):
             print "Calculating accuracy and sorting"
             tree_accuracy = []
@@ -440,13 +534,32 @@ class DecisionTreeMergerClean(object):
 
             tree_list = [x[0] for x in sorted(tree_accuracy, key=lambda x: (-x[1], x[2]))[:min(len(tree_list), population_size)]]
             print("----> Best tree till now: ", [(x[1], x[2]) for x in sorted(tree_accuracy, key=lambda x: (-x[1], x[2]))[:min(len(tree_list), population_size)]])
+            # best_tree_temp = tree_list[0]
+            # best_tree_temp.populate_samples(test_features_df, test_labels_df[label_col].values)
+            # best_tree_temp.visualise('test')
+            # raw_input()
 
             # Crossovers
+            mngr = multiprocessing.Manager()
+            return_dict = mngr.dict()
+            jobs = []
             for i in range(num_crossovers):
-                new_tree = self.tournament_selection_and_merging(tree_list, train_features_df, train_labels_df,
-                                                                 test_features_df, test_labels_df, label_col,
-                                                                 feature_column_names, feature_maxs, feature_mins,
-                                                                 max_samples, tournament_size=tournament_size)
+                # new_tree = self.tournament_selection_and_merging(tree_list, train_features_df, train_labels_df,
+                #                                                  test_features_df, test_labels_df, label_col,
+                #                                                  feature_column_names, feature_maxs, feature_mins,
+                #                                                  max_samples, tournament_size)
+                p = multiprocessing.Process(target=self.tournament_selection_and_merging, args=[tree_list, train_features_df, train_labels_df,
+                                                                     test_features_df, test_labels_df, label_col,
+                                                                     feature_column_names, feature_maxs, feature_mins,
+                                                                     max_samples, return_dict, k*i+i, tournament_size])
+                jobs.append(p)
+                p.start()
+
+
+            for proc in jobs:
+                proc.join()
+
+            for new_tree in return_dict.values():
                 if new_tree is not None:
                     # new_tree.visualise('test')
                     # raw_input()

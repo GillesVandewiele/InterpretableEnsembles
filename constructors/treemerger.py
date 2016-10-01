@@ -118,12 +118,13 @@ class DecisionTreeMerger(object):
             y = region[y_feature][0]
             height = region[y_feature][1] - y
 
-            if classes[0] in region['class'] and classes[1] in region['class']:
-                purple_tint = (region['class'][classes[0]], 0.0, region['class'][classes[1]])
-                purple_tint = (region['class'][classes[0]], 0.0, region['class'][classes[1]])
-            elif classes[0] in region['class']:
+            if str(classes[0]) in region['class'] and str(classes[1]) in region['class']:
+                purple_tint = (region['class'][str(classes[0])]/sum(region['class'].values()),
+                               0.0,
+                               region['class'][str(classes[1])]/sum(region['class'].values()))
+            elif str(classes[0]) in region['class']:
                 purple_tint = (1.0, 0.0, 0.0)
-            elif classes[1] in region['class']:
+            elif str(classes[1]) in region['class']:
                 purple_tint = (0.0, 0.0, 1.0)
             else:
                 print "this shouldn't have happened, go look at treemerger.py"
@@ -277,10 +278,17 @@ class DecisionTreeMerger(object):
 
             S_intersections[i] = intersections
 
+
+        # for k in range(len(S_intersections)):
+        #     print 'Old', features[k], len(S_intersections[k])
+
         # The intersection of all these S_i's are the intersecting regions
         intersection_regions_indices = S_intersections[0]
         for k in range(1, len(S_intersections)):
             intersection_regions_indices = self.tuple_list_intersections(intersection_regions_indices, S_intersections[k])
+
+
+        # print 'Old:', len(intersection_regions_indices)
 
         # Create a new set of regions
         intersected_regions = []

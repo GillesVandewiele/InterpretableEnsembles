@@ -223,6 +223,7 @@ def build_dt_from_ensemble(decision_trees, data, class_label, tests, prior_entro
     #   - if the length of data is <= min_nr_samples
     #   - when we have no tests left
     #   - when there is only 1 unique class in the data left
+    # print len(data), len(tests), np.unique(data[class_label].values)
     if len(data) > min_nr_samples and len(tests) > 0 and len(np.unique(data[class_label].values)) > 1:
         max_ig = 0
         best_pos_data, best_neg_data, best_pos_entropy, best_neg_entropy = [None]*4
@@ -262,6 +263,7 @@ def build_dt_from_ensemble(decision_trees, data, class_label, tests, prior_entro
                 max_ig, best_dt.label, best_dt.value = information_gain, test[0], test[1]
                 best_pos_data, best_neg_data, best_pos_entropy, best_neg_entropy = pos_data, neg_data, pos_entropy, neg_entropy
 
+        # print max_ig
         if max_ig == 0:  # If we can't find a test that results in an information gain, we can pre-prune
             return decisiontree.DecisionTree(value=None, label=get_most_occurring_class(data, class_label))
 
@@ -280,6 +282,7 @@ def build_dt_from_ensemble(decision_trees, data, class_label, tests, prior_entro
 
         return best_dt
     else:
+        # print '?????'
         return decisiontree.DecisionTree(value=None, label=get_most_occurring_class(data, class_label))
 
 
@@ -330,174 +333,3 @@ def bootstrap(data, class_label, tree_constructors, bootstrap_features=False, nr
             decision_trees.append(tree)
 
     return decision_trees
-
-
-# columns = ['Class', 'Alcohol', 'Acid', 'Ash', 'Alcalinity', 'Magnesium', 'Phenols', 'Flavanoids', 'Nonflavanoids',
-#           'Proanthocyanins', 'Color', 'Hue', 'Diluted', 'Proline']
-# features = ['Alcohol', 'Acid', 'Ash', 'Alcalinity', 'Magnesium', 'Phenols', 'Flavanoids', 'Nonflavanoids',
-#           'Proanthocyanins', 'Color', 'Hue', 'Diluted', 'Proline']
-# df = pd.read_csv('data/wine.data')
-# df.columns = columns
-# df['Class'] = np.subtract(df['Class'], 1)
-#
-# # columns = ['ID', 'ClumpThickness', 'CellSizeUniform', 'CellShapeUniform', 'MargAdhesion', 'EpithCellSize', 'BareNuclei',
-# #            'BlandChromatin', 'NormalNuclei', 'Mitoses', 'Class']
-# # features = ['ClumpThickness', 'CellSizeUniform', 'CellShapeUniform', 'MargAdhesion', 'EpithCellSize', 'BareNuclei',
-# #            'BlandChromatin', 'NormalNuclei', 'Mitoses']
-# # df = pd.read_csv('data/breast-cancer-wisconsin.data')
-# # df.columns = columns
-# # df['Class'] = np.subtract(np.divide(df['Class'], 2), 1)
-# # df = df.drop('ID', axis=1).reset_index(drop=True)
-# # df['BareNuclei'] = df['BareNuclei'].replace('?', int(np.mean(df['BareNuclei'][df['BareNuclei'] != '?'].map(int))))
-# # df = df.applymap(int)
-#
-#
-# # columns = ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety', 'Class']
-# # features = ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety']
-# # df = pd.read_csv('data/car.data')
-# # df.columns = columns
-# # df = df.reindex(np.random.permutation(df.index)).reset_index(drop=1)
-# #
-# # mapping_buy_maint = {'low': 0, 'med': 1, 'high': 2, 'vhigh': 3}
-# # mapping_doors = {'2': 0, '3': 1, '4': 2, '5more': 3}
-# # mapping_persons = {'2': 0, '4': 1, 'more': 2}
-# # mapping_lug = {'small': 0, 'med': 1, 'big': 2}
-# # mapping_safety = {'low': 0, 'med': 1, 'high': 2}
-# # mapping_class = {'unacc': 0, 'acc': 1, 'good': 2, 'vgood': 3}
-# #
-# # df['maint'] = df['maint'].map(mapping_buy_maint)
-# # df['buying'] = df['buying'].map(mapping_buy_maint)
-# # df['doors'] = df['doors'].map(mapping_doors)
-# # df['persons'] = df['persons'].map(mapping_persons)
-# # df['lug_boot'] = df['lug_boot'].map(mapping_lug)
-# # df['safety'] = df['safety'].map(mapping_safety)
-# # df['Class'] = df['Class'].map(mapping_class).astype(int)
-#
-# N_FOLDS = 5
-# kf = StratifiedKFold(df['Class'], n_folds=N_FOLDS, shuffle=True, random_state=1337)
-#
-# # Decision tree induction
-# clf = DecisionTreeClassifier(criterion='gini', max_depth=None, min_samples_leaf=1, random_state=1337)
-# c45 = C45Constructor(cf=0.99)
-# quest = QuestConstructor(alpha=0.5)
-#
-# # Ensemble models (sklearn)
-# ada = AdaBoostClassifier(base_estimator=clf, n_estimators=5, learning_rate=0.25, random_state=1337)
-# rf = RandomForestClassifier(n_estimators=100, random_state=1337)
-#
-# # Decision tree stubs for ISM ensemble
-# cart_stub = CARTConstructor(criterion='gini', max_depth=None, min_samples_leaf=1)
-# c45_stub = C45Constructor(cf=0.99)
-# quest_stub = QuestConstructor(alpha=0.5)
-# # cart_stub = CARTConstructor(max_depth=3, min_samples_leaf=1)
-# # c45_stub = C45Constructor(cf=0.05)
-# # quest_stub = QuestConstructor(alpha=0.10)
-#
-# np.random.seed(1337)
-#
-# cart_confusion_matrices = []
-# cart_nodes = []
-# c45_confusion_matrices = []
-# c45_nodes = []
-# quest_confusion_matrices = []
-# quest_nodes = []
-# rf_confusion_matrices = []
-# ada_confusion_matrices = []
-# ism_confusion_matrices = []
-# ism_nodes = []
-#
-# for fold, (train, test) in enumerate(kf):
-#     print 'Fold', fold
-#     train = df.iloc[train, :].reset_index(drop=True)
-#     X_train = train.drop('Class', axis=1).reset_index(drop=True)
-#     y_train = train['Class'].reset_index(drop=True)
-#     X_test = df.iloc[test, :].drop('Class', axis=1).reset_index(drop=True)
-#     y_test = df.iloc[test, :]['Class'].reset_index(drop=True)
-#
-#     clf.fit(X_train, y_train)
-#     y_pred = clf.predict(X_test)
-#     cart = convert_to_tree(clf, features)
-#     cart.populate_samples(X_train, y_train)
-#     cart_nodes.append(cart.count_nodes())
-#     y_pred = cart.evaluate_multiple(X_test)
-#     cart_confusion_matrix = confusion_matrix(y_test.values, y_pred)
-#     cart_confusion_matrices.append(np.around(np.divide(cart_confusion_matrix, float(np.sum(cart_confusion_matrix))), 4))
-#     # cart_confusion_matrices.append(np.around(cart_confusion_matrix.astype('float') / cart_confusion_matrix.sum(axis=1)[:, np.newaxis], 4))
-#     print 'Accuracy CART:', accuracy_score(y_test, y_pred, normalize=1)
-#
-#     tree = c45.construct_tree(X_train, y_train)
-#     y_pred = tree.evaluate_multiple(X_test).astype(int)
-#     c45_confusion_matrix = confusion_matrix(y_test.values, y_pred)
-#     c45_confusion_matrices.append(np.around(np.divide(c45_confusion_matrix, float(np.sum(c45_confusion_matrix))), 4))
-#     c45_nodes.append(tree.count_nodes())
-#     print 'Accuracy C4.5:', accuracy_score(y_test, y_pred, normalize=1)
-#
-#     tree = quest.construct_tree(X_train, y_train)
-#     y_pred = tree.evaluate_multiple(X_test).astype(int)
-#     quest_confusion_matrix = confusion_matrix(y_test.values, y_pred)
-#     quest_confusion_matrices.append(np.around(np.divide(quest_confusion_matrix, float(np.sum(quest_confusion_matrix))), 4))
-#     quest_nodes.append(tree.count_nodes())
-#     print 'Accuracy QUEST:', accuracy_score(y_test, y_pred, normalize=1)
-#
-#     rf.fit(X_train, y_train)
-#     y_pred = rf.predict(X_test)
-#     rf_confusion_matrix = confusion_matrix(y_test, y_pred)
-#     rf_confusion_matrices.append(np.around(np.divide(rf_confusion_matrix, float(np.sum(rf_confusion_matrix))), 4))
-#     # rf_confusion_matrices.append(np.around(rf_confusion_matrix.astype('float') / rf_confusion_matrix.sum(axis=1)[:, np.newaxis], 4))
-#     print 'Accuracy RF:', accuracy_score(y_test, y_pred, normalize=1)
-#
-#     ada.fit(X_train, y_train)
-#     y_pred = ada.predict(X_test)
-#     ada_confusion_matrix = confusion_matrix(y_test, y_pred)
-#     ada_confusion_matrices.append(np.around(np.divide(ada_confusion_matrix, float(np.sum(ada_confusion_matrix))), 4))
-#     # rf_confusion_matrices.append(np.around(rf_confusion_matrix.astype('float') / rf_confusion_matrix.sum(axis=1)[:, np.newaxis], 4))
-#     print 'Accuracy AdaBoost:', accuracy_score(y_test, y_pred, normalize=1)
-#
-#     bootstrap_dts = bootstrap(train, 'Class', [cart_stub, c45_stub, quest_stub], bootstrap_features=False,
-#                               nr_classifiers=3, boosting=True)
-#     print('Number of decision trees =', len(bootstrap_dts))
-#     ism_dt = ism(bootstrap_dts, train, 'Class', min_nr_samples=1, calc_fracs_from_ensemble=False)
-#     # ism_dt.visualise('combined')
-#     ism_nodes.append(ism_dt.count_nodes())
-#     y_pred = ism_dt.evaluate_multiple(X_test)
-#     ism_confusion_matrix = confusion_matrix(y_test, y_pred)
-#     ism_confusion_matrices.append(np.around(np.divide(ism_confusion_matrix, float(np.sum(ism_confusion_matrix))), 4))
-#     # ism_confusion_matrices.append(np.around(ism_confusion_matrix.astype('float') / ism_confusion_matrix.sum(axis=1)[:, np.newaxis], 4))
-#     print 'Accuracy ISM:', accuracy_score(y_test, y_pred, normalize=1)
-#     # raw_input('Press key')
-#
-# cart_confusion_matrix = np.mean(cart_confusion_matrices, axis=0)
-# rf_confusion_matrix = np.mean(rf_confusion_matrices, axis=0)
-# ism_confusion_matrix = np.mean(ism_confusion_matrices, axis=0)
-# c45_confusion_matrix = np.mean(c45_confusion_matrices, axis=0)
-# quest_confusion_matrix = np.mean(quest_confusion_matrices, axis=0)
-# ada_confusion_matrix = np.mean(ada_confusion_matrices, axis=0)
-#
-# confusion_matrices = {'CART (' + str(np.mean(cart_nodes)) + ')': cart_confusion_matrix,
-#                       'Random Forest': rf_confusion_matrix, 'Adaboost': ada_confusion_matrix,
-#                       'ISM (' + str(np.mean(ism_nodes)) + ')': ism_confusion_matrix,
-#                       'C4.5 (' + str(np.mean(c45_nodes)) + ')': c45_confusion_matrix,
-#                       'QUEST (' + str(np.mean(quest_nodes)) + ')': quest_confusion_matrix}
-#
-# fig = plt.figure()
-# fig.suptitle('Accuracy on WINE(NOSTUBS_4) dataset using ' + str(N_FOLDS) + ' folds', fontsize=20)
-# counter = 0
-# for key in confusion_matrices:
-#     ax = fig.add_subplot(1, len(confusion_matrices), counter+1)
-#     cax = ax.matshow(confusion_matrices[key], cmap=plt.cm.Blues, vmin=0.0, vmax=1.0)
-#     diagonal_sum = sum([confusion_matrices[key][i][i] for i in range(len(confusion_matrices[key]))])
-#     ax.set_title(key + ' (' + str(diagonal_sum) + ')', y=1.08)
-#     for (j,i),label in np.ndenumerate(confusion_matrices[key]):
-#         ax.text(i,j,label,ha='center',va='center')
-#     if counter == len(confusion_matrices)-1:
-#         fig.colorbar(cax,fraction=0.046, pad=0.04)
-#
-#     counter += 1
-#
-# F = plt.gcf()
-# Size = F.get_size_inches()
-# F.set_size_inches(Size[0]*2, Size[1], forward=True)
-# plt.show()
-
-#TODO: Pruning
-#TODO: Grid search for parameter tuning (using validation set)

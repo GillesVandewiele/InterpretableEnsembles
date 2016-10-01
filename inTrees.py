@@ -8,7 +8,7 @@ import sys
 from sklearn.externals import joblib
 
 from constructors.c45orangeconstructor import C45Constructor
-from data.load_datasets import load_iris, load_heart
+from data.load_datasets import load_heart
 
 sys.path.append('../')
 from defragTrees import *
@@ -251,10 +251,36 @@ y_test = heart_test[label_col]
 c45 = C45Constructor()
 c45_tree = c45.construct_tree(X_train, y_train)
 r_object, features_map = tree_to_R_object(c45_tree, features)
+
 rfImport = importr('randomForest')
 inTreesImport = importr('inTrees')
-ro.globalenv["treeList"] = r_object
+
+ro.r('data(iris);')
+ro.globalenv["X"] = com.convert_to_r_dataframe(X_train)
+ro.globalenv["target"] = ro.FactorVector(y_train.values.tolist())
+# ro.r('print(target)')
+# ro.r('print(iris[,"Species"]);')
+ro.r('rf <- randomForest(X, target)')
+
+ro.r('treeList <- {}')
+ro.globalenv["treeList$nTree"] = 1
+ro.globalenv["treeList$list"] = [r_object]
 ro.r('print(treeList)')
+ro.r('print(RF2List(rf)[1])')
+ro.r('print(RF2List(rf)$list[[351]])')
+
+# ro.r('print(extractRules(treeList, X))')
+
+# ro.globalenv["treeList"] = [r_object]
+# ro.globalenv["X"] = com.convert_to_r_dataframe(X_train)
+# print list(y_train.values)
+# ro.globalenv["target"] = list(y_train.values)
+# ro.r('rf <- randomForest(X,as.factor(target))')
+#
+#
+# ro.r('print(extractRules(treeList, X))')
+
+
 # ro.r(r_object)
 # ro.r('print(r_object)')
 # ro.r('ruleExec <- unique(extractRules(treeList, X2))')

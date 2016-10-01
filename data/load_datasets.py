@@ -6,16 +6,16 @@ import os
 import collections
 
 
-def load_wine():
-    columns = ['Class', 'Alcohol', 'Acid', 'Ash', 'Alcalinity', 'Magnesium', 'Phenols', 'Flavanoids', 'Nonflavanoids',
-              'Proanthocyanins', 'Color', 'Hue', 'Diluted', 'Proline']
-    features = ['Alcohol', 'Acid', 'Ash', 'Alcalinity', 'Magnesium', 'Phenols', 'Flavanoids', 'Nonflavanoids',
-              'Proanthocyanins', 'Color', 'Hue', 'Diluted', 'Proline']
-    df = pd.read_csv(os.path.join(os.sep.join(os.path.realpath(__file__).split(os.sep)[:-1]), 'wine.data'))
-    df.columns = columns
-    df['Class'] = np.subtract(df['Class'], 1)
-
-    return df, features, 'Class', 'wine'
+# def load_wine():
+#     columns = ['Class', 'Alcohol', 'Acid', 'Ash', 'Alcalinity', 'Magnesium', 'Phenols', 'Flavanoids', 'Nonflavanoids',
+#               'Proanthocyanins', 'Color', 'Hue', 'Diluted', 'Proline']
+#     features = ['Alcohol', 'Acid', 'Ash', 'Alcalinity', 'Magnesium', 'Phenols', 'Flavanoids', 'Nonflavanoids',
+#               'Proanthocyanins', 'Color', 'Hue', 'Diluted', 'Proline']
+#     df = pd.read_csv(os.path.join(os.sep.join(os.path.realpath(__file__).split(os.sep)[:-1]), 'wine.data'))
+#     df.columns = columns
+#     df['Class'] = np.subtract(df['Class'], 1)
+#
+#     return df, features, 'Class', 'wine'
 
 
 # def load_cars():
@@ -41,7 +41,7 @@ def load_wine():
 #     df['Class'] = df['Class'].map(mapping_class).astype(int)
 #
 #     return df, features, 'Class', 'cars'
-    # return df.iloc[:150, :], features, 'Class', 'cars'
+#     # return df.iloc[:150, :], features, 'Class', 'cars'
 
 
 # def load_wisconsin_breast_cancer():
@@ -59,18 +59,30 @@ def load_wine():
 #     return df, features, 'Class', 'wisconsinBreast'
 #
 #
-def load_heart():
-    columns = ['age', 'sex', 'chest pain type', 'resting blood pressure', 'serum cholestoral', 'fasting blood sugar', \
-               'resting electrocardio', 'max heartrate', 'exercise induced', 'oldpeak', 'slope peak', \
-               'number of vessels', 'thal', 'Class']
-    features = ['age', 'sex', 'chest pain type', 'resting blood pressure', 'serum cholestoral', 'fasting blood sugar', \
-               'resting electrocardio', 'max heartrate', 'exercise induced', 'oldpeak', 'slope peak', \
-               'number of vessels', 'thal']
-    df = pd.read_csv(os.path.join(os.sep.join(os.path.realpath(__file__).split(os.sep)[:-1]), 'heart.dat'), sep=' ')
-    df.columns = columns
-    df['Class'] = np.subtract(df['Class'], 1)
-
-    return df, features, 'Class', 'heart'
+# def load_heart():
+#     columns = ['age', 'sex', 'chest pain type', 'resting blood pressure', 'serum cholestoral', 'fasting blood sugar', \
+#                'resting electrocardio', 'max heartrate', 'exercise induced', 'oldpeak', 'slope peak', \
+#                'vessels', 'thal', 'Class']
+#     features = ['age', 'sex', 'chest pain type', 'resting blood pressure', 'serum cholestoral', 'fasting blood sugar', \
+#                'resting electrocardio', 'max heartrate', 'exercise induced', 'oldpeak', 'slope peak', \
+#                'vessels', 'thal']
+#
+#     columns_copy = []
+#     for column in columns:
+#         column=column[:10]
+#         columns_copy.append(column)
+#     columns = columns_copy
+#
+#     features_copy = []
+#     for feature in features:
+#         feature=feature[:10]
+#         features_copy.append(feature)
+#     features=features_copy
+#
+#     df = pd.read_csv(os.path.join(os.sep.join(os.path.realpath(__file__).split(os.sep)[:-1]), 'heart.dat'), sep=' ')
+#     df.columns = columns
+#     df['Class'] = np.subtract(df['Class'], 1)
+#     return df, features, 'Class', 'heart'
 
 
 # def load_glass():
@@ -90,19 +102,19 @@ def load_heart():
 #                                            max_samples=1, tournament_size=5, nr_bootstraps=10)  (3-fold CV)
 
 
-def load_austra():
-    columns = ['X1','X2','X3','X4','X5','X6','X7','X8','X9','X10','X11','X12','X13','X14','Class']
-    features = ['X1','X2','X3','X4','X5','X6','X7','X8','X9','X10','X11','X12','X13','X14']
-    df = pd.read_csv(os.path.join(os.sep.join(os.path.realpath(__file__).split(os.sep)[:-1]), 'austra.data'))
-    df.columns = columns
-    df['Class'] = df['Class'].map({'y0': 0, 'y1': 1}).astype(int)
-    return df, features, 'Class', 'austra'
+# def load_austra():
+#     columns = ['X1','X2','X3','X4','X5','X6','X7','X8','X9','X10','X11','X12','X13','X14','Class']
+#     features = ['X1','X2','X3','X4','X5','X6','X7','X8','X9','X10','X11','X12','X13','X14']
+#     df = pd.read_csv(os.path.join(os.sep.join(os.path.realpath(__file__).split(os.sep)[:-1]), 'austra.data'))
+#     df.columns = columns
+#     df['Class'] = df['Class'].map({'y0': 0, 'y1': 1}).astype(int)
+#     return df, features, 'Class', 'austra'
 
 # AUSTRA:: genetic = merger.genetic_algorithm(train_gen, 'cat', constructors, seed=1337, num_iterations=5,
 #                                            num_crossovers=15, population_size=150, val_fraction=0.33, prune=True,
 #                                            max_samples=1, tournament_size=5, nr_bootstraps=10)  (3-fold CV)
 
-
+#
 # def load_led7():
 #     columns = ['X1','X2','X3','X4','X5','X6','X7','Class']
 #     features = ['X1','X2','X3','X4','X5','X6','X7']
@@ -111,7 +123,7 @@ def load_austra():
 #     df['Class'] = df['Class'].map({'y0': 0, 'y1': 1, 'y2': 2, 'y3': 3, 'y4': 4, 'y5': 5, 'y6': 6,
 #                                    'y7': 7, 'y8': 8, 'y9': 9}).astype(int)
 #     # print collections.Counter(df['Class'])
-#     df = df[df['Class'] < 8]  # TODO: Orange is fucking stupid, somehow you can't classify more than 8 classes
+#     df = df[df['Class'] < 8]  # TODO: Orange is stupid, somehow you can't classify more than 8 classes
 #     return df, features, 'Class', 'led7'
 
 
@@ -125,15 +137,15 @@ def load_austra():
 #     # print collections.Counter(df['Class'])
 #     df['Class'] = df['Class'].map({'y2': 0, 'y3': 1}).astype(int)
 #     return df, features, 'Class', 'lymph'
-
 #
-# def load_pima():
-#     columns = ['X1','X2','X3','X4','X5','X6','X7','X8','Class']
-#     features = ['X1','X2','X3','X4','X5','X6','X7','X8']
-#     df = pd.read_csv(os.path.join(os.sep.join(os.path.realpath(__file__).split(os.sep)[:-1]), 'pima.data'))
-#     df.columns = columns
-#     df['Class'] = df['Class'].map({'y0': 0, 'y1': 1}).astype(int)
-#     return df, features, 'Class', 'pima'
+#
+def load_pima():
+    columns = ['X1','X2','X3','X4','X5','X6','X7','X8','Class']
+    features = ['X1','X2','X3','X4','X5','X6','X7','X8']
+    df = pd.read_csv(os.path.join(os.sep.join(os.path.realpath(__file__).split(os.sep)[:-1]), 'pima.data'))
+    df.columns = columns
+    df['Class'] = df['Class'].map({'y0': 0, 'y1': 1}).astype(int)
+    return df, features, 'Class', 'pima'
 
 
 # def load_vehicle():
@@ -158,9 +170,14 @@ def load_austra():
 #     df = pd.DataFrame(iris.data)
 #     features = ["SepalLength", "SepalWidth", "PetalLength", "PetalWidth"]
 #     df.columns = features
-#     df["Class"] = iris.target
+#     df['Class'] = iris.target
+#
 #     # df = df.drop('SepalWidth', axis=1)
 #     # df = df.drop('PetalLength', axis=1)
+#     # df = df[df['Class'] != 2]
+#     # df = df.reset_index(drop=True)
+#     # features = df.columns
+#
 #     return df, features, 'Class', 'iris'
 
 
@@ -198,8 +215,8 @@ def load_austra():
 #     mapping_class = {'g': 0, 'h': 1}
 #     df['Class'] = df['Class'].map(mapping_class).astype(int)
 #     return df, features, 'Class', 'magic'
-
-
+#
+#
 # def load_shuttle():
 #     columns = ['feature1', 'feature2', 'feature3', 'feature4', 'feature5', 'feature6', 'feature7', 'feature8',
 #                'feature9', 'Class']
@@ -216,8 +233,8 @@ def load_austra():
 #     df = df.reset_index(drop=True)
 #
 #     return df, features, 'Class', 'shuttle'
-
-
+#
+#
 # def load_nursery():
 #     columns = ['parents', 'has_nurs', 'form', 'children', 'housing', 'finance', 'social', 'health', 'Class']
 #     features = ['parents', 'has_nurs', 'form', 'children', 'housing', 'finance', 'social', 'health']
