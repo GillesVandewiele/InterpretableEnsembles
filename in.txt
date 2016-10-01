@@ -1,7 +1,0 @@
-1
-out.txt
-1
-dsc.txt
-1
-1
-1
