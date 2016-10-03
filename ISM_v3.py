@@ -13,10 +13,12 @@
 
 # External imports
 from collections import Counter
+import math
 
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import time
 from sklearn.cross_validation import StratifiedKFold
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.ensemble import RandomForestClassifier
@@ -88,10 +90,9 @@ def calculate_prob(tree, label, value, prior_tests, negate=False):
             # The test of current node is not yet in conjunction and is not the test we're looking for
             # Keep propagating (but add weights (estimate how many times the test succeeds/fails))!
             samples_sum = sum(list(tree.class_probabilities.values()))
-
             if samples_sum == 0:
-                left_fraction = 0
-                right_fraction = 0
+                left_fraction = 1.0
+                right_fraction = 1.0
             else:
                 left_fraction = sum(list(tree.left.class_probabilities.values())) / samples_sum
                 right_fraction = sum(list(tree.right.class_probabilities.values())) / samples_sum
@@ -178,6 +179,11 @@ def ism(decision_trees, data, class_label, min_nr_samples=1, calc_fracs_from_ens
     X = data.drop(class_label, axis=1).reset_index(drop=True)
     y = data[class_label].reset_index(drop=True)
 
+    non_empty_decision_trees = []
+    for tree in decision_trees:
+        if tree.count_nodes() > 1: non_empty_decision_trees.append(tree)
+    decision_trees = non_empty_decision_trees
+
     prior_entropy = 0
     tests = set()
     tests.clear()
@@ -232,8 +238,13 @@ def build_dt_from_ensemble(decision_trees, data, class_label, tests, prior_entro
         for test in tests:
             pos_avg_probs, neg_avg_probs, pos_fraction, neg_fraction = {}, {}, 0.0, 0.0
             for dt in decision_trees:
-                pos_avg_probs = add_reduce_by_key(pos_avg_probs, calculate_prob_dict(dt, test[0], test[1], prior_tests, False))
-                neg_avg_probs = add_reduce_by_key(neg_avg_probs, calculate_prob_dict(dt, test[0], test[1], prior_tests, True))
+                pos_prob_dict = calculate_prob_dict(dt, test[0], test[1], prior_tests, False)
+                neg_prob_dict = calculate_prob_dict(dt, test[0], test[1], prior_tests, True)
+
+                if not any(math.isnan(x) for x in pos_prob_dict.values()) and not any(math.isnan(x) for x in neg_prob_dict.values()):
+                    pos_avg_probs = add_reduce_by_key(pos_avg_probs, calculate_prob_dict(dt, test[0], test[1], prior_tests, False))
+                    neg_avg_probs = add_reduce_by_key(neg_avg_probs, calculate_prob_dict(dt, test[0], test[1], prior_tests, True))
+
                 if calc_fracs_from_ensemble and len(data) > 0:
                     pos_fraction += float(len(dt.data[dt.data[test[0]] <= test[1]]))/len(dt.data)
                     neg_fraction += float(len(dt.data[dt.data[test[0]] > test[1]]))/len(dt.data)
@@ -249,6 +260,7 @@ def build_dt_from_ensemble(decision_trees, data, class_label, tests, prior_entro
 
             pos_entropy = calculate_entropy(np.divide(list(pos_avg_probs.values()), len(decision_trees)))
             neg_entropy = calculate_entropy(np.divide(list(neg_avg_probs.values()), len(decision_trees)))
+
             pos_data = data[data[test[0]] <= test[1]].copy()
             neg_data = data[data[test[0]] > test[1]].copy()
 
@@ -280,6 +292,7 @@ def build_dt_from_ensemble(decision_trees, data, class_label, tests, prior_entro
         best_dt.right = build_dt_from_ensemble(decision_trees, best_neg_data, class_label, new_tests,
                                                best_neg_entropy, right_prior_tests, min_nr_samples)
 
+        # print (best_dt.label, best_dt.value)
         return best_dt
     else:
         # print '?????'

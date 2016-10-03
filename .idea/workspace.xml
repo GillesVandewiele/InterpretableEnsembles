@@ -2,24 +2,56 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6ec3f469-cb8c-49af-8470-4419fe881c56" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/correct_merged.png" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dsc.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/in.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out.txt" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.pdf" afterPath="$PROJECT_DIR$/test.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/constructors/xgboostconstructor.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ISM" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ISM.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Sampling" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Sampling.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/afterMutationShift" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/afterMutationShift.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/afterMutationSwap" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/afterMutationSwap.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beforeMutationShift" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beforeMutationShift.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beforeMutationSwap" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beforeMutationSwap.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/buildClfForest.R" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/constructors/data.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/constructors/dsc.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/constructors/in.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/constructors/log.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/constructors/out.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/constructors/test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/constructors/test.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/correct_merged.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/left" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/left.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/merged.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/noSampling" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/noSampling.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/region1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/region2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/shapelets-master.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test_inTrees.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tree1" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tree1.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tree2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tree2.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/unpruned" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/unpruned.pdf" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/heart_CV3genetic3109.pdf" afterPath="$PROJECT_DIR$/output/heart_CV3genetic3109.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/heart_CV3genetic3109.png" afterPath="$PROJECT_DIR$/output/heart_CV3genetic3109.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/heart_CV3genetic3109.synctex.gz" afterPath="$PROJECT_DIR$/output/heart_CV3genetic3109.synctex.gz" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ISM_v3.py" afterPath="$PROJECT_DIR$/ISM_v3.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/constructors/questbenchconstructor.py" afterPath="$PROJECT_DIR$/constructors/questbenchconstructor.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/constructors/test_genetic.py" afterPath="$PROJECT_DIR$/constructors/test_genetic.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/constructors/treemerger.py" afterPath="$PROJECT_DIR$/constructors/treemerger.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/constructors/treemerger_clean.py" afterPath="$PROJECT_DIR$/constructors/treemerger_clean.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/load_datasets.py" afterPath="$PROJECT_DIR$/data/load_datasets.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inTrees.py" afterPath="$PROJECT_DIR$/inTrees.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/prune_test.py" afterPath="$PROJECT_DIR$/prune_test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test" afterPath="$PROJECT_DIR$/test" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/write_latex.py" afterPath="$PROJECT_DIR$/write_latex.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/heart_CV3genetic3109.log" afterPath="$PROJECT_DIR$/output/heart_CV3genetic3109.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/heart_CV3genetic3109.tex" afterPath="$PROJECT_DIR$/output/heart_CV3genetic3109.tex" />
     </list>
     <ignored path="InterpretableEnsembles.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,7 +70,7 @@
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$cn2rulelearner.coverage" NAME="cn2rulelearner Coverage Results" MODIFIED="1474032540795" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/constructors" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$test_intersection.coverage" NAME="test_intersection Coverage Results" MODIFIED="1475228592586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$prune_test.coverage" NAME="prune_test Coverage Results" MODIFIED="1475128494515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/InterpretableEnsembles$ripperrulelearner.coverage" NAME="ripperrulelearner Coverage Results" MODIFIED="1475314999275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/constructors" />
+    <SUITE FILE_PATH="coverage/InterpretableEnsembles$ripperrulelearner.coverage" NAME="ripperrulelearner Coverage Results" MODIFIED="1475401354236" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/constructors" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$example.coverage" NAME="example Coverage Results" MODIFIED="1474542422792" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/shaplets-python-master" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$MyHealthPlanDataInspector.coverage" NAME="MyHealthPlanDataInspector Coverage Results" MODIFIED="1474456849421" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$write_latex.coverage" NAME="write_latex Coverage Results" MODIFIED="1474612857908" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -49,6 +81,7 @@
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$test.coverage" NAME="test Coverage Results" MODIFIED="1474558556791" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/latex" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$ISM_v3.coverage" NAME="ISM_v3 Coverage Results" MODIFIED="1472808329283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$guideconstructor.coverage" NAME="guideconstructor Coverage Results" MODIFIED="1474289485650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/constructors" />
+    <SUITE FILE_PATH="coverage/InterpretableEnsembles$xgboostconstructor.coverage" NAME="xgboostconstructor Coverage Results" MODIFIED="1475512204465" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/constructors" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$treemerger.coverage" NAME="treemerger Coverage Results" MODIFIED="1474890163836" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/constructors" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$paper_energy.coverage" NAME="paper_energy Coverage Results" MODIFIED="1474464815024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/defragTrees-master/paper" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$decisiontree.coverage" NAME="decisiontree Coverage Results" MODIFIED="1473834085944" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -56,10 +89,10 @@
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$load_all_datasets.coverage" NAME="load_all_datasets Coverage Results" MODIFIED="1473946096564" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$plotShapelets.coverage" NAME="plotShapelets Coverage Results" MODIFIED="1474541068837" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/shapelets-master/scripts" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$example_data.coverage" NAME="example_data Coverage Results" MODIFIED="1474464522751" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/defragTrees-master/example" />
-    <SUITE FILE_PATH="coverage/InterpretableEnsembles$test_genetic.coverage" NAME="test_genetic Coverage Results" MODIFIED="1475318492132" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/InterpretableEnsembles$test_genetic.coverage" NAME="test_genetic Coverage Results" MODIFIED="1475497574820" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$example_xgb.coverage" NAME="example_xgb Coverage Results" MODIFIED="1474464868345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/example" />
     <SUITE FILE_PATH="coverage/InterpretableEnsembles$region_oversampling.coverage" NAME="region_oversampling Coverage Results" MODIFIED="1475246041598" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/InterpretableEnsembles$inTrees.coverage" NAME="inTrees Coverage Results" MODIFIED="1475317737112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/InterpretableEnsembles$inTrees.coverage" NAME="inTrees Coverage Results" MODIFIED="1475341157874" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -73,8 +106,8 @@
       <file leaf-file-name="load_datasets.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data/load_datasets.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="147" column="15" selection-start-line="141" selection-start-column="10" selection-end-line="147" selection-end-column="15" />
+            <state relative-caret-position="165">
+              <caret line="11" column="61" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -82,11 +115,18 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="ecoli_CV3genetic3109.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/output/ecoli_CV3genetic3109.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="test_genetic.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/constructors/test_genetic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2160">
-              <caret line="147" column="31" selection-start-line="147" selection-start-column="31" selection-end-line="147" selection-end-column="31" />
+            <state relative-caret-position="1755">
+              <caret line="328" column="72" selection-start-line="328" selection-start-column="72" selection-end-line="328" selection-end-column="72" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -94,47 +134,45 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="heart_CV3genetic3109.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/output/heart_CV3genetic3109.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="inTrees.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/inTrees.py">
+      <file leaf-file-name="xgboostconstructor.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/constructors/xgboostconstructor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="264" column="20" selection-start-line="264" selection-start-column="20" selection-end-line="264" selection-end-column="20" />
+            <state relative-caret-position="141">
+              <caret line="105" column="16" selection-start-line="105" selection-start-column="16" selection-end-line="105" selection-end-column="16" />
               <folding>
-                <element signature="e#55#65#0" expanded="true" />
+                <element signature="e#0#11#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="heart_CV3genetic3009-3.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/output/heart_CV3genetic3009-3.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
+      <file leaf-file-name="ISM_v3.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ISM_v3.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="243" column="26" selection-start-line="243" selection-start-column="23" selection-end-line="243" selection-end-column="26" />
+              <folding>
+                <element signature="e#447#478#0" expanded="true" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="write_latex.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/write_latex.py">
+      <file leaf-file-name="wisconsinBreast_CV3genetic3109.tex" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/output/wisconsinBreast_CV3genetic3109.tex">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="50" column="17" selection-start-line="50" selection-start-column="17" selection-end-line="50" selection-end-column="17" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="balanced_sets.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/balanced_sets.py">
+      <file leaf-file-name="decisiontree.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/decisiontree.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="56" column="17" selection-start-line="56" selection-start-column="12" selection-end-line="56" selection-end-column="17" />
+            <state relative-caret-position="2925">
+              <caret line="208" column="29" selection-start-line="208" selection-start-column="29" selection-end-line="208" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -191,14 +229,16 @@
         <option value="$PROJECT_DIR$/prune_test.py" />
         <option value="$PROJECT_DIR$/constructors/treemerger.py" />
         <option value="$PROJECT_DIR$/test_intersection.py" />
-        <option value="$PROJECT_DIR$/ISM_v3.py" />
         <option value="$PROJECT_DIR$/decisiontree.py" />
         <option value="$PROJECT_DIR$/region_oversampling.py" />
         <option value="$PROJECT_DIR$/constructors/treemerger_clean.py" />
-        <option value="$PROJECT_DIR$/constructors/questbenchconstructor.py" />
         <option value="$PROJECT_DIR$/write_latex.py" />
+        <option value="$PROJECT_DIR$/constructors/questbenchconstructor.py" />
+        <option value="$PROJECT_DIR$/constructors/xgboostConstructor.py" />
         <option value="$PROJECT_DIR$/inTrees.py" />
+        <option value="$PROJECT_DIR$/ISM_v3.py" />
         <option value="$PROJECT_DIR$/constructors/test_genetic.py" />
+        <option value="$PROJECT_DIR$/constructors/xgboostconstructor.py" />
         <option value="$PROJECT_DIR$/data/load_datasets.py" />
       </list>
     </option>
@@ -240,8 +280,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -270,12 +308,14 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="output" />
+              <option name="myItemId" value="constructors" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -300,7 +340,7 @@
       <recent name="$PROJECT_DIR$/data" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.inTrees">
+  <component name="RunManager" selected="Python.xgboostconstructor">
     <configuration default="false" name="test_genetic" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -315,24 +355,6 @@
       <module name="InterpretableEnsembles" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/constructors/test_genetic.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="test_intersection" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="InterpretableEnsembles" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_intersection.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -387,6 +409,24 @@
       <module name="InterpretableEnsembles" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/inTrees.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="xgboostconstructor" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/constructors" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="InterpretableEnsembles" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/constructors/xgboostconstructor.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -489,20 +529,130 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="InterpretableEnsembles" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="InterpretableEnsembles" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="InterpretableEnsembles" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="InterpretableEnsembles" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="InterpretableEnsembles" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="testToRun" value="" />
+      <option name="keywords" value="" />
+      <option name="params" value="" />
+      <option name="USE_PARAM" value="false" />
+      <option name="USE_KEYWORD" value="false" />
+      <method />
+    </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.test_genetic" />
-      <item index="1" class="java.lang.String" itemvalue="Python.test_intersection" />
-      <item index="2" class="java.lang.String" itemvalue="Python.region_oversampling" />
-      <item index="3" class="java.lang.String" itemvalue="Python.ripperrulelearner" />
-      <item index="4" class="java.lang.String" itemvalue="Python.inTrees" />
+      <item index="1" class="java.lang.String" itemvalue="Python.region_oversampling" />
+      <item index="2" class="java.lang.String" itemvalue="Python.ripperrulelearner" />
+      <item index="3" class="java.lang.String" itemvalue="Python.inTrees" />
+      <item index="4" class="java.lang.String" itemvalue="Python.xgboostconstructor" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.test_genetic" />
-        <item index="1" class="java.lang.String" itemvalue="Python.inTrees" />
+        <item index="0" class="java.lang.String" itemvalue="Python.xgboostconstructor" />
+        <item index="1" class="java.lang.String" itemvalue="Python.test_genetic" />
         <item index="2" class="java.lang.String" itemvalue="Python.ripperrulelearner" />
-        <item index="3" class="java.lang.String" itemvalue="Python.region_oversampling" />
-        <item index="4" class="java.lang.String" itemvalue="Python.test_intersection" />
+        <item index="3" class="java.lang.String" itemvalue="Python.inTrees" />
+        <item index="4" class="java.lang.String" itemvalue="Python.region_oversampling" />
       </list>
     </recent_temporary>
   </component>
@@ -529,17 +679,17 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17951483" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17628032" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3271795" sideWeight="0.5061995" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3271795" sideWeight="0.49380055" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3271795" sideWeight="0.49380055" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -569,91 +719,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/result_test/pred_test.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/result_test/forest/tree001.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/result_test/forest/tree003.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/heart_tree.py" />
-    <entry file="file://$PROJECT_DIR$/data/load_all_datasets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="4" column="21" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/result_test/forest/tree005.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/buildClfForest.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="52" column="3" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/result_test/inTrees.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/lib/python2.7/dist-packages/sklearn/metrics/classification.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="176" column="0" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/basic_algorithms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="166" column="104" selection-start-line="166" selection-start-column="30" selection-end-line="166" selection-end-column="104" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/constructors/data.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7620">
-          <caret line="508" column="81" selection-start-line="508" selection-start-column="77" selection-end-line="508" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/constructors/dsc.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -728,14 +793,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/decisiontree.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-167">
-          <caret line="262" column="49" selection-start-line="262" selection-start-column="49" selection-end-line="262" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/output/glass_genetic3009.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -786,37 +843,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/constructors/treemerger_clean.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1247">
-          <caret line="466" column="61" selection-start-line="466" selection-start-column="61" selection-end-line="466" selection-end-column="61" />
-          <folding>
-            <element signature="e#0#11#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/constructors/questbenchconstructor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="55" column="89" selection-start-line="55" selection-start-column="89" selection-end-line="55" selection-end-column="89" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ISM_v3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="331" column="0" selection-start-line="331" selection-start-column="0" selection-end-line="331" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/constructors/guideconstructor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="774">
           <caret line="69" column="29" selection-start-line="69" selection-start-column="29" selection-end-line="69" selection-end-column="88" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -824,7 +854,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -832,15 +861,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-945">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/constructors/ripperrulelearner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -848,17 +868,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inTrees.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="264" column="20" selection-start-line="264" selection-start-column="20" selection-end-line="264" selection-end-column="20" />
-          <folding>
-            <element signature="e#55#65#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -866,7 +875,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="50" column="17" selection-start-line="50" selection-start-column="17" selection-end-line="50" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -874,11 +882,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
           <caret line="56" column="17" selection-start-line="56" selection-start-column="12" selection-end-line="56" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/output/heart_CV3genetic3009-3.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/pandas/rpy/common.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="19" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/pandas/core/series.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="582" column="0" selection-start-line="582" selection-start-column="0" selection-end-line="582" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/output/wisconsinBreast_CV3genetic3109.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/output/austra_CV3genetic3109.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -888,10 +919,128 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/constructors/ripperrulelearner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/constructors/questbenchconstructor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="49" column="24" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/decisiontree.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2925">
+          <caret line="208" column="29" selection-start-line="208" selection-start-column="29" selection-end-line="208" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/sklearn/utils/validation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="514" column="0" selection-start-line="514" selection-start-column="0" selection-end-line="514" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/ecoli.data">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inTrees.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="175" column="0" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
+          <folding>
+            <element signature="e#55#65#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/output/wisconsinBreast_CV3genetic3109.tex">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/constructors/treemerger_clean.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="973">
+          <caret line="531" column="0" selection-start-line="531" selection-start-column="0" selection-end-line="531" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/xgboost/training.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/bayes_opt/bayesian_optimization.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="244" column="0" selection-start-line="244" selection-start-column="0" selection-end-line="244" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/bayes_opt/helpers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/output/ecoli_CV3genetic3109.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ISM_v3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="243" column="26" selection-start-line="243" selection-start-column="23" selection-end-line="243" selection-end-column="26" />
+          <folding>
+            <element signature="e#447#478#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/output/ecoli_CV3XGB.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/constructors/xgboostconstructor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="105" column="16" selection-start-line="105" selection-start-column="16" selection-end-line="105" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/constructors/test_genetic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2160">
-          <caret line="147" column="31" selection-start-line="147" selection-start-column="31" selection-end-line="147" selection-end-column="31" />
+        <state relative-caret-position="1755">
+          <caret line="328" column="72" selection-start-line="328" selection-start-column="72" selection-end-line="328" selection-end-column="72" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
@@ -900,8 +1049,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data/load_datasets.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="147" column="15" selection-start-line="141" selection-start-column="10" selection-end-line="147" selection-end-column="15" />
+        <state relative-caret-position="165">
+          <caret line="11" column="61" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>

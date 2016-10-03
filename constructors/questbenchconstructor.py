@@ -47,7 +47,7 @@ class QUESTBenchConstructor(TreeConstructor):
         pass
 
     def get_name(self):
-        return "GUIDE"
+        return "QUESTLoh"
 
     def construct_tree(self, training_feature_vectors, labels):
         self.create_desc_and_data_file(training_feature_vectors, labels)

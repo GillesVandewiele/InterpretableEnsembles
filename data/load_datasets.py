@@ -6,16 +6,16 @@ import os
 import collections
 
 
-# def load_wine():
-#     columns = ['Class', 'Alcohol', 'Acid', 'Ash', 'Alcalinity', 'Magnesium', 'Phenols', 'Flavanoids', 'Nonflavanoids',
-#               'Proanthocyanins', 'Color', 'Hue', 'Diluted', 'Proline']
-#     features = ['Alcohol', 'Acid', 'Ash', 'Alcalinity', 'Magnesium', 'Phenols', 'Flavanoids', 'Nonflavanoids',
-#               'Proanthocyanins', 'Color', 'Hue', 'Diluted', 'Proline']
-#     df = pd.read_csv(os.path.join(os.sep.join(os.path.realpath(__file__).split(os.sep)[:-1]), 'wine.data'))
-#     df.columns = columns
-#     df['Class'] = np.subtract(df['Class'], 1)
-#
-#     return df, features, 'Class', 'wine'
+def load_wine():
+    columns = ['Class', 'Alcohol', 'Acid', 'Ash', 'Alcalinity', 'Magnesium', 'Phenols', 'Flavanoids', 'Nonflavanoids',
+              'Proanthocyanins', 'Color', 'Hue', 'Diluted', 'Proline']
+    features = ['Alcohol', 'Acid', 'Ash', 'Alcalinity', 'Magnesium', 'Phenols', 'Flavanoids', 'Nonflavanoids',
+              'Proanthocyanins', 'Color', 'Hue', 'Diluted', 'Proline']
+    df = pd.read_csv(os.path.join(os.sep.join(os.path.realpath(__file__).split(os.sep)[:-1]), 'wine.data'))
+    df.columns = columns
+    df['Class'] = np.subtract(df['Class'], 1)
+
+    return df, features, 'Class', 'wine'
 
 
 # def load_cars():
@@ -41,7 +41,6 @@ import collections
 #     df['Class'] = df['Class'].map(mapping_class).astype(int)
 #
 #     return df, features, 'Class', 'cars'
-#     # return df.iloc[:150, :], features, 'Class', 'cars'
 
 
 # def load_wisconsin_breast_cancer():
@@ -57,32 +56,37 @@ import collections
 #     df = df.applymap(int)
 #
 #     return df, features, 'Class', 'wisconsinBreast'
+# #
 #
-#
-# def load_heart():
-#     columns = ['age', 'sex', 'chest pain type', 'resting blood pressure', 'serum cholestoral', 'fasting blood sugar', \
-#                'resting electrocardio', 'max heartrate', 'exercise induced', 'oldpeak', 'slope peak', \
-#                'vessels', 'thal', 'Class']
-#     features = ['age', 'sex', 'chest pain type', 'resting blood pressure', 'serum cholestoral', 'fasting blood sugar', \
-#                'resting electrocardio', 'max heartrate', 'exercise induced', 'oldpeak', 'slope peak', \
-#                'vessels', 'thal']
-#
-#     columns_copy = []
-#     for column in columns:
-#         column=column[:10]
-#         columns_copy.append(column)
-#     columns = columns_copy
-#
-#     features_copy = []
-#     for feature in features:
-#         feature=feature[:10]
-#         features_copy.append(feature)
-#     features=features_copy
-#
-#     df = pd.read_csv(os.path.join(os.sep.join(os.path.realpath(__file__).split(os.sep)[:-1]), 'heart.dat'), sep=' ')
-#     df.columns = columns
-#     df['Class'] = np.subtract(df['Class'], 1)
-#     return df, features, 'Class', 'heart'
+def load_heart():
+    columns = ['age', 'sex', 'chest pain type', 'resting blood pressure', 'serum cholestoral', 'fasting blood sugar', \
+               'resting electrocardio', 'max heartrate', 'exercise induced', 'oldpeak', 'slope peak', \
+               'vessels', 'thal', 'Class']
+    features = ['age', 'sex', 'chest pain type', 'resting blood pressure', 'serum cholestoral', 'fasting blood sugar', \
+               'resting electrocardio', 'max heartrate', 'exercise induced', 'oldpeak', 'slope peak', \
+               'vessels', 'thal']
+
+    columns_copy = []
+    for column in columns:
+        column=column[:10]
+        columns_copy.append(column)
+    columns = columns_copy
+
+    features_copy = []
+    for feature in features:
+        feature=feature[:10]
+        features_copy.append(feature)
+    features=features_copy
+
+    df = pd.read_csv(os.path.join(os.sep.join(os.path.realpath(__file__).split(os.sep)[:-1]), 'heart.dat'), sep=' ')
+    df.columns = columns
+    df['Class'] = np.subtract(df['Class'], 1)
+    return df, features, 'Class', 'heart'
+
+## 3-fold CV:
+# genetic = merger.genetic_algorithm(train_gen, 'cat', constructors, seed=1337, num_iterations=15,
+#                                    num_crossovers=10, population_size=150, val_fraction=0.5, prune=True,
+#                                    max_samples=1, tournament_size=10, nr_bootstraps=10)
 
 
 # def load_glass():
@@ -139,13 +143,13 @@ import collections
 #     return df, features, 'Class', 'lymph'
 #
 #
-def load_pima():
-    columns = ['X1','X2','X3','X4','X5','X6','X7','X8','Class']
-    features = ['X1','X2','X3','X4','X5','X6','X7','X8']
-    df = pd.read_csv(os.path.join(os.sep.join(os.path.realpath(__file__).split(os.sep)[:-1]), 'pima.data'))
-    df.columns = columns
-    df['Class'] = df['Class'].map({'y0': 0, 'y1': 1}).astype(int)
-    return df, features, 'Class', 'pima'
+# def load_pima():
+#     columns = ['X1','X2','X3','X4','X5','X6','X7','X8','Class']
+#     features = ['X1','X2','X3','X4','X5','X6','X7','X8']
+#     df = pd.read_csv(os.path.join(os.sep.join(os.path.realpath(__file__).split(os.sep)[:-1]), 'pima.data'))
+#     df.columns = columns
+#     df['Class'] = df['Class'].map({'y0': 0, 'y1': 1}).astype(int)
+#     return df, features, 'Class', 'pima'
 
 
 # def load_vehicle():
@@ -181,16 +185,16 @@ def load_pima():
 #     return df, features, 'Class', 'iris'
 
 
-# def load_ecoli():
-#     columns = ['name', 'mcg', 'gvh', 'lip', 'chg', 'aac', 'alm1', 'alm2', 'Class']
-#     features = ['mcg', 'gvh', 'lip', 'chg', 'aac', 'alm1', 'alm2']
-#     df = pd.read_csv(os.path.join(os.sep.join(os.path.realpath(__file__).split(os.sep)[:-1]), 'ecoli.data'), delim_whitespace=True, header=0)
-#     df.columns = columns
-#     df = df.drop('name', axis=1).reset_index(drop=True)
-#     mapping_class = {'cp': 0, 'im': 1, 'pp': 2, 'imU': 3, 'om': 4, 'omL': 5, 'imL': 6, 'imS': 7}
-#     df['Class'] = df['Class'].map(mapping_class).astype(int)
-#     df = df[df['Class'] < 5]
-#     return df, features, 'Class', 'ecoli'
+def load_ecoli():
+    columns = ['name', 'mcg', 'gvh', 'lip', 'chg', 'aac', 'alm1', 'alm2', 'Class']
+    features = ['mcg', 'gvh', 'lip', 'chg', 'aac', 'alm1', 'alm2']
+    df = pd.read_csv(os.path.join(os.sep.join(os.path.realpath(__file__).split(os.sep)[:-1]), 'ecoli.data'), delim_whitespace=True, header=0)
+    df.columns = columns
+    df = df.drop('name', axis=1).reset_index(drop=True)
+    mapping_class = {'cp': 0, 'im': 1, 'pp': 2, 'imU': 3, 'om': 4, 'omL': 5, 'imL': 6, 'imS': 7}
+    df['Class'] = df['Class'].map(mapping_class).astype(int)
+    df = df[df['Class'] < 5]
+    return df, features, 'Class', 'ecoli'
 
 
 # def load_yeast():
@@ -202,6 +206,7 @@ def load_pima():
 #     mapping_class = {'CYT': 0, 'NUC': 1, 'MIT': 2, 'ME3': 3, 'ME2': 4, 'ME1': 5, 'EXC': 6, 'VAC': 7, 'POX': 8, 'ERL': 9}
 #     df['Class'] = df['Class'].map(mapping_class)
 #     df = df[df['Class'] < 8]  # TODO: Orange is fucking stupid, somehow you can't classify more than 8 classes
+#     print df.isnull().sum()
 #     return df, features, 'Class', 'yeast'
 
 ## These datasets are very large and will take a very long time
@@ -233,6 +238,24 @@ def load_pima():
 #     df = df.reset_index(drop=True)
 #
 #     return df, features, 'Class', 'shuttle'
+
+# def load_shuttle_full():
+#     columns = ['feature1', 'feature2', 'feature3', 'feature4', 'feature5', 'feature6', 'feature7', 'feature8',
+#                'feature9', 'Class']
+#     features = ['feature1', 'feature2', 'feature3', 'feature4', 'feature5', 'feature6', 'feature7', 'feature8',
+#                'feature9']
+#
+#     df = pd.read_csv(os.path.join(os.sep.join(os.path.realpath(__file__).split(os.sep)[:-1]), 'shuttle_full.trn'), sep=' ')
+#     df.columns = columns
+#     for feature in features:
+#         if np.min(df[feature]) < 0:
+#             df[feature] += np.min(df[feature]) * (-1)
+#     df = df[df['Class'] < 6]
+#     df['Class'] = np.subtract(df['Class'], 1)
+#     df = df.reset_index(drop=True)
+#
+#     return df, features, 'Class', 'shuttle'
+
 #
 #
 # def load_nursery():

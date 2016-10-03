@@ -17,11 +17,13 @@ from constructors.guideconstructor import GUIDEConstructor
 from constructors.questbenchconstructor import QUESTBenchConstructor
 from constructors.questconstructor import QuestConstructor
 from constructors.treemerger_clean import DecisionTreeMergerClean
+from constructors.xgboostconstructor import XGBClassifiction
 from data.load_all_datasets import load_all_datasets
 
 import matplotlib.pyplot as plt
 import pylab as pl
 
+from inTrees import inTreesClassifier
 from write_latex import write_figures
 from write_latex import write_footing
 from write_latex import write_measurements
@@ -192,16 +194,17 @@ datasets = load_all_datasets()
 quest_bench = QUESTBenchConstructor()
 guide = GUIDEConstructor()
 quest = QuestConstructor()
+inTrees = inTreesClassifier()
 merger = DecisionTreeMergerClean()
 NR_FOLDS = 3
 for dataset in datasets:
     print dataset['name'], len(dataset['dataframe'])
     conf_matrices = {'QUESTGilles': [], 'GUIDE': [], 'C4.5': [], 'CART': [], 'ISM': [], 'ISM_pruned': [],
-                     'Genetic': [], 'CN2': [], 'QUESTLoh': []}  #
+                     'Genetic': [], 'CN2': [], 'QUESTLoh': [], 'inTrees': [], 'XGBoost': []}  #
     avg_nodes = {'QUESTGilles': [], 'GUIDE': [], 'C4.5': [], 'CART': [], 'ISM': [], 'ISM_pruned': [],
-                 'Genetic': [], 'CN2': [], 'QUESTLoh': []}  #
+                 'Genetic': [], 'CN2': [], 'QUESTLoh': [], 'inTrees': [], 'XGBoost': []}  #
     times = {'QUESTGilles': [], 'GUIDE': [], 'C4.5': [], 'CART': [], 'ISM': [], 'ISM_pruned': [],
-                 'Genetic': [], 'CN2': [], 'QUESTLoh': []}  #
+                 'Genetic': [], 'CN2': [], 'QUESTLoh': [], 'inTrees': [], 'XGBoost': []}  #
     df = dataset['dataframe']
     label_col = dataset['label_col']
     feature_cols = dataset['feature_cols']
@@ -229,6 +232,7 @@ for dataset in datasets:
         # train[y_train.name] = Series(y_train, index=train.index)
         # print len(X_train)
         #
+
         print 'QUEST Loh'
         start = time.time()
         quest_bench_tree = quest_bench.construct_tree(X_train, y_train)
@@ -236,6 +240,7 @@ for dataset in datasets:
         times['QUESTLoh'].append(end-start)
         predictions = quest_bench_tree.evaluate_multiple(X_test).astype(int)
         conf_matrices['QUESTLoh'].append(confusion_matrix(y_test, predictions))
+        print conf_matrices['QUESTLoh'][len(conf_matrices['QUESTLoh']) - 1]
         avg_nodes['QUESTLoh'].append(quest_bench_tree.count_nodes())
 
         print 'QUEST Gilles'
@@ -245,6 +250,7 @@ for dataset in datasets:
         times['QUESTGilles'].append(end-start)
         predictions = quest_tree.evaluate_multiple(X_test).astype(int)
         conf_matrices['QUESTGilles'].append(confusion_matrix(y_test, predictions))
+        print conf_matrices['QUESTGilles'][len(conf_matrices['QUESTGilles']) - 1]
         avg_nodes['QUESTGilles'].append(quest_tree.count_nodes())
 
         print 'GUIDE'
@@ -254,6 +260,7 @@ for dataset in datasets:
         times['GUIDE'].append(end-start)
         predictions = guide_tree.evaluate_multiple(X_test).astype(int)
         conf_matrices['GUIDE'].append(confusion_matrix(y_test, predictions))
+        print conf_matrices['GUIDE'][len(conf_matrices['GUIDE']) - 1]
         avg_nodes['GUIDE'].append(guide_tree.count_nodes())
 
         skf_tune = StratifiedKFold(train[label_col], n_folds=3, shuffle=True, random_state=1337)
@@ -266,6 +273,7 @@ for dataset in datasets:
         times['C4.5'].append(end-start)
         predictions = c45_tree.evaluate_multiple(X_test).astype(int)
         conf_matrices['C4.5'].append(confusion_matrix(y_test, predictions))
+        print conf_matrices['C4.5'][len(conf_matrices['C4.5']) - 1]
         avg_nodes['C4.5'].append(c45_tree.count_nodes())
 
         print 'CART'
@@ -276,6 +284,7 @@ for dataset in datasets:
         times['CART'].append(end-start)
         predictions = cart_tree.evaluate_multiple(X_test).astype(int)
         conf_matrices['CART'].append(confusion_matrix(y_test, predictions))
+        print conf_matrices['CART'][len(conf_matrices['CART']) - 1]
         avg_nodes['CART'].append(cart_tree.count_nodes())
 
         print 'CN2'
@@ -286,25 +295,34 @@ for dataset in datasets:
         times['CN2'].append(end-start)
         predictions = map(int, [prediction[0].value for prediction in cn2_clf.classify(X_test)])
         conf_matrices['CN2'].append(confusion_matrix(y_test, predictions))
+        print conf_matrices['CN2'][len(conf_matrices['CN2']) - 1]
         avg_nodes['CN2'].append(len(cn2_clf.model.rules))
+
+        print 'XGBoost'
+        xgb_clf = XGBClassifiction()
+        xgb_clf.construct_xgb_classifier(train, feature_cols, label_col)
+        predictions = xgb_clf.evaluate_multiple(X_test)
+        conf_matrix = confusion_matrix(y_test, predictions)
+        conf_matrices['XGB'].append(conf_matrix)
+        print conf_matrix
+        avg_nodes[['XGBoost']].append(xgb_clf.nr_clf)
+        times['XGBoost'].append(xgb_clf.time)
+
 
         print 'Got all trees, lets merge them!'
         trees = [quest_tree, guide_tree, c45_tree, cart_tree] # quest_bench_tree
 
-        # predictions_list = []
-        # for tree in trees:
-        #     tree.data = train
-        #     tree.populate_samples(X_train, y_train.astype(str).values)
-        #     predictions_list.append(tree.evaluate_multiple(X_test).astype(int))
-        # print 'Correlation of no bootstrapping: ', np.corrcoef(predictions_list)
-
         constructors = [c45_clf, cart_clf, quest, guide, quest_bench]
-
-        # for tree in bootstrap(train, label_col, constructors, boosting=True, nr_classifiers=3):
-        #     tree.data = train
-        #     tree.populate_samples(X_train, y_train.astype(str).values)
-        #     predictions_list.append(tree.evaluate_multiple(X_test).astype(int))
-        # print 'Correlation of bootstrapping: ', np.corrcoef(predictions_list)
+        #
+        print 'inTrees'
+        start = time.time()
+        orl = inTrees.construct_rule_list(train, label_col, constructors, nr_bootstraps=15)
+        end = time.time()
+        times['inTrees'].append(end-start)
+        predictions = orl.evaluate_multiple(X_test).astype(int)
+        conf_matrices['inTrees'].append(confusion_matrix(y_test, predictions))
+        print conf_matrices['inTrees'][len(conf_matrices['inTrees']) - 1]
+        avg_nodes['inTrees'].append(len(orl.rule_list))
 
         start = time.time()
         ism_tree = ism(bootstrap(train, label_col, constructors, boosting=True, nr_classifiers=15), train, label_col,
@@ -319,7 +337,7 @@ for dataset in datasets:
         print 'Lets prune the tree'
         start = time.time()
         ism_pruned = ism_tree.cost_complexity_pruning(X_train, y_train, 'ism', ism_constructors=constructors,
-                                                      ism_calc_fracs=False, n_folds=3, ism_nr_classifiers=10,
+                                                      ism_calc_fracs=False, n_folds=3, ism_nr_classifiers=15,
                                                       ism_boosting=True)
         end = time.time()
         times['ISM_pruned'].append(end-start)
@@ -331,14 +349,20 @@ for dataset in datasets:
 
         train_gen = train.rename(columns={'Class':'cat'})
         start = time.time()
+
+        # genetic = merger.genetic_algorithm(train_gen, 'cat', constructors, seed=1337, num_iterations=8,
+        #                                    num_crossovers=10, population_size=150, val_fraction=0.35, prune=True,
+        #                                    max_samples=3, tournament_size=10, nr_bootstraps=10)
+        #
         genetic = merger.genetic_algorithm(train_gen, 'cat', constructors, seed=1337, num_iterations=15,
                                            num_crossovers=10, population_size=150, val_fraction=0.5, prune=True,
-                                           max_samples=1, tournament_size=10, nr_bootstraps=10)
+                                           max_samples=1, tournament_size=10, nr_bootstraps=25)
+
         end = time.time()
         times['Genetic'].append(end-start)
         predictions = genetic.evaluate_multiple(X_test).astype(int)
         conf_matrices['Genetic'].append(confusion_matrix(y_test, predictions))
-        print conf_matrices['Genetic'][len(conf_matrices['ISM']) - 1]
+        print conf_matrices['Genetic'][len(conf_matrices['Genetic']) - 1]
         avg_nodes['Genetic'].append(genetic.count_nodes())
 
 
@@ -376,10 +400,10 @@ for dataset in datasets:
     Size = F.get_size_inches()
     F.set_size_inches(Size[0] * 2, Size[1] * 1.75, forward=True)
     # plt.show()
-    plt.savefig('output/' + dataset['name'] + '_CV3genetic3109.png', bbox_inches='tight')
+    plt.savefig('output/' + dataset['name'] + '_CV'+str(NR_FOLDS)+'genetic3109.png', bbox_inches='tight')
 
-    write_to_file('output/' + dataset['name'] + '_CV3genetic3109.tex',  dataset['name'],
-                  {dataset['name']: 'output/' + dataset['name'] + '_CV3genetic3109.png'}, conf_matrices, avg_nodes, times,
+    write_to_file('output/' + dataset['name'] + '_CV'+str(NR_FOLDS)+'genetic3109.tex',  dataset['name'],
+                  {dataset['name']: dataset['name'] + '_CV'+str(NR_FOLDS)+'genetic3109.png'}, conf_matrices, avg_nodes, times,
                   ALGORITHMS_PER_TABLE=3)
 
 # def classification_metrics(confusion_matrices):
