@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage[margin=0.1in]{geometry}
+\usepackage{graphicx}
+
+\begin{document}
+
+\begin{table}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline & \multicolumn{4}{|c|}{\textbf{CN2}} & \multicolumn{4}{|c|}{\textbf{QUESTGilles}} & \multicolumn{4}{|c|}{\textbf{inTrees}} \\ \hline 
+ & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} \\ \hline 
+\textbf{heart}  & 0.7922+0.07$\sigma$ & 0.7834+0.08$\sigma$ & 27.9+4.7$\sigma$ & 0.4672+0.26$\sigma$ & 0.7437+0.06$\sigma$ & 0.7389+0.06$\sigma$ & 12.0+4.84$\sigma$ & 0.7163+0.09$\sigma$ & 0.8181+0.06$\sigma$ & 0.8133+0.06$\sigma$ & 23.7+2.1$\sigma$ & 25.8747+5.59$\sigma$ \\ \hline 
+\end{tabular}}
+\end{table}
+
+\begin{table}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline & \multicolumn{4}{|c|}{\textbf{Genetic}} & \multicolumn{4}{|c|}{\textbf{ISM_pruned}} & \multicolumn{4}{|c|}{\textbf{QUESTLoh}} \\ \hline 
+ & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} \\ \hline 
+\textbf{heart}  & 0.807+0.05$\sigma$ & 0.8013+0.06$\sigma$ & 23.0+15.9$\sigma$ & 476.781+167.4$\sigma$ & 0.814+0.06$\sigma$ & 0.8109+0.06$\sigma$ & 43.0+22.84$\sigma$ & 264.9225+61.5$\sigma$ & 0.7547+0.04$\sigma$ & 0.7468+0.03$\sigma$ & 9.6+6.51$\sigma$ & 0.4906+0.67$\sigma$ \\ \hline 
+\end{tabular}}
+\end{table}
+
+\begin{table}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline & \multicolumn{4}{|c|}{\textbf{C4.5}} & \multicolumn{4}{|c|}{\textbf{ISM}} & \multicolumn{4}{|c|}{\textbf{CART}} \\ \hline 
+ & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} \\ \hline 
+\textbf{heart}  & 0.7809+0.06$\sigma$ & 0.7771+0.06$\sigma$ & 34.6+15.12$\sigma$ & 0.0088+0.0$\sigma$ & 0.7584+0.07$\sigma$ & 0.7584+0.07$\sigma$ & 192.4+17.44$\sigma$ & 204.2143+46.1$\sigma$ & 0.7551+0.07$\sigma$ & 0.7492+0.07$\sigma$ & 45.2+32.58$\sigma$ & 0.0015+0.0$\sigma$ \\ \hline 
+\end{tabular}}
+\end{table}
+
+\begin{table}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|}
+\hline & \multicolumn{4}{|c|}{\textbf{GUIDE}} \\ \hline 
+ & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} \\ \hline 
+\textbf{heart}  & 0.8258+0.06$\sigma$ & 0.8238+0.06$\sigma$ & 10.6+1.96$\sigma$ & 0.2478+0.07$\sigma$ \\ \hline 
+\end{tabular}}
+\end{table}
+
+\begin{figure}\centering\includegraphics[width=\textwidth]{heart_CV10genetic3109.png}\caption{Confusion matrix for heart}\end{figure}
+\end{document}

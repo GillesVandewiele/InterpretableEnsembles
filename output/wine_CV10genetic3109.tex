@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage[margin=0.1in]{geometry}
+\usepackage{graphicx}
+
+\begin{document}
+
+\begin{table}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline & \multicolumn{4}{|c|}{\textbf{CN2}} & \multicolumn{4}{|c|}{\textbf{QUESTGilles}} & \multicolumn{4}{|c|}{\textbf{inTrees}} \\ \hline 
+ & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} \\ \hline 
+\textbf{wine}  & 0.9048+0.05$\sigma$ & 0.9015+0.06$\sigma$ & 6.4+2.01$\sigma$ & 0.1674+0.11$\sigma$ & 0.9263+0.06$\sigma$ & 0.9347+0.06$\sigma$ & 21.8+1.83$\sigma$ & 0.4919+0.37$\sigma$ & 0.9082+0.06$\sigma$ & 0.9029+0.08$\sigma$ & 4.0+0.0$\sigma$ & 15.5824+3.68$\sigma$ \\ \hline 
+\end{tabular}}
+\end{table}
+
+\begin{table}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline & \multicolumn{4}{|c|}{\textbf{Genetic}} & \multicolumn{4}{|c|}{\textbf{ISM_pruned}} & \multicolumn{4}{|c|}{\textbf{QUESTLoh}} \\ \hline 
+ & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} \\ \hline 
+\textbf{wine}  & 0.9325+0.05$\sigma$ & 0.9351+0.05$\sigma$ & 10.4+2.2$\sigma$ & 437.7366+194.36$\sigma$ & 0.8853+0.07$\sigma$ & 0.8921+0.07$\sigma$ & 52.2+11.46$\sigma$ & 71.0538+9.09$\sigma$ & 0.9093+0.06$\sigma$ & 0.9127+0.05$\sigma$ & 9.2+2.27$\sigma$ & 0.3644+0.19$\sigma$ \\ \hline 
+\end{tabular}}
+\end{table}
+
+\begin{table}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline & \multicolumn{4}{|c|}{\textbf{C4.5}} & \multicolumn{4}{|c|}{\textbf{ISM}} & \multicolumn{4}{|c|}{\textbf{CART}} \\ \hline 
+ & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} \\ \hline 
+\textbf{wine}  & 0.9325+0.07$\sigma$ & 0.934+0.06$\sigma$ & 9.0+0.0$\sigma$ & 0.0087+0.0$\sigma$ & 0.8853+0.07$\sigma$ & 0.8913+0.07$\sigma$ & 73.0+12.2$\sigma$ & 46.8726+7.56$\sigma$ & 0.9193+0.07$\sigma$ & 0.9204+0.07$\sigma$ & 17.6+4.1$\sigma$ & 0.0021+0.0$\sigma$ \\ \hline 
+\end{tabular}}
+\end{table}
+
+\begin{table}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|}
+\hline & \multicolumn{4}{|c|}{\textbf{GUIDE}} \\ \hline 
+ & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} \\ \hline 
+\textbf{wine}  & 0.9436+0.04$\sigma$ & 0.9446+0.05$\sigma$ & 8.8+0.6$\sigma$ & 0.2201+0.04$\sigma$ \\ \hline 
+\end{tabular}}
+\end{table}
+
+\begin{figure}\centering\includegraphics[width=\textwidth]{wine_CV10genetic3109.png}\caption{Confusion matrix for wine}\end{figure}
+\end{document}

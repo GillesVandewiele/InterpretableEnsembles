@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage[margin=0.1in]{geometry}
+\usepackage{graphicx}
+
+\begin{document}
+
+\begin{table}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline & \multicolumn{4}{|c|}{\textbf{CN2}} & \multicolumn{4}{|c|}{\textbf{QUESTGilles}} & \multicolumn{4}{|c|}{\textbf{inTrees}} \\ \hline 
+ & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} \\ \hline 
+\textbf{cars}  & 0.9711+0.01$\sigma$ & 0.9062+0.05$\sigma$ & 56.6667+1.89$\sigma$ & 1.7606+1.16$\sigma$ & 0.8807+0.02$\sigma$ & 0.6711+0.11$\sigma$ & 47.6667+6.8$\sigma$ & 4.6056+0.26$\sigma$ & 0.9438+0.02$\sigma$ & 0.8371+0.06$\sigma$ & 26.0+1.41$\sigma$ & 112.771+17.06$\sigma$ \\ \hline 
+\end{tabular}}
+\end{table}
+
+\begin{table}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline & \multicolumn{4}{|c|}{\textbf{Genetic}} & \multicolumn{4}{|c|}{\textbf{ISM_pruned}} & \multicolumn{4}{|c|}{\textbf{QUESTLoh}} \\ \hline 
+ & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} \\ \hline 
+\textbf{cars}  & 0.9612+0.0$\sigma$ & 0.9014+0.02$\sigma$ & 89.0+4.32$\sigma$ & 2961.6117+1825.12$\sigma$ & 0.9734+0.01$\sigma$ & 0.9495+0.01$\sigma$ & 126.3333+29.23$\sigma$ & 528.5736+18.1$\sigma$ & 0.945+0.01$\sigma$ & 0.8836+0.03$\sigma$ & 41.6667+4.11$\sigma$ & 0.6907+0.15$\sigma$ \\ \hline 
+\end{tabular}}
+\end{table}
+
+\begin{table}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline & \multicolumn{4}{|c|}{\textbf{C4.5}} & \multicolumn{4}{|c|}{\textbf{ISM}} & \multicolumn{4}{|c|}{\textbf{CART}} \\ \hline 
+ & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} \\ \hline 
+\textbf{cars}  & 0.9664+0.01$\sigma$ & 0.9199+0.02$\sigma$ & 99.0+5.89$\sigma$ & 0.0286+0.02$\sigma$ & 0.9774+0.0$\sigma$ & 0.947+0.01$\sigma$ & 169.0+10.2$\sigma$ & 284.5599+5.67$\sigma$ & 0.9826+0.01$\sigma$ & 0.9514+0.03$\sigma$ & 143.6667+4.11$\sigma$ & 0.0023+0.0$\sigma$ \\ \hline 
+\end{tabular}}
+\end{table}
+
+\begin{table}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|}
+\hline & \multicolumn{4}{|c|}{\textbf{GUIDE}} \\ \hline 
+ & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} \\ \hline 
+\textbf{cars}  & 0.9433+0.0$\sigma$ & 0.8642+0.02$\sigma$ & 49.0+4.32$\sigma$ & 0.601+0.07$\sigma$ \\ \hline 
+\end{tabular}}
+\end{table}
+
+\begin{figure}\centering\includegraphics[width=\textwidth]{output/cars_CV3genetic3109.png}\caption{Confusion matrix for cars}\end{figure}
+\end{document}

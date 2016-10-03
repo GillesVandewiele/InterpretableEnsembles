@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage[margin=0.1in]{geometry}
+\usepackage{graphicx}
+
+\begin{document}
+
+\begin{table}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline & \multicolumn{4}{|c|}{\textbf{CN2}} & \multicolumn{4}{|c|}{\textbf{QUESTGilles}} & \multicolumn{4}{|c|}{\textbf{inTrees}} \\ \hline 
+ & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} \\ \hline 
+\textbf{wisconsinBreast}  & 0.9498+0.02$\sigma$ & 0.943+0.02$\sigma$ & 16.0+2.94$\sigma$ & 0.2478+0.17$\sigma$ & 0.9484+0.01$\sigma$ & 0.941+0.01$\sigma$ & 23.6667+2.49$\sigma$ & 0.7522+0.19$\sigma$ & 0.9527+0.0$\sigma$ & 0.9452+0.01$\sigma$ & 16.0+2.94$\sigma$ & 25.8307+0.26$\sigma$ \\ \hline 
+\end{tabular}}
+\end{table}
+
+\begin{table}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline & \multicolumn{4}{|c|}{\textbf{Genetic}} & \multicolumn{4}{|c|}{\textbf{ISM\_pruned}} & \multicolumn{4}{|c|}{\textbf{QUESTLoh}} \\ \hline 
+ & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} \\ \hline 
+\textbf{wisconsinBreast}  & 0.9355+0.01$\sigma$ & 0.937+0.01$\sigma$ & 43.0+23.72$\sigma$ & 754.7636+189.11$\sigma$ & 0.9484+0.01$\sigma$ & 0.9458+0.02$\sigma$ & 45.0+16.57$\sigma$ & 172.5185+20.76$\sigma$ & 0.9499+0.01$\sigma$ & 0.9499+0.0$\sigma$ & 8.3333+0.94$\sigma$ & 0.2996+0.02$\sigma$ \\ \hline 
+\end{tabular}}
+\end{table}
+
+\begin{table}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline & \multicolumn{4}{|c|}{\textbf{C4.5}} & \multicolumn{4}{|c|}{\textbf{ISM}} & \multicolumn{4}{|c|}{\textbf{CART}} \\ \hline 
+ & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} \\ \hline 
+\textbf{wisconsinBreast}  & 0.9441+0.01$\sigma$ & 0.9337+0.02$\sigma$ & 18.3333+4.99$\sigma$ & 0.0105+0.0$\sigma$ & 0.9427+0.01$\sigma$ & 0.9336+0.02$\sigma$ & 100.3333+7.54$\sigma$ & 198.1263+18.2$\sigma$ & 0.9413+0.01$\sigma$ & 0.9345+0.02$\sigma$ & 23.6667+15.08$\sigma$ & 0.002+0.0$\sigma$ \\ \hline 
+\end{tabular}}
+\end{table}
+
+\begin{table}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|}
+\hline & \multicolumn{4}{|c|}{\textbf{GUIDE}} \\ \hline 
+ & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} \\ \hline 
+\textbf{wisconsinBreast}  & 0.937+0.01$\sigma$ & 0.9274+0.01$\sigma$ & 11.6667+0.94$\sigma$ & 0.2917+0.01$\sigma$ \\ \hline 
+\end{tabular}}
+\end{table}
+
+\begin{figure}\centering\includegraphics[width=\textwidth]{wisconsinBreast_CV3genetic3109.png}\caption{Confusion matrix for wisconsinBreast}\end{figure}
+\end{document}

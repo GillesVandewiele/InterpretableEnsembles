@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage[margin=0.1in]{geometry}
+\usepackage{graphicx}
+
+\begin{document}
+
+\begin{table}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline & \multicolumn{4}{|c|}{\textbf{CN2}} & \multicolumn{4}{|c|}{\textbf{QUESTGilles}} & \multicolumn{4}{|c|}{\textbf{inTrees}} \\ \hline 
+ & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} \\ \hline 
+\textbf{ecoli}  & 0.8127+0.02$\sigma$ & 0.7434+0.04$\sigma$ & 25.6+2.5$\sigma$ & 0.4458+0.15$\sigma$ & 0.6946+0.13$\sigma$ & 0.4593+0.13$\sigma$ & 7.4+3.67$\sigma$ & 0.119+0.06$\sigma$ & 0.8164+0.04$\sigma$ & 0.7441+0.05$\sigma$ & 23.8+1.47$\sigma$ & 13.8063+3.84$\sigma$ \\ \hline 
+\end{tabular}}
+\end{table}
+
+\begin{table}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline & \multicolumn{4}{|c|}{\textbf{Genetic}} & \multicolumn{4}{|c|}{\textbf{ISM_pruned}} & \multicolumn{4}{|c|}{\textbf{QUESTLoh}} \\ \hline 
+ & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} \\ \hline 
+\textbf{ecoli}  & 0.8369+0.04$\sigma$ & 0.7559+0.05$\sigma$ & 17.8+7.0$\sigma$ & 301.0765+46.19$\sigma$ & 0.7511+0.11$\sigma$ & 0.596+0.17$\sigma$ & 57.8+23.14$\sigma$ & 1025.6593+404.27$\sigma$ & 0.8188+0.03$\sigma$ & 0.7182+0.03$\sigma$ & 11.0+4.0$\sigma$ & 0.3695+0.19$\sigma$ \\ \hline 
+\end{tabular}}
+\end{table}
+
+\begin{table}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline & \multicolumn{4}{|c|}{\textbf{C4.5}} & \multicolumn{4}{|c|}{\textbf{ISM}} & \multicolumn{4}{|c|}{\textbf{CART}} \\ \hline 
+ & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} \\ \hline 
+\textbf{ecoli}  & 0.8163+0.05$\sigma$ & 0.7383+0.07$\sigma$ & 19.8+6.52$\sigma$ & 0.0069+0.0$\sigma$ & 0.7542+0.11$\sigma$ & 0.5991+0.17$\sigma$ & 114.6+30.45$\sigma$ & 514.2056+261.67$\sigma$ & 0.8286+0.04$\sigma$ & 0.7496+0.04$\sigma$ & 20.2+10.4$\sigma$ & 0.0022+0.0$\sigma$ \\ \hline 
+\end{tabular}}
+\end{table}
+
+\begin{table}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|}
+\hline & \multicolumn{4}{|c|}{\textbf{GUIDE}} \\ \hline 
+ & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} \\ \hline 
+\textbf{ecoli}  & 0.8309+0.04$\sigma$ & 0.7301+0.03$\sigma$ & 10.6+2.33$\sigma$ & 0.2015+0.04$\sigma$ \\ \hline 
+\end{tabular}}
+\end{table}
+
+\begin{figure}\centering\includegraphics[width=\textwidth]{ecoli_CV5genetic3109.png}\caption{Confusion matrix for ecoli}\end{figure}
+\end{document}
