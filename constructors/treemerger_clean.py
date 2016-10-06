@@ -2,6 +2,7 @@ import copy
 import multiprocessing
 import random
 
+from imblearn.over_sampling import RandomOverSampler
 from imblearn.over_sampling import SMOTE
 from pandas import DataFrame, concat, Series
 
@@ -500,14 +501,25 @@ class DecisionTreeMergerClean(object):
             train_labels_df = train_labels_df.reset_index(drop=True)
             test_labels_df = test_labels_df.reset_index(drop=True)
 
-            smote = SMOTE(ratio='auto', kind='regular')
-            # print len(X_train)
-            X_train, y_train = smote.fit_sample(train_features_df, train_labels_df)
-            train_features_df = DataFrame(X_train, columns=train_features_df.columns)
-            train_labels_df = DataFrame(y_train, columns=[label_col])
-            perm = np.random.permutation(len(train_features_df))
-            train_features_df = train_features_df.iloc[perm].reset_index(drop=True)
-            train_labels_df = train_labels_df.iloc[perm].reset_index(drop=True)
+            old_length = len(train_features_df)
+            try:
+                smote = SMOTE(ratio='auto', kind='regular')
+                X_train, y_train = smote.fit_sample(train_features_df, train_labels_df)
+                train_features_df = DataFrame(X_train, columns=train_features_df.columns)
+                train_labels_df = DataFrame(y_train, columns=[label_col])
+                perm = np.random.permutation(len(train_features_df))
+                train_features_df = train_features_df.iloc[perm].reset_index(drop=True)
+                train_labels_df = train_labels_df.iloc[perm].reset_index(drop=True)
+                print 'SMOTE:', old_length, '->', len(train_features_df)
+            except Exception:   # If SMOTE fails, we apply Random Oversampling
+                ros = RandomOverSampler(ratio='auto')
+                X_train, y_train = ros.fit_sample(train_features_df, train_labels_df)
+                train_features_df = DataFrame(X_train, columns=train_features_df.columns)
+                train_labels_df = DataFrame(y_train, columns=[label_col])
+                perm = np.random.permutation(len(train_features_df))
+                train_features_df = train_features_df.iloc[perm].reset_index(drop=True)
+                train_labels_df = train_labels_df.iloc[perm].reset_index(drop=True)
+                print 'ROS:', old_length, '->', len(train_features_df)
 
             train = data.iloc[train_index, :].copy()
             test = data.iloc[test_index, :].copy()

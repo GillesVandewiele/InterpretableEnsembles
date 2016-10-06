@@ -107,7 +107,7 @@ class QUESTBenchConstructor(TreeConstructor):
             dt.right = self.decision_tree_from_text(lines[counter+1:])
         else:
             # Terminal node
-            dt.label = int(lines[0].split(':')[1].lstrip())
+            dt.label = int(eval(lines[0].split(':')[1].lstrip()))
 
         return dt
 

@@ -1,65 +1,85 @@
 import time
 from bayes_opt import BayesianOptimization
-from sklearn.cross_validation import cross_val_score
-from xgboost import XGBClassifier
+from sklearn.cross_validation import cross_val_score, StratifiedKFold
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import confusion_matrix
+import numpy as np
 
 from data.load_all_datasets import load_all_datasets
-
 import matplotlib.pyplot as plt
 
 
-class XGBClassification:
+class RFClassification:
 
     def __init__(self):
         self.clf = None
         self.nr_clf = 0
         self.time = 0
 
-    def construct_xgb_classifier(self, train, features, label_col):
+    def construct_rf_classifier(self, train, features, label_col):
         data = train[features]
         target = train[label_col]
 
-        def xgbcv(nr_classifiers, learning_rate, max_depth, min_child_weight, subsample, colsample_bytree, gamma,
-                  reg_lambda):
+        def rfcv(nr_classifiers, max_depth, min_samples_leaf, bootstrap, criterion, max_features):
             nr_classifiers = int(nr_classifiers)
             max_depth = int(max_depth)
-            min_child_weight = int(min_child_weight)
-            return cross_val_score(XGBClassifier(learning_rate=learning_rate, n_estimators=nr_classifiers,
-                                                 gamma=gamma, subsample=subsample, colsample_bytree=colsample_bytree,
-                                                 nthread=1, scale_pos_weight=1, reg_lambda=reg_lambda,
-                                                 min_child_weight=min_child_weight, max_depth=max_depth),
+            min_samples_leaf = int(min_samples_leaf)
+            if np.round(bootstrap):
+                bootstrap = True
+            else:
+                bootstrap = False
+            if np.round(criterion):
+                criterion = 'gini'
+            else:
+                criterion = 'entropy'
+            if np.round(max_features):
+                max_features = None
+            else:
+                max_features = 1.0
+
+            return cross_val_score(RandomForestClassifier(n_estimators=nr_classifiers, max_depth=max_depth,
+                                                          min_samples_leaf=min_samples_leaf, bootstrap=bootstrap,
+                                                          criterion=criterion, max_features=max_features),
                                    data, target, 'accuracy', cv=5).mean()
 
         params = {
-            'nr_classifiers': (50, 1000),
-            'learning_rate': (0.01, 0.3),
+            'nr_classifiers': (10, 1000),
             'max_depth': (5, 10),
-            'min_child_weight': (2, 10),
-            'subsample': (0.7, 0.8),
-            'colsample_bytree': (0.5, 0.99),
-            'gamma': (1., 0.01),
-            'reg_lambda': (0, 1)
+            'min_samples_leaf': (2, 10),
+            'bootstrap': (0, 1),
+            'criterion': (0, 1),
+            'max_features': (0, 1)
         }
 
-        xgbBO = BayesianOptimization(xgbcv, params, verbose=0)
-        xgbBO.maximize(init_points=10, n_iter=25, n_restarts_optimizer=100)
+        rfBO = BayesianOptimization(rfcv, params, verbose=0)
+        rfBO.maximize(init_points=10, n_iter=20, n_restarts_optimizer=50)
 
-        best_params = xgbBO.res['max']['max_params']
+        best_params = rfBO.res['max']['max_params']
 
         best_nr_classifiers = int(best_params['nr_classifiers'])
         self.nr_clf = best_nr_classifiers
         best_max_depth = int(best_params['max_depth'])
-        best_min_child_weight = int(best_params['min_child_weight'])
-        best_colsample_bytree = best_params['colsample_bytree']
-        best_subsample = best_params['subsample']
-        best_reg_lambda = best_params['reg_lambda']
-        best_learning_rate = best_params['learning_rate']
-        best_gamma = best_params['gamma']
+        best_min_samples_leaf = int(best_params['min_samples_leaf'])
+        best_bootstrap = best_params['bootstrap']
+        best_criterion = best_params['criterion']
+        best_max_features = best_params['max_features']
 
-        self.clf = XGBClassifier(learning_rate=best_learning_rate, n_estimators=best_nr_classifiers,
-                                 gamma=best_gamma, subsample=best_subsample, colsample_bytree=best_colsample_bytree,
-                                 nthread=1, scale_pos_weight=1, reg_lambda=best_reg_lambda,
-                                 min_child_weight=best_min_child_weight, max_depth=best_max_depth)
+        if np.round(best_bootstrap):
+            best_bootstrap = True
+        else:
+            best_bootstrap = False
+        if np.round(best_criterion):
+            best_criterion = 'gini'
+        else:
+            best_criterion = 'entropy'
+        if np.round(best_max_features):
+            best_max_features = None
+        else:
+            best_max_features = 1.0
+
+        self.clf = RandomForestClassifier(n_estimators=best_nr_classifiers, max_depth=best_max_depth,
+                                          min_samples_leaf=best_min_samples_leaf, bootstrap=best_bootstrap,
+                                          criterion=best_criterion, max_features=best_max_features)
         start = time.time()
         self.clf.fit(data, target)
         self.time = time.time() - start
@@ -87,16 +107,16 @@ class XGBClassification:
 #         X_test = test.drop(label_col, axis=1)
 #         y_test = test[label_col]
 #
-#         xgb_clf = XGBClassifiction()
-#         xgb_clf.construct_xgb_classifier(train, features, label_col)
-#         predictions = xgb_clf.evaluate_multiple(X_test)
+#         rf_clf = RFClassification()
+#         rf_clf.construct_rf_classifier(train, features, label_col)
+#         predictions = rf_clf.evaluate_multiple(X_test)
 #
 #         conf_matrix = confusion_matrix(y_test, predictions)
 #         conf_matrices['XGB'].append(conf_matrix)
 #         accs.append(float(sum([conf_matrix[i][i] for i in range(len(conf_matrix))]))/float(np.sum(conf_matrix)))
 #         balaccs.append(sum([float(conf_matrix[i][i])/float(sum(conf_matrix[i])) for i in range(len(conf_matrix))])/conf_matrix.shape[0])
-#         trees.append(xgb_clf.nr_clf)
-#         times.append(xgb_clf.time)
+#         trees.append(rf_clf.nr_clf)
+#         times.append(rf_clf.time)
 #     print dataset_name, ':'
 #     print 'acc:', np.mean(accs), np.std(accs)
 #     print 'balacc:', np.mean(balaccs), np.std(balaccs)
@@ -137,5 +157,4 @@ class XGBClassification:
 #     Size = F.get_size_inches()
 #     F.set_size_inches(Size[0] * 2, Size[1] * 1.75, forward=True)
 #     # plt.show()
-#     plt.savefig('../output/' + dataset['name'] + '_CV' + str(NR_FOLDS) + 'XGB.png', bbox_inches='tight')
-
+#     plt.savefig('../output/' + dataset['name'] + '_CV' + str(NR_FOLDS) + 'RF.png', bbox_inches='tight')

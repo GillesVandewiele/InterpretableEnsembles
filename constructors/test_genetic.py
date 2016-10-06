@@ -16,12 +16,15 @@ from constructors.cn2rulelearner import CN2UnorderedConstructor
 from constructors.guideconstructor import GUIDEConstructor
 from constructors.questbenchconstructor import QUESTBenchConstructor
 from constructors.questconstructor import QuestConstructor
+from constructors.rfconstructor import RFClassification
 from constructors.treemerger_clean import DecisionTreeMergerClean
-from constructors.xgboostconstructor import XGBClassifiction
+from constructors.xgboostconstructor import XGBClassification
 from data.load_all_datasets import load_all_datasets
 
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-import pylab as pl
+plt.ioff()
 
 from inTrees import inTreesClassifier
 from write_latex import write_figures
@@ -196,15 +199,15 @@ guide = GUIDEConstructor()
 quest = QuestConstructor()
 inTrees = inTreesClassifier()
 merger = DecisionTreeMergerClean()
-NR_FOLDS = 3
+NR_FOLDS = 5
 for dataset in datasets:
     print dataset['name'], len(dataset['dataframe'])
     conf_matrices = {'QUESTGilles': [], 'GUIDE': [], 'C4.5': [], 'CART': [], 'ISM': [], 'ISM_pruned': [],
-                     'Genetic': [], 'CN2': [], 'QUESTLoh': [], 'inTrees': [], 'XGBoost': []}  #
+                     'Genetic': [], 'CN2': [], 'QUESTLoh': [], 'inTrees': [], 'XGBoost': [], 'RF': []}  #
     avg_nodes = {'QUESTGilles': [], 'GUIDE': [], 'C4.5': [], 'CART': [], 'ISM': [], 'ISM_pruned': [],
-                 'Genetic': [], 'CN2': [], 'QUESTLoh': [], 'inTrees': [], 'XGBoost': []}  #
+                 'Genetic': [], 'CN2': [], 'QUESTLoh': [], 'inTrees': [], 'XGBoost': [], 'RF': []}  #
     times = {'QUESTGilles': [], 'GUIDE': [], 'C4.5': [], 'CART': [], 'ISM': [], 'ISM_pruned': [],
-                 'Genetic': [], 'CN2': [], 'QUESTLoh': [], 'inTrees': [], 'XGBoost': []}  #
+                 'Genetic': [], 'CN2': [], 'QUESTLoh': [], 'inTrees': [], 'XGBoost': [], 'RF': []}  #
     df = dataset['dataframe']
     label_col = dataset['label_col']
     feature_cols = dataset['feature_cols']
@@ -262,7 +265,7 @@ for dataset in datasets:
         conf_matrices['GUIDE'].append(confusion_matrix(y_test, predictions))
         print conf_matrices['GUIDE'][len(conf_matrices['GUIDE']) - 1]
         avg_nodes['GUIDE'].append(guide_tree.count_nodes())
-
+        # #
         skf_tune = StratifiedKFold(train[label_col], n_folds=3, shuffle=True, random_state=1337)
 
         print 'C4.5'
@@ -299,24 +302,34 @@ for dataset in datasets:
         avg_nodes['CN2'].append(len(cn2_clf.model.rules))
 
         print 'XGBoost'
-        xgb_clf = XGBClassifiction()
+        xgb_clf = XGBClassification()
         xgb_clf.construct_xgb_classifier(train, feature_cols, label_col)
         predictions = xgb_clf.evaluate_multiple(X_test)
         conf_matrix = confusion_matrix(y_test, predictions)
-        conf_matrices['XGB'].append(conf_matrix)
+        conf_matrices['XGBoost'].append(conf_matrix)
         print conf_matrix
-        avg_nodes[['XGBoost']].append(xgb_clf.nr_clf)
+        avg_nodes['XGBoost'].append(xgb_clf.nr_clf)
         times['XGBoost'].append(xgb_clf.time)
 
-
+        print 'RF'
+        rf_clf = RFClassification()
+        rf_clf.construct_rf_classifier(train, feature_cols, label_col)
+        predictions = rf_clf.evaluate_multiple(X_test)
+        conf_matrix = confusion_matrix(y_test, predictions)
+        conf_matrices['RF'].append(conf_matrix)
+        print conf_matrix
+        avg_nodes['RF'].append(rf_clf.nr_clf)
+        times['RF'].append(rf_clf.time)
+        #
+        #
         print 'Got all trees, lets merge them!'
         trees = [quest_tree, guide_tree, c45_tree, cart_tree] # quest_bench_tree
-
+        # #
         constructors = [c45_clf, cart_clf, quest, guide, quest_bench]
-        #
+        # #
         print 'inTrees'
         start = time.time()
-        orl = inTrees.construct_rule_list(train, label_col, constructors, nr_bootstraps=15)
+        orl = inTrees.construct_rule_list(train, label_col, constructors, nr_bootstraps=25)
         end = time.time()
         times['inTrees'].append(end-start)
         predictions = orl.evaluate_multiple(X_test).astype(int)
@@ -325,7 +338,7 @@ for dataset in datasets:
         avg_nodes['inTrees'].append(len(orl.rule_list))
 
         start = time.time()
-        ism_tree = ism(bootstrap(train, label_col, constructors, boosting=True, nr_classifiers=15), train, label_col,
+        ism_tree = ism(bootstrap(train, label_col, constructors, boosting=True, nr_classifiers=5), train, label_col,
                        min_nr_samples=1, calc_fracs_from_ensemble=False)
         end = time.time()
         times['ISM'].append(end-start)
@@ -337,7 +350,7 @@ for dataset in datasets:
         print 'Lets prune the tree'
         start = time.time()
         ism_pruned = ism_tree.cost_complexity_pruning(X_train, y_train, 'ism', ism_constructors=constructors,
-                                                      ism_calc_fracs=False, n_folds=3, ism_nr_classifiers=15,
+                                                      ism_calc_fracs=False, n_folds=3, ism_nr_classifiers=5,
                                                       ism_boosting=True)
         end = time.time()
         times['ISM_pruned'].append(end-start)
@@ -366,6 +379,10 @@ for dataset in datasets:
         avg_nodes['Genetic'].append(genetic.count_nodes())
 
 
+    print times
+    print avg_nodes
+    print conf_matrices
+
     fig = plt.figure()
     fig.suptitle('Accuracy on ' + dataset['name'] + ' dataset using ' + str(NR_FOLDS) + ' folds', fontsize=20)
     counter = 0
@@ -387,7 +404,7 @@ for dataset in datasets:
         print conf_matrices_mean[key], float(diagonal_sum) / float(total_count)
         print 'Balanced accuracy: ', float(norm_diagonal_sum) / conf_matrices_mean[key].shape[0]
 
-        ax = fig.add_subplot(2, np.math.ceil(len(conf_matrices) / 2.0), counter + 1)
+        ax = fig.add_subplot(3, np.math.ceil(len(conf_matrices) / 3.0), counter + 1)
         cax = ax.matshow(cm_normalized, cmap=plt.cm.Blues, vmin=0.0, vmax=1.0)
         ax.set_title(key + '(' + str(sum(avg_nodes[key])/len(avg_nodes[key])) + ')', y=1.08)
         for (j, i), label in np.ndenumerate(cm_normalized):
