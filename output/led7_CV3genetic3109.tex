@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage[margin=0.1in]{geometry}
+\usepackage{graphicx}
+
+\begin{document}
+
+\begin{table}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline & \multicolumn{4}{|c|}{\textbf{XGBoost}} & \multicolumn{4}{|c|}{\textbf{CN2}} & \multicolumn{4}{|c|}{\textbf{inTrees}} \\ \hline 
+ & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} \\ \hline 
+\textbf{led7}  & 0.803+0.0$\sigma$ & 0.7992+0.01$\sigma$ & 572.6667+300.59$\sigma$ & 3.0001+1.62$\sigma$ & 0.7971+0.01$\sigma$ & 0.7944+0.01$\sigma$ & 120.6667+14.61$\sigma$ & 4.0643+2.47$\sigma$ & 0.794+0.01$\sigma$ & 0.7917+0.01$\sigma$ & 36.0+1.41$\sigma$ & 406.1107+4.8$\sigma$ \\ \hline 
+\end{tabular}}
+\end{table}
+
+\begin{table}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline & \multicolumn{4}{|c|}{\textbf{QUESTGilles}} & \multicolumn{4}{|c|}{\textbf{CART}} & \multicolumn{4}{|c|}{\textbf{QUESTLoh}} \\ \hline 
+ & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} \\ \hline 
+\textbf{led7}  & 0.7347+0.01$\sigma$ & 0.7329+0.01$\sigma$ & 40.3333+2.49$\sigma$ & 9.3266+0.25$\sigma$ & 0.8014+0.01$\sigma$ & 0.7993+0.01$\sigma$ & 201.6667+8.99$\sigma$ & 0.003+0.0$\sigma$ & 0.7956+0.01$\sigma$ & 0.7929+0.01$\sigma$ & 63.6667+2.49$\sigma$ & 1.6014+0.06$\sigma$ \\ \hline 
+\end{tabular}}
+\end{table}
+
+\begin{table}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline & \multicolumn{4}{|c|}{\textbf{Genetic}} & \multicolumn{4}{|c|}{\textbf{RF}} & \multicolumn{4}{|c|}{\textbf{ISM_pruned}} \\ \hline 
+ & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} \\ \hline 
+\textbf{led7}  & 0.7971+0.01$\sigma$ & 0.7951+0.01$\sigma$ & 108.3333+27.05$\sigma$ & 3754.225+169.4$\sigma$ & 0.8018+0.01$\sigma$ & 0.7999+0.0$\sigma$ & 437.0+189.9$\sigma$ & 1.78+0.76$\sigma$ & 0.801+0.01$\sigma$ & 0.7988+0.01$\sigma$ & 125.0+42.55$\sigma$ & 1068.8116+10.77$\sigma$ \\ \hline 
+\end{tabular}}
+\end{table}
+
+\begin{table}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline & \multicolumn{4}{|c|}{\textbf{C4.5}} & \multicolumn{4}{|c|}{\textbf{GUIDE}} & \multicolumn{4}{|c|}{\textbf{ISM}} \\ \hline 
+ & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} & \textbf{acc} & \textbf{balacc} & \textbf{nodes} & \textbf{time} \\ \hline 
+\textbf{led7}  & 0.8022+0.01$\sigma$ & 0.7995+0.01$\sigma$ & 57.0+5.66$\sigma$ & 0.065+0.06$\sigma$ & 0.7522+0.01$\sigma$ & 0.7496+0.01$\sigma$ & 29.0+4.32$\sigma$ & 1.1835+0.04$\sigma$ & 0.8014+0.01$\sigma$ & 0.7993+0.01$\sigma$ & 203.6667+5.73$\sigma$ & 489.5022+5.74$\sigma$ \\ \hline 
+\end{tabular}}
+\end{table}
+
+\begin{figure}\centering\includegraphics[width=\textwidth]{led7_CV3genetic3109.png}\caption{Confusion matrix for led7}\end{figure}
+\end{document}

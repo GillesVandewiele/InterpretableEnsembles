@@ -503,7 +503,7 @@ class DecisionTreeMergerClean(object):
 
             old_length = len(train_features_df)
             try:
-                smote = SMOTE(ratio='auto', kind='regular')
+                smote = SMOTE(ratio='auto', kind='regular', n_jobs=1)
                 X_train, y_train = smote.fit_sample(train_features_df, train_labels_df)
                 train_features_df = DataFrame(X_train, columns=train_features_df.columns)
                 train_labels_df = DataFrame(y_train, columns=[label_col])

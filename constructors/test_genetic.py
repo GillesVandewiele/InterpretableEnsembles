@@ -194,12 +194,13 @@ def write_to_file(filename, dataset_name, figure, confusion_matrices, model_size
     target.close()
 
 datasets = load_all_datasets()
+
 quest_bench = QUESTBenchConstructor()
 guide = GUIDEConstructor()
 quest = QuestConstructor()
 inTrees = inTreesClassifier()
 merger = DecisionTreeMergerClean()
-NR_FOLDS = 5
+NR_FOLDS = 3
 for dataset in datasets:
     print dataset['name'], len(dataset['dataframe'])
     conf_matrices = {'QUESTGilles': [], 'GUIDE': [], 'C4.5': [], 'CART': [], 'ISM': [], 'ISM_pruned': [],
@@ -211,7 +212,7 @@ for dataset in datasets:
     df = dataset['dataframe']
     label_col = dataset['label_col']
     feature_cols = dataset['feature_cols']
-    skf = StratifiedKFold(df[label_col], n_folds=NR_FOLDS, shuffle=True, random_state=1337)
+    skf = StratifiedKFold(df[label_col], n_folds=NR_FOLDS, shuffle=True, random_state=None)
     # skf = StratifiedShuffleSplit(df[label_col], 1, test_size=0.33, random_state=1337)
 
     for fold, (train_idx, test_idx) in enumerate(skf):
@@ -266,7 +267,7 @@ for dataset in datasets:
         print conf_matrices['GUIDE'][len(conf_matrices['GUIDE']) - 1]
         avg_nodes['GUIDE'].append(guide_tree.count_nodes())
         # #
-        skf_tune = StratifiedKFold(train[label_col], n_folds=3, shuffle=True, random_state=1337)
+        skf_tune = StratifiedKFold(train[label_col], n_folds=3, shuffle=True, random_state=None)
 
         print 'C4.5'
         c45_clf = get_best_c45_classifier(train, label_col, skf_tune)
@@ -367,7 +368,7 @@ for dataset in datasets:
         #                                    num_crossovers=10, population_size=150, val_fraction=0.35, prune=True,
         #                                    max_samples=3, tournament_size=10, nr_bootstraps=10)
         #
-        genetic = merger.genetic_algorithm(train_gen, 'cat', constructors, seed=1337, num_iterations=15,
+        genetic = merger.genetic_algorithm(train_gen, 'cat', constructors, seed=None, num_iterations=15,
                                            num_crossovers=10, population_size=150, val_fraction=0.5, prune=True,
                                            max_samples=1, tournament_size=10, nr_bootstraps=25)
 
@@ -417,10 +418,11 @@ for dataset in datasets:
     Size = F.get_size_inches()
     F.set_size_inches(Size[0] * 2, Size[1] * 1.75, forward=True)
     # plt.show()
-    plt.savefig('output/' + dataset['name'] + '_CV'+str(NR_FOLDS)+'genetic3109.png', bbox_inches='tight')
+    rand_nr = str(int(10000*np.random.rand()))
+    plt.savefig('output/' + dataset['name'] + '_CV'+str(NR_FOLDS)+'genetic3109'+rand_nr+'.png', bbox_inches='tight')
 
-    write_to_file('output/' + dataset['name'] + '_CV'+str(NR_FOLDS)+'genetic3109.tex',  dataset['name'],
-                  {dataset['name']: dataset['name'] + '_CV'+str(NR_FOLDS)+'genetic3109.png'}, conf_matrices, avg_nodes, times,
+    write_to_file('output/' + dataset['name'] + '_CV'+str(NR_FOLDS)+'genetic3109'+rand_nr+'.tex',  dataset['name'],
+                  {dataset['name']: dataset['name'] + '_CV'+str(NR_FOLDS)+'genetic3109'+rand_nr+'.png'}, conf_matrices, avg_nodes, times,
                   ALGORITHMS_PER_TABLE=3)
 
 # def classification_metrics(confusion_matrices):
